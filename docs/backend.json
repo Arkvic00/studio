@@ -1,5 +1,39 @@
 {
   "entities": {
+    "VademecumDrug": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "VademecumDrug",
+      "description": "Represents a complete drug entry in the veterinary Vademecum, including all dosage, safety, and pharmacological information.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "meta_data": {
+          "type": "object",
+          "properties": {
+            "nombre_generico": { "type": "string" },
+            "nombres_comerciales": { "type": "array", "items": { "type": "string" } },
+            "grupo_farmacologico": { "type": "string" },
+            "status_regulatorio": { "type": "string" }
+          },
+          "required": ["nombre_generico", "nombres_comerciales", "grupo_farmacologico", "status_regulatorio"]
+        },
+        "resumen_clinico": {
+          "type": "object",
+          "properties": {
+            "puntos_clave": { "type": "array", "items": { "type": "string" } },
+            "usos_principales": { "type": "string" }
+          },
+          "required": ["puntos_clave", "usos_principales"]
+        },
+        "informacion_cliente": { "type": "array", "items": { "type": "string" } },
+        "parametros_dosificacion": { "type": "object" },
+        "seguridad_y_alertas": { "type": "object" },
+        "farmacologia_clinica": { "type": "object" },
+        "propiedades_fisicoquimicas": { "type": "object" },
+        "presentaciones_comerciales": { "type": "array" }
+      },
+      "required": ["id", "meta_data", "resumen_clinico", "parametros_dosificacion", "seguridad_y_alertas"]
+    },
     "PatientProfile": {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "PatientProfile",
@@ -376,6 +410,17 @@
   "firestore": {
     "structure": [
       {
+        "path": "/vademecum/{drugId}",
+        "definition": {
+          "entityName": "VademecumDrug",
+          "schema": { "$ref": "#/backend/entities/VademecumDrug" },
+          "description": "Publicly accessible collection storing all drug information for the Vademecum.",
+          "params": [
+            { "name": "drugId", "description": "The unique identifier for the drug." }
+          ]
+        }
+      },
+      {
         "path": "/users/{userId}/patientProfiles/{patientProfileId}",
         "definition": {
           "entityName": "PatientProfile",
@@ -571,3 +616,4 @@
     "reasoning": "The recommended Firestore data structure prioritizes user-specific data isolation and simplified security rules by adhering to path-based authorization. All user-generated and user-specific preference data is stored under a top-level `/users/{userId}` collection. This strategy ensures that authorization is inherently tied to the authenticated user's ID (`request.auth.uid`), which is available directly from the path, thus eliminating the need for `get()` calls in security rules to check parent document ownership or attributes. This directly addresses the 'Authorization Independence' principle, preventing issues with atomic operations and simplifying debugging.\n\nFor entities representing a 'User 1:N Entity' relationship, such as `PatientProfile` and `DrugCalculationEntry`, a hierarchical path is used: `/users/{userId}/patientProfiles/{patientProfileId}` and then `/users/{userId}/patientProfiles/{patientProfileId}/drugCalculations/{drugCalculationEntryId}`. This design clearly segregates data by patient, allowing `DrugCalculationEntry` documents to inherit their authorization context from the `userId` specified in their ancestral path. This means the security rules for a `drugCalculationEntry` can simply check `request.auth.uid == userId` without needing to fetch the `patientProfile` document to verify ownership. The `patientProfileId` acts as a logical grouping for calculations, but `userId` is the atomic authorization key.\n\nFor user-specific settings and preferences, like `FluidTherapyParameters` or `NutritionParameters`, a '1:1 User Entity' relationship is implemented using fixed document IDs (e.g., 'settings') within dedicated subcollections under `/users/{userId}/`. For example, `/users/{userId}/fluidTherapyParameters/settings`. This ensures each user has their own set of parameters without requiring a separate, dynamically generated document ID for each setting type.\n\n`DrugImage` entities are stored in a `/users/{userId}/drugImages/{drugId}` collection. This allows users to upload and associate custom images with specific drugs from the Vademecum, with access strictly limited to the uploading user.\n\nThis structural segregation ensures that all documents within these user-scoped collections share a homogeneous security posture (only the owner can access them). This enables highly efficient and secure `list` operations (QAPs - Rules are not Filters) because queries automatically constrain results to the authenticated user's data, and rules can simply verify the `userId` from the path. No complex filtering is required at the rule level. The use of descriptive wildcards (e.g., `{patientProfileId}`, `{drugCalculationEntryId}`) and consistent naming further enhances debuggability and predictability of the schema.\n\nStatic application data, such as the `DB_MEDICAMENTOS` (Vademecum data), physiological constants, gestation data, and vaccination schedules, are not included in this Firestore structure as they appear to be hardcoded in the client-side application based on the provided code snippet. Should these ever need to be dynamic or centrally managed, they would reside in read-only public collections (e.g., `/vademecum/{drugId}`) accessible to all users for read operations."
   }
 }
+    

@@ -1,11 +1,13 @@
-
 'use client';
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { Search, ChevronDown } from 'lucide-react';
-import { DB_MEDICAMENTOS } from '@/lib/data';
+import { Search, ChevronDown, Loader2 } from 'lucide-react';
 import { fuzzySearch } from '@/lib/utils';
 import type { Drug } from '@/lib/types';
 import { Badge } from '@/components/ui/badge';
+import { useCollection } from '@/firebase';
+import { collection, query, where } from 'firebase/firestore';
+import { useFirestore } from '@/firebase/provider';
+import { Skeleton } from '../ui/skeleton';
 
 interface DrugSelectorProps {
   selectedDrugId: string;
@@ -21,9 +23,16 @@ export function DrugSelector({
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const firestore = useFirestore();
+
+  // Fetch all drugs from the 'vademecum' collection
+  const vademecumCollection = useMemo(() => collection(firestore, 'vademecum'), [firestore]);
+  const { data: allDrugs, isLoading } = useCollection<Drug>(vademecumCollection);
 
   const filteredDrugs = useMemo(() => {
-    return DB_MEDICAMENTOS.filter((drug: Drug) => {
+    if (!allDrugs) return [];
+
+    return allDrugs.filter((drug: Drug) => {
       const hasDoseForSpecies =
         drug.parametros_dosificacion &&
         drug.parametros_dosificacion[speciesKey] &&
@@ -44,16 +53,16 @@ export function DrugSelector({
       ).some((d) => d.indicacion.toLowerCase().includes(q));
       return matchName || matchCommercial || matchFamily || matchUse;
     });
-  }, [searchTerm, speciesKey]);
+  }, [searchTerm, speciesKey, allDrugs]);
 
   useEffect(() => {
-    if (selectedDrugId) {
-      const d = DB_MEDICAMENTOS.find((drug) => drug.id === selectedDrugId);
+    if (selectedDrugId && allDrugs) {
+      const d = allDrugs.find((drug) => drug.id === selectedDrugId);
       if (d) setSearchTerm(d.meta_data.nombre_generico);
-    } else {
+    } else if (!selectedDrugId) {
       setSearchTerm('');
     }
-  }, [selectedDrugId]);
+  }, [selectedDrugId, allDrugs]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -83,17 +92,23 @@ export function DrugSelector({
             onSelect('');
           }}
           onFocus={() => setIsOpen(true)}
+          disabled={isLoading}
         />
-        <ChevronDown
-          className={`absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 transition-transform ${
-            isOpen ? 'rotate-180' : ''
-          }`}
-          size={20}
-        />
+        {isLoading ? (
+          <Loader2 className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 animate-spin" size={20} />
+        ) : (
+          <ChevronDown
+            className={`absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 transition-transform ${
+              isOpen ? 'rotate-180' : ''
+            }`}
+            size={20}
+          />
+        )}
       </div>
       {isOpen && (
         <div className="absolute top-full left-0 w-full mt-2 bg-popover border border-border rounded-2xl shadow-2xl max-h-60 overflow-y-auto custom-scrollbar z-50 animate-in fade-in zoom-in-95 duration-200">
-          {filteredDrugs.length > 0 ? (
+          {isLoading && <div className="p-6 text-center text-muted-foreground font-bold text-sm">Cargando fármacos...</div>}
+          {!isLoading && filteredDrugs.length > 0 ? (
             filteredDrugs.map((drug) => (
               <div
                 key={drug.id}
@@ -117,7 +132,7 @@ export function DrugSelector({
                 </p>
               </div>
             ))
-          ) : (
+          ) : !isLoading && (
             <div className="p-6 text-center text-muted-foreground font-bold text-sm">
               No se encontraron resultados para "{speciesKey}"
             </div>
@@ -127,3 +142,4 @@ export function DrugSelector({
     </div>
   );
 }
+    

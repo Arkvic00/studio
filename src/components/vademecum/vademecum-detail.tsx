@@ -1,6 +1,6 @@
 'use client';
-import { useState, useMemo } from 'react';
-import { Zap, AlertOctagon, Shield, Calculator, FileText, GitCompareArrows, Search } from 'lucide-react';
+import { useMemo } from 'react';
+import { Zap, AlertOctagon, Shield, Calculator, FileText, GitCompareArrows, Search, Loader2 } from 'lucide-react';
 import { PinterestCard } from '@/components/ui/pinterest-card';
 import { Badge } from '@/components/ui/badge';
 import { getSpeciesInfo } from '@/lib/config';
@@ -8,18 +8,26 @@ import type { Drug } from '@/lib/types';
 import { Button } from '../ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
-import { DB_MEDICAMENTOS } from '@/lib/data';
 import { fuzzySearch } from '@/lib/utils';
 import { ScrollArea } from '../ui/scroll-area';
+import { useCollection, useFirestore } from '@/firebase';
+import { collection } from 'firebase/firestore';
+import { useState } from 'react';
 
 // New Component for the search/comparison modal
 function DrugCompareModal({ currentDrugId }: { currentDrugId: string }) {
     const [open, setOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
+    const firestore = useFirestore();
+
+    const vademecumCollection = useMemo(() => collection(firestore, 'vademecum'), [firestore]);
+    const { data: allDrugs, isLoading } = useCollection<Drug>(vademecumCollection);
+
 
     const filteredDrugs = useMemo(() => {
+        if (!allDrugs) return [];
         // Exclude the current drug from the list and filter by search term
-        const otherDrugs = DB_MEDICAMENTOS.filter(d => d.id !== currentDrugId);
+        const otherDrugs = allDrugs.filter(d => d.id !== currentDrugId);
 
         if (!searchTerm.trim()) {
             return otherDrugs;
@@ -32,7 +40,7 @@ function DrugCompareModal({ currentDrugId }: { currentDrugId: string }) {
             const matchFamily = drug.meta_data.grupo_farmacologico.toLowerCase().includes(q);
             return matchName || matchCommercial || matchFamily;
         });
-    }, [searchTerm, currentDrugId]);
+    }, [searchTerm, currentDrugId, allDrugs]);
 
     // For now, selecting a drug will just close the modal.
     // The next step is to build the comparison view.
@@ -67,7 +75,8 @@ function DrugCompareModal({ currentDrugId }: { currentDrugId: string }) {
                 </div>
                 <ScrollArea className="max-h-[60vh]">
                     <div className="p-6 pt-0">
-                    {filteredDrugs.map((drug) => (
+                    {isLoading && <div className="flex justify-center items-center py-10"><Loader2 className="animate-spin text-muted-foreground"/></div>}
+                    {!isLoading && filteredDrugs.map((drug) => (
                         <div
                             key={drug.id}
                             onClick={() => handleSelectDrug(drug)}
@@ -86,7 +95,7 @@ function DrugCompareModal({ currentDrugId }: { currentDrugId: string }) {
                             </p>
                         </div>
                     ))}
-                    {filteredDrugs.length === 0 && (
+                    {!isLoading && filteredDrugs.length === 0 && (
                         <div className="text-center py-10 text-muted-foreground text-sm">
                             No se encontraron fármacos.
                         </div>
@@ -98,7 +107,11 @@ function DrugCompareModal({ currentDrugId }: { currentDrugId: string }) {
     );
 }
 
-export function VademecumDetail({ drug }: { drug: Drug }) {
+export function VademecumDetail({ drug }: { drug: Drug | null }) {
+
+  if (!drug) {
+      return <div>Fármaco no encontrado.</div>;
+  }
 
   return (
     <div className="max-w-7xl mx-auto animate-in fade-in duration-500">
@@ -232,3 +245,4 @@ export function VademecumDetail({ drug }: { drug: Drug }) {
       </div>
   );
 };
+    

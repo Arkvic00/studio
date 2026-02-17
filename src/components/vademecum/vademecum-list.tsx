@@ -3,10 +3,9 @@ import Link from 'next/link';
 import { 
     ChevronRight, Plus, Search, BookOpen, Calendar, HeartPulse, AlertCircle, Utensils, Atom, Snowflake, Users, 
     VenetianMask, Info, Home, Ban, Hand, Syringe, FlaskConical, Stethoscope, Microscope, TestTube, Dna, Bone, Shield, 
-    Pill, Bug, TriangleAlert, Beaker, Droplet, Brain, Thermometer, Baby
+    Pill, Bug, TriangleAlert, Beaker, Droplet, Brain, Thermometer, Baby, Loader2
 } from 'lucide-react';
 import Image from 'next/image';
-import { DB_MEDICAMENTOS } from '@/lib/data';
 import { PinterestCard } from '@/components/ui/pinterest-card';
 import { useAppContext } from '@/contexts/app-context';
 import { useState, useMemo } from 'react';
@@ -14,34 +13,43 @@ import { Input } from '@/components/ui/input';
 import { fuzzySearch, cn } from '@/lib/utils';
 import { SPECIES_CONFIG } from '@/lib/config';
 import { EXOTICS_DATA } from '@/lib/exotics';
-import type { ExoticSpeciesData } from '@/lib/types';
+import type { Drug, ExoticSpeciesData } from '@/lib/types';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from '../ui/badge';
+import { useCollection } from '@/firebase';
+import { collection } from 'firebase/firestore';
+import { useFirestore } from '@/firebase/provider';
+import { Skeleton } from '../ui/skeleton';
 
 // Sub-component for Fármacos list
 function DrugList() {
     const { drugImages, triggerUpload } = useAppContext();
     const [searchTerm, setSearchTerm] = useState('');
+    const firestore = useFirestore();
+
+    const vademecumCollection = useMemo(() => collection(firestore, 'vademecum'), [firestore]);
+    const { data: allDrugs, isLoading } = useCollection<Drug>(vademecumCollection);
 
     const filteredDrugs = useMemo(() => {
+        if (!allDrugs) return [];
         if (!searchTerm.trim()) {
-            return DB_MEDICAMENTOS;
+            return allDrugs;
         }
 
-        return DB_MEDICAMENTOS.filter(drug => {
+        return allDrugs.filter(drug => {
             const q = searchTerm.toLowerCase();
             const matchName = fuzzySearch(searchTerm, drug.meta_data.nombre_generico);
             const matchCommercial = drug.meta_data.nombres_comerciales.some(n => fuzzySearch(searchTerm, n));
             const matchFamily = drug.meta_data.grupo_farmacologico.toLowerCase().includes(q);
             
-            const matchUse = Object.values(drug.parametros_dosificacion)
+            const matchUse = Object.values(drug.parametros_dosificacion || {})
                 .flat()
-                .some(d => d.indicacion.toLowerCase().includes(q));
+                .some((d: any) => d.indicacion.toLowerCase().includes(q));
 
             return matchName || matchCommercial || matchFamily || matchUse;
         });
-    }, [searchTerm]);
+    }, [searchTerm, allDrugs]);
 
     return (
         <>
@@ -55,43 +63,61 @@ function DrugList() {
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredDrugs.map(drug => (
-                    <Link key={drug.id} href={`/vademecum/${drug.id}`} passHref>
-                        <PinterestCard className="hover:bg-secondary cursor-pointer group transition-all hover:border-accent/30 h-full">
-                            <div className="flex justify-between items-center gap-4">
-                                <div className="flex items-center gap-4">
-                                    <button 
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            triggerUpload(e, drug.id)
-                                        }}
-                                        className="w-16 h-16 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-all flex-shrink-0 overflow-hidden relative group/img"
-                                    >
-                                        {drugImages[drug.id] ? (
-                                            <Image src={drugImages[drug.id]} alt={drug.meta_data.nombre_generico} fill className="object-cover" />
-                                        ) : (
-                                            <Plus size={24} className="group-hover/img:scale-110 transition-transform" />
-                                        )}
-                                    </button>
-                                    
-                                    <div>
-                                        <h3 className="text-2xl font-black text-white mb-1 group-hover:text-accent transition-colors">{drug.meta_data.nombre_generico}</h3>
-                                        <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">{drug.meta_data.grupo_farmacologico.split(',')[0]}</p>
-                                    </div>
+            
+            {isLoading && (
+                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {Array.from({length: 6}).map((_, i) => (
+                        <PinterestCard key={i} className="h-full">
+                            <div className="flex items-center gap-4">
+                                <Skeleton className="w-16 h-16 rounded-2xl flex-shrink-0" />
+                                <div className="space-y-2">
+                                    <Skeleton className="h-6 w-40" />
+                                    <Skeleton className="h-4 w-24" />
                                 </div>
-                                <div className="p-3 bg-card rounded-full group-hover:bg-accent group-hover:text-accent-foreground transition-all text-muted-foreground"><ChevronRight size={20} /></div>
                             </div>
                         </PinterestCard>
-                    </Link>
-                ))}
-                {filteredDrugs.length === 0 && (
-                    <div className="md:col-span-2 lg:col-span-3 text-center py-20">
-                        <p className="text-muted-foreground font-bold">No se encontraron fármacos para "{searchTerm}"</p>
-                    </div>
-                )}
-            </div>
+                    ))}
+                 </div>
+            )}
+
+            {!isLoading && allDrugs && (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {filteredDrugs.map(drug => (
+                        <Link key={drug.id} href={`/vademecum/${drug.id}`} passHref>
+                            <PinterestCard className="hover:bg-secondary cursor-pointer group transition-all hover:border-accent/30 h-full">
+                                <div className="flex justify-between items-center gap-4">
+                                    <div className="flex items-center gap-4">
+                                        <button 
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                triggerUpload(e, drug.id)
+                                            }}
+                                            className="w-16 h-16 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-all flex-shrink-0 overflow-hidden relative group/img"
+                                        >
+                                            {drugImages[drug.id] ? (
+                                                <Image src={drugImages[drug.id]} alt={drug.meta_data.nombre_generico} fill className="object-cover" />
+                                            ) : (
+                                                <Plus size={24} className="group-hover/img:scale-110 transition-transform" />
+                                            )}
+                                        </button>
+                                        
+                                        <div>
+                                            <h3 className="text-2xl font-black text-white mb-1 group-hover:text-accent transition-colors">{drug.meta_data.nombre_generico}</h3>
+                                            <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">{drug.meta_data.grupo_farmacologico.split(',')[0]}</p>
+                                        </div>
+                                    </div>
+                                    <div className="p-3 bg-card rounded-full group-hover:bg-accent group-hover:text-accent-foreground transition-all text-muted-foreground"><ChevronRight size={20} /></div>
+                                </div>
+                            </PinterestCard>
+                        </Link>
+                    ))}
+                    {filteredDrugs.length === 0 && (
+                        <div className="md:col-span-2 lg:col-span-3 text-center py-20">
+                            <p className="text-muted-foreground font-bold">No se encontraron fármacos para "{searchTerm}"</p>
+                        </div>
+                    )}
+                </div>
+            )}
         </>
     );
 }
@@ -390,3 +416,4 @@ export function VademecumList() {
         </div>
     );
 }
+    
