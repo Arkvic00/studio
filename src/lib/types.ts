@@ -157,7 +157,7 @@ export interface ExoticSpeciesData {
     sections: {
         [key: string]: {
             title: string;
-            content: string;
+            content: any;
         }
     }
 }

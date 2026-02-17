@@ -6,143 +6,205 @@ export const roedoresData: ExoticSpeciesData = {
   sections: {
     biologia: {
       title: "Biología y Fisiología",
-      content: `**Esperanza de vida:**
-* Ratones: 1-2.5 años
-* Ratas: 2-3.5 años
-* Hámsteres: 1.5-2 años
-* Jerbos: 2-3 años
-
-**Frecuencia Cardíaca y Respiratoria:**
-* Tienen metabolismos muy altos. FC: 260-700 lpm. FR: 40-250 rpm.
-
-**Aparato Digestivo:**
-* Carecen de la capacidad física de vomitar.
-* Practican la coprofagia (ingesta de heces) para recuperar nutrientes; es un comportamiento normal.
-
-**Dentición:**
-* Los incisivos crecen continuamente (elodontos). Su color amarillo/naranja es normal por la acumulación de hierro.
-* La proporción ideal de longitud entre incisivos inferiores y superiores es de 3 a 1.
-
-**Glándulas Odoríferas:**
-* Hámsteres: Tienen glándulas en los flancos (costados), parecen lunares oscuros, más desarrolladas en machos.
-* Jerbos: Tienen una glándula en el vientre (ventral).
-* Ambas son propensas a inflamarse o desarrollar tumores.
-
-**Hibernación/Torpor (Hámsteres):**
-* Si la temp. baja a <4°C, entran en sueño profundo. Entre 4°C y 10°C entran en letargo (torpor), a menudo confundido con la muerte.
-
-**Glándulas Adrenales (Jerbos):**
-* Son naturalmente muy grandes en proporción a su peso, no debe confundirse con una patología.`
+      content: [
+        { 
+          title: "Esperanza de vida", 
+          icon: "Calendar",
+          items: ["Ratones: 1-2.5 años", "Ratas: 2-3.5 años", "Hámsteres: 1.5-2 años", "Jerbos: 2-3 años"]
+        },
+        { 
+          title: "Frecuencias",
+          icon: "HeartPulse",
+          items: ["Cardíaca: 260-700 lpm", "Respiratoria: 40-250 rpm"] 
+        },
+        {
+          title: "Dentición",
+          icon: "AlertCircle",
+          items: ["Incisivos de crecimiento continuo (elodontos).", "Color amarillo/naranja es normal.", "Proporción ideal: inferiores 3x más largos que superiores."]
+        },
+        {
+          title: "Aparato Digestivo",
+          icon: "Utensils",
+          items: ["No pueden vomitar.", "Practican la coprofagia (normal y necesario)."]
+        },
+        {
+          title: "Glándulas Odoríferas",
+          icon: "Atom",
+          items: ["Hámsteres: en los flancos (costados).", "Jerbos: en el vientre (ventral).", "Propensas a inflamación o tumores."]
+        },
+        {
+          title: "Hibernación/Torpor (Hámsteres)",
+          icon: "Snowflake",
+          items: ["< 4°C: sueño profundo.", "4-10°C: letargo (torpor).", "A menudo confundido con la muerte."]
+        }
+      ]
     },
     sexado_reproduccion: {
       title: "Sexado y Reproducción",
-      content: `**Sexado:**
-* Se realiza midiendo la distancia anogenital, que es significativamente más corta en las hembras.
-* No es confiable buscar testículos, ya que pueden retraerlos.
-
-**Parámetros Reproductivos:**
-**Ratón:** Pubertad (1.5m), Ciclo (4-5d), Gestación (19-21d), Camada (7-12), Destete (18-21d).
-**Rata:** Pubertad (1m), Ciclo (4-5d), Gestación (21-23d), Camada (6-13), Destete (21d).
-**Hámster:** Pubertad (1.5-2m), Ciclo (4-5d), Gestación (16-23d), Camada (5-10), Destete (19-21d).
-**Jerbo:** Pubertad (2-4.5m), Ciclo (4-6d), Gestación (23-46d), Camada (3-8), Destete (21-28d).
-
-**Consideraciones:**
-* **Canibalismo:** Puede ocurrir si se les molesta post-parto.
-* **Hámsteres:** Si se asusta, una madre puede meter a sus crías en los abazones (bolsas de los cachetes), con riesgo de asfixia.
-* **Tapones Eyaculatorios:** En ratas y ratones machos, es común encontrar tapones de semen coagulado en la vejiga por retro-eyaculación. No confundir con urolitos.`
+      content: {
+        sexing: {
+            title: "Sexado",
+            text: "Se realiza midiendo la distancia anogenital, que es significativamente más corta en las hembras. No es confiable buscar testículos, ya que pueden retraerlos."
+        },
+        repro_table: {
+          headers: ["", "Pubertad", "Ciclo Estral", "Gestación", "Camada", "Destete"],
+          rows: [
+            { species: "Ratón 🐭", puberty: "1.5m", estrous: "4-5d", gestation: "19-21d", litter: "7-12", weaning: "18-21d" },
+            { species: "Rata 🐀", puberty: "1m", estrous: "4-5d", gestation: "21-23d", litter: "6-13", weaning: "21d" },
+            { species: "Hámster 🐹", puberty: "1.5-2m", estrous: "4-5d", gestation: "16-23d", litter: "5-10", weaning: "19-21d" },
+            { species: "Jerbo 🐭", puberty: "2-4.5m", estrous: "4-6d", gestation: "23-46d", litter: "3-8", weaning: "21-28d" },
+          ]
+        },
+        considerations: {
+            title: "Consideraciones",
+            items: ["Canibalismo: puede ocurrir si se les molesta post-parto.", "Hámsteres: pueden meter a sus crías en los abazones (bolsas de los cachetes) por estrés.", "Tapones eyaculatorios: común en ratas y ratones machos, no confundir con urolitos."]
+        }
+      }
     },
     alojamiento_manejo: {
-      title: "Alojamiento, Nutrición y Manejo",
-      content: `**Ambiente y Sustrato:**
-* Se requiere excelente ventilación para evitar la acumulación de amoníaco.
-* **Prohibido usar viruta de cedro**, sus aceites volátiles son tóxicos para el hígado.
-
-**Dieta:**
-* Requisitos de proteína: Ratones >14%, Ratas 20-27%, Hámsteres y Jerbos >16%.
-* Las dietas basadas solo en semillas causan obesidad y osteoporosis.
-* En ratas mayores, se recomienda bajar la proteína a 4-7% para frenar la nefropatía progresiva crónica.
-
-**Manejo y Sujeción:**
-* **Ratones:** Rápidos, tienden a morder. Levantar por la base de la cola y sujetar por la piel de la nuca (scruffing).
-* **Ratas:** Muerden menos. Sujetar alrededor de los hombros, apoyando las patas traseras.
-* **Hámsteres:** Tienden a morder. Sujetar el cuerpo con la cabeza entre los dedos para controlar mordidas.
-* **Jerbos:** Rara vez muerden. **Nunca levantar por la cola**; la piel se desprende fácilmente (tail-slip).
-* **Prevención de Epilepsia (Jerbos):** La manipulación frecuente durante las primeras 3 semanas de vida reduce la probabilidad de desarrollar epilepsia congénita.`
+        title: "Alojamiento, Nutrición y Manejo",
+        content: [
+            {
+                title: "Ambiente y Sustrato",
+                icon: "Home",
+                points: [
+                    { text: "Se requiere excelente ventilación para evitar acumulación de amoníaco.", isProhibited: false },
+                    { text: "Prohibido usar viruta de cedro (tóxica para el hígado).", isProhibited: true }
+                ]
+            },
+            {
+                title: "Dieta",
+                icon: "Utensils",
+                points: [
+                    { text: "Proteína: Ratones >14%, Ratas 20-27%, Hámsteres/Jerbos >16%.", isProhibited: false },
+                    { text: "Dietas basadas solo en semillas causan obesidad y osteoporosis.", isProhibited: true },
+                    { text: "En ratas mayores, se recomienda bajar proteína (4-7%) para frenar nefropatía.", isProhibited: false }
+                ]
+            },
+            {
+                title: "Manejo y Sujeción",
+                icon: "Hand",
+                points: [
+                    { text: "Ratones: Levantar por la base de la cola y sujetar por la nuca (scruffing).", isProhibited: false },
+                    { text: "Ratas: Sujetar alrededor de los hombros, apoyando las patas traseras.", isProhibited: false },
+                    { text: "Hámsteres: Sujetar el cuerpo con la cabeza entre los dedos para controlar mordidas.", isProhibited: false },
+                    { text: "Jerbos: Nunca levantar por la cola (riesgo de 'tail-slip').", isProhibited: true }
+                ]
+            }
+        ]
     },
     procedimientos: {
-      title: "Vías de Inyección y Toma de Muestras",
-      content: `**Vías y Volúmenes Máximos de Inyección (ml):**
-**SC:** Ratón(2-3), Rata(5-10), Hámster(3-5), Jerbo(2-3).
-**IM:** Ratón(0.03), Rata(0.2-0.3), Hámster(0.1), Jerbo(0.1).
-**IP:** Ratón(1-3), Rata(10), Hámster(3-4), Jerbo(2-3).
-**IV:** Ratón(0.2-0.3), Rata(0.5 lento), Hámster(No), Jerbo(0.2-0.3).
-
-**Toma de Muestras:**
-* **Sangre:** Se puede extraer de forma segura hasta un 10% del volumen sanguíneo total en 3-4 semanas. Sitios: Vena safena lateral, venas caudales (cola).
-* **Orina:** La cistocentesis es difícil despiertos; suelen orinar al manipularlos.`
+        title: "Vías de Inyección",
+        content: {
+            injection_table: {
+                headers: ["Ruta", "Ratón", "Rata", "Hámster", "Jerbo"],
+                rows: [
+                  { route: "Subcutánea (SC)", mouse: "2-3 ml", rat: "5-10 ml", hamster: "3-5 ml", gerbil: "2-3 ml" },
+                  { route: "Intramuscular (IM)", mouse: "0.03 ml", rat: "0.2-0.3 ml", hamster: "0.1 ml", gerbil: "0.1 ml" },
+                  { route: "Intraperitoneal (IP)", mouse: "1-3 ml", rat: "10 ml", hamster: "3-4 ml", gerbil: "2-3 ml" },
+                  { route: "Intravenosa (IV)", mouse: "0.2-0.3 ml", rat: "0.5 ml lento", hamster: "No descrito", gerbil: "0.2-0.3 ml" }
+                ]
+            }
+        }
     },
     anestesia_cirugia: {
-      title: "Anestesia, Cirugía y Terapia de Líquidos",
-      content: `**Ayuno:** **Estrictamente contraindicado.** Riesgo de hipoglucemia fatal.
-                
-**Terapia de Líquidos (Mantenimiento):**
-* General: ~100 ml/kg/día.
-* Jerbos: Requieren menos (40-60 ml/kg/día) por su adaptación a climas desérticos.
-
-**Cirugía y Anestesia:**
-* **Odontología:** El sobrecrecimiento dental se corrige con fresas dentales. **Nunca usar cortaúñas**.
-* **Vía IM:** Evitar en lo posible, causa dolor y necrosis muscular.
-* **Hemostasia:** Una pérdida >0.3 ml puede ser mortal para un ratón de 30g.
-* **Recuperación de Fracturas:** Tienen una formación de callo óseo muy rápida (7-10 días). Vendajes o férulas simples suelen funcionar bien.`
+        title: "Anestesia, Cirugía y Fluidos",
+        content: [
+            { title: "Ayuno", text: "Estrictamente contraindicado por riesgo de hipoglucemia fatal.", icon: "Ban", isCritical: true },
+            { title: "Fluidos (Mantenimiento)", text: "General: ~100 ml/kg/día. Jerbos requieren menos (40-60 ml/kg/día).", icon: "Droplet", isCritical: false },
+            { title: "Odontología", text: "El sobrecrecimiento se corrige con fresas dentales. Nunca usar cortaúñas.", icon: "AlertCircle", isCritical: true },
+            { title: "Hemostasia", text: "Pérdidas >0.3 ml pueden ser mortales para un ratón de 30g. Usar hemostasia cuidadosa.", icon: "HeartPulse", isCritical: false },
+            { title: "Fracturas", text: "Formación de callo óseo muy rápida (7-10 días). Vendajes y férulas suelen funcionar bien.", icon: "Bone", isCritical: false },
+        ]
     },
     laboratorio: {
-      title: "Valores de Laboratorio de Referencia",
-      content: `**Hematología:**
-**Vol. Sangre (ml/kg):** Ratón(70-80), Rata(50-65), Hámster(65-80), Jerbo(60-85).
-**Extracción Máx (ml):** Ratón(0.14), Rata(1.3), Hámster(0.65), Jerbo(0.3).
-**Hematocrito (%):** Ratón(37-46), Rata(36-52), Hámster(36.5-58), Jerbo(41-52).
-**Hemoglobina (g/dl):** Ratón(11-14.5), Rata(11.1-17.4), Hámster(10.7-19.2), Jerbo(12.1-16.9).
-
-**Bioquímica:**
-* **Glucosa (mmol/l):** Ratón(4-10.1), Rata(4-8.9), Hámster(3.3-8.8), Jerbo(2.58-7.5).
-* **Proteína Total (g/l):** Ratón(56-103), Rata(59-84), Hámster(55-72), Jerbo(43-147).`
+        title: "Valores de Laboratorio",
+        content: {
+            blood_volume: [
+                { species: "Ratón 🐭", volume: "70-80", max_extraction: "0.14" },
+                { species: "Rata 🐀", volume: "50-65", max_extraction: "1.3" },
+                { species: "Hámster 🐹", volume: "65-80", max_extraction: "0.65" },
+                { species: "Jerbo 🐭", volume: "60-85", max_extraction: "0.3" }
+            ],
+            hematology: {
+                headers: ["Parámetro", "Ratón", "Rata", "Hámster", "Jerbo"],
+                rows: [
+                    { param: "Hematocrito (%)", mouse: "37-46", rat: "36-52", hamster: "36.5-58", gerbil: "41-52" },
+                    { param: "Hemoglobina (g/dl)", mouse: "11-14.5", rat: "11.1-17.4", hamster: "10.7-19.2", gerbil: "12.1-16.9" }
+                ]
+            },
+            biochemistry: {
+                headers: ["Parámetro", "Ratón", "Rata", "Hámster", "Jerbo"],
+                rows: [
+                    { param: "Glucosa (mmol/l)", mouse: "4.0-10.1", rat: "4.0-8.9", hamster: "3.3-8.8", gerbil: "2.58-7.5" },
+                    { param: "Proteína Total (g/l)", mouse: "56-103", rat: "59-84", hamster: "55-72", gerbil: "43-147" }
+                ]
+            }
+        }
     },
     patologias: {
-      title: "Patologías Comunes",
-      content: `**Enfermedades Virales y Ambientales:**
-* **Poliomavirus:** Causa tumores en hámsteres.
-* **Coriomeningitis Linfocítica (LCMV):** Zoonótico, afecta hámsteres.
-* **Barbering:** Comportamiento de estrés donde un roedor arranca el pelo de otros.
-* **Cola anillada ("Ring tail"):** Necrosis de la cola en crías de rata por baja humedad.
-
-**Enfermedades Respiratorias y Oculares:**
-* **Complejo Respiratorio:** Muy común en ratas y ratones (Mycoplasma, Virus Sendai).
-* **Cromodacriorrea:** "Lágrimas rojas" por estrés o enfermedad.
-* **Prolapso del ojo:** Común en hámsteres por mal manejo.
-
-**Enfermedades Gastrointestinales (GI):**
-* **Diarrea por antibióticos:** Penicilinas pueden ser fatales, especialmente en hámsteres.
-* **Ileítis ("Cola Mojada"):** Diarrea bacteriana severa, a menudo fatal en hámsteres y jerbos jóvenes.
-* **Parásitos GI:** Coccidias, Giardia, Oxiuros, Tenias (algunas zoonóticas).
-
-**Dermatología y Neoplasias:**
-* **Parásitos externos:** Ácaros (Myobia, Demodex) y piojos.
-* **Dermatitis facial (Jerbos):** Irritación por exceso de secreciones glandulares.
-* **Tumores:** Mamarios (comunes en ratas y ratones), linfoma cutáneo (hámsteres), tumores de la glándula de olor (jerbos).
-
-**Enfermedades Urinarias, Reproductivas y Neurológicas:**
-* **Falla renal:** Común por edad o dietas altas en proteína.
-* **Piometra y quistes ováricos:** Requieren cirugía.
-* **Signos vestibulares (ladeo de cabeza):** Por infecciones de oído.
-* **Epilepsia:** Congénita en jerbos.
-* **Toxicidad:** La estreptomicina es altamente tóxica para hámsteres y jerbos.`
+        title: "Patologías Comunes",
+        content: [
+            { 
+                category: "Virales y Ambientales",
+                icon: "Virus",
+                diseases: [
+                    { name: "Poliomavirus", description: "Causa verrugas/tumores en hámsteres.", tags: ["Hámster"] },
+                    { name: "Coriomeningitis Linfocítica (LCMV)", description: "Zoonótico, afecta hámsteres y causa síntomas gripales severos en humanos.", tags: ["Hámster", "Zoonosis"] },
+                    { name: "Barbering", description: "Comportamiento de estrés/dominancia donde un roedor arranca el pelo de otros." },
+                    { name: "Cola anillada (Ring tail)", description: "Necrosis de la cola en crías de rata por baja humedad.", tags: ["Rata"] }
+                ]
+            },
+            {
+                category: "Respiratorias y Oculares",
+                icon: "Stethoscope",
+                diseases: [
+                    { name: "Complejo Respiratorio Murino", description: "Muy común en ratas y ratones (Mycoplasma, Virus Sendai). Requiere tratamiento agresivo, a veces de por vida.", tags: ["Rata", "Ratón"] },
+                    { name: "Cromodacriorrea", description: "Secreción de 'lágrimas rojas' por estrés o enfermedad." },
+                    { name: "Prolapso del ojo", description: "Común en hámsteres por mal manejo.", tags: ["Hámster"] }
+                ]
+            },
+            {
+                category: "Gastrointestinales (GI)",
+                icon: "Utensils",
+                diseases: [
+                    { name: "Diarrea por Antibióticos", description: "Penicilinas pueden ser fatales, especialmente en hámsteres, al matar la flora benéfica.", tags: ["Hámster", "Jerbo"] },
+                    { name: "Ileítis Proliferativa (Cola Mojada)", description: "Diarrea bacteriana severa, a menudo fatal en hámsteres y jerbos jóvenes.", tags: ["Hámster", "Jerbo"] },
+                    { name: "Parásitos GI", description: "Coccidias, Giardia, Oxiuros, Tenias. Algunas zoonóticas." }
+                ]
+            },
+            {
+                category: "Dermatológicas y Neoplasias",
+                icon: "Microscope",
+                diseases: [
+                    { name: "Parásitos externos", description: "Ácaros (Myobia, Demodex) y piojos. Causan pérdida de pelo y comezón." },
+                    { name: "Dermatitis facial (Jerbos)", description: "Irritación por exceso de secreciones glandulares.", tags: ["Jerbo"] },
+                    { name: "Tumores Mamarios", description: "Comunes en ratas (benignos) y ratones (malignos).", tags: ["Rata", "Ratón"] },
+                    { name: "Linfoma Cutáneo", description: "Segundo cáncer más común en hámsteres, afecta la piel.", tags: ["Hámster"] },
+                    { name: "Tumor glándula de olor", description: "Común en jerbos.", tags: ["Jerbo"] }
+                ]
+            },
+            {
+                category: "Urinarias, Reproductivas y Neurológicas",
+                icon: "Brain",
+                diseases: [
+                    { name: "Falla renal crónica", description: "Común por edad o dietas altas en proteína." },
+                    { name: "Piometra y quistes ováricos", description: "Requieren cirugía (ovariohisterectomía)." },
+                    { name: "Signos vestibulares", description: "Ladeo de cabeza por infecciones de oído." },
+                    { name: "Epilepsia (Jerbos)", description: "Congénita en 20-40% de la población.", tags: ["Jerbo"] },
+                    { name: "Toxicidad por Estreptomicina", description: "Altamente tóxica para hámsteres y jerbos.", tags: ["Hámster", "Jerbo"] }
+                ]
+            }
+        ]
     },
     zoonosis: {
-      title: "Zoonosis (Riesgo para Humanos)",
-      content: `* **Salmonelosis:** Rara, pero la recomendación suele ser la eutanasia debido al grave riesgo.
-* **Tenia Enana (Rodentolepis/Hymenolepis nana):** Parásito intestinal con gran potencial zoonótico.
-* **Coriomeningitis Linfocítica (LCMV):** Transmitida por hámsteres, causa síntomas similares a una gripe severa.
-* **Tularemia:** El piojo del ratón (Polyplax serrata) actúa como vector.`
+        title: "Zoonosis (Riesgo para Humanos)",
+        content: [
+            { disease: "Salmonelosis", description: "Rara, pero de grave riesgo. La recomendación suele ser la eutanasia." },
+            { disease: "Tenia Enana (Rodentolepis/Hymenolepis nana)", description: "Parásito intestinal con gran potencial zoonótico." },
+            { disease: "Coriomeningitis Linfocítica (LCMV)", description: "Transmitida por hámsteres, causa síntomas gripales severos." },
+            { disease: "Tularemia", description: "El piojo del ratón (Polyplax serrata) puede actuar como vector." }
+        ]
     }
   }
 };
