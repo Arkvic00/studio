@@ -99,7 +99,7 @@ function DrugList() {
 // Order of species for the UI
 const exoticSpeciesOrder = [
     'roedores', 'conejo', 'mustelidos', 'cobaya', 'erizo', 
-    'ave', 'reptil', 'peces', 'primates', 'axolote'
+    'ave', 'reptil', 'primates', 'axolote'
 ];
 const exoticSpecies = exoticSpeciesOrder.map(key => ({
     key,
@@ -146,172 +146,176 @@ function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
                 if (!content) return null;
                 const SectionIcon = iconMap[icon as string] || BookOpen;
 
+                const renderContent = () => {
+                    if (typeof content === 'string') {
+                      return <p className="text-sm text-slate-300">{content}</p>;
+                    }
+                  
+                    if (key === 'patologias' && Array.isArray(content)) {
+                      return (
+                        <Accordion type="multiple" className="w-full space-y-3">
+                          {content.map((cat: any, index: number) => {
+                            const Icon = iconMap[cat.icon] || TriangleAlert;
+                            return (
+                              <AccordionItem key={index} value={cat.category} className="border-none bg-card rounded-2xl overflow-hidden">
+                                <AccordionTrigger className="px-4 py-3 text-white font-bold text-sm hover:no-underline hover:bg-white/5 transition-colors">
+                                  <div className="flex items-center gap-3">
+                                    <Icon size={18} className="text-accent" />
+                                    {cat.category}
+                                  </div>
+                                </AccordionTrigger>
+                                <AccordionContent className="px-4 pb-4 pt-0 text-sm text-slate-300">
+                                  <ul className="space-y-3 mt-2">
+                                    {cat.diseases.map((d: any, dIndex: number) => (
+                                      <li key={dIndex} className="p-3 bg-background/50 rounded-lg border border-border">
+                                        <h5 className="font-bold text-white">{d.name}</h5>
+                                        <p className="text-xs text-slate-400">{d.description}</p>
+                                        {d.tags && <div className="flex gap-2 mt-2">{d.tags.map((t: string, tIndex: number) => <Badge key={tIndex} variant={t === 'Urgencia' || t === 'Mortal' || t === 'Iatrogénico' || t === 'Zoonosis' || t === 'Fatal' ? 'destructive' : 'secondary'} className="text-[9px]">{t}</Badge>)}</div>}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </AccordionContent>
+                              </AccordionItem>
+                            );
+                          })}
+                        </Accordion>
+                      );
+                    }
+                  
+                    if (Array.isArray(content)) {
+                      return (
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {content.map((item: any, index: number) => {
+                            const ItemIcon = iconMap[item.icon as string] || TriangleAlert;
+                            return (
+                              <div key={index} className={cn("bg-card p-6 rounded-3xl border border-border h-full", item.isCritical && 'border-destructive')}>
+                                <h3 className="font-bold text-white mb-3 flex items-center gap-2 text-base"><ItemIcon size={18} className={cn("text-accent", item.isCritical && "text-destructive")} /> {item.title}</h3>
+                                {item.text && <p className="text-sm text-slate-300">{item.text}</p>}
+                                {item.items && <ul className="list-disc list-inside text-sm text-slate-300 space-y-2">
+                                  {item.items.map((li: string, i: number) => <li key={i}>{li}</li>)}
+                                </ul>}
+                                {item.points && <ul className="space-y-3">
+                                  {item.points.map((p: any, i: number) => (
+                                    <li key={i} className="flex gap-3 items-start text-sm text-slate-300">
+                                      {p.isProhibited ? <Ban size={20} className="text-destructive flex-shrink-0 mt-0.5" /> : <ChevronRight size={16} className="text-accent flex-shrink-0 mt-1" />}
+                                      <span>{p.text}</span>
+                                    </li>
+                                  ))}
+                                </ul>}
+                                {item.description && <p className="text-sm text-slate-300">{item.description}</p>}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      );
+                    }
+                  
+                    if (typeof content === 'object' && !Array.isArray(content) && content !== null) {
+                      return (
+                        <div className="space-y-8">
+                          {content.text && <p className="text-sm text-slate-300 mb-6">{content.text}</p>}
+                          
+                          {(content.table || content.repro_table || content.headers) && (
+                                <div className="overflow-x-auto">
+                                    <h3 className="font-bold text-white mb-4 text-lg">{content.repro_table?.title || content.table?.title || ''}</h3>
+                                    <Table>
+                                        <TableHeader><TableRow>{(content.table || content.repro_table || content).headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader>
+                                        <TableBody>{(content.table || content.repro_table || content).rows.map((row: any, i: number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody>
+                                    </Table>
+                                </div>
+                          )}
+                          
+                          {content.sexing && (
+                              <div>
+                                  <h3 className="font-bold text-white mb-2 text-lg">{content.sexing.title}</h3>
+                                  <p className="text-sm text-slate-300">{content.sexing.text}</p>
+                              </div>
+                          )}
+                                
+                          {content.considerations && (
+                              <div>
+                                  <h3 className="font-bold text-white mb-2 text-lg">{content.considerations.title}</h3>
+                                  <ul className="list-disc list-inside text-sm text-slate-300 space-y-1">
+                                      {content.considerations.items.map((item: string, i: number) => <li key={i}>{item}</li>)}
+                                  </ul>
+                              </div>
+                          )}
+                          
+                          {content.points && Array.isArray(content.points) && (
+                               <ul className="space-y-3">
+                                  {content.points.map((p: any, i:number) => (
+                                       <li key={i} className="flex gap-3 items-start text-sm text-slate-300">
+                                          {p.isProhibited ? <Ban size={20} className="text-destructive flex-shrink-0 mt-0.5"/> : <ChevronRight size={16} className="text-accent flex-shrink-0 mt-1"/>}
+                                          <span>{p.text}</span>
+                                      </li>
+                                  ))}
+                              </ul>
+                          )}
+                  
+                          {content.injection_table && (
+                              <div className="overflow-x-auto">
+                                  <h3 className="font-bold text-white mb-4 text-lg">Vías y Volúmenes de Inyección</h3>
+                                  <Table>
+                                      <TableHeader><TableRow>{content.injection_table.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader>
+                                      <TableBody>{content.injection_table.rows.map((row: any, i: number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody>
+                                  </Table>
+                              </div>
+                          )}
+                  
+                          {(content.critical_points || content.anesthesia_risks) && (
+                              <div className="space-y-4">
+                                  {content.critical_points?.map((item:any, i: number) => (
+                                      <div key={i} className="flex gap-3 items-start bg-card p-4 rounded-xl border border-border">
+                                          <div className="p-2 bg-background rounded-md"><ItemIcon size={20} className={cn("flex-shrink-0", item.isCritical ? "text-destructive" : "text-accent")} /></div>
+                                          <div>
+                                              <h4 className="font-bold text-white">{item.title}</h4>
+                                              <p className="text-xs text-slate-300">{item.text}</p>
+                                          </div>
+                                      </div>
+                                  ))}
+                                  {content.anesthesia_risks?.map((item:any, i: number) => (
+                                      <div key={i} className="p-3 bg-card rounded-xl border border-border text-sm text-slate-300">{item.text}</div>
+                                  ))}
+                              </div>
+                          )}
+                  
+                           {(content.hematology || content.biochemistry) && (
+                              <div className="grid md:grid-cols-2 gap-8">
+                                  {content.hematology && (
+                                      <div className="overflow-x-auto">
+                                          <h3 className="font-bold text-white mb-4">{content.hematology.title || 'Hematología'}</h3>
+                                          <Table><TableHeader><TableRow>{content.hematology.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader><TableBody>{content.hematology.rows.map((row: any, i:number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody></Table>
+                                      </div>
+                                  )}
+                                  {content.biochemistry && (
+                                      <div className="overflow-x-auto">
+                                          <h3 className="font-bold text-white mb-4">{content.biochemistry.title || 'Bioquímica'}</h3>
+                                          <Table><TableHeader><TableRow>{content.biochemistry.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader><TableBody>{content.biochemistry.rows.map((row: any, i:number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody></Table>
+                                      </div>
+                                  )}
+                              </div>
+                          )}
+                          {content.blood_volume && (
+                               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                  {content.blood_volume.map((item: any) => (
+                                      <div key={item.species} className="bg-card p-3 rounded-xl border border-border text-center">
+                                          <p className="text-sm font-bold text-white">{item.species}</p>
+                                          <p className="text-[10px] text-muted-foreground font-bold">Vol: {item.volume} ml/kg</p>
+                                          <p className="text-[10px] text-muted-foreground font-bold">Ext. Máx: {item.max_extraction} ml</p>
+                                      </div>
+                                  ))}
+                              </div>
+                          )}
+                        </div>
+                      );
+                    }
+                    return null;
+                };
+
                 return (
                     <PinterestCard key={key} id={key}>
                         <h2 className="text-2xl font-bold text-accent mb-6 flex items-center gap-3"><SectionIcon size={24}/> {title}</h2>
-                        
-                        {typeof content === 'string' && <p className="text-sm text-slate-300">{content}</p>}
-
-                        {key === 'patologias' && Array.isArray(content) && (
-                            <Accordion type="multiple" className="w-full space-y-3">
-                                {content.map((cat: any, index: number) => {
-                                    const Icon = iconMap[cat.icon] || TriangleAlert;
-                                    return (
-                                        <AccordionItem key={index} value={cat.category} className="border-none bg-card rounded-2xl overflow-hidden">
-                                            <AccordionTrigger className="px-4 py-3 text-white font-bold text-sm hover:no-underline hover:bg-white/5 transition-colors">
-                                                <div className="flex items-center gap-3">
-                                                    <Icon size={18} className="text-accent" />
-                                                    {cat.category}
-                                                </div>
-                                            </AccordionTrigger>
-                                            <AccordionContent className="px-4 pb-4 pt-0 text-sm text-slate-300">
-                                                <ul className="space-y-3 mt-2">
-                                                {cat.diseases.map((d: any, dIndex: number) => (
-                                                    <li key={dIndex} className="p-3 bg-background/50 rounded-lg border border-border">
-                                                        <h5 className="font-bold text-white">{d.name}</h5>
-                                                        <p className="text-xs text-slate-400">{d.description}</p>
-                                                        {d.tags && <div className="flex gap-2 mt-2">{d.tags.map((t:string, tIndex: number) => <Badge key={tIndex} variant={t === 'Urgencia' || t === 'Mortal' || t === 'Iatrogénico' || t === 'Zoonosis' || t === 'Fatal' ? 'destructive' : 'secondary'} className="text-[9px]">{t}</Badge>)}</div>}
-                                                    </li>
-                                                ))}
-                                                </ul>
-                                            </AccordionContent>
-                                        </AccordionItem>
-                                    )
-                                })}
-                            </Accordion>
-                        )}
-                        
-                        {key !== 'patologias' && Array.isArray(content) && (
-                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {content.map((item: any, index: number) => {
-                                    const ItemIcon = iconMap[item.icon as string] || TriangleAlert;
-                                    return (
-                                    <div key={index} className={cn("bg-card p-6 rounded-3xl border border-border h-full", item.isCritical && 'border-destructive')}>
-                                        <h3 className="font-bold text-white mb-3 flex items-center gap-2 text-base"><ItemIcon size={18} className={cn("text-accent", item.isCritical && "text-destructive")} /> {item.title}</h3>
-                                        {item.text && <p className="text-sm text-slate-300">{item.text}</p>}
-                                        {item.items && <ul className="list-disc list-inside text-sm text-slate-300 space-y-2">
-                                            {item.items.map((li: string, i: number) => <li key={i}>{li}</li>)}
-                                        </ul>}
-                                         {item.points && <ul className="space-y-3">
-                                            {item.points.map((p: any, i:number) => (
-                                                 <li key={i} className="flex gap-3 items-start text-sm text-slate-300">
-                                                    {p.isProhibited ? <Ban size={20} className="text-destructive flex-shrink-0 mt-0.5"/> : <ChevronRight size={16} className="text-accent flex-shrink-0 mt-1"/>}
-                                                    <span>{p.text}</span>
-                                                </li>
-                                            ))}
-                                        </ul>}
-                                        {item.description && <p className="text-sm text-slate-300">{item.description}</p>}
-                                    </div>
-                                )})}
-                            </div>
-                        )}
-
-                        {typeof content === 'object' && !Array.isArray(content) && (
-                            <div className="space-y-8">
-                                {content.text && <p className="text-sm text-slate-300 mb-6">{content.text}</p>}
-                                
-                                {content.headers && content.rows && (
-                                     <div className="overflow-x-auto">
-                                        <Table>
-                                            <TableHeader><TableRow>{content.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader>
-                                            <TableBody>{content.rows.map((row: any, i: number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody>
-                                        </Table>
-                                    </div>
-                                )}
-
-                                {content.sexing && (
-                                    <div>
-                                        <h3 className="font-bold text-white mb-2 text-lg">{content.sexing.title}</h3>
-                                        <p className="text-sm text-slate-300">{content.sexing.text}</p>
-                                    </div>
-                                )}
-                                
-                                {(content.table || content.repro_table) && (
-                                     <div className="overflow-x-auto">
-                                        <h3 className="font-bold text-white mb-4 text-lg">{content.repro_table?.title || content.table?.title || 'Parámetros Reproductivos'}</h3>
-                                        <Table>
-                                            <TableHeader><TableRow>{(content.repro_table || content.table).headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader>
-                                            <TableBody>{(content.repro_table || content.table).rows.map((row: any, i: number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody>
-                                        </Table>
-                                    </div>
-                                )}
-                                
-                                {content.considerations && (
-                                    <div>
-                                        <h3 className="font-bold text-white mb-2 text-lg">{content.considerations.title}</h3>
-                                        <ul className="list-disc list-inside text-sm text-slate-300 space-y-1">
-                                            {content.considerations.items.map((item: string, i: number) => <li key={i}>{item}</li>)}
-                                        </ul>
-                                    </div>
-                                )}
-                                
-                                {content.points && Array.isArray(content.points) && (
-                                     <ul className="space-y-3">
-                                        {content.points.map((p: any, i:number) => (
-                                             <li key={i} className="flex gap-3 items-start text-sm text-slate-300">
-                                                {p.isProhibited ? <Ban size={20} className="text-destructive flex-shrink-0 mt-0.5"/> : <ChevronRight size={16} className="text-accent flex-shrink-0 mt-1"/>}
-                                                <span>{p.text}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-
-                                {content.injection_table && (
-                                    <div className="overflow-x-auto">
-                                        <h3 className="font-bold text-white mb-4 text-lg">Vías y Volúmenes de Inyección</h3>
-                                        <Table>
-                                            <TableHeader><TableRow>{content.injection_table.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader>
-                                            <TableBody>{content.injection_table.rows.map((row: any, i: number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody>
-                                        </Table>
-                                    </div>
-                                )}
-
-                                {(content.critical_points || content.anesthesia_risks) && (
-                                    <div className="space-y-4">
-                                        {content.critical_points?.map((item:any, i: number) => (
-                                            <div key={i} className="flex gap-3 items-start bg-card p-4 rounded-xl border border-border">
-                                                <div className="p-2 bg-background rounded-md"><item.icon size={20} className={cn("flex-shrink-0", item.isCritical ? "text-destructive" : "text-accent")} /></div>
-                                                <div>
-                                                    <h4 className="font-bold text-white">{item.title}</h4>
-                                                    <p className="text-xs text-slate-300">{item.text}</p>
-                                                </div>
-                                            </div>
-                                        ))}
-                                        {content.anesthesia_risks?.map((item:any, i: number) => (
-                                            <div key={i} className="p-3 bg-card rounded-xl border border-border text-sm text-slate-300">{item.text}</div>
-                                        ))}
-                                    </div>
-                                )}
-
-                                 {(content.hematology || content.biochemistry) && (
-                                    <div className="grid md:grid-cols-2 gap-8">
-                                        {content.hematology && (
-                                            <div className="overflow-x-auto">
-                                                <h3 className="font-bold text-white mb-4">{content.hematology.title || 'Hematología'}</h3>
-                                                <Table><TableHeader><TableRow>{content.hematology.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader><TableBody>{content.hematology.rows.map((row: any, i:number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody></Table>
-                                            </div>
-                                        )}
-                                        {content.biochemistry && (
-                                            <div className="overflow-x-auto">
-                                                <h3 className="font-bold text-white mb-4">{content.biochemistry.title || 'Bioquímica'}</h3>
-                                                <Table><TableHeader><TableRow>{content.biochemistry.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader><TableBody>{content.biochemistry.rows.map((row: any, i:number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody></Table>
-                                            </div>
-                                        )}
-                                    </div>
-                                )}
-                                {content.blood_volume && (
-                                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                        {content.blood_volume.map((item: any) => (
-                                            <div key={item.species} className="bg-card p-3 rounded-xl border border-border text-center">
-                                                <p className="text-sm font-bold text-white">{item.species}</p>
-                                                <p className="text-[10px] text-muted-foreground font-bold">Vol: {item.volume} ml/kg</p>
-                                                <p className="text-[10px] text-muted-foreground font-bold">Ext. Máx: {item.max_extraction} ml</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        )}
+                        {renderContent()}
                     </PinterestCard>
                 )
             })}

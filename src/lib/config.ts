@@ -13,7 +13,6 @@ export const SPECIES_THEMES = {
     ovino_caprino: { bg: 'bg-teal-500/10', border: 'border-teal-500/20', text: 'text-teal-400', accent: 'bg-teal-500', decoration: 'shadow-teal-500/10' },
     roedores: { bg: 'bg-gray-500/10', border: 'border-gray-500/20', text: 'text-gray-400', accent: 'bg-gray-500', decoration: 'shadow-gray-500/10' },
     mustelidos: { bg: 'bg-yellow-600/10', border: 'border-yellow-600/20', text: 'text-yellow-500', accent: 'bg-yellow-600', decoration: 'shadow-yellow-600/10' },
-    peces: { bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', text: 'text-cyan-400', accent: 'bg-cyan-500', decoration: 'shadow-cyan-500/10' },
     primates: { bg: 'bg-orange-600/10', border: 'border-orange-600/20', text: 'text-orange-500', accent: 'bg-orange-600', decoration: 'shadow-orange-600/10' },
     axolote: { bg: 'bg-pink-400/10', border: 'border-pink-400/20', text: 'text-pink-300', accent: 'bg-pink-400', decoration: 'shadow-pink-400/10' },
     default: { bg: 'bg-slate-500/10', border: 'border-slate-500/20', text: 'text-slate-400', accent: 'bg-slate-500', decoration: 'shadow-slate-500/10' }
@@ -33,7 +32,6 @@ export const SPECIES_CONFIG: Record<string, { label: string; icon: string; theme
   erizo: { label: 'Erizo', icon: '🦔', theme: SPECIES_THEMES.Erizo },
   ave: { label: 'Ave', icon: '🦜', theme: SPECIES_THEMES.Ave },
   reptil: { label: 'Reptil', icon: '🦎', theme: SPECIES_THEMES.Reptil },
-  peces: { label: 'Peces', icon: '🐠', theme: SPECIES_THEMES.peces },
   primates: { label: 'Primates', icon: '🐒', theme: SPECIES_THEMES.primates },
   axolote: { label: 'Axolote', icon: '👾', theme: SPECIES_THEMES.axolote },
   huron: { label: 'Hurón', icon: '🦦', theme: SPECIES_THEMES.Hurón },

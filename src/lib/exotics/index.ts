@@ -28,7 +28,6 @@ export const EXOTICS_DATA: { [key: string]: ExoticSpeciesData } = {
     erizo: erizoData,
     ave: createPlaceholderData('ave', 'Aves'),
     reptil: createPlaceholderData('reptil', 'Reptiles'),
-    peces: createPlaceholderData('peces', 'Peces'),
     primates: primatesData,
     axolote: axoloteData,
 };
