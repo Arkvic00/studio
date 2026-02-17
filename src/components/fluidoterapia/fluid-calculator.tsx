@@ -1,7 +1,7 @@
 
 'use client';
 import React, { useState, useEffect, useMemo } from 'react';
-import { Droplet, HelpCircle, Activity, Settings, Timer } from 'lucide-react';
+import { Droplet, HelpCircle, Activity, Settings, Timer, Beaker } from 'lucide-react';
 import { useLocalStorage } from '@/hooks/use-local-storage';
 import { PinterestCard } from '@/components/ui/pinterest-card';
 import { GlassInput } from '@/components/ui/glass-input';
@@ -11,6 +11,7 @@ export function FluidCalculator() {
   const [activeTab, setActiveTab] = useState('maintenance'); 
   const [params, setParams] = useLocalStorage('fluidParams', { peso: "", deshid: "", mant: 60, perdidas: "", horas: 24, factor: 60, especie: 'Perro', bagSize: 250 });
   const [criParams, setCriParams] = useLocalStorage('criParams', { drugConc: "", dose: "", fluidRate: "", weight: "" }); 
+  const [dilutionParams, setDilutionParams] = useLocalStorage('dilutionParams', { finalVol: "100", drugConc: "", desiredConc: "" });
   const [showHelp, setShowHelp] = useState(false);
 
   useEffect(() => {
@@ -44,6 +45,19 @@ export function FluidCalculator() {
       return null;
   }, [criParams, params.bagSize]);
 
+    const dilutionResult = useMemo(() => {
+        const vF = parseFloat(dilutionParams.finalVol) || 0;
+        const cD = parseFloat(dilutionParams.drugConc) || 0;
+        const cF = parseFloat(dilutionParams.desiredConc) || 0;
+
+        if (vF > 0 && cD > 0 && cF > 0 && cD >= cF) {
+            const drugVol = (vF * cF) / cD;
+            const diluentVol = vF - drugVol;
+            return { drugVol: drugVol.toFixed(2), diluentVol: diluentVol.toFixed(2) };
+        }
+        return null;
+    }, [dilutionParams]);
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div className="lg:col-span-7 space-y-6">
@@ -51,9 +65,10 @@ export function FluidCalculator() {
             <div className="flex gap-4 mb-6 border-b border-border pb-4">
                 <button onClick={() => setActiveTab('maintenance')} className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'maintenance' ? 'bg-blue-600 text-white' : 'text-muted-foreground hover:text-white'}`}>Reposición</button>
                 <button onClick={() => setActiveTab('cri')} className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'cri' ? 'bg-purple-600 text-white' : 'text-muted-foreground hover:text-white'}`}>Infusión Continua (CRI)</button>
+                <button onClick={() => setActiveTab('dilution')} className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'dilution' ? 'bg-teal-600 text-white' : 'text-muted-foreground hover:text-white'}`}>Diluciones</button>
             </div>
 
-            {activeTab === 'maintenance' ? (
+            {activeTab === 'maintenance' && (
                 <>
                   <div className="flex items-center justify-between mb-8">
                       <div className="flex items-center gap-4"><div className="p-4 bg-blue-500/10 rounded-2xl text-blue-400 border border-blue-500/20"><Droplet size={28}/></div><div><h2 className="text-2xl font-bold text-white">Fluidoterapia</h2><p className="text-xs text-muted-foreground font-medium">Plan de reposición</p></div></div>
@@ -71,7 +86,9 @@ export function FluidCalculator() {
                     <GlassInput label="Horas a pasar" type="number" value={params.horas} onChange={v => setParams({...params, horas: v})} />
                   </div>
                 </>
-            ) : (
+            )}
+
+            {activeTab === 'cri' && (
                 <div className="space-y-4">
                     <div className="flex items-center gap-4 mb-8"><div className="p-4 bg-purple-500/10 rounded-2xl text-purple-400 border border-purple-500/20"><Activity size={28}/></div><div><h2 className="text-2xl font-bold text-white">CRI Calculator</h2><p className="text-xs text-muted-foreground font-medium">Analgesia y Anestesia</p></div></div>
                     <div className="grid grid-cols-2 gap-4">
@@ -82,15 +99,28 @@ export function FluidCalculator() {
                     </div>
                 </div>
             )}
+            
+            {activeTab === 'dilution' && (
+                 <div className="space-y-4">
+                    <div className="flex items-center gap-4 mb-8"><div className="p-4 bg-teal-500/10 rounded-2xl text-teal-400 border border-teal-500/20"><Beaker size={28}/></div><div><h2 className="text-2xl font-bold text-white">Calculadora de Diluciones</h2><p className="text-xs text-muted-foreground font-medium">Fórmula C1V1 = C2V2</p></div></div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <GlassInput label="Conc. Fármaco (mg/ml)" type="number" value={dilutionParams.drugConc} onChange={v => setDilutionParams({...dilutionParams, drugConc: v})} />
+                        <GlassInput label="Conc. Deseada (mg/ml)" type="number" value={dilutionParams.desiredConc} onChange={v => setDilutionParams({...dilutionParams, desiredConc: v})} />
+                        <GlassInput label="Volumen Final (ml)" type="number" value={dilutionParams.finalVol} onChange={v => setDilutionParams({...dilutionParams, finalVol: v})} />
+                    </div>
+                </div>
+            )}
         </PinterestCard>
         
-        <PinterestCard color="bg-card">
-            <h3 className="text-sm font-black text-muted-foreground uppercase tracking-widest mb-4 flex items-center gap-2"><Settings size={16}/> Configuración Venoclisis</h3>
-            <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2"><label className="text-[11px] font-bold text-slate-400 uppercase ml-2">Equipo</label><select value={params.factor} onChange={e => setParams({...params, factor: parseFloat(e.target.value)})} className="w-full bg-secondary rounded-2xl p-4 text-white font-bold outline-none border border-border focus:border-blue-500/30"><option value="60">Micro (60)</option><option value="20">Normo (20)</option></select></div>
-                <div className="space-y-2"><label className="text-[11px] font-bold text-slate-400 uppercase ml-2">Bolsa</label><select value={params.bagSize} onChange={e => setParams({...params, bagSize: parseFloat(e.target.value)})} className="w-full bg-secondary rounded-2xl p-4 text-white font-bold outline-none border border-border focus:border-blue-500/30"><option value="100">100 ml</option><option value="250">250 ml</option><option value="500">500 ml</option><option value="1000">1L</option></select></div>
-            </div>
-        </PinterestCard>
+        {activeTab !== 'dilution' && (
+            <PinterestCard color="bg-card">
+                <h3 className="text-sm font-black text-muted-foreground uppercase tracking-widest mb-4 flex items-center gap-2"><Settings size={16}/> Configuración Venoclisis</h3>
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2"><label className="text-[11px] font-bold text-slate-400 uppercase ml-2">Equipo</label><select value={params.factor} onChange={e => setParams({...params, factor: parseFloat(e.target.value)})} className="w-full bg-secondary rounded-2xl p-4 text-white font-bold outline-none border border-border focus:border-blue-500/30"><option value="60">Micro (60)</option><option value="20">Normo (20)</option></select></div>
+                    <div className="space-y-2"><label className="text-[11px] font-bold text-slate-400 uppercase ml-2">Bolsa</label><select value={params.bagSize} onChange={e => setParams({...params, bagSize: parseFloat(e.target.value)})} className="w-full bg-secondary rounded-2xl p-4 text-white font-bold outline-none border border-border focus:border-blue-500/30"><option value="100">100 ml</option><option value="250">250 ml</option><option value="500">500 ml</option><option value="1000">1L</option></select></div>
+                </div>
+            </PinterestCard>
+        )}
       </div>
 
       <div className="lg:col-span-5 space-y-6">
@@ -108,7 +138,7 @@ export function FluidCalculator() {
                     <div className="text-center bg-card/50 p-6 rounded-2xl border border-border"><p className="text-5xl font-black text-white tracking-tighter">{results.bagDuration.toFixed(1)} <span className="text-lg text-emerald-500/50">hrs</span></p><p className="text-[10px] font-bold text-muted-foreground uppercase mt-2">Para terminar</p></div>
                 </PinterestCard>
             </>
-        ) : (
+        ) : activeTab === 'cri' ? (
             <PinterestCard color="bg-card" className="border-2 border-purple-500/20">
                 {criResult ? (
                     <div className="text-center space-y-6">
@@ -120,6 +150,23 @@ export function FluidCalculator() {
                     </div>
                 ) : (
                     <div className="text-center py-12 text-muted-foreground font-bold">Ingresa datos para calcular CRI</div>
+                )}
+            </PinterestCard>
+        ) : (
+            <PinterestCard color="bg-card" className="border-2 border-teal-500/20">
+                {dilutionResult ? (
+                    <div className="text-center space-y-6">
+                        <div>
+                            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-1">Volumen de Fármaco</p>
+                            <h3 className="text-6xl font-black text-white tracking-tighter">{dilutionResult.drugVol} ml</h3>
+                        </div>
+                        <div className="pt-6 border-t border-border">
+                            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-1">Volumen de Diluyente</p>
+                            <h3 className="text-6xl font-black text-teal-400 tracking-tighter">{dilutionResult.diluentVol} ml</h3>
+                        </div>
+                    </div>
+                ) : (
+                    <div className="text-center py-12 text-muted-foreground font-bold">Ingresa datos para calcular la dilución</div>
                 )}
             </PinterestCard>
         )}
