@@ -9,6 +9,7 @@ import {
   DollarSign,
   Droplet,
   HeartPulse,
+  Menu,
   Syringe,
   Thermometer,
   Utensils,
