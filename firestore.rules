@@ -1,0 +1,236 @@
+/**
+ * Core Philosophy: This ruleset enforces a strict user-ownership security model. All application data, including patient
+ * profiles, calculations, and user preferences, is stored in a private data tree unique to each user. This ensures
+ * complete data isolation, preventing users from accessing or even being aware of another user's data.
+ *
+ * Data Structure: All data is nested under the top-level `/users/{userId}` collection. This path-based segregation is
+ * the cornerstone of the security model, as it allows rules to use the `{userId}` wildcard for simple, fast, and
+ * reliable authorization checks without needing to read other documents.
+ *
+ * Key Security Decisions:
+ * - Strict Ownership: All documents can only be read or written by the user whose UID matches the `{userId}` in the path.
+ *   There are no public, shared, or admin-accessible collections defined.
+ * - No User Listing: The top-level `/users` collection cannot be listed, preventing enumeration of all app users.
+ * - Relational Integrity: On document creation, rules validate that the document's internal `id` field matches the
+ *   document's ID in the path. This field is enforced as immutable upon update to prevent re-linking or re-parenting data.
+ * - Path-Based Authorization: This model exclusively uses the `{userId}` from the path for authorization decisions. This
+ *   avoids slow and costly `get()` calls to other documents, resulting in a more performant and secure ruleset.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions to ensure logic is maintainable, auditable, and reusable.
+
+    /**
+     * isSignedIn
+     * Checks if the user is authenticated.
+     */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /**
+     * isOwner
+     * Verifies that the requesting user's UID matches the document's owner ID from the path.
+     * This is the primary authorization function for all user-specific data.
+     */
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    /**
+     * isExistingOwner
+     * A stricter version of isOwner used for state-changing operations (update, delete).
+     * It ensures the document already exists before allowing modification or deletion.
+     */
+    function isExistingOwner(userId) {
+      return isOwner(userId) && resource != null;
+    }
+
+    /**
+     * isCreatingValidDoc
+     * On create, validates that the incoming document's 'id' field matches the document ID
+     * from the path, ensuring relational integrity.
+     */
+    function isCreatingValidDoc(docId) {
+      return request.resource.data.id == docId;
+    }
+
+    /**
+     * isUpdatingValidDoc
+     * On update, ensures the document's 'id' field is immutable. This prevents
+     * changing the core identity link of the document after creation.
+     */
+    function isUpdatingValidDoc() {
+      return request.resource.data.id == resource.data.id;
+    }
+
+
+    // Match all user-specific data under the /users/{userId} path.
+    match /users/{userId} {
+
+      /**
+       * @description Secures patient profiles, allowing only the owner to access their own profiles.
+       * @path        /users/{userId}/patientProfiles/{patientProfileId}
+       * @allow       A user (auth.uid='user_abc') can (create) a new profile at `/users/user_abc/patientProfiles/profile_123`.
+       * @deny        A user (auth.uid='user_xyz') cannot (get) a profile at `/users/user_abc/patientProfiles/profile_123`.
+       * @principle   Restricts access to a user's own data tree and enforces document ownership for all operations.
+       */
+      match /patientProfiles/{patientProfileId} {
+        allow get, list: if isOwner(userId);
+        allow create: if isOwner(userId) && isCreatingValidDoc(patientProfileId);
+        allow update: if isExistingOwner(userId) && isUpdatingValidDoc();
+        allow delete: if isExistingOwner(userId);
+
+        /**
+         * @description Secures drug calculations nested under a patient profile. Access is inherited from the top-level user owner.
+         * @path        /users/{userId}/patientProfiles/{patientProfileId}/drugCalculations/{drugCalculationEntryId}
+         * @allow       A user (auth.uid='user_abc') can (delete) their own calculation at `/users/user_abc/patientProfiles/p1/drugCalculations/c1`.
+         * @deny        A different user (auth.uid='user_xyz') cannot (list) calculations under `/users/user_abc/patientProfiles/p1/drugCalculations`.
+         * @principle   Enforces document ownership based on the ancestor path, providing secure, inherited permissions.
+         */
+        match /drugCalculations/{drugCalculationEntryId} {
+          allow get, list: if isOwner(userId);
+          allow create: if isOwner(userId) && isCreatingValidDoc(drugCalculationEntryId);
+          allow update: if isExistingOwner(userId) && isUpdatingValidDoc();
+          allow delete: if isExistingOwner(userId);
+        }
+      }
+
+      /**
+       * @description Secures user-uploaded images for specific drugs, restricting access to the owner.
+       * @path        /users/{userId}/drugImages/{drugId}
+       * @allow       A user (auth.uid='user_abc') can (create) a drug image at `/users/user_abc/drugImages/drug_123`.
+       * @deny        A user (auth.uid='user_xyz') cannot (update) the image at `/users/user_abc/drugImages/drug_123`.
+       * @principle   Enforces document ownership for user-generated content associated with application data.
+       */
+      match /drugImages/{drugId} {
+        allow get, list: if isOwner(userId);
+        allow create: if isOwner(userId) && isCreatingValidDoc(drugId);
+        allow update: if isExistingOwner(userId) && isUpdatingValidDoc();
+        allow delete: if isExistingOwner(userId);
+      }
+
+      /**
+       * @description Secures the user's saved parameters for the Fluid Therapy calculator.
+       * @path        /users/{userId}/fluidTherapyParameters/settings
+       * @allow       A user (auth.uid='user_abc') can (update) their settings at `/users/user_abc/fluidTherapyParameters/settings`.
+       * @deny        A different user (auth.uid='user_xyz') cannot (get) the settings at that path.
+       * @principle   Restricts access to a user's private application preferences.
+       */
+      match /fluidTherapyParameters/settings {
+        allow get: if isOwner(userId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId);
+        allow update: if isExistingOwner(userId);
+        allow delete: if isExistingOwner(userId);
+      }
+
+      /**
+       * @description Secures the user's saved parameters for the Continuous Rate Infusion (CRI) calculator.
+       * @path        /users/{userId}/continuousRateInfusionParameters/settings
+       * @allow       A user (auth.uid='user_abc') can (create) their settings at `/users/user_abc/continuousRateInfusionParameters/settings`.
+       * @deny        Anonymous users cannot (get) any settings.
+       * @principle   Restricts access to a user's private application preferences.
+       */
+      match /continuousRateInfusionParameters/settings {
+        allow get: if isOwner(userId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId);
+        allow update: if isExistingOwner(userId);
+        allow delete: if isExistingOwner(userId);
+      }
+
+      /**
+       * @description Secures the user's saved parameters for the Clinical Cost calculator.
+       * @path        /users/{userId}/clinicalCostParameters/settings
+       * @allow       A user (auth.uid='user_abc') can (get) their settings at `/users/user_abc/clinicalCostParameters/settings`.
+       * @deny        A different user (auth.uid='user_xyz') cannot (delete) those settings.
+       * @principle   Restricts access to a user's private application preferences.
+       */
+      match /clinicalCostParameters/settings {
+        allow get: if isOwner(userId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId);
+        allow update: if isExistingOwner(userId);
+        allow delete: if isExistingOwner(userId);
+      }
+
+      /**
+       * @description Secures the user's saved parameters for the Daily Feeding Cost calculator.
+       * @path        /users/{userId}/dailyFeedingCostParameters/settings
+       * @allow       A user (auth.uid='user_abc') can (update) their settings at `/users/user_abc/dailyFeedingCostParameters/settings`.
+       * @deny        A different user (auth.uid='user_xyz') cannot (create) settings at that path.
+       * @principle   Restricts access to a user's private application preferences.
+       */
+      match /dailyFeedingCostParameters/settings {
+        allow get: if isOwner(userId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId);
+        allow update: if isExistingOwner(userId);
+        allow delete: if isExistingOwner(userId);
+      }
+
+      /**
+       * @description Secures the user's saved parameters for the Gestation calculator.
+       * @path        /users/{userId}/gestationParameters/settings
+       * @allow       A user (auth.uid='user_abc') can (get) their settings at `/users/user_abc/gestationParameters/settings`.
+       * @deny        A different user (auth.uid='user_xyz') cannot (get) those settings.
+       * @principle   Restricts access to a user's private application preferences.
+       */
+      match /gestationParameters/settings {
+        allow get: if isOwner(userId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId);
+        allow update: if isExistingOwner(userId);
+        allow delete: if isExistingOwner(userId);
+      }
+
+      /**
+       * @description Secures the user's saved parameters for the Nutrition calculator.
+       * @path        /users/{userId}/nutritionParameters/settings
+       * @allow       A user (auth.uid='user_abc') can (create) their settings at `/users/user_abc/nutritionParameters/settings`.
+       * @deny        A different user (auth.uid='user_xyz') cannot (update) those settings.
+       * @principle   Restricts access to a user's private application preferences.
+       */
+      match /nutritionParameters/settings {
+        allow get: if isOwner(userId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId);
+        allow update: if isExistingOwner(userId);
+        allow delete: if isExistingOwner(userId);
+      }
+
+      /**
+       * @description Secures the user's saved parameters for the Transfusion calculator.
+       * @path        /users/{userId}/transfusionParameters/settings
+       * @allow       A user (auth.uid='user_abc') can (delete) their settings at `/users/user_abc/transfusionParameters/settings`.
+       * @deny        A different user (auth.uid='user_xyz') cannot (get) those settings.
+       * @principle   Restricts access to a user's private application preferences.
+       */
+      match /transfusionParameters/settings {
+        allow get: if isOwner(userId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId);
+        allow update: if isExistingOwner(userId);
+        allow delete: if isExistingOwner(userId);
+      }
+
+      /**
+       * @description Secures the user's saved preferences for the Physiological Constants display.
+       * @path        /users/{userId}/physiologicalConstantPreferences/settings
+       * @allow       A user (auth.uid='user_abc') can (update) their preferences at `/users/user_abc/physiologicalConstantPreferences/settings`.
+       * @deny        A different user (auth.uid='user_xyz') cannot (get) those preferences.
+       * @principle   Restricts access to a user's private application preferences.
+       */
+      match /physiologicalConstantPreferences/settings {
+        allow get: if isOwner(userId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId);
+        allow update: if isExistingOwner(userId);
+        allow delete: if isExistingOwner(userId);
+      }
+    }
+  }
+}

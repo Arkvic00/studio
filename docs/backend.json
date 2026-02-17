@@ -1,0 +1,573 @@
+{
+  "entities": {
+    "PatientProfile": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "PatientProfile",
+      "type": "object",
+      "description": "Stores general information about a patient for use across different calculators and modules.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the PatientProfile entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the patient."
+        },
+        "species": {
+          "type": "string",
+          "description": "The animal species of the patient (e.g., 'Perro', 'Gato')."
+        },
+        "weightKg": {
+          "type": "number",
+          "description": "The patient's weight in kilograms."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "species",
+        "weightKg"
+      ]
+    },
+    "DrugCalculationEntry": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "DrugCalculationEntry",
+      "type": "object",
+      "description": "Represents a single drug dosage calculation saved by the user, referencing a drug from the Vademecum.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for this specific drug calculation entry."
+        },
+        "drugId": {
+          "type": "string",
+          "description": "Reference to the unique identifier of the selected drug from the internal drug database."
+        },
+        "calculatedDoseValue": {
+          "type": "number",
+          "description": "The recommended or manually entered dose value for the drug (e.g., mg/kg, total mg)."
+        },
+        "drugConcentration": {
+          "type": "number",
+          "description": "The concentration of the selected drug presentation (e.g., mg/mL, mg/tablet)."
+        },
+        "indicationIndex": {
+          "type": "number",
+          "description": "The zero-based index of the chosen dosage indication/protocol for the drug."
+        },
+        "presentationIndex": {
+          "type": "number",
+          "description": "The zero-based index of the chosen commercial presentation for the drug."
+        }
+      },
+      "required": [
+        "id",
+        "drugId",
+        "calculatedDoseValue",
+        "drugConcentration",
+        "indicationIndex",
+        "presentationIndex"
+      ]
+    },
+    "DrugImage": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "DrugImage",
+      "type": "object",
+      "description": "Stores user-uploaded image data associated with a specific drug in the Vademecum.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the drug image, matching the drug's ID (Relationship: Drug 1:1 DrugImage)."
+        },
+        "imageData": {
+          "type": "string",
+          "description": "Base64 encoded string representing the image of the drug."
+        }
+      },
+      "required": [
+        "id",
+        "imageData"
+      ]
+    },
+    "FluidTherapyParameters": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "FluidTherapyParameters",
+      "type": "object",
+      "description": "Stores the user-defined parameters for the Fluid Therapy Calculator.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the FluidTherapyParameters entity (e.g., 'default')."
+        },
+        "patientWeightKg": {
+          "type": "number",
+          "description": "The patient's weight in kilograms used for fluid calculations."
+        },
+        "dehydrationPercentage": {
+          "type": "number",
+          "description": "The estimated percentage of dehydration for the patient."
+        },
+        "maintenanceRateMlKgDay": {
+          "type": "number",
+          "description": "The maintenance fluid rate in milliliters per kilogram per day."
+        },
+        "ongoingLossesMl": {
+          "type": "number",
+          "description": "The estimated volume of ongoing fluid losses in milliliters."
+        },
+        "durationHours": {
+          "type": "number",
+          "description": "The number of hours over which the fluid therapy is planned."
+        },
+        "dripSetFactor": {
+          "type": "number",
+          "description": "The drip set factor (drops per milliliter) for the IV administration set (e.g., 20 or 60)."
+        },
+        "species": {
+          "type": "string",
+          "description": "The animal species for which the fluid therapy is calculated (e.g., 'perro', 'gato')."
+        },
+        "bagSizeMl": {
+          "type": "number",
+          "description": "The size of the intravenous fluid bag in milliliters (e.g., 250, 500)."
+        }
+      },
+      "required": [
+        "id",
+        "patientWeightKg",
+        "dehydrationPercentage",
+        "maintenanceRateMlKgDay",
+        "ongoingLossesMl",
+        "durationHours",
+        "dripSetFactor",
+        "species",
+        "bagSizeMl"
+      ]
+    },
+    "ContinuousRateInfusionParameters": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ContinuousRateInfusionParameters",
+      "type": "object",
+      "description": "Stores the user-defined parameters for the Continuous Rate Infusion (CRI) Calculator.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the ContinuousRateInfusionParameters entity (e.g., 'default')."
+        },
+        "drugConcentrationMgMl": {
+          "type": "number",
+          "description": "The concentration of the drug to be used in the CRI, in milligrams per milliliter."
+        },
+        "doseMcgKgMin": {
+          "type": "number",
+          "description": "The desired dose of the drug for CRI, in micrograms per kilogram per minute."
+        },
+        "fluidRateMlHr": {
+          "type": "number",
+          "description": "The total fluid administration rate for the CRI, in milliliters per hour."
+        },
+        "patientWeightKg": {
+          "type": "number",
+          "description": "The patient's weight in kilograms for CRI calculation."
+        }
+      },
+      "required": [
+        "id",
+        "drugConcentrationMgMl",
+        "doseMcgKgMin",
+        "fluidRateMlHr",
+        "patientWeightKg"
+      ]
+    },
+    "ClinicalCostParameters": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ClinicalCostParameters",
+      "type": "object",
+      "description": "Stores the user-defined parameters for calculating the cost per clinical procedure or dose.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the ClinicalCostParameters entity (e.g., 'default')."
+        },
+        "vialPrice": {
+          "type": "number",
+          "description": "The purchase price of the drug vial or container."
+        },
+        "totalVolumeMl": {
+          "type": "number",
+          "description": "The total volume of the drug solution in the vial in milliliters."
+        },
+        "patientDoseMl": {
+          "type": "number",
+          "description": "The volume of the drug dose administered to the patient in milliliters."
+        }
+      },
+      "required": [
+        "id",
+        "vialPrice",
+        "totalVolumeMl",
+        "patientDoseMl"
+      ]
+    },
+    "DailyFeedingCostParameters": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "DailyFeedingCostParameters",
+      "type": "object",
+      "description": "Stores the user-defined parameters for calculating the daily and monthly cost of animal feeding.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the DailyFeedingCostParameters entity (e.g., 'default')."
+        },
+        "bagPrice": {
+          "type": "number",
+          "description": "The purchase price of the food bag."
+        },
+        "bagWeightKg": {
+          "type": "number",
+          "description": "The total weight of the food bag in kilograms."
+        },
+        "dailyPortionGrams": {
+          "type": "number",
+          "description": "The daily portion of food given to the animal in grams."
+        }
+      },
+      "required": [
+        "id",
+        "bagPrice",
+        "bagWeightKg",
+        "dailyPortionGrams"
+      ]
+    },
+    "GestationParameters": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "GestationParameters",
+      "type": "object",
+      "description": "Stores the user-defined parameters for the Gestation Calculator.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the GestationParameters entity (e.g., 'default')."
+        },
+        "breedingDate": {
+          "type": "string",
+          "description": "The date of breeding or last mating.",
+          "format": "date"
+        },
+        "species": {
+          "type": "string",
+          "description": "The animal species for which the gestation period is calculated (e.g., 'perro', 'gato')."
+        }
+      },
+      "required": [
+        "id",
+        "breedingDate",
+        "species"
+      ]
+    },
+    "NutritionParameters": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "NutritionParameters",
+      "type": "object",
+      "description": "Stores the user-defined parameters for the Nutrition Calculator, including RER/MER, weight loss, and water in food calculations.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the NutritionParameters entity (e.g., 'default')."
+        },
+        "patientWeightKg": {
+          "type": "number",
+          "description": "The patient's current weight in kilograms for RER calculation."
+        },
+        "activityFactor": {
+          "type": "number",
+          "description": "A numerical factor representing the animal's physiological state or activity level for MER calculation (e.g., 1.0 for RER, 1.6 for Growth)."
+        },
+        "targetWeightKg": {
+          "type": "number",
+          "description": "The target weight in kilograms for weight loss calculations."
+        },
+        "foodMoisturePercentage": {
+          "type": "number",
+          "description": "The moisture content of the food in percentage."
+        },
+        "foodAmountGrams": {
+          "type": "number",
+          "description": "The amount of food consumed in grams."
+        }
+      },
+      "required": [
+        "id",
+        "patientWeightKg",
+        "activityFactor",
+        "targetWeightKg",
+        "foodMoisturePercentage",
+        "foodAmountGrams"
+      ]
+    },
+    "TransfusionParameters": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "TransfusionParameters",
+      "type": "object",
+      "description": "Stores the user-defined parameters for the Transfusion Calculator.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the TransfusionParameters entity (e.g., 'default')."
+        },
+        "patientWeightKg": {
+          "type": "number",
+          "description": "The patient's weight in kilograms."
+        },
+        "recipientPcvPercentage": {
+          "type": "number",
+          "description": "The recipient's packed cell volume (hematocrit) in percentage."
+        },
+        "donorPcvPercentage": {
+          "type": "number",
+          "description": "The donor's packed cell volume (hematocrit) in percentage."
+        },
+        "targetPcvPercentage": {
+          "type": "number",
+          "description": "The target packed cell volume (hematocrit) percentage for the recipient."
+        },
+        "species": {
+          "type": "string",
+          "description": "The animal species for the transfusion (e.g., 'Perro', 'Gato')."
+        }
+      },
+      "required": [
+        "id",
+        "patientWeightKg",
+        "recipientPcvPercentage",
+        "donorPcvPercentage",
+        "targetPcvPercentage",
+        "species"
+      ]
+    },
+    "PhysiologicalConstantPreference": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "PhysiologicalConstantPreference",
+      "type": "object",
+      "description": "Stores the user's preference for the selected reptile variant in the Physiological Constants display.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the PhysiologicalConstantPreference entity (e.g., 'default')."
+        },
+        "selectedReptileType": {
+          "type": "string",
+          "description": "The specific type of reptile selected by the user to display its physiological constants (e.g., 'Tortuga de Tierra', 'Camaleón')."
+        }
+      },
+      "required": [
+        "id",
+        "selectedReptileType"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/users/{userId}/patientProfiles/{patientProfileId}",
+        "definition": {
+          "entityName": "PatientProfile",
+          "schema": {
+            "$ref": "#/backend/entities/PatientProfile"
+          },
+          "description": "Stores individual patient profiles created and owned by a specific user. Authorization is handled by the `userId` in the path, ensuring only the owner can access their patient profiles.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user who owns this patient profile."
+            },
+            {
+              "name": "patientProfileId",
+              "description": "The unique identifier for the specific patient profile."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/patientProfiles/{patientProfileId}/drugCalculations/{drugCalculationEntryId}",
+        "definition": {
+          "entityName": "DrugCalculationEntry",
+          "schema": {
+            "$ref": "#/backend/entities/DrugCalculationEntry"
+          },
+          "description": "Stores specific drug dosage calculations associated with a particular patient profile. Authorization is derived from the `userId` in the parent path, eliminating the need for denormalized authorization fields within each calculation document.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user who owns this calculation entry."
+            },
+            {
+              "name": "patientProfileId",
+              "description": "The unique identifier of the patient profile to which this calculation belongs."
+            },
+            {
+              "name": "drugCalculationEntryId",
+              "description": "The unique identifier for this specific drug calculation entry."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/drugImages/{drugId}",
+        "definition": {
+          "entityName": "DrugImage",
+          "schema": {
+            "$ref": "#/backend/entities/DrugImage"
+          },
+          "description": "Stores user-uploaded image data for specific drugs from the Vademecum. The `drugId` refers to the Vademecum drug ID, and access is restricted to the owning user via `userId` in the path.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user who uploaded this drug image."
+            },
+            {
+              "name": "drugId",
+              "description": "The unique identifier of the drug for which the image is provided (matches Vademecum drug ID)."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/fluidTherapyParameters/settings",
+        "definition": {
+          "entityName": "FluidTherapyParameters",
+          "schema": {
+            "$ref": "#/backend/entities/FluidTherapyParameters"
+          },
+          "description": "Stores the user's current or default parameters for the Fluid Therapy Calculator. The document ID 'settings' ensures a single, easily retrievable configuration for the user.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user who owns these fluid therapy parameters."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/continuousRateInfusionParameters/settings",
+        "definition": {
+          "entityName": "ContinuousRateInfusionParameters",
+          "schema": {
+            "$ref": "#/backend/entities/ContinuousRateInfusionParameters"
+          },
+          "description": "Stores the user's current or default parameters for the Continuous Rate Infusion (CRI) Calculator. The document ID 'settings' ensures a single, active parameter set for the user.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user who owns these CRI parameters."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/clinicalCostParameters/settings",
+        "definition": {
+          "entityName": "ClinicalCostParameters",
+          "schema": {
+            "$ref": "#/backend/entities/ClinicalCostParameters"
+          },
+          "description": "Stores the user's current or default parameters for the Clinical Cost Calculator. The document ID 'settings' ensures a single, active parameter set for the user.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user who owns these clinical cost parameters."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/dailyFeedingCostParameters/settings",
+        "definition": {
+          "entityName": "DailyFeedingCostParameters",
+          "schema": {
+            "$ref": "#/backend/entities/DailyFeedingCostParameters"
+          },
+          "description": "Stores the user's current or default parameters for the Daily Feeding Cost Calculator. The document ID 'settings' ensures a single, active parameter set for the user.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user who owns these daily feeding cost parameters."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/gestationParameters/settings",
+        "definition": {
+          "entityName": "GestationParameters",
+          "schema": {
+            "$ref": "#/backend/entities/GestationParameters"
+          },
+          "description": "Stores the user's current or default parameters for the Gestation Calculator. The document ID 'settings' ensures a single, active parameter set for the user.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user who owns these gestation parameters."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/nutritionParameters/settings",
+        "definition": {
+          "entityName": "NutritionParameters",
+          "schema": {
+            "$ref": "#/backend/entities/NutritionParameters"
+          },
+          "description": "Stores the user's current or default parameters for the Nutrition Calculator. The document ID 'settings' ensures a single, active parameter set for the user.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user who owns these nutrition parameters."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/transfusionParameters/settings",
+        "definition": {
+          "entityName": "TransfusionParameters",
+          "schema": {
+            "$ref": "#/backend/entities/TransfusionParameters"
+          },
+          "description": "Stores the user's current or default parameters for the Transfusion Calculator. The document ID 'settings' ensures a single, active parameter set for the user.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user who owns these transfusion parameters."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/physiologicalConstantPreferences/settings",
+        "definition": {
+          "entityName": "PhysiologicalConstantPreference",
+          "schema": {
+            "$ref": "#/backend/entities/PhysiologicalConstantPreference"
+          },
+          "description": "Stores the user's current or default preference for the Physiological Constants display. The document ID 'settings' ensures a single, active preference for the user.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user who owns this preference."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The recommended Firestore data structure prioritizes user-specific data isolation and simplified security rules by adhering to path-based authorization. All user-generated and user-specific preference data is stored under a top-level `/users/{userId}` collection. This strategy ensures that authorization is inherently tied to the authenticated user's ID (`request.auth.uid`), which is available directly from the path, thus eliminating the need for `get()` calls in security rules to check parent document ownership or attributes. This directly addresses the 'Authorization Independence' principle, preventing issues with atomic operations and simplifying debugging.\n\nFor entities representing a 'User 1:N Entity' relationship, such as `PatientProfile` and `DrugCalculationEntry`, a hierarchical path is used: `/users/{userId}/patientProfiles/{patientProfileId}` and then `/users/{userId}/patientProfiles/{patientProfileId}/drugCalculations/{drugCalculationEntryId}`. This design clearly segregates data by patient, allowing `DrugCalculationEntry` documents to inherit their authorization context from the `userId` specified in their ancestral path. This means the security rules for a `drugCalculationEntry` can simply check `request.auth.uid == userId` without needing to fetch the `patientProfile` document to verify ownership. The `patientProfileId` acts as a logical grouping for calculations, but `userId` is the atomic authorization key.\n\nFor user-specific settings and preferences, like `FluidTherapyParameters` or `NutritionParameters`, a '1:1 User Entity' relationship is implemented using fixed document IDs (e.g., 'settings') within dedicated subcollections under `/users/{userId}/`. For example, `/users/{userId}/fluidTherapyParameters/settings`. This ensures each user has their own set of parameters without requiring a separate, dynamically generated document ID for each setting type.\n\n`DrugImage` entities are stored in a `/users/{userId}/drugImages/{drugId}` collection. This allows users to upload and associate custom images with specific drugs from the Vademecum, with access strictly limited to the uploading user.\n\nThis structural segregation ensures that all documents within these user-scoped collections share a homogeneous security posture (only the owner can access them). This enables highly efficient and secure `list` operations (QAPs - Rules are not Filters) because queries automatically constrain results to the authenticated user's data, and rules can simply verify the `userId` from the path. No complex filtering is required at the rule level. The use of descriptive wildcards (e.g., `{patientProfileId}`, `{drugCalculationEntryId}`) and consistent naming further enhances debuggability and predictability of the schema.\n\nStatic application data, such as the `DB_MEDICAMENTOS` (Vademecum data), physiological constants, gestation data, and vaccination schedules, are not included in this Firestore structure as they appear to be hardcoded in the client-side application based on the provided code snippet. Should these ever need to be dynamic or centrally managed, they would reside in read-only public collections (e.g., `/vademecum/{drugId}`) accessible to all users for read operations."
+  }
+}
