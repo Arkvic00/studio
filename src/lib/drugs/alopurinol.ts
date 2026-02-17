@@ -38,6 +38,7 @@ export const alopurinolDrug: Drug = {
           "vias": ["PO"],
           "math": {
             "tipo_calculo": "mg_kg",
+            "dosis_recomendada": 7.5,
             "dosis_min": 5,
             "dosis_max": 10,
             "unidad_calculo": "mg/kg"

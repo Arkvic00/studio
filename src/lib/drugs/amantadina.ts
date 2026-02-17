@@ -37,6 +37,7 @@ export const amantadinaDrug: Drug = {
           "vias": ["PO"],
           "math": {
             "tipo_calculo": "mg_kg",
+            "dosis_recomendada": 4,
             "dosis_min": 3,
             "dosis_max": 5,
             "unidad_calculo": "mg/kg"

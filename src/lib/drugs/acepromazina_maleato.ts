@@ -65,6 +65,7 @@ export const acepromazinaMaleatoDrug: Drug = {
           "vias": ["IV", "IM", "SC"],
           "math": {
             "tipo_calculo": "mg_kg",
+            "dosis_recomendada": 0.066,
             "dosis_min": 0.044,
             "dosis_max": 0.088,
             "unidad_calculo": "mg/kg"

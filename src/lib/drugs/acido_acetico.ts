@@ -35,6 +35,7 @@ export const acidoAceticoDrug: Drug = {
           "vias": ["Sonda gástrica"],
           "math": {
             "tipo_calculo": "fija",
+            "dosis_recomendada": 7,
             "dosis_min": 4,
             "dosis_max": 10,
             "unidad_calculo": "Litros/animal"

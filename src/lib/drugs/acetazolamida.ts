@@ -40,6 +40,7 @@ export const acetazolamidaDrug: Drug = {
           "vias": ["PO", "IV"],
           "math": {
             "tipo_calculo": "mg_kg",
+            "dosis_recomendada": 7,
             "dosis_min": 4,
             "dosis_max": 10,
             "unidad_calculo": "mg/kg"
@@ -54,6 +55,7 @@ export const acetazolamidaDrug: Drug = {
           "vias": ["PO"],
           "math": {
             "tipo_calculo": "mg_kg",
+            "dosis_recomendada": 3.3,
             "dosis_min": 2.2,
             "dosis_max": 4.4,
             "unidad_calculo": "mg/kg"

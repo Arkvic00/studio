@@ -75,7 +75,7 @@ export const atropinaSulfatoDrug: Drug = {
           "vias": ["IM", "SC"],
           "math": {
             "tipo_calculo": "mg_kg",
-            "dosis_recomendada": 0.02,
+            "dosis_recomendada": 0.03,
             "dosis_min": 0.02,
             "dosis_max": 0.04,
             "unidad_calculo": "mg/kg"

@@ -51,6 +51,7 @@ export const cloruroAmonioDrug: Drug = {
           "vias": ["PO"],
           "math": {
             "tipo_calculo": "fija",
+            "dosis_recomendada": 900,
             "dosis_min": 800,
             "dosis_max": 1000,
             "unidad_calculo": "mg/gato"

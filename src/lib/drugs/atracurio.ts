@@ -38,7 +38,7 @@ export const atracurioDrug: Drug = {
           "vias": ["IV"],
           "math": {
             "tipo_calculo": "mg_kg",
-            "dosis_recomendada": 0.2,
+            "dosis_recomendada": 0.35,
             "dosis_min": 0.2,
             "dosis_max": 0.5,
             "unidad_calculo": "mg/kg"

@@ -58,7 +58,7 @@ export const amprolioDrug: Drug = {
           "vias": ["PO"],
           "math": {
             "tipo_calculo": "mg_kg",
-            "dosis_recomendada": 110,
+            "dosis_recomendada": 90,
             "dosis_min": 60,
             "dosis_max": 120,
             "unidad_calculo": "mg/kg"

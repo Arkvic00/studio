@@ -37,6 +37,7 @@ export const alprazolamDrug: Drug = {
           "vias": ["PO"],
           "math": {
             "tipo_calculo": "mg_kg",
+            "dosis_recomendada": 0.06,
             "dosis_min": 0.02,
             "dosis_max": 0.1,
             "unidad_calculo": "mg/kg"
@@ -50,6 +51,7 @@ export const alprazolamDrug: Drug = {
           "vias": ["PO"],
           "math": {
             "tipo_calculo": "fija",
+            "dosis_recomendada": 0.1875,
             "dosis_min": 0.125,
             "dosis_max": 0.25,
             "unidad_calculo": "mg/gato"

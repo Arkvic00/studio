@@ -39,7 +39,7 @@ export const amitriptilinaHclDrug: Drug = {
           "vias": ["PO"],
           "math": {
             "tipo_calculo": "mg_kg",
-            "dosis_recomendada": 1,
+            "dosis_recomendada": 1.5,
             "dosis_min": 1,
             "dosis_max": 2,
             "unidad_calculo": "mg/kg"

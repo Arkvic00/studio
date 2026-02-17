@@ -67,7 +67,7 @@ export const anfotericinaBDrug: Drug = {
           "vias": ["SC", "IV"],
           "math": {
             "tipo_calculo": "mg_kg",
-            "dosis_recomendada": 0.25,
+            "dosis_recomendada": 0.3,
             "dosis_min": 0.1,
             "dosis_max": 0.5,
             "unidad_calculo": "mg/kg"

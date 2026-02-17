@@ -40,7 +40,7 @@ export const atenololDrug: Drug = {
           "vias": ["PO"],
           "math": {
             "tipo_calculo": "mg_kg",
-            "dosis_recomendada": 0.5,
+            "dosis_recomendada": 0.625,
             "dosis_min": 0.25,
             "dosis_max": 1,
             "unidad_calculo": "mg/kg"
@@ -58,7 +58,7 @@ export const atenololDrug: Drug = {
           "vias": ["PO"],
           "math": {
             "tipo_calculo": "mg_kg",
-            "dosis_recomendada": 1,
+            "dosis_recomendada": 1.5,
             "dosis_min": 1,
             "dosis_max": 2,
             "unidad_calculo": "mg/kg"

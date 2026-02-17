@@ -52,7 +52,7 @@ export const amlodipinoBesilatoDrug: Drug = {
           "vias": ["PO"],
           "math": {
             "tipo_calculo": "mg_kg",
-            "dosis_recomendada": 0.1,
+            "dosis_recomendada": 0.125,
             "dosis_min": 0.05,
             "dosis_max": 0.2,
             "unidad_calculo": "mg/kg"

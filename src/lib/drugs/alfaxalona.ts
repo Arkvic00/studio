@@ -53,6 +53,7 @@ export const alfaxalonaDrug: Drug = {
           "vias": ["IM"],
           "math": {
             "tipo_calculo": "mg_kg",
+            "dosis_recomendada": 3.5,
             "dosis_min": 2,
             "dosis_max": 5,
             "unidad_calculo": "mg/kg"

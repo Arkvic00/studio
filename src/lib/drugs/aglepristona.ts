@@ -63,6 +63,7 @@ export const aglepristonaDrug: Drug = {
           "vias": ["SC"],
           "math": {
             "tipo_calculo": "mg_kg",
+            "dosis_recomendada": 12.5,
             "dosis_min": 10,
             "dosis_max": 15,
             "unidad_calculo": "mg/kg"

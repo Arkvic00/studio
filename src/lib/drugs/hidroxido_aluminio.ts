@@ -37,6 +37,7 @@ export const hidroxidoAluminioDrug: Drug = {
           "vias": ["PO"],
           "math": {
             "tipo_calculo": "mg_kg",
+            "dosis_recomendada": 65,
             "dosis_min": 30,
             "dosis_max": 100,
             "unidad_calculo": "mg/kg"
@@ -51,6 +52,7 @@ export const hidroxidoAluminioDrug: Drug = {
           "vias": ["PO"],
           "math": {
             "tipo_calculo": "mg_kg",
+            "dosis_recomendada": 60,
             "dosis_min": 30,
             "dosis_max": 90,
             "unidad_calculo": "mg/kg"
