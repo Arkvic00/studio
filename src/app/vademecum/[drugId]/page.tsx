@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { VademecumDetail } from '@/components/vademecum/vademecum-detail';
 import type { Drug } from '@/lib/types';
 import { notFound, useParams } from 'next/navigation';
@@ -56,5 +57,3 @@ export default function VademecumDetailPage() {
 
     return <VademecumDetail drug={drug} />;
 }
-
-    
