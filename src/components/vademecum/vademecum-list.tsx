@@ -1,4 +1,3 @@
-
 'use client';
 import Link from 'next/link';
 import { 
@@ -151,11 +150,38 @@ function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
                     <PinterestCard key={key} id={key}>
                         <h2 className="text-2xl font-bold text-accent mb-6 flex items-center gap-3"><SectionIcon size={24}/> {title}</h2>
                         
-                        {/* RENDER STRING */}
                         {typeof content === 'string' && <p className="text-sm text-slate-300">{content}</p>}
 
-                        {/* RENDER ARRAY */}
-                        {Array.isArray(content) && (
+                        {key === 'patologias' && Array.isArray(content) && (
+                            <Accordion type="multiple" className="w-full space-y-3">
+                                {content.map((cat: any, index: number) => {
+                                    const Icon = iconMap[cat.icon] || TriangleAlert;
+                                    return (
+                                        <AccordionItem key={index} value={cat.category} className="border-none bg-card rounded-2xl overflow-hidden">
+                                            <AccordionTrigger className="px-4 py-3 text-white font-bold text-sm hover:no-underline hover:bg-white/5 transition-colors">
+                                                <div className="flex items-center gap-3">
+                                                    <Icon size={18} className="text-accent" />
+                                                    {cat.category}
+                                                </div>
+                                            </AccordionTrigger>
+                                            <AccordionContent className="px-4 pb-4 pt-0 text-sm text-slate-300">
+                                                <ul className="space-y-3 mt-2">
+                                                {cat.diseases.map((d: any, dIndex: number) => (
+                                                    <li key={dIndex} className="p-3 bg-background/50 rounded-lg border border-border">
+                                                        <h5 className="font-bold text-white">{d.name}</h5>
+                                                        <p className="text-xs text-slate-400">{d.description}</p>
+                                                        {d.tags && <div className="flex gap-2 mt-2">{d.tags.map((t:string, tIndex: number) => <Badge key={tIndex} variant={t === 'Urgencia' || t === 'Mortal' ? 'destructive' : 'secondary'} className="text-[9px]">{t}</Badge>)}</div>}
+                                                    </li>
+                                                ))}
+                                                </ul>
+                                            </AccordionContent>
+                                        </AccordionItem>
+                                    )
+                                })}
+                            </Accordion>
+                        )}
+                        
+                        {key !== 'patologias' && Array.isArray(content) && (
                              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {content.map((item: any, index: number) => {
                                     const ItemIcon = iconMap[item.icon as string] || TriangleAlert;
@@ -180,26 +206,27 @@ function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
                             </div>
                         )}
 
-                        {/* RENDER OBJECT */}
                         {typeof content === 'object' && !Array.isArray(content) && (
                             <div className="space-y-8">
                                 {content.text && <p className="text-sm text-slate-300 mb-6">{content.text}</p>}
+                                
                                 {content.sexing && (
                                     <div>
                                         <h3 className="font-bold text-white mb-2 text-lg">{content.sexing.title}</h3>
                                         <p className="text-sm text-slate-300">{content.sexing.text}</p>
                                     </div>
                                 )}
-
-                                {content.repro_table && (
+                                
+                                {(content.table || content.repro_table) && (
                                      <div className="overflow-x-auto">
-                                        <h3 className="font-bold text-white mb-4 text-lg">Parámetros Reproductivos</h3>
+                                        <h3 className="font-bold text-white mb-4 text-lg">{content.repro_table?.title || content.table?.title || 'Parámetros Reproductivos'}</h3>
                                         <Table>
-                                            <TableHeader><TableRow>{content.repro_table.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader>
-                                            <TableBody>{content.repro_table.rows.map((row: any, i: number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody>
+                                            <TableHeader><TableRow>{(content.repro_table?.headers || content.table?.headers).map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader>
+                                            <TableBody>{(content.repro_table?.rows || content.table?.rows).map((row: any, i: number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody>
                                         </Table>
                                     </div>
                                 )}
+                                
                                 {content.considerations && (
                                     <div>
                                         <h3 className="font-bold text-white mb-2 text-lg">{content.considerations.title}</h3>
@@ -208,13 +235,42 @@ function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
                                         </ul>
                                     </div>
                                 )}
+                                
+                                {content.points && Array.isArray(content.points) && (
+                                     <ul className="space-y-3">
+                                        {content.points.map((p: any, i:number) => (
+                                             <li key={i} className="flex gap-3 items-start text-sm text-slate-300">
+                                                {p.isProhibited ? <Ban size={20} className="text-destructive flex-shrink-0 mt-0.5"/> : <ChevronRight size={16} className="text-accent flex-shrink-0 mt-1"/>}
+                                                <span>{p.text}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
 
                                 {content.injection_table && (
                                     <div className="overflow-x-auto">
+                                        <h3 className="font-bold text-white mb-4 text-lg">Vías y Volúmenes de Inyección</h3>
                                         <Table>
                                             <TableHeader><TableRow>{content.injection_table.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader>
                                             <TableBody>{content.injection_table.rows.map((row: any, i: number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody>
                                         </Table>
+                                    </div>
+                                )}
+
+                                {(content.critical_points || content.anesthesia_risks) && (
+                                    <div className="space-y-4">
+                                        {content.critical_points?.map((item:any, i: number) => (
+                                            <div key={i} className="flex gap-3 items-start bg-card p-4 rounded-xl border border-border">
+                                                <div className="p-2 bg-background rounded-md"><item.icon size={20} className={cn("flex-shrink-0", item.isCritical ? "text-destructive" : "text-accent")} /></div>
+                                                <div>
+                                                    <h4 className="font-bold text-white">{item.title}</h4>
+                                                    <p className="text-xs text-slate-300">{item.text}</p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                        {content.anesthesia_risks?.map((item:any, i: number) => (
+                                            <div key={i} className="p-3 bg-card rounded-xl border border-border text-sm text-slate-300">{item.text}</div>
+                                        ))}
                                     </div>
                                 )}
 
@@ -245,36 +301,6 @@ function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
                                         ))}
                                     </div>
                                 )}
-
-                                {key === 'patologias' && Array.isArray(content) && (
-                                    <Accordion type="multiple" className="w-full space-y-3">
-                                        {content.map((cat: any) => {
-                                            const Icon = iconMap[cat.icon] || TriangleAlert;
-                                            return (
-                                                <AccordionItem key={cat.category} value={cat.category} className="border-none bg-card rounded-2xl overflow-hidden">
-                                                    <AccordionTrigger className="px-4 py-3 text-white font-bold text-sm hover:no-underline hover:bg-white/5 transition-colors">
-                                                        <div className="flex items-center gap-3">
-                                                            <Icon size={18} className="text-accent" />
-                                                            {cat.category}
-                                                        </div>
-                                                    </AccordionTrigger>
-                                                    <AccordionContent className="px-4 pb-4 pt-0 text-sm text-slate-300">
-                                                        <ul className="space-y-3 mt-2">
-                                                        {cat.diseases.map((d: any) => (
-                                                            <li key={d.name} className="p-3 bg-background/50 rounded-lg border border-border">
-                                                                <h5 className="font-bold text-white">{d.name}</h5>
-                                                                <p className="text-xs text-slate-400">{d.description}</p>
-                                                                {d.tags && <div className="flex gap-2 mt-2">{d.tags.map((t:string) => <Badge key={t} variant={t === 'Urgencia' || t === 'Mortal' ? 'destructive' : 'secondary'} className="text-[9px]">{t}</Badge>)}</div>}
-                                                            </li>
-                                                        ))}
-                                                        </ul>
-                                                    </AccordionContent>
-                                                </AccordionItem>
-                                            )
-                                        })}
-                                    </Accordion>
-                                )}
-
                             </div>
                         )}
                     </PinterestCard>
@@ -351,5 +377,3 @@ export function VademecumList() {
         </div>
     );
 }
-
-    
