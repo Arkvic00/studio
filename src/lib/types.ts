@@ -150,3 +150,14 @@ export interface GestationData {
     rx: number;
   };
 }
+
+export interface ExoticSpeciesData {
+    id: string;
+    name: string;
+    sections: {
+        [key: string]: {
+            title: string;
+            content: string;
+        }
+    }
+}

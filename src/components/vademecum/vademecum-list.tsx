@@ -8,8 +8,11 @@ import { useAppContext } from '@/contexts/app-context';
 import { useState, useMemo } from 'react';
 import { Input } from '@/components/ui/input';
 import { fuzzySearch } from '@/lib/utils';
+import { cn } from '@/lib/utils';
+import { SPECIES_CONFIG } from '@/lib/config';
 
-export function VademecumList() {
+// Sub-component for Fármacos list
+function DrugList() {
     const { drugImages, triggerUpload } = useAppContext();
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -33,7 +36,7 @@ export function VademecumList() {
     }, [searchTerm]);
 
     return (
-        <div className="animate-in fade-in duration-500">
+        <>
             <div className="relative mb-8">
                 <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-muted-foreground z-10" size={24} />
                 <Input
@@ -81,6 +84,77 @@ export function VademecumList() {
                     </div>
                 )}
             </div>
+        </>
+    );
+}
+
+// Sub-component for Exotics list
+const exoticSpeciesOrder = [
+    'roedores', 'conejo', 'mustelidos', 'cobaya', 'erizo', 
+    'ave', 'reptil', 'peces', 'primates', 'axolote'
+];
+const exoticSpecies = exoticSpeciesOrder.map(key => ({
+    key,
+    ...SPECIES_CONFIG[key]
+}));
+
+function ExoticsList() {
+    return (
+        <PinterestCard>
+            <div className="grid grid-cols-5 sm:grid-cols-10 gap-2 text-center">
+                {exoticSpecies.map((species, index) => {
+                    if (!species.label) return null;
+                    const isSelected = index === 0; // Highlight the first one as per screenshot
+                    return (
+                        <Link 
+                            href={`/vademecum/exoticos/${species.key}`} 
+                            key={species.key}
+                            className={cn(
+                                "flex flex-col items-center justify-start gap-2 p-3 rounded-2xl transition-all duration-200",
+                                isSelected ? 'ring-2 ring-destructive' : 'hover:bg-secondary'
+                            )}
+                        >
+                            <div className="text-4xl md:text-5xl flex-grow flex items-center">{species.icon}</div>
+                            <span className={cn(
+                                "text-[10px] font-bold uppercase tracking-wider min-h-[20px]",
+                                isSelected ? 'text-destructive' : 'text-muted-foreground'
+                            )}>{species.label}</span>
+                        </Link>
+                    )
+                })}
+            </div>
+        </PinterestCard>
+    );
+}
+
+// Main Vademecum view with tabs
+export function VademecumList() {
+    const [activeTab, setActiveTab] = useState('farmacos');
+
+    return (
+        <div className="animate-in fade-in duration-500">
+             <div className="flex items-center gap-2 mb-8">
+                 <button
+                    onClick={() => setActiveTab('farmacos')}
+                    className={cn(
+                        'px-6 py-2 rounded-full text-base font-bold transition-all',
+                        activeTab === 'farmacos' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-white'
+                    )}
+                >
+                    Fármacos
+                </button>
+                <button
+                    onClick={() => setActiveTab('exoticos')}
+                    className={cn(
+                        'px-6 py-2 rounded-full text-base font-bold transition-all',
+                        activeTab === 'exoticos' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-white'
+                    )}
+                >
+                    Exóticos
+                </button>
+            </div>
+
+            {activeTab === 'farmacos' ? <DrugList /> : <ExoticsList />}
         </div>
     );
 }

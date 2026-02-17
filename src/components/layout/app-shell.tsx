@@ -27,11 +27,17 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const pathname = usePathname();
 
-  const isVademecumDetail = pathname.startsWith('/vademecum/') && pathname.length > '/vademecum/'.length;
+  const pathParts = pathname.split('/').filter(p => p);
   
-  const activeTabLabel = isVademecumDetail 
+  const isDrugDetail = pathParts[0] === 'vademecum' && pathParts.length === 2 && pathParts[1] !== 'exoticos';
+  const isExoticDetail = pathParts[0] === 'vademecum' && pathParts[1] === 'exoticos' && pathParts.length === 3;
+  
+  const showDetailHeader = isDrugDetail || isExoticDetail;
+  
+  const activeTabLabel = pathParts[0] === 'vademecum'
     ? 'Vademécum' 
     : Object.entries(TABS).find(([path]) => pathname.startsWith(path))?.[1] || 'DosisPaws';
+
 
   if (loading) {
     return <SplashScreen onFinish={() => setLoading(false)} />;
@@ -57,7 +63,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               activeTabLabel={activeTabLabel}
             />
             
-            {isVademecumDetail && <VademecumDetailHeader />}
+            {showDetailHeader && <VademecumDetailHeader />}
             
             <div className="max-w-5xl mx-auto pb-40">
               {children}
