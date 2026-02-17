@@ -1,3 +1,4 @@
+
 import type { ExoticSpeciesData } from '@/lib/types';
 
 export const roedoresData: ExoticSpeciesData = {
@@ -14,14 +15,14 @@ export const roedoresData: ExoticSpeciesData = {
           items: ["Ratones: 1-2.5 años", "Ratas: 2-3.5 años", "Hámsteres: 1.5-2 años", "Jerbos: 2-3 años"]
         },
         { 
-          title: "Frecuencias",
+          title: "Constantes Vitales",
           icon: "HeartPulse",
-          items: ["Cardíaca: 260-700 lpm", "Respiratoria: 40-250 rpm"] 
+          items: ["Frecuencia Cardíaca: 260-700 lpm", "Frecuencia Respiratoria: 40-250 rpm"] 
         },
         {
           title: "Dentición",
           icon: "AlertCircle",
-          items: ["Incisivos de crecimiento continuo (elodontos).", "Color amarillo/naranja es normal.", "Proporción ideal: inferiores 3x más largos que superiores."]
+          items: ["Incisivos de crecimiento continuo (elodontos).", "Color amarillo/naranja es normal (hierro).", "Proporción ideal: inferiores 3x más largos que superiores."]
         },
         {
           title: "Aparato Digestivo",
@@ -31,12 +32,22 @@ export const roedoresData: ExoticSpeciesData = {
         {
           title: "Glándulas Odoríferas",
           icon: "Atom",
-          items: ["Hámsteres: en los flancos (costados).", "Jerbos: en el vientre (ventral).", "Propensas a inflamación o tumores."]
+          items: ["Hámsteres: en los flancos (costados), más desarrolladas en machos.", "Jerbos: en el vientre (ventral).", "Propensas a inflamación o tumores."]
         },
         {
           title: "Hibernación/Torpor (Hámsteres)",
           icon: "Snowflake",
-          items: ["< 4°C: sueño profundo.", "4-10°C: letargo (torpor).", "A menudo confundido con la muerte."]
+          items: ["< 4°C: hibernación profunda.", "4-10°C: letargo (torpor).", "A menudo confundido con la muerte."]
+        },
+        {
+            title: "Glándulas Adrenales (Jerbos)",
+            icon: "Atom",
+            text: "Los jerbos tienen glándulas adrenales naturalmente muy grandes, lo cual no debe confundirse con una patología."
+        },
+        {
+            title: "Tapones Eyaculatorios",
+            icon: "Droplet",
+            text: "Común en ratas y ratones machos, por retro-eyaculación. No confundir con urolitos."
         }
       ]
     },
@@ -58,8 +69,8 @@ export const roedoresData: ExoticSpeciesData = {
           ]
         },
         considerations: {
-            title: "Consideraciones",
-            items: ["Canibalismo: puede ocurrir si se les molesta.", "Hámsteres: pueden meter a sus crías en los abazones (bolsas de los cachetes) por estrés.", "Tapones eyaculatorios: común en ratas y ratones machos, no confundir con urolitos."]
+            title: "Consideraciones de Crianza",
+            items: ["Canibalismo: puede ocurrir si se les molesta.", "Hámsteres: pueden meter a sus crías en los abazones por estrés.", "Epilepsia (Jerbos): Menor probabilidad si se manipulan las crías en las primeras 3 semanas."]
         }
       }
     },
@@ -97,9 +108,10 @@ export const roedoresData: ExoticSpeciesData = {
         ]
     },
     procedimientos: {
-        title: "Vías de Inyección",
+        title: "Vías y Volúmenes de Inyección",
         icon: "Syringe",
         content: {
+            text: "La vía IM debe evitarse por causar dolor y necrosis muscular.",
             injection_table: {
                 headers: ["Ruta", "Ratón", "Rata", "Hámster", "Jerbo"],
                 rows: [
@@ -118,14 +130,15 @@ export const roedoresData: ExoticSpeciesData = {
             { title: "Ayuno", text: "Estrictamente contraindicado por riesgo de hipoglucemia fatal.", icon: "Ban", isCritical: true },
             { title: "Fluidos (Mantenimiento)", text: "General: ~100 ml/kg/día. Jerbos requieren menos (40-60 ml/kg/día).", icon: "Droplet", isCritical: false },
             { title: "Odontología", text: "El sobrecrecimiento se corrige con fresas dentales. Nunca usar cortaúñas.", icon: "AlertCircle", isCritical: true },
-            { title: "Hemostasia", text: "Pérdidas >0.3 ml pueden ser mortales para un ratón de 30g. Usar hemostasia cuidadosa.", icon: "HeartPulse", isCritical: false },
-            { title: "Fracturas", text: "Formación de callo óseo muy rápida (7-10 días). Vendajes y férulas suelen funcionar bien.", icon: "Bone", isCritical: false },
+            { title: "Sensibilidad a Sangrado", text: "Pérdidas >0.3 ml pueden ser mortales para un ratón de 30g. Usar hemostasia cuidadosa.", icon: "HeartPulse", isCritical: true },
+            { title: "Recuperación de Fracturas", text: "Formación de callo óseo muy rápida (7-10 días). Vendajes y férulas suelen funcionar bien.", icon: "Bone", isCritical: false },
         ]
     },
     laboratorio: {
         title: "Valores de Laboratorio",
         icon: "TestTube",
         content: {
+            text: "Límite de extracción seguro: 10% del volumen sanguíneo total cada 3-4 semanas.",
             blood_volume: [
                 { species: "Ratón 🐭", volume: "70-80", max_extraction: "0.14" },
                 { species: "Rata 🐀", volume: "50-65", max_extraction: "1.3" },
@@ -176,7 +189,7 @@ export const roedoresData: ExoticSpeciesData = {
                 icon: "Utensils",
                 diseases: [
                     { name: "Diarrea por Antibióticos", description: "Penicilinas pueden ser fatales, especialmente en hámsteres, al matar la flora benéfica.", tags: ["Hámster", "Jerbo"] },
-                    { name: "Ileítis Proliferativa (Cola Mojada)", description: "Diarrea bacteriana severa, a menudo fatal en hámsteres y jerbos jóvenes.", tags: ["Hámster", "Jerbo"] },
+                    { name: "Enfermedad de Tyzzer e Ileítis ('Cola Mojada')", description: "Infecciones bacterianas graves que causan diarreas severas, comunes y a menudo fatales en hámsteres y jerbos jóvenes.", tags: ["Hámster", "Jerbo"] },
                     { name: "Parásitos GI", description: "Coccidias, Giardia, Oxiuros, Tenias. Algunas zoonóticas." }
                 ]
             },
@@ -208,11 +221,13 @@ export const roedoresData: ExoticSpeciesData = {
         title: "Zoonosis (Riesgo para Humanos)",
         icon: "TriangleAlert",
         content: [
-            { disease: "Salmonelosis", description: "Rara, pero de grave riesgo. La recomendación suele ser la eutanasia." },
-            { disease: "Tenia Enana (Rodentolepis/Hymenolepis nana)", description: "Parásito intestinal con gran potencial zoonótico." },
-            { disease: "Coriomeningitis Linfocítica (LCMV)", description: "Transmitida por hámsteres, causa síntomas gripales severos." },
-            { disease: "Tularemia", description: "El piojo del ratón (Polyplax serrata) puede actuar como vector." }
+            { title: "Salmonelosis", description: "Rara, pero de grave riesgo. La recomendación suele ser la eutanasia.", isCritical: true },
+            { title: "Tenia Enana (Rodentolepis/Hymenolepis nana)", description: "Parásito intestinal con gran potencial zoonótico.", isCritical: false },
+            { title: "Coriomeningitis Linfocítica (LCMV)", description: "Transmitida por hámsteres, causa síntomas gripales severos.", isCritical: true },
+            { title: "Tularemia", description: "El piojo del ratón (Polyplax serrata) puede actuar como vector.", isCritical: false }
         ]
     }
   }
 };
+
+    
