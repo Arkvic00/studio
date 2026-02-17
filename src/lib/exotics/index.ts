@@ -1,4 +1,5 @@
 import { roedoresData } from './roedores';
+import { conejoData } from './conejo';
 import type { ExoticSpeciesData } from '@/lib/types';
 
 // Helper function to create placeholder data
@@ -8,6 +9,7 @@ const createPlaceholderData = (id: string, name: string): ExoticSpeciesData => (
     sections: {
         general: {
             title: `Formulario de ${name}`,
+            icon: 'Info',
             content: `La información para ${name} estará disponible próximamente.`
         }
     }
@@ -15,7 +17,7 @@ const createPlaceholderData = (id: string, name: string): ExoticSpeciesData => (
 
 export const EXOTICS_DATA: { [key: string]: ExoticSpeciesData } = {
     roedores: roedoresData,
-    conejo: createPlaceholderData('conejo', 'Conejos'),
+    conejo: conejoData,
     mustelidos: createPlaceholderData('mustelidos', 'Mustélidos'),
     cobaya: createPlaceholderData('cobaya', 'Cobayas'),
     erizo: createPlaceholderData('erizo', 'Erizos'),

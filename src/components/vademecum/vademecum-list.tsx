@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { 
     ChevronRight, Plus, Search, BookOpen, Calendar, HeartPulse, AlertCircle, Utensils, Atom, Snowflake, Users, 
     VenetianMask, Info, Home, Ban, Hand, Syringe, FlaskConical, Stethoscope, Microscope, TestTube, Dna, Bone, Shield, 
-    Pill, Bug, TriangleAlert, Beaker, Droplet, Brain
+    Pill, Bug, TriangleAlert, Beaker, Droplet, Brain, Thermometer
 } from 'lucide-react';
 import Image from 'next/image';
 import { DB_MEDICAMENTOS } from '@/lib/data';
@@ -108,7 +108,7 @@ const exoticSpecies = exoticSpeciesOrder.map(key => ({
 
 const iconMap: { [key: string]: React.ElementType } = {
     Calendar, HeartPulse, AlertCircle, Utensils, Atom, Snowflake, Users, VenetianMask, Info, Home, Ban, Hand, Syringe,
-    FlaskConical, Stethoscope, Microscope, TestTube, Dna, Bone, Shield, Pill, Bug, TriangleAlert, Beaker, Droplet, Brain
+    FlaskConical, Stethoscope, Microscope, TestTube, Dna, Bone, Shield, Pill, Bug, TriangleAlert, Beaker, Droplet, Brain, Thermometer
 };
 
 function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
@@ -118,7 +118,7 @@ function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
     const speciesData = EXOTICS_DATA[speciesKey as keyof typeof EXOTICS_DATA];
     const speciesInfo = SPECIES_CONFIG[speciesKey as keyof typeof SPECIES_CONFIG];
     
-    if (!speciesData || !speciesData.sections) {
+    if (!speciesData || !speciesData.sections.biologia) { // check for a real section
         return (
              <PinterestCard>
                 <div className="text-center py-20 text-muted-foreground">
@@ -144,202 +144,173 @@ function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
             {Object.entries(speciesData.sections).map(([key, section]) => {
                 const content = section.content;
                 if (!content) return null;
+                const SectionIcon = iconMap[section.icon as string] || BookOpen;
 
-                return (
+                // COMMON RENDERING FOR MOST SECTIONS
+                const renderDefaultSection = () => (
                     <PinterestCard key={key} id={key}>
-                        <h2 className="text-2xl font-bold text-accent mb-6 flex items-center gap-3"><BookOpen size={24}/> {section.title}</h2>
-                        
-                        {key === 'biologia' && (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <h2 className="text-2xl font-bold text-accent mb-6 flex items-center gap-3"><SectionIcon size={24}/> {section.title}</h2>
+                        {Array.isArray(content) ? (
+                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {content.map((item: any, index: number) => {
-                                    const Icon = iconMap[item.icon] || TriangleAlert;
+                                    const ItemIcon = iconMap[item.icon as string] || TriangleAlert;
                                     return (
-                                        <div key={index} className="bg-card p-4 rounded-2xl border border-border h-full">
-                                            <h3 className="font-bold text-white mb-2 flex items-center gap-2"><Icon size={16} className="text-accent" /> {item.title}</h3>
-                                            <ul className="list-disc list-inside text-xs text-slate-300 space-y-1">
-                                                {item.items.map((li: string, i: number) => <li key={i}>{li}</li>)}
-                                            </ul>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                        )}
-
-                        {key === 'sexado_reproduccion' && (
-                            <div className="space-y-6">
-                                <div className="bg-card p-4 rounded-2xl border border-border">
-                                    <h3 className="font-bold text-white mb-2 flex items-center gap-2"><VenetianMask size={16} className="text-accent"/> {content.sexing.title}</h3>
-                                    <p className="text-sm text-slate-300">{content.sexing.text}</p>
-                                </div>
-                                <div className="overflow-x-auto">
-                                    <Table>
-                                        <TableHeader>
-                                            <TableRow>
-                                                {content.repro_table.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}
-                                            </TableRow>
-                                        </TableHeader>
-                                        <TableBody>
-                                            {content.repro_table.rows.map((row: any, index: number) => (
-                                                <TableRow key={index}>
-                                                    <TableCell className="font-medium text-white">{row.species}</TableCell>
-                                                    <TableCell>{row.puberty}</TableCell>
-                                                    <TableCell>{row.estrous}</TableCell>
-                                                    <TableCell>{row.gestation}</TableCell>
-                                                    <TableCell>{row.litter}</TableCell>
-                                                    <TableCell>{row.weaning}</TableCell>
-                                                </TableRow>
+                                    <div key={index} className="bg-card p-6 rounded-3xl border border-border h-full">
+                                        <h3 className="font-bold text-white mb-3 flex items-center gap-2 text-base"><ItemIcon size={18} className="text-accent" /> {item.title}</h3>
+                                        {item.text && <p className="text-sm text-slate-300">{item.text}</p>}
+                                        {item.items && <ul className="list-disc list-inside text-sm text-slate-300 space-y-2">
+                                            {item.items.map((li: string, i: number) => <li key={i}>{li}</li>)}
+                                        </ul>}
+                                         {item.points && <ul className="space-y-3">
+                                            {item.points.map((p: any, i:number) => (
+                                                 <li key={i} className="flex gap-3 items-start text-sm text-slate-300">
+                                                    {p.isProhibited ? <Ban size={20} className="text-destructive flex-shrink-0 mt-0.5"/> : <ChevronRight size={16} className="text-accent flex-shrink-0 mt-1"/>}
+                                                    <span>{p.text}</span>
+                                                </li>
                                             ))}
-                                        </TableBody>
-                                    </Table>
-                                </div>
-                                <div className="bg-card p-4 rounded-2xl border border-border">
-                                    <h3 className="font-bold text-white mb-2 flex items-center gap-2"><Info size={16} className="text-accent"/> {content.considerations.title}</h3>
-                                     <ul className="list-disc list-inside text-sm text-slate-300 space-y-1">
-                                        {content.considerations.items.map((li: string, i: number) => <li key={i}>{li}</li>)}
-                                    </ul>
-                                </div>
-                            </div>
-                        )}
-
-                        {key === 'alojamiento_manejo' && (
-                             <div className="grid md:grid-cols-3 gap-6">
-                                {content.map((item: any) => {
-                                    const Icon = iconMap[item.icon] || TriangleAlert;
-                                    return (
-                                        <div key={item.title}>
-                                            <h3 className="font-bold text-white mb-3 flex items-center gap-2"><Icon size={18} className="text-accent"/> {item.title}</h3>
-                                            <ul className="space-y-2">
-                                                {item.points.map((p: any, i:number) => (
-                                                     <li key={i} className="flex gap-3 items-start text-sm text-slate-300">
-                                                        {p.isProhibited ? <Ban size={20} className="text-destructive flex-shrink-0 mt-0.5"/> : <ChevronRight size={16} className="text-accent flex-shrink-0 mt-1"/>}
-                                                        <span>{p.text}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                        )}
-
-                         {key === 'procedimientos' && (
-                            <div className="overflow-x-auto">
-                                <h3 className="font-bold text-white mb-4 text-lg">Vías y Volúmenes de Inyección (ml)</h3>
-                                <Table>
-                                    <TableHeader>
-                                        <TableRow>
-                                            {content.injection_table.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}
-                                        </TableRow>
-                                    </TableHeader>
-                                    <TableBody>
-                                        {content.injection_table.rows.map((row: any, index: number) => (
-                                            <TableRow key={index}>
-                                                <TableCell className="font-medium text-white">{row.route}</TableCell>
-                                                <TableCell>{row.mouse}</TableCell>
-                                                <TableCell>{row.rat}</TableCell>
-                                                <TableCell>{row.hamster}</TableCell>
-                                                <TableCell>{row.gerbil}</TableCell>
-                                            </TableRow>
-                                        ))}
-                                    </TableBody>
-                                </Table>
-                            </div>
-                         )}
-                        
-                         {key === 'anestesia_cirugia' && (
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                {content.map((item: any, index: number) => {
-                                    const Icon = iconMap[item.icon] || TriangleAlert;
-                                    return (
-                                        <div key={index} className={cn("p-4 rounded-2xl border flex items-start gap-4", item.isCritical ? "bg-destructive/10 border-destructive/20" : "bg-card border-border")}>
-                                            <Icon size={24} className={cn("flex-shrink-0 mt-1", item.isCritical ? "text-destructive" : "text-accent")} />
-                                            <div>
-                                                <h3 className="font-bold text-white mb-1">{item.title}</h3>
-                                                <p className="text-xs text-slate-300">{item.text}</p>
-                                            </div>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                         )}
-
-                         {key === 'laboratorio' && (
-                             <div className="space-y-8">
-                                <div className="overflow-x-auto">
-                                    <h3 className="font-bold text-white mb-4 text-lg">Hematología</h3>
-                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                                        {content.blood_volume.map((item: any) => (
-                                            <div key={item.species} className="bg-card p-3 rounded-xl border border-border text-center">
-                                                <p className="text-sm font-bold text-white">{item.species}</p>
-                                                <p className="text-[10px] text-muted-foreground font-bold">Vol: {item.volume} ml/kg</p>
-                                                <p className="text-[10px] text-muted-foreground font-bold">Ext. Máx: {item.max_extraction} ml</p>
-                                            </div>
-                                        ))}
+                                        </ul>}
                                     </div>
-                                    <Table>
-                                        <TableHeader><TableRow>{content.hematology.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader>
-                                        <TableBody>
-                                            {content.hematology.rows.map((row: any, i: number) => (<TableRow key={i}><TableCell className="font-medium text-white">{row.param}</TableCell><TableCell>{row.mouse}</TableCell><TableCell>{row.rat}</TableCell><TableCell>{row.hamster}</TableCell><TableCell>{row.gerbil}</TableCell></TableRow>))}
-                                        </TableBody>
-                                    </Table>
-                                </div>
-                                 <div className="overflow-x-auto">
-                                    <h3 className="font-bold text-white mb-4 text-lg">Bioquímica</h3>
-                                     <Table>
-                                        <TableHeader><TableRow>{content.biochemistry.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader>
-                                        <TableBody>
-                                            {content.biochemistry.rows.map((row: any, i: number) => (<TableRow key={i}><TableCell className="font-medium text-white">{row.param}</TableCell><TableCell>{row.mouse}</TableCell><TableCell>{row.rat}</TableCell><TableCell>{row.hamster}</TableCell><TableCell>{row.gerbil}</TableCell></TableRow>))}
-                                        </TableBody>
-                                    </Table>
-                                </div>
+                                )})}
                             </div>
-                         )}
-                        
-                        {key === 'patologias' && (
-                            <Accordion type="multiple" className="w-full space-y-3">
-                                {content.map((cat: any) => {
-                                     const Icon = iconMap[cat.icon] || TriangleAlert;
-                                     return (
-                                        <AccordionItem key={cat.category} value={cat.category} className="border-none bg-card rounded-2xl overflow-hidden">
-                                            <AccordionTrigger className="px-4 py-3 text-white font-bold text-sm hover:no-underline hover:bg-white/5 transition-colors">
-                                                <div className="flex items-center gap-3">
-                                                    <Icon size={18} className="text-accent" />
-                                                    {cat.category}
-                                                </div>
-                                            </AccordionTrigger>
-                                            <AccordionContent className="px-4 pb-4 pt-0 text-sm text-slate-300">
-                                                <ul className="space-y-3 mt-2">
-                                                {cat.diseases.map((d: any) => (
-                                                    <li key={d.name} className="p-3 bg-background/50 rounded-lg border border-border">
-                                                        <h5 className="font-bold text-white">{d.name}</h5>
-                                                        <p className="text-xs text-slate-400">{d.description}</p>
-                                                        {d.tags && <div className="flex gap-2 mt-2">{d.tags.map((t:string) => <Badge key={t} variant="secondary" className="text-[9px]">{t}</Badge>)}</div>}
-                                                    </li>
-                                                ))}
-                                                </ul>
-                                            </AccordionContent>
-                                        </AccordionItem>
-                                     )
-                                })}
-                            </Accordion>
+                        ) : (
+                            <p className="text-sm text-slate-300">{content as string}</p>
                         )}
-                        
-                        {key === 'zoonosis' && (
-                             <div className="space-y-4">
-                                {content.map((item: any, index: number) => (
-                                    <div key={index} className="bg-destructive/10 border border-destructive/20 p-4 rounded-2xl flex items-start gap-4">
-                                        <TriangleAlert className="h-6 w-6 text-destructive flex-shrink-0 mt-1" />
-                                        <div>
-                                            <h3 className="font-bold text-destructive-foreground">{item.disease}</h3>
-                                            <p className="text-sm text-slate-300">{item.description}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-
                     </PinterestCard>
-                )
+                );
+
+                switch (key) {
+                    case 'laboratorio':
+                         return (
+                            <PinterestCard key={key} id={key}>
+                                <h2 className="text-2xl font-bold text-accent mb-6 flex items-center gap-3"><TestTube size={24}/> {section.title}</h2>
+                                {speciesKey === 'roedores' && (
+                                     <div className="space-y-8">
+                                        <div className="overflow-x-auto">
+                                            <h3 className="font-bold text-white mb-4 text-lg">Hematología</h3>
+                                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                                                {content.blood_volume.map((item: any) => (
+                                                    <div key={item.species} className="bg-card p-3 rounded-xl border border-border text-center">
+                                                        <p className="text-sm font-bold text-white">{item.species}</p>
+                                                        <p className="text-[10px] text-muted-foreground font-bold">Vol: {item.volume} ml/kg</p>
+                                                        <p className="text-[10px] text-muted-foreground font-bold">Ext. Máx: {item.max_extraction} ml</p>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            <Table><TableHeader><TableRow>{content.hematology.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader><TableBody>{content.hematology.rows.map((row: any, i: number) => (<TableRow key={i}><TableCell className="font-medium text-white">{row.param}</TableCell><TableCell>{row.mouse}</TableCell><TableCell>{row.rat}</TableCell><TableCell>{row.hamster}</TableCell><TableCell>{row.gerbil}</TableCell></TableRow>))}</TableBody></Table>
+                                        </div>
+                                         <div className="overflow-x-auto">
+                                            <h3 className="font-bold text-white mb-4 text-lg">Bioquímica</h3>
+                                             <Table><TableHeader><TableRow>{content.biochemistry.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader><TableBody>{content.biochemistry.rows.map((row: any, i: number) => (<TableRow key={i}><TableCell className="font-medium text-white">{row.param}</TableCell><TableCell>{row.mouse}</TableCell><TableCell>{row.rat}</TableCell><TableCell>{row.hamster}</TableCell><TableCell>{row.gerbil}</TableCell></TableRow>))}</TableBody></Table>
+                                        </div>
+                                    </div>
+                                )}
+                                {speciesKey === 'conejo' && (
+                                    <div className="grid md:grid-cols-2 gap-8">
+                                        <div className="overflow-x-auto">
+                                            <h3 className="font-bold text-white mb-4">Hematología</h3>
+                                            <Table><TableHeader><TableRow>{content.hematology.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader><TableBody>{content.hematology.rows.map((row: any) => (<TableRow key={row.param}><TableCell className="font-medium text-white">{row.param}</TableCell><TableCell>{row.value}</TableCell></TableRow>))}</TableBody></Table>
+                                        </div>
+                                        <div className="overflow-x-auto">
+                                            <h3 className="font-bold text-white mb-4">Bioquímica</h3>
+                                            <Table><TableHeader><TableRow>{content.biochemistry.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader><TableBody>{content.biochemistry.rows.map((row: any) => (<TableRow key={row.param}><TableCell className="font-medium text-white">{row.param}</TableCell><TableCell>{row.value}</TableCell></TableRow>))}</TableBody></Table>
+                                        </div>
+                                    </div>
+                                )}
+                            </PinterestCard>
+                         );
+                    
+                    case 'patologias':
+                        return (
+                             <PinterestCard key={key} id={key}>
+                                <h2 className="text-2xl font-bold text-accent mb-6 flex items-center gap-3"><Stethoscope size={24}/> {section.title}</h2>
+                                <Accordion type="multiple" className="w-full space-y-3">
+                                    {content.map((cat: any) => {
+                                        const Icon = iconMap[cat.icon] || TriangleAlert;
+                                        return (
+                                            <AccordionItem key={cat.category} value={cat.category} className="border-none bg-card rounded-2xl overflow-hidden">
+                                                <AccordionTrigger className="px-4 py-3 text-white font-bold text-sm hover:no-underline hover:bg-white/5 transition-colors">
+                                                    <div className="flex items-center gap-3">
+                                                        <Icon size={18} className="text-accent" />
+                                                        {cat.category}
+                                                    </div>
+                                                </AccordionTrigger>
+                                                <AccordionContent className="px-4 pb-4 pt-0 text-sm text-slate-300">
+                                                    <ul className="space-y-3 mt-2">
+                                                    {cat.diseases.map((d: any) => (
+                                                        <li key={d.name} className="p-3 bg-background/50 rounded-lg border border-border">
+                                                            <h5 className="font-bold text-white">{d.name}</h5>
+                                                            <p className="text-xs text-slate-400">{d.description}</p>
+                                                            {d.tags && <div className="flex gap-2 mt-2">{d.tags.map((t:string) => <Badge key={t} variant={t === 'Urgencia' || t === 'Mortal' ? 'destructive' : 'secondary'} className="text-[9px]">{t}</Badge>)}</div>}
+                                                        </li>
+                                                    ))}
+                                                    </ul>
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        )
+                                    })}
+                                </Accordion>
+                            </PinterestCard>
+                        )
+                    
+                    case 'reproduccion':
+                         return (
+                            <PinterestCard key={key} id={key}>
+                                <h2 className="text-2xl font-bold text-accent mb-6 flex items-center gap-3"><HeartPulse size={24}/> {section.title}</h2>
+                                <div className="grid md:grid-cols-2 gap-8">
+                                    <div className="overflow-x-auto">
+                                        <Table><TableHeader><TableRow>{content.table.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader><TableBody>{content.table.rows.map((row: any) => (<TableRow key={row.param}><TableCell className="font-medium text-white">{row.param}</TableCell><TableCell>{row.value}</TableCell></TableRow>))}</TableBody></Table>
+                                    </div>
+                                    <div className="space-y-4">
+                                        {content.points.map((p: any) => (
+                                            <div key={p.title} className="bg-card p-4 rounded-xl border border-border">
+                                                <h4 className="font-bold text-white text-sm mb-1">{p.title}</h4>
+                                                <p className="text-xs text-slate-300">{p.text}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </PinterestCard>
+                        );
+                    
+                    case 'anestesia_apoyo':
+                        return (
+                             <PinterestCard key={key} id={key}>
+                                <h2 className="text-2xl font-bold text-accent mb-6 flex items-center gap-3"><Syringe size={24}/> {section.title}</h2>
+                                <div className="grid md:grid-cols-2 gap-8">
+                                    <div>
+                                        <h3 className="font-bold text-white mb-4">Puntos Críticos</h3>
+                                        <div className="space-y-4">
+                                            {content.critical_points.map((p: any) => {
+                                                const Icon = iconMap[p.icon] || TriangleAlert;
+                                                return(
+                                                <div key={p.title} className="bg-destructive/10 border border-destructive/20 p-4 rounded-xl flex items-start gap-3">
+                                                     <Icon size={20} className="text-destructive mt-0.5 flex-shrink-0"/>
+                                                     <div>
+                                                        <h4 className="font-bold text-destructive-foreground text-sm">{p.title}</h4>
+                                                        <p className="text-xs text-slate-300">{p.text}</p>
+                                                     </div>
+                                                </div>
+                                            )})}
+                                        </div>
+                                    </div>
+                                     <div>
+                                        <h3 className="font-bold text-white mb-4">Riesgos Anestésicos</h3>
+                                        <div className="space-y-3">
+                                            {content.anesthesia_risks.map((r: any) => (
+                                                <div key={r.title}>
+                                                    <h4 className="font-bold text-accent text-sm">{r.title}</h4>
+                                                    <p className="text-xs text-slate-300">{r.text}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </PinterestCard>
+                        )
+
+                    default:
+                        return renderDefaultSection();
+                }
             })}
         </div>
     );
