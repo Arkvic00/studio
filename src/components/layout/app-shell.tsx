@@ -41,7 +41,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       
       <button 
         onClick={() => setIsSidebarOpen(true)} 
-        className="fixed bottom-6 right-6 z-50 p-4 bg-secondary/90 backdrop-blur-xl border border-border rounded-full text-muted-foreground hover:text-white hover:bg-primary/20 hover:border-primary/50 transition-all shadow-xl group"
+        className="fixed top-8 left-8 z-50 p-4 bg-secondary/90 backdrop-blur-xl border border-border rounded-full text-muted-foreground hover:text-white hover:bg-primary/20 hover:border-primary/50 transition-all shadow-xl group"
       >
         <Menu size={24} className="group-hover:scale-110 transition-transform" />
       </button>
