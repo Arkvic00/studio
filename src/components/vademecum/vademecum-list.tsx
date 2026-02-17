@@ -7,9 +7,11 @@ import { PinterestCard } from '@/components/ui/pinterest-card';
 import { useAppContext } from '@/contexts/app-context';
 import { useState, useMemo } from 'react';
 import { Input } from '@/components/ui/input';
-import { fuzzySearch } from '@/lib/utils';
-import { cn } from '@/lib/utils';
+import { fuzzySearch, cn } from '@/lib/utils';
 import { SPECIES_CONFIG } from '@/lib/config';
+import { EXOTICS_DATA } from '@/lib/exotics';
+import type { ExoticSpeciesData } from '@/lib/types';
+
 
 // Sub-component for Fármacos list
 function DrugList() {
@@ -88,7 +90,7 @@ function DrugList() {
     );
 }
 
-// Sub-component for Exotics list
+// Order of species for the UI
 const exoticSpeciesOrder = [
     'roedores', 'conejo', 'mustelidos', 'cobaya', 'erizo', 
     'ave', 'reptil', 'peces', 'primates', 'axolote'
@@ -98,34 +100,91 @@ const exoticSpecies = exoticSpeciesOrder.map(key => ({
     ...SPECIES_CONFIG[key]
 }));
 
-function ExoticsList() {
-    return (
-        <PinterestCard>
-            <div className="grid grid-cols-5 sm:grid-cols-10 gap-2 text-center">
-                {exoticSpecies.map((species, index) => {
-                    if (!species.label) return null;
-                    const isSelected = index === 0; // Highlight the first one as per screenshot
-                    return (
-                        <Link 
-                            href={`/vademecum/exoticos/${species.key}`} 
-                            key={species.key}
-                            className={cn(
-                                "flex flex-col items-center justify-start gap-2 p-3 rounded-2xl transition-all duration-200",
-                                isSelected ? 'ring-2 ring-destructive' : 'hover:bg-secondary'
-                            )}
-                        >
-                            <div className="text-4xl md:text-5xl flex-grow flex items-center">{species.icon}</div>
-                            <span className={cn(
-                                "text-[10px] font-bold uppercase tracking-wider min-h-[20px]",
-                                isSelected ? 'text-destructive' : 'text-muted-foreground'
-                            )}>{species.label}</span>
-                        </Link>
-                    )
-                })}
+// New component to render the details of a selected exotic species
+function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
+    if (!speciesKey) {
+        return (
+             <div className="text-center py-20 text-muted-foreground">
+                <p className="font-bold">Selecciona una especie para ver su formulario.</p>
             </div>
-        </PinterestCard>
+        );
+    }
+    const speciesData = EXOTICS_DATA[speciesKey as keyof typeof EXOTICS_DATA];
+    const speciesInfo = SPECIES_CONFIG[speciesKey as keyof typeof SPECIES_CONFIG];
+    
+    if (!speciesData) {
+        return (
+             <PinterestCard>
+                <div className="text-center py-20 text-muted-foreground">
+                    <h2 className="text-2xl font-bold text-white mb-2">En Construcción</h2>
+                    <p>El formulario para {speciesInfo?.label || speciesKey} estará disponible próximamente.</p>
+                </div>
+            </PinterestCard>
+        )
+    }
+
+    return (
+        <div className="space-y-8 animate-in fade-in duration-500">
+             <PinterestCard className="relative overflow-hidden border-l-8 border-l-accent">
+                <div className="flex items-center gap-6">
+                    <div className="text-7xl">{speciesInfo.icon}</div>
+                     <div>
+                        <h1 className="text-6xl font-black text-white mb-2 tracking-tighter">{speciesInfo.label}</h1>
+                        <p className="text-lg text-muted-foreground font-medium">Formulario de Especies Exóticas</p>
+                    </div>
+                </div>
+            </PinterestCard>
+
+            {Object.entries(speciesData.sections).map(([key, section]) => (
+                <PinterestCard key={key} id={key}>
+                    <h2 className="text-2xl font-bold text-accent mb-4">{section.title}</h2>
+                    <div className="text-slate-300 space-y-2 prose-invert prose-sm max-w-none">
+                        {section.content.split('\n').map((line, i) => (
+                           <p key={i}>{line.replace(/\* /g, '• ')}</p>
+                        ))}
+                    </div>
+                </PinterestCard>
+            ))}
+        </div>
     );
 }
+
+// Modified Exotics list to be stateful and render details inline
+function ExoticsList() {
+    const [selectedSpeciesKey, setSelectedSpeciesKey] = useState<string | null>(null);
+
+    return (
+        <div className="space-y-8">
+            <PinterestCard>
+                <div className="grid grid-cols-5 sm:grid-cols-10 gap-2 text-center">
+                    {exoticSpecies.map((species) => {
+                        if (!species.label) return null;
+                        const isSelected = selectedSpeciesKey === species.key;
+                        return (
+                            <button 
+                                onClick={() => setSelectedSpeciesKey(species.key === selectedSpeciesKey ? null : species.key)}
+                                key={species.key}
+                                className={cn(
+                                    "flex flex-col items-center justify-start gap-2 p-3 rounded-2xl transition-all duration-200",
+                                    isSelected ? 'ring-2 ring-destructive' : 'hover:bg-secondary'
+                                )}
+                            >
+                                <div className="text-4xl md:text-5xl flex-grow flex items-center">{species.icon}</div>
+                                <span className={cn(
+                                    "text-[10px] font-bold uppercase tracking-wider min-h-[20px]",
+                                    isSelected ? 'text-destructive' : 'text-muted-foreground'
+                                )}>{species.label}</span>
+                            </button>
+                        )
+                    })}
+                </div>
+            </PinterestCard>
+
+            {selectedSpeciesKey && <ExoticDetailView speciesKey={selectedSpeciesKey} />}
+        </div>
+    );
+}
+
 
 // Main Vademecum view with tabs
 export function VademecumList() {
