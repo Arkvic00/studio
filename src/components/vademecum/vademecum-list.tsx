@@ -170,7 +170,7 @@ function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
                                                     <li key={dIndex} className="p-3 bg-background/50 rounded-lg border border-border">
                                                         <h5 className="font-bold text-white">{d.name}</h5>
                                                         <p className="text-xs text-slate-400">{d.description}</p>
-                                                        {d.tags && <div className="flex gap-2 mt-2">{d.tags.map((t:string, tIndex: number) => <Badge key={tIndex} variant={t === 'Urgencia' || t === 'Mortal' ? 'destructive' : 'secondary'} className="text-[9px]">{t}</Badge>)}</div>}
+                                                        {d.tags && <div className="flex gap-2 mt-2">{d.tags.map((t:string, tIndex: number) => <Badge key={tIndex} variant={t === 'Urgencia' || t === 'Mortal' || t === 'Iatrogénico' || t === 'Zoonosis' ? 'destructive' : 'secondary'} className="text-[9px]">{t}</Badge>)}</div>}
                                                     </li>
                                                 ))}
                                                 </ul>
@@ -210,6 +210,15 @@ function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
                             <div className="space-y-8">
                                 {content.text && <p className="text-sm text-slate-300 mb-6">{content.text}</p>}
                                 
+                                {content.headers && content.rows && (
+                                     <div className="overflow-x-auto">
+                                        <Table>
+                                            <TableHeader><TableRow>{content.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader>
+                                            <TableBody>{content.rows.map((row: any, i: number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody>
+                                        </Table>
+                                    </div>
+                                )}
+
                                 {content.sexing && (
                                     <div>
                                         <h3 className="font-bold text-white mb-2 text-lg">{content.sexing.title}</h3>
@@ -221,8 +230,8 @@ function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
                                      <div className="overflow-x-auto">
                                         <h3 className="font-bold text-white mb-4 text-lg">{content.repro_table?.title || content.table?.title || 'Parámetros Reproductivos'}</h3>
                                         <Table>
-                                            <TableHeader><TableRow>{(content.repro_table?.headers || content.table?.headers).map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader>
-                                            <TableBody>{(content.repro_table?.rows || content.table?.rows).map((row: any, i: number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody>
+                                            <TableHeader><TableRow>{(content.repro_table || content.table).headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader>
+                                            <TableBody>{(content.repro_table || content.table).rows.map((row: any, i: number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody>
                                         </Table>
                                     </div>
                                 )}
