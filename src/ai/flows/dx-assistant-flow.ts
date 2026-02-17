@@ -45,8 +45,8 @@ Analyze the patient information and generate a ranked list of 2-3 most likely di
 
 For EACH differential diagnosis, you MUST provide the following information:
 1.  **diagnosis**: The name of the disease.
-2.  **keySigns**: A list of 5-7 key clinical signs for that specific disease. For each sign, you MUST determine if it is mentioned or strongly implied in the provided anamnesis and set the 'isPresent' field to a boolean ('true' if present, 'false' if absent).
-3.  **matchPercentage**: A confidence score from 0 to 100. This score MUST be calculated strictly using this formula: (number of key signs with isPresent: true) / (total number of key signs listed) * 100. Round the result to the nearest integer.
+2.  **keySigns**: A list of 5-7 key clinical signs for that specific disease. For each sign, you MUST determine if it is mentioned or strongly implied in the provided anamnesis. The 'isPresent' field MUST be a boolean ('true' if present, 'false' if absent). Be very strict: only mark 'isPresent' as true if the sign is clearly stated in the anamnesis.
+3.  **matchPercentage**: A confidence score from 0 to 100. This score MUST be calculated strictly and mathematically using this formula: (number of key signs with isPresent: true) / (total number of key signs listed) * 100. Round the result to the nearest integer. Do not estimate this value; it must be the exact result of the formula.
 4.  **explanation**: A detailed clinical explanation of why this diagnosis is a potential fit, directly linking the patient's 'present' signs to the disease's typical pathology.
 5.  **etiology**: The causative agent(s) and common modes of transmission for the disease.
 6.  **treatment**: A concise summary of the standard treatment protocol for this diagnosis. Do not invent treatments.
@@ -68,6 +68,10 @@ export const dxAssistantFlow = ai.defineFlow(
   },
   async (input) => {
     const {output} = await dxPrompt(input);
+    if (output && output.differentials) {
+      // Sort the differentials by matchPercentage in descending order
+      output.differentials.sort((a, b) => b.matchPercentage - a.matchPercentage);
+    }
     return output!;
   }
 );
