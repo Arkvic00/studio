@@ -10,19 +10,15 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Input } from '@/components/ui/input';
 import { fuzzySearch } from '@/lib/utils';
 import { ScrollArea } from '../ui/scroll-area';
-import { useCollection, useFirestore } from '@/firebase';
-import { collection } from 'firebase/firestore';
+import { DB_MEDICAMENTOS } from '@/lib/data';
 import { useState } from 'react';
 
 // New Component for the search/comparison modal
 function DrugCompareModal({ currentDrugId }: { currentDrugId: string }) {
     const [open, setOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
-    const firestore = useFirestore();
-
-    const vademecumCollection = useMemo(() => collection(firestore, 'vademecum'), [firestore]);
-    const { data: allDrugs, isLoading } = useCollection<Drug>(vademecumCollection);
-
+    const allDrugs = DB_MEDICAMENTOS;
+    const isLoading = !allDrugs;
 
     const filteredDrugs = useMemo(() => {
         if (!allDrugs) return [];
@@ -138,8 +134,8 @@ export function VademecumDetail({ drug }: { drug: Drug | null }) {
                     <div className="space-y-6">
                         <PinterestCard>
                             <h3 className="text-sm font-black text-accent uppercase tracking-widest mb-4 flex items-center gap-2"><Zap size={16} className="text-accent"/> Farmacología</h3>
-                            <p className="text-sm text-slate-300 mb-4">{drug.farmacologia_clinica.mecanismo_accion}</p>
-                            {drug.farmacologia_clinica.farmacocinetica.datos_especie && Object.entries(drug.farmacologia_clinica.farmacocinetica.datos_especie).map(([esp, data]) => (
+                            <p className="text-sm text-slate-300 mb-4">{ (drug.farmacologia_clinica.farmacocinetica as any).general || drug.farmacologia_clinica.mecanismo_accion }</p>
+                            {drug.farmacologia_clinica.farmacocinetica && typeof drug.farmacologia_clinica.farmacocinetica === 'object' && drug.farmacologia_clinica.farmacocinetica.datos_especie && Object.entries(drug.farmacologia_clinica.farmacocinetica.datos_especie).map(([esp, data]) => (
                                 <div key={esp} className="mb-2 bg-white/5 p-3 rounded-lg">
                                     <p className="text-xs font-bold text-white capitalize mb-1">{esp}:</p>
                                     <p className="text-xs text-slate-300">{data as string}</p>
@@ -151,7 +147,7 @@ export function VademecumDetail({ drug }: { drug: Drug | null }) {
                             <h3 className="text-sm font-black text-pink-400 uppercase tracking-widest mb-4 flex items-center gap-2"><AlertOctagon size={16} className="text-pink-400"/> Sobredosis</h3>
                             <p className="text-sm text-slate-300 mb-2"><strong>Signos:</strong> {drug.seguridad_y_alertas.sobredosis.signos.join(", ")}</p>
                             <p className="text-sm text-slate-300 mb-2"><strong>Tratamiento:</strong> {drug.seguridad_y_alertas.sobredosis.tratamiento}</p>
-                            {drug.seguridad_y_alertas.sobredosis.contraindicado_en_urgencia.length > 0 && (
+                            {drug.seguridad_y_alertas.sobredosis.contraindicado_en_urgencia && drug.seguridad_y_alertas.sobredosis.contraindicado_en_urgencia.length > 0 && (
                                 <p className="text-xs font-bold text-red-400 mt-2">⛔ PROHIBIDO: {drug.seguridad_y_alertas.sobredosis.contraindicado_en_urgencia.join(", ")}</p>
                             )}
                         </PinterestCard>
@@ -174,13 +170,15 @@ export function VademecumDetail({ drug }: { drug: Drug | null }) {
                             </div>
                         </PinterestCard>
 
-                        <div className="bg-blue-500/10 border border-blue-500/20 p-6 rounded-4xl">
-                            <h3 className="text-sm font-black text-blue-400 uppercase tracking-widest mb-4 flex items-center gap-2"><Shield size={16} className="text-blue-400"/> Reproducción</h3>
-                            <div className="grid grid-cols-2 gap-4">
-                                <div><p className="text-xs text-blue-300 font-bold">Gestación</p><p className="text-xs text-slate-400">{drug.seguridad_y_alertas.seguridad_reproductiva.gestacion}</p></div>
-                                <div><p className="text-xs text-blue-300 font-bold">Lactancia</p><p className="text-xs text-slate-400">{drug.seguridad_y_alertas.seguridad_reproductiva.lactancia}</p></div>
-                            </div>
-                        </div>
+                        {drug.seguridad_y_alertas.seguridad_reproductiva &&
+                          <div className="bg-blue-500/10 border border-blue-500/20 p-6 rounded-4xl">
+                              <h3 className="text-sm font-black text-blue-400 uppercase tracking-widest mb-4 flex items-center gap-2"><Shield size={16} className="text-blue-400"/> Reproducción</h3>
+                              <div className="grid grid-cols-2 gap-4">
+                                  <div><p className="text-xs text-blue-300 font-bold">Gestación</p><p className="text-xs text-slate-400">{drug.seguridad_y_alertas.seguridad_reproductiva.gestacion}</p></div>
+                                  <div><p className="text-xs text-blue-300 font-bold">Lactancia</p><p className="text-xs text-slate-400">{drug.seguridad_y_alertas.seguridad_reproductiva.lactancia}</p></div>
+                              </div>
+                          </div>
+                        }
 
                         <PinterestCard><h3 className="text-sm font-black text-yellow-400 uppercase tracking-widest mb-4 flex items-center gap-2"><AlertOctagon size={16} className="text-yellow-400"/> Interacciones</h3>
                              <ul className="space-y-2">
@@ -245,4 +243,3 @@ export function VademecumDetail({ drug }: { drug: Drug | null }) {
       </div>
   );
 };
-    

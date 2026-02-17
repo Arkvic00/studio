@@ -5,7 +5,6 @@ import {
   Baby,
   BookOpen,
   Calculator,
-  CloudCog,
   DollarSign,
   Droplet,
   HeartPulse,
@@ -30,7 +29,6 @@ const navItems = [
   { id: 'costos', label: 'Costos', icon: DollarSign, color: 'text-green-400', bg: 'bg-green-500/10' },
   { id: 'constantes', label: 'Constantes', icon: Thermometer, color: 'text-yellow-400', bg: 'bg-yellow-500/10' },
   { id: 'vacunacion', label: 'Vacunación', icon: Syringe, color: 'text-cyan-400', bg: 'bg-cyan-500/10' },
-  { id: 'sync-vademecum', label: 'Sincronizar Vademécum', icon: CloudCog, color: 'text-gray-400', bg: 'bg-gray-500/10' },
 ];
 
 interface SidebarProps {
@@ -106,4 +104,3 @@ export function Sidebar({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) {
     </div>
   );
 }
-    

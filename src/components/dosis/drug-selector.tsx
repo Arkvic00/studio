@@ -4,9 +4,7 @@ import { Search, ChevronDown, Loader2 } from 'lucide-react';
 import { fuzzySearch } from '@/lib/utils';
 import type { Drug } from '@/lib/types';
 import { Badge } from '@/components/ui/badge';
-import { useCollection } from '@/firebase';
-import { collection, query, where } from 'firebase/firestore';
-import { useFirestore } from '@/firebase/provider';
+import { DB_MEDICAMENTOS } from '@/lib/data';
 import { Skeleton } from '../ui/skeleton';
 
 interface DrugSelectorProps {
@@ -23,11 +21,9 @@ export function DrugSelector({
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const firestore = useFirestore();
-
-  // Fetch all drugs from the 'vademecum' collection
-  const vademecumCollection = useMemo(() => collection(firestore, 'vademecum'), [firestore]);
-  const { data: allDrugs, isLoading } = useCollection<Drug>(vademecumCollection);
+  
+  const allDrugs = DB_MEDICAMENTOS;
+  const isLoading = !allDrugs;
 
   const filteredDrugs = useMemo(() => {
     if (!allDrugs) return [];
@@ -142,4 +138,3 @@ export function DrugSelector({
     </div>
   );
 }
-    

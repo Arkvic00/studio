@@ -17,19 +17,15 @@ import type { Drug, ExoticSpeciesData } from '@/lib/types';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from '../ui/badge';
-import { useCollection } from '@/firebase';
-import { collection } from 'firebase/firestore';
-import { useFirestore } from '@/firebase/provider';
 import { Skeleton } from '../ui/skeleton';
+import { DB_MEDICAMENTOS } from '@/lib/data';
 
 // Sub-component for Fármacos list
 function DrugList() {
     const { drugImages, triggerUpload } = useAppContext();
     const [searchTerm, setSearchTerm] = useState('');
-    const firestore = useFirestore();
-
-    const vademecumCollection = useMemo(() => collection(firestore, 'vademecum'), [firestore]);
-    const { data: allDrugs, isLoading } = useCollection<Drug>(vademecumCollection);
+    const allDrugs = DB_MEDICAMENTOS;
+    const isLoading = !allDrugs;
 
     const filteredDrugs = useMemo(() => {
         if (!allDrugs) return [];
@@ -416,4 +412,3 @@ export function VademecumList() {
         </div>
     );
 }
-    
