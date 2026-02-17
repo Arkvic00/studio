@@ -129,8 +129,9 @@ const exoticSpecies = exoticSpeciesOrder.map(key => ({
 }));
 
 const iconMap: { [key: string]: React.ElementType } = {
-    Calendar, HeartPulse, AlertCircle, Utensils, Atom, Snowflake, Users, VenetianMask, Info, Home, Ban, Hand, Syringe,
-    FlaskConical, Stethoscope, Microscope, TestTube, Dna, Bone, Shield, Pill, Bug, TriangleAlert, Beaker, Droplet, Brain, Thermometer, Baby
+    Calendar, HeartPulse, AlertCircle, Utensils, Atom, Snowflake, Users, 
+    VenetianMask, Info, Home, Ban, Hand, Syringe, FlaskConical, Stethoscope, Microscope, TestTube, Dna, Bone, Shield, 
+    Pill, Bug, TriangleAlert, Beaker, Droplet, Brain, Thermometer, Baby
 };
 
 function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
@@ -286,15 +287,18 @@ function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
                   
                           {(content.critical_points || content.anesthesia_risks) && (
                               <div className="space-y-4">
-                                  {content.critical_points?.map((item:any, i: number) => (
-                                      <div key={i} className="flex gap-3 items-start bg-card p-4 rounded-xl border border-border">
-                                          <div className="p-2 bg-background rounded-md"><ItemIcon size={20} className={cn("flex-shrink-0", item.isCritical ? "text-destructive" : "text-accent")} /></div>
-                                          <div>
-                                              <h4 className="font-bold text-white">{item.title}</h4>
-                                              <p className="text-xs text-slate-300">{item.text}</p>
-                                          </div>
-                                      </div>
-                                  ))}
+                                  {content.critical_points?.map((item:any, i: number) => {
+                                      const ItemIcon = iconMap[item.icon as string] || TriangleAlert;
+                                      return (
+                                        <div key={i} className="flex gap-3 items-start bg-card p-4 rounded-xl border border-border">
+                                            <div className="p-2 bg-background rounded-md"><ItemIcon size={20} className={cn("flex-shrink-0", item.isCritical ? "text-destructive" : "text-accent")} /></div>
+                                            <div>
+                                                <h4 className="font-bold text-white">{item.title}</h4>
+                                                <p className="text-xs text-slate-300">{item.text}</p>
+                                            </div>
+                                        </div>
+                                      )
+                                  })}
                                   {content.anesthesia_risks?.map((item:any, i: number) => (
                                       <div key={i} className="p-3 bg-card rounded-xl border border-border text-sm text-slate-300">{item.text}</div>
                                   ))}
