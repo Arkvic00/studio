@@ -14,7 +14,7 @@ import { z } from 'genkit';
  */
 
 // Define the schema for a single message and the conversation history
-export const MessageSchema = z.object({
+const MessageSchema = z.object({
   role: z.enum(['user', 'model']),
   content: z.string(),
 });
