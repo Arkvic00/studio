@@ -3,10 +3,12 @@ import { useState } from 'react';
 import { PinterestCard } from '@/components/ui/pinterest-card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Bot, Lightbulb, Zap } from 'lucide-react';
+import { Bot, Zap, HelpCircle, Shuffle, Pill, CheckCircle2, XCircle } from 'lucide-react';
 import { DxAssistantInput, DxAssistantOutput, dxAssistantFlow } from '@/ai/flows/dx-assistant-flow';
 import { Skeleton } from '../ui/skeleton';
 import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { cn } from '@/lib/utils';
 
 const speciesOptions = ["Perro", "Gato", "Caballo", "Bovino", "Conejo", "Hurón", "Cerdo", "Ovino/Caprino", "Ave"];
 
@@ -84,18 +86,19 @@ export function DxAssistantView() {
                  <PinterestCard className="mt-8">
                     <div className="space-y-6">
                        <div>
-                          <Skeleton className="h-6 w-1/3 mb-4" />
-                           <div className="space-y-3">
-                            <Skeleton className="h-12 w-full" />
-                            <Skeleton className="h-12 w-full" />
-                            <Skeleton className="h-12 w-full" />
-                           </div>
-                       </div>
-                        <div>
-                          <Skeleton className="h-6 w-1/4 mt-6 mb-4" />
-                           <div className="space-y-3">
-                            <Skeleton className="h-5 w-4/5" />
-                             <Skeleton className="h-5 w-3/5" />
+                          <Skeleton className="h-8 w-1/3 mb-6" />
+                           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                               <div className="space-y-3">
+                                    <Skeleton className="h-6 w-1/2 mb-4" />
+                                    <Skeleton className="h-5 w-full" />
+                                    <Skeleton className="h-5 w-full" />
+                                    <Skeleton className="h-5 w-4/5" />
+                               </div>
+                                <div className="space-y-3">
+                                    <Skeleton className="h-12 w-full" />
+                                    <Skeleton className="h-12 w-full" />
+                                    <Skeleton className="h-12 w-full" />
+                                </div>
                            </div>
                        </div>
                     </div>
@@ -110,28 +113,80 @@ export function DxAssistantView() {
             }
 
             {result && (
-                <PinterestCard className="mt-8 animate-in fade-in duration-500">
-                    <h3 className="text-xl font-black text-white mb-6">Resultados del Asistente</h3>
-                    <div className="space-y-8">
-                        <div>
-                            <h4 className="text-lg font-bold text-red-400 mb-4 flex items-center gap-2"><Lightbulb /> Diagnósticos Diferenciales</h4>
-                            <div className="space-y-4">
-                                {result.differentials.map((d, i) => (
-                                    <div key={i} className="bg-card p-4 rounded-xl border border-border">
-                                        <p className="font-bold text-white">{i + 1}. {d.diagnosis}</p>
-                                        <p className="text-sm text-muted-foreground mt-1">{d.reasoning}</p>
-                                    </div>
-                                ))}
+                <div className="mt-8 animate-in fade-in duration-500 space-y-8">
+                    <h3 className="text-3xl font-black text-white text-center">Resultados del Asistente de Diagnóstico</h3>
+                    {result.differentials.map((d, i) => (
+                        <PinterestCard key={i} className="!p-8 border-l-4 border-red-500">
+                            <div className="flex justify-between items-start mb-6">
+                                <h4 className="text-3xl font-black text-red-400">{d.diagnosis}</h4>
+                                <div className="text-right flex-shrink-0 ml-4">
+                                    <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Coincidencia</p>
+                                    <p className="text-3xl font-extrabold text-white">{d.matchPercentage}%</p>
+                                </div>
                             </div>
-                        </div>
-                         <div>
-                            <h4 className="text-lg font-bold text-red-400 mb-4 flex items-center gap-2"><Bot /> Pasos Sugeridos</h4>
-                            <ul className="list-decimal pl-5 space-y-2 text-slate-300">
-                                {result.nextSteps.map((s, i) => <li key={i}>{s}</li>)}
-                            </ul>
-                        </div>
-                    </div>
-                </PinterestCard>
+
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
+                                {/* Left Column: Key Signs */}
+                                <div>
+                                    <h5 className="font-bold text-white mb-4 text-lg">Signos Clínicos Clave</h5>
+                                    <div className="space-y-3">
+                                        {d.keySigns.map((s, j) => (
+                                            <div key={j} className="flex items-center gap-3">
+                                                {s.isPresent ? (
+                                                    <CheckCircle2 size={20} className="text-green-400 flex-shrink-0" />
+                                                ) : (
+                                                    <XCircle size={20} className="text-red-500 flex-shrink-0" />
+                                                )}
+                                                <span className={cn("text-sm", s.isPresent ? "text-slate-200" : "text-slate-400")}>
+                                                    {s.sign}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Right Column: Accordions */}
+                                <Accordion type="single" collapsible className="w-full space-y-3">
+                                    <AccordionItem value="explanation" className="border-none bg-card rounded-2xl overflow-hidden">
+                                        <AccordionTrigger className="px-4 py-3 text-white font-bold text-sm hover:no-underline hover:bg-white/5 transition-colors">
+                                            <div className="flex items-center gap-3">
+                                                <HelpCircle size={18} className="text-blue-400" />
+                                                Explicación
+                                            </div>
+                                        </AccordionTrigger>
+                                        <AccordionContent className="px-4 pb-4 pt-0 text-sm text-slate-300">
+                                            <p>{d.explanation}</p>
+                                        </AccordionContent>
+                                    </AccordionItem>
+                                    
+                                    <AccordionItem value="etiology" className="border-none bg-card rounded-2xl overflow-hidden">
+                                        <AccordionTrigger className="px-4 py-3 text-white font-bold text-sm hover:no-underline hover:bg-white/5 transition-colors">
+                                            <div className="flex items-center gap-3">
+                                                <Shuffle size={18} className="text-purple-400" />
+                                                Etiología y Transmisión
+                                            </div>
+                                        </AccordionTrigger>
+                                        <AccordionContent className="px-4 pb-4 pt-0 text-sm text-slate-300">
+                                            <p>{d.etiology}</p>
+                                        </AccordionContent>
+                                    </AccordionItem>
+
+                                    <AccordionItem value="treatment" className="border-none bg-card rounded-2xl overflow-hidden">
+                                        <AccordionTrigger className="px-4 py-3 text-white font-bold text-sm hover:no-underline hover:bg-white/5 transition-colors">
+                                            <div className="flex items-center gap-3">
+                                                <Pill size={18} className="text-emerald-400" />
+                                                Tratamiento
+                                            </div>
+                                        </AccordionTrigger>
+                                        <AccordionContent className="px-4 pb-4 pt-0 text-sm text-slate-300">
+                                            <p>{d.treatment}</p>
+                                        </AccordionContent>
+                                    </AccordionItem>
+                                </Accordion>
+                            </div>
+                        </PinterestCard>
+                    ))}
+                </div>
             )}
         </div>
     );
