@@ -1,4 +1,3 @@
-'use client';
 import { EXOTICS_FORMULARY_DATA } from '@/lib/exotics-data';
 import { notFound } from 'next/navigation';
 import { PinterestCard } from '@/components/ui/pinterest-card';
