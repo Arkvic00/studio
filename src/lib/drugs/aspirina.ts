@@ -1,4 +1,3 @@
-
 import type { Drug } from '@/lib/types';
 
 export const aspirinaDrug: Drug = {
@@ -25,7 +24,7 @@ export const aspirinaDrug: Drug = {
     "informacion_cliente": [
       "NUNCA dar Tylenol (Acetaminofén) por error; la Aspirina es diferente pero también peligrosa si no se dosifica bien.",
       "Dar siempre con comida para proteger el estómago.",
-      "Si el animal vomita \"granos de café\" (sangre digerida) o tiene heces negras, suspender y llamar al veterinario.",
+      "Si el animal vomita \\"granos de café\\" (sangre digerida) o tiene heces negras, suspender y llamar al veterinario.",
       "En gatos, una sola dosis dura días; no repetir sin instrucción."
     ],
     "monitoreo_paciente": [
@@ -70,7 +69,7 @@ export const aspirinaDrug: Drug = {
             "texto_ui": "Cada 12 a 24 horas",
             "intervalo_horas": 24
           },
-          "notas_tecnicas": "Dosis \"ultra-baja\" (0.5 mg/kg) es efectiva para inhibir tromboxano sin afectar prostaciclina."
+          "notas_tecnicas": "Dosis \\"ultra-baja\\" (0.5 mg/kg) es efectiva para inhibir tromboxano sin afectar prostaciclina."
         }
       ],
       "gato": [
