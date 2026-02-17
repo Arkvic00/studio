@@ -57,7 +57,7 @@ export const betanecolDrug: Drug = {
         "vias": ["PO"],
         "math": {
           "tipo_calculo": "fija",
-          "dosis_recomendada": 2.5,
+          "dosis_recomendada": 3.125,
           "dosis_min": 1.25,
           "dosis_max": 5,
           "unidad_calculo": "mg/gato"

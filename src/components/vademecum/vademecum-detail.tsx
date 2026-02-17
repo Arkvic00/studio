@@ -12,6 +12,8 @@ import { fuzzySearch } from '@/lib/utils';
 import { ScrollArea } from '../ui/scroll-area';
 import { DB_MEDICAMENTOS } from '@/lib/data';
 import { useState } from 'react';
+import { notFound, useParams } from 'next/navigation';
+
 
 // New Component for the search/comparison modal
 function DrugCompareModal({ currentDrugId }: { currentDrugId: string }) {
@@ -103,11 +105,15 @@ function DrugCompareModal({ currentDrugId }: { currentDrugId: string }) {
     );
 }
 
-export function VademecumDetail({ drug }: { drug: Drug | null }) {
+export function VademecumDetail() {
+    const params = useParams();
+    const drugId = params.drugId as string;
 
-  if (!drug) {
-      return <div>Fármaco no encontrado.</div>;
-  }
+    const drug = DB_MEDICAMENTOS.find(d => d.id === drugId);
+
+    if (!drug) {
+        notFound();
+    }
 
   return (
     <div className="max-w-7xl mx-auto animate-in fade-in duration-500">
@@ -135,7 +141,7 @@ export function VademecumDetail({ drug }: { drug: Drug | null }) {
                         <PinterestCard>
                             <h3 className="text-sm font-black text-accent uppercase tracking-widest mb-4 flex items-center gap-2"><Zap size={16} className="text-accent"/> Farmacología</h3>
                             <p className="text-sm text-slate-300 mb-4">{ (drug.farmacologia_clinica.farmacocinetica as any).general || drug.farmacologia_clinica.mecanismo_accion }</p>
-                            {drug.farmacologia_clinica.farmacocinetica && typeof drug.farmacologia_clinica.farmacocinetica === 'object' && drug.farmacologia_clinica.farmacocinetica.datos_especie && Object.entries(drug.farmacologia_clinica.farmacocinetica.datos_especie).map(([esp, data]) => (
+                            {drug.farmacologia_clinica.farmacocinetica && typeof drug.farmacologia_clinica.farmacocinetica === 'object' && (drug.farmacologia_clinica.farmacocinetica as any).datos_especie && Object.entries((drug.farmacologia_clinica.farmacocinetica as any).datos_especie).map(([esp, data]) => (
                                 <div key={esp} className="mb-2 bg-white/5 p-3 rounded-lg">
                                     <p className="text-xs font-bold text-white capitalize mb-1">{esp}:</p>
                                     <p className="text-xs text-slate-300">{data as string}</p>
@@ -156,12 +162,14 @@ export function VademecumDetail({ drug }: { drug: Drug | null }) {
                     <div className="space-y-6">
                         <PinterestCard>
                             <h3 className="text-sm font-black text-orange-400 uppercase tracking-widest mb-4 flex items-center gap-2"><AlertOctagon size={16} className="text-orange-400"/> Precauciones y Adversos</h3>
+                            {drug.seguridad_y_alertas.precauciones &&
                             <div className="mb-4">
                                 <p className="text-xs font-bold text-muted-foreground uppercase mb-2">Precauciones</p>
                                 <ul className="list-disc pl-4 space-y-1 text-sm text-slate-300">
                                     {drug.seguridad_y_alertas.precauciones.map((p,i) => <li key={i}>{p}</li>)}
                                 </ul>
                             </div>
+                            }
                             <div>
                                 <p className="text-xs font-bold text-muted-foreground uppercase mb-2">Efectos Adversos</p>
                                 <ul className="list-disc pl-4 space-y-1 text-sm text-slate-300">

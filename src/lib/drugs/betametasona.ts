@@ -59,6 +59,7 @@ export const betametasonaDrug: Drug = {
         "vias": ["Intraarticular"],
         "math": {
           "tipo_calculo": "fija",
+          "dosis_recomendada": 9,
           "dosis_min": 3,
           "dosis_max": 15,
           "unidad_calculo": "mg/articulación"

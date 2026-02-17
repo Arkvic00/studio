@@ -20,7 +20,7 @@ export interface DrugImage {
 
 interface MathParams {
   tipo_calculo: 'fija' | 'mg_kg';
-  dosis_recomendada?: number;
+  dosis_recomendada?: number | null;
   dosis_min?: number | null;
   dosis_max?: number | null;
   tope_maximo_mg?: number | null;
@@ -75,7 +75,7 @@ export interface Drug {
   };
   seguridad_y_alertas: {
     contraindicaciones: string[];
-    precauciones: string[];
+    precauciones?: string[];
     efectos_adversos: string[];
     seguridad_reproductiva?: {
       gestacion: string;
@@ -159,6 +159,7 @@ export interface ExoticSpeciesData {
     sections: {
         [key: string]: {
             title: string;
+            icon: string;
             content: any;
         }
     }

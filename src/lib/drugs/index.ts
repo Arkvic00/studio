@@ -62,6 +62,8 @@ import { buprenorfinaDrug } from './buprenorfina';
 import { buspironaDrug } from './buspirona';
 import { butorfanolDrug } from './butorfanol';
 import { butilescopolaminaDrug } from './butilescopolamina';
+import { cabergolinaDrug } from './cabergolina';
+
 
 export const DB_MEDICAMENTOS = [
   acarbosaDrug,
@@ -128,4 +130,5 @@ export const DB_MEDICAMENTOS = [
   buspironaDrug,
   butorfanolDrug,
   butilescopolaminaDrug,
+  cabergolinaDrug,
 ];

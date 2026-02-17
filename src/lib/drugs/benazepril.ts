@@ -43,7 +43,7 @@ export const benazeprilDrug: Drug = {
         "vias": ["PO"],
         "math": {
           "tipo_calculo": "mg_kg",
-          "dosis_recomendada": 0.5,
+          "dosis_recomendada": 0.375,
           "dosis_min": 0.25,
           "dosis_max": 0.5,
           "unidad_calculo": "mg/kg"
@@ -60,7 +60,7 @@ export const benazeprilDrug: Drug = {
         "vias": ["PO"],
         "math": {
           "tipo_calculo": "mg_kg",
-          "dosis_recomendada": 0.5,
+          "dosis_recomendada": 0.75,
           "dosis_min": 0.5,
           "dosis_max": 1.0,
           "unidad_calculo": "mg/kg"

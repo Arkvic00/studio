@@ -1,8 +1,7 @@
-import type { Drug, Constante, Vacuna, GestationData, ReptileVariant } from './types';
+import type { Constante, Vacuna, GestationData, ReptileVariant } from './types';
 import { DB_MEDICAMENTOS as drugs } from './drugs';
 
-export const DB_MEDICAMENTOS: Drug[] = drugs;
-
+export const DB_MEDICAMENTOS = drugs;
 
 export const SPECIES_ICONS: { [key: string]: string } = { 
     'perro': '🐶', 'gato': '🐱', 'caballo': '🐴', 'bovino': '🐮', 
