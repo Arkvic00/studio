@@ -1,11 +1,102 @@
 'use client';
-import { useState } from 'react';
-import { Zap, AlertOctagon, Shield, Calculator, FileText, GitCompareArrows } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { Zap, AlertOctagon, Shield, Calculator, FileText, GitCompareArrows, Search } from 'lucide-react';
 import { PinterestCard } from '@/components/ui/pinterest-card';
 import { Badge } from '@/components/ui/badge';
 import { getSpeciesInfo } from '@/lib/config';
 import type { Drug } from '@/lib/types';
 import { Button } from '../ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { DB_MEDICAMENTOS } from '@/lib/data';
+import { fuzzySearch } from '@/lib/utils';
+import { ScrollArea } from '../ui/scroll-area';
+
+// New Component for the search/comparison modal
+function DrugCompareModal({ currentDrugId }: { currentDrugId: string }) {
+    const [open, setOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const filteredDrugs = useMemo(() => {
+        // Exclude the current drug from the list and filter by search term
+        const otherDrugs = DB_MEDICAMENTOS.filter(d => d.id !== currentDrugId);
+
+        if (!searchTerm.trim()) {
+            return otherDrugs;
+        }
+
+        return otherDrugs.filter(drug => {
+            const q = searchTerm.toLowerCase();
+            const matchName = fuzzySearch(searchTerm, drug.meta_data.nombre_generico);
+            const matchCommercial = drug.meta_data.nombres_comerciales.some(n => fuzzySearch(searchTerm, n));
+            const matchFamily = drug.meta_data.grupo_farmacologico.toLowerCase().includes(q);
+            return matchName || matchCommercial || matchFamily;
+        });
+    }, [searchTerm, currentDrugId]);
+
+    // For now, selecting a drug will just close the modal.
+    // The next step is to build the comparison view.
+    const handleSelectDrug = (drug: Drug) => {
+        console.log("Compare", currentDrugId, "with", drug.id);
+        setOpen(false); 
+    };
+
+    return (
+        <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild>
+                <Button variant="outline" size="lg">
+                    <GitCompareArrows size={20} className="mr-2"/>
+                    Comparar Fármaco
+                </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-2xl bg-popover p-0">
+                <DialogHeader className="p-6 pb-4">
+                    <DialogTitle>Comparar con...</DialogTitle>
+                </DialogHeader>
+                <div className="px-6 pb-6 border-b border-border">
+                     <div className="relative">
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
+                        <Input
+                            type="text"
+                            placeholder="Buscar otro fármaco..."
+                            className="w-full bg-background pl-12"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                    </div>
+                </div>
+                <ScrollArea className="max-h-[60vh]">
+                    <div className="p-6 pt-0">
+                    {filteredDrugs.map((drug) => (
+                        <div
+                            key={drug.id}
+                            onClick={() => handleSelectDrug(drug)}
+                            className="p-4 -mx-4 rounded-lg hover:bg-secondary cursor-pointer border-b border-transparent last:border-0 transition-colors group"
+                        >
+                            <div className="flex justify-between items-center">
+                                <h4 className="text-foreground font-bold text-base group-hover:text-primary transition-colors">
+                                    {drug.meta_data.nombre_generico}
+                                </h4>
+                                <Badge variant="secondary" className="text-[9px]">
+                                    {drug.meta_data.grupo_farmacologico.split(',')[0]}
+                                </Badge>
+                            </div>
+                            <p className="text-xs text-muted-foreground mt-1">
+                                {drug.meta_data.nombres_comerciales.join(', ')}
+                            </p>
+                        </div>
+                    ))}
+                    {filteredDrugs.length === 0 && (
+                        <div className="text-center py-10 text-muted-foreground text-sm">
+                            No se encontraron fármacos.
+                        </div>
+                    )}
+                    </div>
+                </ScrollArea>
+            </DialogContent>
+        </Dialog>
+    );
+}
 
 export function VademecumDetail({ drug }: { drug: Drug }) {
 
@@ -23,10 +114,7 @@ export function VademecumDetail({ drug }: { drug: Drug }) {
                               <h1 className="text-5xl md:text-7xl font-black text-white mb-2 tracking-tighter">{drug.meta_data.nombre_generico}</h1>
                               <p className="text-lg text-muted-foreground font-medium italic">{drug.meta_data.nombres_comerciales.join(" • ")}</p>
                           </div>
-                           <Button variant="outline" size="lg" disabled>
-                                <GitCompareArrows size={20} className="mr-2"/>
-                                Comparar Fármaco
-                            </Button>
+                           <DrugCompareModal currentDrugId={drug.id} />
                       </div>
                   </PinterestCard>
               </div>
