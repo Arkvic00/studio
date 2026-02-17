@@ -1,4 +1,3 @@
-
 'use client';
 import React, { useState, useEffect, useMemo } from 'react';
 import { Droplet, HelpCircle, Activity, Settings, Timer, Beaker } from 'lucide-react';
@@ -160,7 +159,7 @@ export function FluidCalculator() {
                   <div className="text-center space-y-6 relative z-10">
                       <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20">Velocidad Infusión</Badge>
                       <div><h3 className="text-8xl font-black text-white tracking-tighter drop-shadow-2xl">{results.mlHr.toFixed(1)}</h3><p className="text-muted-foreground font-bold uppercase text-xs tracking-[0.3em] mt-2">ml / hora</p></div>
-                      <div className="grid grid-cols-2 gap-4 pt-6 border-t border-border"><div><p className="text-[10px] font-black text-muted-foreground uppercase mb-1">Gotas/min</p><p className="text-2xl font-bold text-white">{results.gtsMin.toFixed(0)}</p></div><div><p className="text-[10px] font-black text-muted-foreground uppercase mb-1">Intervalo</p><p className="text-2xl font-bold text-blue-400">1 c/{results.segGota.toFixed(1)}s</p></div></div>
+                      <div className="grid grid-cols-2 gap-4 pt-6 border-t border-border"><div><p className="text-[10px] font-black text-muted-foreground uppercase mb-1">Gotas/min</p><p className="text-2xl font-bold text-white">{results.gtsMin.toFixed(0)}</p></div><div><p className="text-[10px] font-black text-muted-foreground uppercase mb-1">Intervalo</p><p className="text-2xl font-bold text-blue-400">1 gota c/{results.segGota.toFixed(1)}s</p></div></div>
                   </div>
                 </PinterestCard>
                 <PinterestCard color="bg-emerald-500/10" className="border-emerald-500/20">
