@@ -69,7 +69,7 @@ export const aspirinaDrug: Drug = {
             "texto_ui": "Cada 12 a 24 horas",
             "intervalo_horas": 24
           },
-          "notas_tecnicas": "Dosis \"ultra-baja\" (0.5 mg/kg) es efectiva para inhibir tromboxano sin afectar prostaciclina."
+          "notas_tecnicas": "Dosis 'ultra-baja' (0.5 mg/kg) es efectiva para inhibir tromboxano sin afectar prostaciclina."
         }
       ],
       "gato": [

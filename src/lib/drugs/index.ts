@@ -47,6 +47,21 @@ import { atropinaSulfatoDrug } from './atropina_sulfato';
 import { auranofinaDrug } from './auranofina';
 import { azatioprinaDrug } from './azatioprina';
 import { azitromicinaDrug } from './azitromicina';
+import { benazeprilDrug } from './benazepril';
+import { betametasonaDrug } from './betametasona';
+import { betanecolDrug } from './betanecol';
+import { bisacodiloDrug } from './bisacodilo';
+import { bismutoSubsalicilatoDrug } from './subsalicilato_bismuto';
+import { bleomicinaDrug } from './bleomicina';
+import { bromuroPotasioSodioDrug } from './bromuro_potasio_sodio';
+import { bromocriptinaDrug } from './bromocriptina';
+import { budesonidaDrug } from './budesonida';
+import { bupivacainaDrug } from './bupivacaina';
+import { bupivacainaLiposomalDrug } from './bupivacaina_liposomal';
+import { buprenorfinaDrug } from './buprenorfina';
+import { buspironaDrug } from './buspirona';
+import { butorfanolDrug } from './butorfanol';
+import { butilescopolaminaDrug } from './butilescopolamina';
 
 export const DB_MEDICAMENTOS = [
   acarbosaDrug,
@@ -98,4 +113,19 @@ export const DB_MEDICAMENTOS = [
   auranofinaDrug,
   azatioprinaDrug,
   azitromicinaDrug,
+  benazeprilDrug,
+  betametasonaDrug,
+  betanecolDrug,
+  bisacodiloDrug,
+  bismutoSubsalicilatoDrug,
+  bleomicinaDrug,
+  bromuroPotasioSodioDrug,
+  bromocriptinaDrug,
+  budesonidaDrug,
+  bupivacainaDrug,
+  bupivacainaLiposomalDrug,
+  buprenorfinaDrug,
+  buspironaDrug,
+  butorfanolDrug,
+  butilescopolaminaDrug,
 ];
