@@ -14,6 +14,7 @@ const TABS: { [key: string]: string } = {
   '/fluidoterapia': 'Fluidoterapia',
   '/nutricion': 'Cálculo Nutrición',
   '/asistente-dx': 'Asistente DX',
+  '/clinical-trainer': 'Entrenador Clínico',
   '/gestacion': 'Gestación',
   '/transfusion': 'Transfusión',
   '/costos': 'Costos',
