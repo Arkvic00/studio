@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { AppProvider } from '@/contexts/app-context';
 import { AppShell } from '@/components/layout/app-shell';
 import { Toaster } from '@/components/ui/toaster';
+import { FirebaseClientProvider } from '@/firebase';
 
 const fontInter = Inter({
   subsets: ['latin'],
@@ -35,9 +36,11 @@ export default function RootLayout({
           fontSourceCodePro.variable
         )}
       >
-        <AppProvider>
-          <AppShell>{children}</AppShell>
-        </AppProvider>
+        <FirebaseClientProvider>
+          <AppProvider>
+            <AppShell>{children}</AppShell>
+          </AppProvider>
+        </FirebaseClientProvider>
         <Toaster />
       </body>
     </html>
