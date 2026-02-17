@@ -20,10 +20,10 @@ export interface DrugImage {
 
 interface MathParams {
   tipo_calculo: 'fija' | 'mg_kg';
-  dosis_recomendada: number;
-  dosis_min: number | null;
-  dosis_max: number | null;
-  tope_maximo_mg: number | null;
+  dosis_recomendada?: number;
+  dosis_min?: number | null;
+  dosis_max?: number | null;
+  tope_maximo_mg?: number | null;
   unidad_calculo: string;
 }
 
@@ -36,9 +36,9 @@ interface Dosis {
   indicacion: string;
   vias: string[] | string;
   math: MathParams;
-  frecuencia: Frecuencia;
-  duracion_tratamiento: string;
-  notas_tecnicas: string;
+  frecuencia?: Frecuencia;
+  duracion_tratamiento?: string;
+  notas_tecnicas?: string;
 }
 
 interface Interaccion {
@@ -68,6 +68,8 @@ export interface Drug {
     usos_principales: string;
   };
   informacion_cliente: string[];
+  monitoreo_paciente?: string[];
+  interferencia_laboratorio?: string[];
   parametros_dosificacion: {
     [key: string]: Dosis[];
   };
@@ -75,27 +77,27 @@ export interface Drug {
     contraindicaciones: string[];
     precauciones: string[];
     efectos_adversos: string[];
-    seguridad_reproductiva: {
+    seguridad_reproductiva?: {
       gestacion: string;
       lactancia: string;
     };
     sobredosis: {
       signos: string[];
       tratamiento: string;
-      contraindicado_en_urgencia: string[];
+      contraindicado_en_urgencia?: string[];
     };
     interacciones_farmacologicas: Interaccion[];
   };
   farmacologia_clinica: {
     mecanismo_accion: string;
-    farmacocinetica: {
+    farmacocinetica: string | {
       general: string;
       datos_especie: {
         [key: string]: any;
       };
     };
   };
-  propiedades_fisicoquimicas: {
+  propiedades_fisicoquimicas?: {
     descripcion: string;
     almacenamiento: string;
     compatibilidad: {
