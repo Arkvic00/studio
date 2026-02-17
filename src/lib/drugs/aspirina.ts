@@ -1,3 +1,4 @@
+
 import type { Drug } from '@/lib/types';
 
 export const aspirinaDrug: Drug = {
