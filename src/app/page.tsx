@@ -1,3 +1,15 @@
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { SplashScreen } from '@/components/splash-screen';
+
 export default function Home() {
-  return <></>;
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace('/dosis');
+  }, [router]);
+
+  return <SplashScreen onFinish={() => {}} />;
 }
