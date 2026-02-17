@@ -43,7 +43,7 @@ export function Sidebar({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) {
     <>
       <div className="flex justify-between items-start mb-12">
         <div>
-          <h1 className="text-3xl font-black text-white tracking-tighter leading-none mb-2">DOSIS <br/><span className="text-destructive">PERRONAS</span></h1>
+          <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tighter leading-none mb-2">DOSIS <br/><span className="text-destructive">PERRONAS</span></h1>
           <p className="text-[12px] font-bold text-slate-500 uppercase tracking-widest">By: Arturo Alvarado</p>
         </div>
         <button onClick={() => setIsSidebarOpen(false)} className="p-2 bg-white/5 rounded-full hover:bg-white/10 text-muted-foreground hover:text-white transition-colors">
@@ -59,7 +59,7 @@ export function Sidebar({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) {
                 href={`/${item.id}`}
                 onClick={() => setIsSidebarOpen(false)}
                 className={cn(
-                    'w-full p-4 rounded-2xl flex items-center gap-4 transition-all group',
+                    'w-full p-3 rounded-2xl flex items-center gap-3 transition-all group',
                     isActive ? `${item.bg} border border-white/5 shadow-lg` : 'hover:bg-white/5'
                 )}
               >
@@ -95,7 +95,7 @@ export function Sidebar({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) {
         />
         <aside 
             className={cn(
-                'absolute top-0 left-0 h-full w-80 bg-background p-10 shadow-2xl border-r border-border flex flex-col transition-transform duration-300 ease-in-out',
+                'absolute top-0 left-0 h-full w-4/5 sm:w-72 bg-background p-6 shadow-2xl border-r border-border flex flex-col transition-transform duration-300 ease-in-out',
                 isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
             )}
         >

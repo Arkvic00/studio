@@ -48,7 +48,7 @@ export function NutritionCalculator() {
                         <GlassInput label="Peso (kg)" type="number" value={weight} onChange={setWeight} />
                         <div className="space-y-2"><label className="text-[11px] font-bold text-slate-400 uppercase ml-2">Factor</label><select value={factor} onChange={e=>setFactor(parseFloat(e.target.value))} className="w-full bg-card rounded-2xl p-4 text-white font-bold outline-none border-2 border-transparent focus:border-orange-500/30"><option value="1.0">RER (Reposo)</option><option value="1.2">Cirugía Leve</option><option value="1.4">Trauma / Sepsis</option><option value="1.6">Crecimiento / Lactancia</option></select></div>
                     </div>
-                    <div className="bg-card p-8 rounded-4xl border border-border flex flex-col justify-center text-center"><p className="text-[10px] font-black text-orange-400 uppercase tracking-widest mb-2">Total Diario</p><p className="text-6xl font-black text-white">{rerResult}</p><p className="text-sm font-bold text-muted-foreground mt-2 uppercase">kcal / día</p></div>
+                    <div className="bg-card p-8 rounded-4xl border border-border flex flex-col justify-center text-center"><p className="text-[10px] font-black text-orange-400 uppercase tracking-widest mb-2">Total Diario</p><p className="text-5xl sm:text-6xl font-black text-white">{rerResult}</p><p className="text-sm font-bold text-muted-foreground mt-2 uppercase">kcal / día</p></div>
                 </div>
                 </div>
             )}
@@ -60,7 +60,7 @@ export function NutritionCalculator() {
                         <div className="space-y-4">
                             <GlassInput label="Peso Objetivo (kg)" type="number" value={targetWeight} onChange={setTargetWeight} />
                             <div className="text-center pt-4 border-t border-border">
-                                <p className="text-3xl font-black text-white">{weightLossResult}</p>
+                                <p className="text-2xl sm:text-3xl font-black text-white">{weightLossResult}</p>
                                 <p className="text-[10px] text-muted-foreground font-bold uppercase">Kcal/día para reducir</p>
                             </div>
                         </div>
@@ -73,7 +73,7 @@ export function NutritionCalculator() {
                                 <GlassInput label="Humedad %" type="number" value={foodMoisture} onChange={setFoodMoisture} />
                             </div>
                             <div className="text-center pt-4 border-t border-border">
-                                <p className="text-3xl font-black text-white">{waterResult} ml</p>
+                                <p className="text-2xl sm:text-3xl font-black text-white">{waterResult} ml</p>
                                 <p className="text-[10px] text-muted-foreground font-bold uppercase">Agua ingerida</p>
                             </div>
                         </div>

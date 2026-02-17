@@ -49,7 +49,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       
       <button 
         onClick={() => setIsSidebarOpen(true)} 
-        className="fixed top-8 left-8 z-50 p-4 bg-secondary/90 backdrop-blur-xl border border-border rounded-full text-muted-foreground hover:text-white hover:bg-primary/20 hover:border-primary/50 transition-all shadow-xl group"
+        className="fixed top-6 left-6 z-50 p-3 bg-secondary/90 backdrop-blur-xl border border-border rounded-full text-muted-foreground hover:text-white hover:bg-primary/20 hover:border-primary/50 transition-all shadow-xl group"
       >
         <Menu size={24} className="group-hover:scale-110 transition-transform" />
       </button>
@@ -58,7 +58,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         "flex-1 relative z-10 p-4 md:p-8 lg:p-12 overflow-y-auto custom-scrollbar transition-all duration-300",
         isSidebarOpen ? "blur-sm scale-[0.98] brightness-50" : ""
         )}>
-        <div className={cn("pt-12 md:pt-0", isSidebarOpen ? 'pointer-events-none' : '')}>
+        <div className={cn("pt-20 md:pt-0", isSidebarOpen ? 'pointer-events-none' : '')}>
             <Header 
               activeTabLabel={activeTabLabel}
             />

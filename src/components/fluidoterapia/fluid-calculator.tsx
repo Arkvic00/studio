@@ -50,7 +50,7 @@ export function FluidCalculator() {
         const cD = parseFloat(dilutionParams.drugConc) || 0;
         const cF = parseFloat(dilutionParams.desiredConc) || 0;
 
-        if (vF > 0 && cD > 0 && cF > 0 && cD >= cF) {
+        if (vF > 0 && cD > 0 && cD >= cF) {
             const drugVol = (vF * cF) / cD;
             const diluentVol = vF - drugVol;
             return { drugVol: drugVol.toFixed(2), diluentVol: diluentVol.toFixed(2) };
@@ -62,7 +62,7 @@ export function FluidCalculator() {
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div className="lg:col-span-7 space-y-6">
         <PinterestCard>
-            <div className="flex gap-4 mb-6 border-b border-border pb-4">
+            <div className="flex gap-4 mb-6 border-b border-border pb-4 overflow-x-auto">
                 <button onClick={() => setActiveTab('maintenance')} className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'maintenance' ? 'bg-blue-600 text-white' : 'text-muted-foreground hover:text-white'}`}>Reposición</button>
                 <button onClick={() => setActiveTab('cri')} className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'cri' ? 'bg-purple-600 text-white' : 'text-muted-foreground hover:text-white'}`}>Infusión Continua (CRI)</button>
                 <button onClick={() => setActiveTab('dilution')} className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeTab === 'dilution' ? 'bg-teal-600 text-white' : 'text-muted-foreground hover:text-white'}`}>Diluciones</button>
@@ -158,20 +158,20 @@ export function FluidCalculator() {
                 <PinterestCard color="bg-card" className="relative overflow-hidden border-2 border-blue-500/20">
                   <div className="text-center space-y-6 relative z-10">
                       <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20">Velocidad Infusión</Badge>
-                      <div><h3 className="text-8xl font-black text-white tracking-tighter drop-shadow-2xl">{results.mlHr.toFixed(1)}</h3><p className="text-muted-foreground font-bold uppercase text-xs tracking-[0.3em] mt-2">ml / hora</p></div>
+                      <div><h3 className="text-6xl sm:text-8xl font-black text-white tracking-tighter drop-shadow-2xl">{results.mlHr.toFixed(1)}</h3><p className="text-muted-foreground font-bold uppercase text-xs tracking-[0.3em] mt-2">ml / hora</p></div>
                       <div className="grid grid-cols-2 gap-4 pt-6 border-t border-border"><div><p className="text-[10px] font-black text-muted-foreground uppercase mb-1">Gotas/min</p><p className="text-2xl font-bold text-white">{results.gtsMin.toFixed(0)}</p></div><div><p className="text-[10px] font-black text-muted-foreground uppercase mb-1">Intervalo</p><p className="text-2xl font-bold text-blue-400">1 gota c/{results.segGota.toFixed(1)}s</p></div></div>
                   </div>
                 </PinterestCard>
                 <PinterestCard color="bg-emerald-500/10" className="border-emerald-500/20">
                     <div className="flex justify-between items-center mb-4"><h3 className="text-sm font-black text-emerald-400 flex items-center gap-2 uppercase tracking-widest"><Timer size={16}/> Duración Bolsa</h3><Badge className="bg-emerald-900/30 text-emerald-400 border-emerald-500/20">{params.bagSize} ml</Badge></div>
-                    <div className="text-center bg-card/50 p-6 rounded-2xl border border-border"><p className="text-5xl font-black text-white tracking-tighter">{results.bagDuration.toFixed(1)} <span className="text-lg text-emerald-500/50">hrs</span></p><p className="text-[10px] font-bold text-muted-foreground uppercase mt-2">Para terminar</p></div>
+                    <div className="text-center bg-card/50 p-6 rounded-2xl border border-border"><p className="text-4xl sm:text-5xl font-black text-white tracking-tighter">{results.bagDuration.toFixed(1)} <span className="text-lg text-emerald-500/50">hrs</span></p><p className="text-[10px] font-bold text-muted-foreground uppercase mt-2">Para terminar</p></div>
                 </PinterestCard>
             </>
         ) : activeTab === 'cri' ? (
             <PinterestCard color="bg-card" className="border-2 border-purple-500/20">
                 {criResult ? (
                     <div className="text-center space-y-6">
-                          <div><p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-1">Añadir a la bolsa</p><h3 className="text-6xl font-black text-white tracking-tighter">{criResult.totalMlDrug.toFixed(2)} ml</h3><p className="text-purple-400 font-bold text-sm">del fármaco</p></div>
+                          <div><p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-1">Añadir a la bolsa</p><h3 className="text-5xl sm:text-6xl font-black text-white tracking-tighter">{criResult.totalMlDrug.toFixed(2)} ml</h3><p className="text-purple-400 font-bold text-sm">del fármaco</p></div>
                           <div className="grid grid-cols-2 gap-4 pt-6 border-t border-border text-left">
                              <div><p className="text-[10px] text-muted-foreground uppercase">Dosis Hora</p><p className="text-xl font-bold text-white">{criResult.mgPerHr.toFixed(2)} mg/hr</p></div>
                              <div><p className="text-[10px] text-muted-foreground uppercase">Duración</p><p className="text-xl font-bold text-white">{criResult.duration.toFixed(1)} hrs</p></div>
@@ -187,11 +187,11 @@ export function FluidCalculator() {
                     <div className="text-center space-y-6">
                         <div>
                             <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-1">Volumen de Fármaco</p>
-                            <h3 className="text-6xl font-black text-white tracking-tighter">{dilutionResult.drugVol} ml</h3>
+                            <h3 className="text-5xl sm:text-6xl font-black text-white tracking-tighter">{dilutionResult.drugVol} ml</h3>
                         </div>
                         <div className="pt-6 border-t border-border">
                             <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-1">Volumen de Diluyente</p>
-                            <h3 className="text-6xl font-black text-teal-400 tracking-tighter">{dilutionResult.diluentVol} ml</h3>
+                            <h3 className="text-5xl sm:text-6xl font-black text-teal-400 tracking-tighter">{dilutionResult.diluentVol} ml</h3>
                         </div>
                     </div>
                 ) : (

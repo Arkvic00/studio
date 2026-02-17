@@ -46,7 +46,7 @@ export function GestationCalc() {
                     </select></div>
                 </div>
                 <div className="flex justify-center">
-                    <div className="w-32 h-32 bg-card border-2 border-border rounded-4xl flex items-center justify-center text-7xl shadow-2xl relative">
+                    <div className="w-24 h-24 sm:w-32 sm:h-32 bg-card border-2 border-border rounded-4xl flex items-center justify-center text-6xl sm:text-7xl shadow-2xl relative">
                         {SPECIES_ICONS[species.toLowerCase() as keyof typeof SPECIES_ICONS] || '🐾'}
                     </div>
                 </div>
@@ -75,7 +75,7 @@ export function GestationCalc() {
                     </div>
                     <div className="text-center pt-6 border-t border-border">
                         <p className="text-[10px] font-black text-pink-400 uppercase tracking-widest mb-2">Fecha Estimada de Parto</p>
-                        <p className="text-5xl font-black text-white">{timeline.due}</p>
+                        <p className="text-4xl sm:text-5xl font-black text-white">{timeline.due}</p>
                         <p className="text-xs font-bold text-muted-foreground mt-2">Duración prom: {timeline.duration} días</p>
                     </div>
                 </div>

@@ -111,7 +111,7 @@ export function VademecumDetail({ drug }: { drug: Drug }) {
                                   <Badge variant="secondary">{drug.meta_data.grupo_farmacologico}</Badge>
                                   <Badge variant="outline">{drug.meta_data.status_regulatorio}</Badge>
                               </div>
-                              <h1 className="text-5xl md:text-7xl font-black text-white mb-2 tracking-tighter">{drug.meta_data.nombre_generico}</h1>
+                              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-2 tracking-tighter">{drug.meta_data.nombre_generico}</h1>
                               <p className="text-lg text-muted-foreground font-medium italic">{drug.meta_data.nombres_comerciales.join(" • ")}</p>
                           </div>
                            <DrugCompareModal currentDrugId={drug.id} />

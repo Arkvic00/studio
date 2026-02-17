@@ -79,7 +79,7 @@ export function TransfusionCalc() {
                     <div className="lg:col-span-2 space-y-4">
                         <div className="bg-destructive rounded-4xl p-6 flex flex-col justify-center text-center shadow-lg shadow-red-900/20">
                             <p className="text-[10px] font-bold text-red-200 uppercase tracking-widest mb-2">Volumen a Transfundir</p>
-                            <p className="text-6xl font-black text-white tracking-tighter">{vol} <span className="text-lg text-red-200">ml</span></p>
+                            <p className="text-5xl sm:text-6xl font-black text-white tracking-tighter">{vol} <span className="text-lg text-red-200">ml</span></p>
                         </div>
                          <div className="grid grid-cols-3 gap-2 text-center bg-card p-4 rounded-3xl border border-border">
                             <div><p className="text-[10px] text-muted-foreground uppercase font-bold">ml/hr</p><p className="text-xl font-bold text-white">{rates.mlHr}</p></div>
@@ -97,7 +97,7 @@ export function TransfusionCalc() {
                         <GlassInput label="Volumen a Extraer (ml)" type="number" value={state.volDon} onChange={v => setState({...state, volDon: v})} />
                         <div className="bg-card p-4 rounded-2xl text-center border border-border flex-1">
                              <p className="text-[10px] font-bold text-muted-foreground uppercase">CPDA-1</p>
-                             <p className="text-3xl font-extrabold text-white">{anticoagulant.cpda}<span className="text-base ml-1 text-rose-400">ml</span></p>
+                             <p className="text-2xl sm:text-3xl font-extrabold text-white">{anticoagulant.cpda}<span className="text-base ml-1 text-rose-400">ml</span></p>
                         </div>
                     </div>
                     <p className="text-[11px] text-muted-foreground mt-3 ml-2">Calculado a una proporción estándar de 1:7.</p>

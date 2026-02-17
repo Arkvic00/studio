@@ -54,7 +54,7 @@ export function ClinicalCaseTrainer() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-220px)] max-w-4xl mx-auto bg-card border border-border rounded-4xl shadow-2xl animate-in fade-in duration-500">
+    <div className="flex flex-col h-[75vh] md:h-[calc(100vh-220px)] max-w-4xl mx-auto bg-card border border-border rounded-4xl shadow-2xl animate-in fade-in duration-500">
       <div className="p-4 border-b border-border flex items-center gap-4">
         <Avatar>
             <AvatarFallback>SJ</AvatarFallback>

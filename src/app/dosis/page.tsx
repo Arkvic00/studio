@@ -107,7 +107,7 @@ export function DoseCalculator({
                             isActive ? 'bg-primary/20 scale-110' : 'hover:bg-secondary'
                         )}
                     >
-                        <div className="text-4xl">{info.icon}</div>
+                        <div className="text-3xl sm:text-4xl">{info.icon}</div>
                         <span className={cn("text-[10px] font-bold uppercase tracking-wider text-center", isActive ? 'text-primary' : 'text-muted-foreground')}>{info.label}</span>
                     </button>
                 )
@@ -353,7 +353,7 @@ export function DoseCalculator({
                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">
                     Administrar
                   </p>
-                  <h2 className="text-7xl font-extrabold text-white tracking-tighter drop-shadow-md">
+                  <h2 className="text-5xl sm:text-7xl font-extrabold text-white tracking-tighter drop-shadow-md">
                     {result.toFixed(2)}
                   </h2>
                   <p className="text-sm font-bold text-slate-300 uppercase mt-2 opacity-80">
