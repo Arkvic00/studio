@@ -2,6 +2,7 @@
 import { roedoresData } from './roedores';
 import { conejoData } from './conejo';
 import { mustelidosData } from './mustelidos';
+import { erizoData } from './erizo';
 import type { ExoticSpeciesData } from '@/lib/types';
 
 // Helper function to create placeholder data
@@ -22,7 +23,7 @@ export const EXOTICS_DATA: { [key: string]: ExoticSpeciesData } = {
     conejo: conejoData,
     mustelidos: mustelidosData,
     cobaya: createPlaceholderData('cobaya', 'Cobayas'),
-    erizo: createPlaceholderData('erizo', 'Erizos'),
+    erizo: erizoData,
     ave: createPlaceholderData('ave', 'Aves'),
     reptil: createPlaceholderData('reptil', 'Reptiles'),
     peces: createPlaceholderData('peces', 'Peces'),

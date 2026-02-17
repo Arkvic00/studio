@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { 
     ChevronRight, Plus, Search, BookOpen, Calendar, HeartPulse, AlertCircle, Utensils, Atom, Snowflake, Users, 
     VenetianMask, Info, Home, Ban, Hand, Syringe, FlaskConical, Stethoscope, Microscope, TestTube, Dna, Bone, Shield, 
-    Pill, Bug, TriangleAlert, Beaker, Droplet, Brain, Thermometer
+    Pill, Bug, TriangleAlert, Beaker, Droplet, Brain, Thermometer, Baby
 } from 'lucide-react';
 import Image from 'next/image';
 import { DB_MEDICAMENTOS } from '@/lib/data';
@@ -108,7 +108,7 @@ const exoticSpecies = exoticSpeciesOrder.map(key => ({
 
 const iconMap: { [key: string]: React.ElementType } = {
     Calendar, HeartPulse, AlertCircle, Utensils, Atom, Snowflake, Users, VenetianMask, Info, Home, Ban, Hand, Syringe,
-    FlaskConical, Stethoscope, Microscope, TestTube, Dna, Bone, Shield, Pill, Bug, TriangleAlert, Beaker, Droplet, Brain, Thermometer
+    FlaskConical, Stethoscope, Microscope, TestTube, Dna, Bone, Shield, Pill, Bug, TriangleAlert, Beaker, Droplet, Brain, Thermometer, Baby
 };
 
 function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
@@ -142,7 +142,7 @@ function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
             </PinterestCard>
 
             {Object.entries(speciesData.sections).map(([key, section]) => {
-                const { content, title, icon } = section;
+                const { content, title, icon } = section as any;
                 if (!content) return null;
                 const SectionIcon = iconMap[icon as string] || BookOpen;
 
@@ -170,7 +170,7 @@ function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
                                                     <li key={dIndex} className="p-3 bg-background/50 rounded-lg border border-border">
                                                         <h5 className="font-bold text-white">{d.name}</h5>
                                                         <p className="text-xs text-slate-400">{d.description}</p>
-                                                        {d.tags && <div className="flex gap-2 mt-2">{d.tags.map((t:string, tIndex: number) => <Badge key={tIndex} variant={t === 'Urgencia' || t === 'Mortal' || t === 'Iatrogénico' || t === 'Zoonosis' ? 'destructive' : 'secondary'} className="text-[9px]">{t}</Badge>)}</div>}
+                                                        {d.tags && <div className="flex gap-2 mt-2">{d.tags.map((t:string, tIndex: number) => <Badge key={tIndex} variant={t === 'Urgencia' || t === 'Mortal' || t === 'Iatrogénico' || t === 'Zoonosis' || t === 'Fatal' ? 'destructive' : 'secondary'} className="text-[9px]">{t}</Badge>)}</div>}
                                                     </li>
                                                 ))}
                                                 </ul>
