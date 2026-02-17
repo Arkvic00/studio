@@ -13,6 +13,7 @@ const TABS: { [key: string]: string } = {
   '/vademecum': 'Vademécum',
   '/fluidoterapia': 'Fluidoterapia',
   '/nutricion': 'Cálculo Nutrición',
+  '/asistente-dx': 'Asistente DX',
   '/gestacion': 'Gestación',
   '/transfusion': 'Transfusión',
   '/costos': 'Costos',

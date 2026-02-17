@@ -6,6 +6,7 @@ import { useLocalStorage } from '@/hooks/use-local-storage';
 import { PinterestCard } from '@/components/ui/pinterest-card';
 import { GlassInput } from '@/components/ui/glass-input';
 import { Badge } from '@/components/ui/badge';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export function FluidCalculator() {
   const [activeTab, setActiveTab] = useState('maintenance'); 
@@ -74,7 +75,36 @@ export function FluidCalculator() {
                       <div className="flex items-center gap-4"><div className="p-4 bg-blue-500/10 rounded-2xl text-blue-400 border border-blue-500/20"><Droplet size={28}/></div><div><h2 className="text-2xl font-bold text-white">Fluidoterapia</h2><p className="text-xs text-muted-foreground font-medium">Plan de reposición</p></div></div>
                       <button onClick={() => setShowHelp(!showHelp)} className="p-2 bg-card text-muted-foreground hover:text-white rounded-full border border-border hover:bg-blue-600 transition-all"><HelpCircle size={20}/></button>
                   </div>
-                  {showHelp && <div className="bg-card p-4 rounded-2xl border border-border mb-6 text-xs text-slate-300 space-y-2 animate-in fade-in"><p><strong className="text-blue-400">Déficit:</strong> Peso x %Deshid x 10</p><p><strong className="text-blue-400">Goteo:</strong> (ml/hr x Factor) / 60</p></div>}
+                    {showHelp && (
+                        <Accordion type="single" collapsible className="w-full bg-card p-4 rounded-2xl border border-border mb-6 text-xs text-slate-300 space-y-2 animate-in fade-in">
+                            <AccordionItem value="item-1">
+                                <AccordionTrigger className="text-blue-400">¿Cómo se calcula el volumen total?</AccordionTrigger>
+                                <AccordionContent className="text-slate-300 space-y-2">
+                                    El volumen total se compone de tres partes: <br/><br/>
+                                    <p><strong>1. Déficit:</strong> El líquido perdido por deshidratación. Se calcula como: <code className="bg-background p-1 rounded-md text-white">Peso (kg) * % Deshidratación * 10</code>.</p>
+                                    <p><strong>2. Mantenimiento:</strong> El líquido necesario para las funciones corporales normales en 24h. Se calcula como <code className="bg-background p-1 rounded-md text-white">Peso (kg) * Tasa de Mantenimiento (ml/kg/día)</code>.</p>
+                                    <p><strong>3. Pérdidas Continuas:</strong> Líquido extra perdido por vómito, diarrea, etc. Es una estimación que se suma al total.</p>
+                                    <p className="mt-2 text-white font-bold">Total (ml) = Déficit + Mantenimiento + Pérdidas</p>
+                                </AccordionContent>
+                            </AccordionItem>
+                            <AccordionItem value="item-2">
+                                <AccordionTrigger className="text-blue-400">¿Qué es el factor de goteo?</AccordionTrigger>
+                                <AccordionContent className="text-slate-300 space-y-2">
+                                    Es el número de gotas que equivalen a 1 mililitro (ml) según el equipo de venoclisis que uses.<br/><br/>
+                                    <p><strong>- Normogotero:</strong> Usualmente 20 gotas/ml. Ideal para pacientes medianos a grandes.</p>
+                                    <p><strong>- Microgotero:</strong> 60 gotas/ml. Ideal para pacientes pequeños (&lt;10kg) o para infusiones muy precisas.</p>
+                                </AccordionContent>
+                            </AccordionItem>
+                             <AccordionItem value="item-3">
+                                <AccordionTrigger className="text-blue-400">Explicación de las tasas de infusión</AccordionTrigger>
+                                <AccordionContent className="text-slate-300 space-y-2">
+                                     <p><strong>ml/hora:</strong> Es la velocidad a la que se infunde el volumen total. <code className="bg-background p-1 rounded-md text-white">Volumen Total (ml) / Horas a reponer</code>.</p>
+                                     <p><strong>Gotas/min:</strong> Es la velocidad de goteo manual. <code className="bg-background p-1 rounded-md text-white">(ml/hora * Factor de Goteo) / 60</code>.</p>
+                                     <p><strong>Intervalo:</strong> Es el tiempo que debe pasar entre cada gota. <code className="bg-background p-1 rounded-md text-white">60 / Gotas por minuto</code>.</p>
+                                </AccordionContent>
+                            </AccordionItem>
+                        </Accordion>
+                    )}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                       <div className="space-y-2"><label className="text-[11px] font-bold text-slate-400 uppercase ml-2">Especie</label><select value={params.especie} onChange={e => setParams({...params, especie: e.target.value})} className="w-full bg-card rounded-2xl p-4 text-white font-bold outline-none border-2 border-transparent focus:border-blue-500/30"><option value="Perro">Perro</option><option value="Gato">Gato</option></select></div>
                       <GlassInput label="Peso (kg)" type="number" value={params.peso} onChange={v => setParams({...params, peso: v})} />
@@ -130,7 +160,7 @@ export function FluidCalculator() {
                   <div className="text-center space-y-6 relative z-10">
                       <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20">Velocidad Infusión</Badge>
                       <div><h3 className="text-8xl font-black text-white tracking-tighter drop-shadow-2xl">{results.mlHr.toFixed(1)}</h3><p className="text-muted-foreground font-bold uppercase text-xs tracking-[0.3em] mt-2">ml / hora</p></div>
-                      <div className="grid grid-cols-2 gap-4 pt-6 border-t border-border"><div><p className="text-[10px] font-black text-muted-foreground uppercase mb-1">Gotas/min</p><p className="text-2xl font-bold text-white">{results.gtsMin.toFixed(0)}</p></div><div><p className="text-[10px] font-black text-muted-foreground uppercase mb-1">Intervalo</p><p className="text-2xl font-bold text-blue-400">{results.segGota.toFixed(1)}s</p></div></div>
+                      <div className="grid grid-cols-2 gap-4 pt-6 border-t border-border"><div><p className="text-[10px] font-black text-muted-foreground uppercase mb-1">Gotas/min</p><p className="text-2xl font-bold text-white">{results.gtsMin.toFixed(0)}</p></div><div><p className="text-[10px] font-black text-muted-foreground uppercase mb-1">Intervalo</p><p className="text-2xl font-bold text-blue-400">1 c/{results.segGota.toFixed(1)}s</p></div></div>
                   </div>
                 </PinterestCard>
                 <PinterestCard color="bg-emerald-500/10" className="border-emerald-500/20">
