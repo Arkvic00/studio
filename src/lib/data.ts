@@ -83,198 +83,377 @@ export const DB_MEDICAMENTOS: Drug[] = [
     "id": "acarbosa",
     "meta_data": {
       "nombre_generico": "Acarbosa",
-      "nombres_comerciales": ["Precose", "Glucobay"],
-      "grupo_farmacologico": "Inhibidor de la alfa-glucosidasa (Antidiabético)",
-      "status_regulatorio": "Uso Extra-label (Fuera de etiqueta) en veterinaria"
+      "nombres_comerciales": [
+        "Precose",
+        "Glucobay"
+      ],
+      "grupo_farmacologico": "Agente antidiabético, inhibidor de la alfa-glucosidasa",
+      "status_regulatorio": "Uso extra-label en perros y gatos; Aprobado por la FDA para humanos."
     },
     "resumen_clinico": {
       "puntos_clave": [
-        "Agente antihiperglucémico que reduce la tasa de absorción de glucosa tras las comidas.",
-        "Útil en perros y gatos con hiperglucemia leve o picos de insulina postprandiales.",
-        "Rara vez efectivo como terapia única; suele ser adjunto a la insulina o dieta.",
-        "Efectos adversos gastrointestinales (gases, diarrea) pueden limitar su uso."
+        "Agente antihiperglucémico que reduce la tasa y cantidad de glucosa absorbida en el intestino después de una comida.",
+        "Útil en perros y gatos con hiperglucemia leve.",
+        "Poco probable que sea eficaz como terapia única para la diabetes mellitus.",
+        "Debe administrarse con las comidas (preferiblemente justo antes de alimentar)."
       ],
-      "usos_principales": "Reducción de glucosa postprandial en diabetes mellitus no insulino-dependiente o como adjunto en insulino-dependiente."
+      "usos_principales": "Reducción de concentraciones de glucosa en sangre en casos de hiperglucemia leve a moderada (rango 250-350 mg/dL) en perros y gatos con diabetes mellitus no dependiente de insulina, y como tratamiento adyuvante en diabetes dependiente de insulina."
     },
     "informacion_cliente": [
-      "Para que funcione, debe administrarse con la comida (preferiblemente justo antes de comer).",
-      "No funciona bien si la mascota tiene comida disponible todo el día (ad libitum); debe haber horarios fijos.",
-      "Los efectos secundarios más comunes son gases (flatulencia) y heces blandas o diarrea.",
-      "Puede tardar hasta 2 semanas en mostrar su efecto completo.",
-      "Esté atento a signos de azúcar baja (debilidad, temblores) si se combina con insulina."
+      "Dar el medicamento justo antes de alimentar al animal para mejores resultados.",
+      "Las tabletas pueden dividirse o triturarse y mezclarse con la comida.",
+      "Los efectos secundarios más probables son diarrea y/o gases.",
+      "No causa hipoglucemia por sí solo, pero puede contribuir a ella si se usa con otros fármacos (como insulina)."
     ],
     "parametros_dosificacion": {
       "perro": [
         {
-          "indicacion": "Tratamiento adjunto diabetes mellitus",
+          "indicacion": "Tratamiento adyuvante para diabetes mellitus (Extra-label)",
+          "vias": ["PO"],
+          "math": {
+            "tipo_calculo": "fija",
+            "dosis_recomendada": 18.75,
+            "dosis_min": 12.5,
+            "dosis_max": 100,
+            "tope_maximo_mg": 100,
+            "unidad_calculo": "mg/perro"
+          },
+          "frecuencia": {
+            "texto_ui": "Con cada comida (usualmente dos veces al día)",
+            "intervalo_horas": 12
+          },
+          "notas_tecnicas": "Dosis inicial de 12.5-25 mg por perro (NO por kg). Si la respuesta es inadecuada tras 2 semanas, titular hasta 50 mg/perro. En perros >10-25 kg, considerar hasta 100 mg/perro."
+        }
+      ],
+      "gato": [
+        {
+          "indicacion": "Tratamiento adyuvante para diabetes mellitus (Extra-label)",
           "vias": ["PO"],
           "math": {
             "tipo_calculo": "fija",
             "dosis_recomendada": 12.5,
             "dosis_min": 12.5,
-            "dosis_max": 25,
-            "tope_maximo_mg": 100,
-            "unidad_calculo": "mg/perro"
-          },
-          "frecuencia": {
-            "texto_ui": "Cada 12 horas (con cada comida)",
-            "intervalo_horas": 12
-          },
-          "duracion_tratamiento": "Indefinido (crónico)",
-          "notas_tecnicas": "Dosis por PERRO, no por kg. Se puede titular hasta 50mg o 100mg en perros grandes (>10-25kg) si la respuesta es inadecuada."
-        }
-      ],
-      "gato": [
-        {
-          "indicacion": "Tratamiento adjunto diabetes mellitus",
-          "vias": ["PO"],
-          "math": {
-            "tipo_calculo": "fija",
-            "dosis_recomendada": 12.5,
-            "dosis_min": null,
-            "dosis_max": null,
+            "dosis_max": 12.5,
             "tope_maximo_mg": null,
             "unidad_calculo": "mg/gato"
           },
           "frecuencia": {
-            "texto_ui": "Cada 12 horas (con comida)",
+            "texto_ui": "Dos veces al día con la comida",
             "intervalo_horas": 12
           },
-          "duracion_tratamiento": "Indefinido (crónico)",
-          "notas_tecnicas": "Dosis por GATO, no por kg. Más efectivo en gatos que comen su ración rápidamente."
+          "notas_tecnicas": "Ineficaz en gatos sanos alimentados con dieta baja en carbohidratos. Dar justo antes de comer."
         }
       ]
     },
     "seguridad_y_alertas": {
-      "contraindicaciones": ["Cetoacidosis diabética", "Enfermedad inflamatoria intestinal (IBD)", "Ulceración colónica", "Obstrucción intestinal parcial o predisposición", "Pacientes con bajo peso corporal", "Casos donde la formación excesiva de gas sea perjudicial"],
-      "precauciones": ["Insuficiencia renal", "Enfermedad hepática severa", "Monitorizar enzimas hepáticas"],
-      "efectos_adversos": ["Heces blandas / Diarrea (Dosis dependiente)", "Flatulencia", "Pérdida de peso", "Aumento de transaminasas hepáticas (raro)"],
-      "seguridad_reproductiva": { "gestacion": "Evaluar riesgo/beneficio (sin evidencia de daño fetal en laboratorio)", "lactancia": "Probablemente seguro (mínima absorción sistémica)" },
-      "sobredosis": { "signos": ["Diarrea", "Flatulencia"], "tratamiento": "Sintomático. Si hay hipoglucemia usar dextrosa parenteral o glucosa oral (NO sacarosa).", "contraindicado_en_urgencia": [] },
+      "contraindicaciones": [
+        "Hipersensibilidad conocida.",
+        "Cetoacidosis diabética.",
+        "Enfermedad inflamatoria intestinal (IBD) o ulceración colónica.",
+        "Obstrucción intestinal parcial o predisposición.",
+        "Enfermedad intestinal crónica con trastornos de digestión/absorción.",
+        "Pacientes con bajo peso o donde la formación excesiva de gases sea perjudicial."
+      ],
+      "precauciones": [
+        "Disfunción renal severa (niveles séricos pueden ser 5 veces mayores).",
+        "Enfermedad hepática severa.",
+        "Animales con apetito reducido (ej. enfermedad renal crónica avanzada)."
+      ],
+      "efectos_adversos": [
+        "Flatulencia.",
+        "Heces blandas o acuosas.",
+        "Diarrea.",
+        "Pérdida de peso (en perros).",
+        "Aumento de transaminasas hepáticas (raro)."
+      ],
+      "sobredosis": {
+        "signos": [
+          "Diarrea",
+          "Flatulencia"
+        ],
+        "tratamiento": "No suele ser necesario. Si hay hipoglucemia por otros agentes, usar glucosa parenteral o dextrosa oral (la absorción de sacarosa está inhibida).",
+        "contraindicado_en_urgencia": []
+      },
       "interacciones_farmacologicas": [
-        { "farmaco": "Carbón activado", "efecto": "Reduce eficacia de acarbosa", "severidad": "Moderada" },
-        { "farmaco": "Digoxina", "efecto": "Puede reducir niveles de digoxina", "severidad": "Moderada" },
-        { "farmaco": "Enzimas pancreáticas (Amilasa)", "efecto": "Reducen eficacia de acarbosa", "severidad": "Moderada" },
-        { "farmaco": "Insulina / Sulfonilureas", "efecto": "Aumenta riesgo de hipoglucemia", "severidad": "Importante" }
+        {
+          "farmaco": "Carbón activado",
+          "efecto": "Reduce la eficacia de la acarbosa",
+          "severidad": "Moderada"
+        },
+        {
+          "farmaco": "Digoxina",
+          "efecto": "Reduce concentraciones de digoxina en sangre",
+          "severidad": "Moderada"
+        },
+        {
+          "farmaco": "Agentes hiperglucemiantes (Corticosteroides, tiazidas, hormonas tiroideas)",
+          "efecto": "Reducen o niegan el efecto de la acarbosa",
+          "severidad": "Moderada"
+        },
+        {
+          "farmaco": "Insulina / Sulfonilureas",
+          "efecto": "Aumentan el riesgo de hipoglucemia",
+          "severidad": "Importante"
+        },
+        {
+          "farmaco": "Pancreatina / Amilasa",
+          "efecto": "Reducen la eficacia de la acarbosa",
+          "severidad": "Leve"
+        }
       ]
     },
     "farmacologia_clinica": {
-      "mecanismo_accion": "Inhibe competitivamente la alfa-amilasa pancreática y alfa-glucosidasas intestinales, retrasando la digestión de carbohidratos complejos a glucosa.",
-      "farmacocinetica": { "general": "Mínima absorción sistémica (2-4%). Metabolizada por flora intestinal.", "datos_especie": { "perro": "Absorción aprox 4% dosis oral.", "gato": "Efectiva reduciendo AUC de glucosa postprandial un 5-7.5%." } }
+      "mecanismo_accion": "Inhibe competitivamente la alfa-amilasa pancreática y las alfa-glucosidasas del intestino delgado, retrasando la digestión de carbohidratos complejos a glucosa.",
+      "farmacocinetica": {
+        "general": "En perros, solo se absorbe el ~4%. El resto es metabolizado por la flora bacteriana intestinal. En insuficiencia renal severa, los niveles séricos aumentan significativamente.",
+        "datos_especie": {}
+      }
     },
-    "propiedades_fisicoquimicas": { "descripcion": "Polvo blanco a blanquecino, soluble en agua.", "almacenamiento": "Menor a 25°C, proteger de humedad.", "compatibilidad": { "compatibles": ["Alimento (mezclar justo antes)"], "incompatibles": [] } },
+    "propiedades_fisicoquimicas": {
+        "descripcion": "Polvo blanco a blanquecino, soluble en agua.",
+        "almacenamiento": "Menor a 25°C, proteger de humedad.",
+        "compatibilidad": {
+          "compatibles": [],
+          "incompatibles": []
+        }
+    },
     "presentaciones_comerciales": [
-      { "tipo": "Tableta", "concentracion_texto": "25 mg", "valor_concentracion": 25, "unidad_concentracion": "mg", "es_divisible": true },
-      { "tipo": "Tableta", "concentracion_texto": "50 mg", "valor_concentracion": 50, "unidad_concentracion": "mg", "es_divisible": true },
-      { "tipo": "Tableta", "concentracion_texto": "100 mg", "valor_concentracion": 100, "unidad_concentracion": "mg", "es_divisible": true }
+      {
+        "tipo": "Tableta oral",
+        "concentracion_texto": "25 mg, 50 mg, 100 mg",
+        "valor_concentracion": 25,
+        "unidad_concentracion": "mg",
+        "es_divisible": true
+      }
     ]
   },
   {
     "id": "acepromazina_maleato",
     "meta_data": {
       "nombre_generico": "Acepromazina Maleato",
-      "nombres_comerciales": ["PromAce", "Aceproject", "Calmivet"],
-      "grupo_farmacologico": "Sedante Fenotiazínico / Tranquilizante",
+      "nombres_comerciales": [
+        "PromAce",
+        "Aceproject",
+        "Acevet",
+        "ACP",
+        "Atravet"
+      ],
+      "grupo_farmacologico": "Sedante Fenotiazínico",
       "status_regulatorio": "Aprobado FDA (Perros, Gatos, Caballos)"
     },
     "resumen_clinico": {
-      "puntos_clave": ["Sedante sin efectos analgésicos (requiere combinación con opioides para dolor).", "Causa hipotensión significativa (vasodilatación alfa-bloqueante).", "Sin agente de reversión. Duración larga (4-8 horas).", "Precaución extrema o evitar en perros con mutación MDR1 (Collies, Pastores).", "Puede causar prolapso de pene persistente en caballos sementales."],
-      "usos_principales": "Sedación, preanestesia, ansiolisis (discutido), tratamiento adjunto obstrucción uretral en gatos, laminitis en equinos."
+      "puntos_clave": [
+        "Sin efectos analgésicos; requiere combinación con analgésicos si hay dolor.",
+        "Inicio de acción: 15 min; duración: 3-4 horas (hasta 6-8 h).",
+        "Dosis clínicas son significativamente menores a las de la etiqueta FDA.",
+        "No tiene agente de reversión."
+      ],
+      "usos_principales": "Sedante, tranquilizante, agente preanestésico. Tratamiento adyuvante de laminitis en caballos y obstrucción uretral en gatos machos."
     },
-    "informacion_cliente": ["La orina puede tornarse de color rosado o marrón rojizo; es inofensivo.", "El animal puede asustarse fácilmente con ruidos fuertes incluso estando sedado.", "Mantenga al animal en un lugar tranquilo y cómodo.", "Puede tardar 45-60 minutos en hacer efecto si se da por boca.", "Precaución en razas como Bóxer o perros pastores (Collies)."],
+    "informacion_cliente": [
+      "Efecto óptimo oral 45-60 min antes del viaje.",
+      "Orina de color rosa a marrón rojizo (inofensivo).",
+      "Animales sedados pueden asustarse con ruidos.",
+      "Efectos pueden durar hasta 24 horas."
+    ],
     "parametros_dosificacion": {
       "perro": [
-        { "indicacion": "Sedación / Tranquilización (Extra-label - Recomendado)", "vias": ["IV", "IM", "SC"], "math": { "tipo_calculo": "mg_kg", "dosis_recomendada": 0.05, "dosis_min": 0.01, "dosis_max": 0.1, "tope_maximo_mg": 3, "unidad_calculo": "mg/kg" }, "frecuencia": { "texto_ui": "Dosis única o repetir s/n", "intervalo_horas": 0 }, "duracion_tratamiento": "Procedimiento", "notas_tecnicas": "Dosis mayores a 3mg totales por perro no recomendadas. Razas gigantes son más sensibles (usar dosis baja)." },
-        { "indicacion": "Preanestesia", "vias": ["IV", "IM", "SC"], "math": { "tipo_calculo": "mg_kg", "dosis_recomendada": 0.03, "dosis_min": 0.02, "dosis_max": 0.05, "tope_maximo_mg": null, "unidad_calculo": "mg/kg" }, "frecuencia": { "texto_ui": "Previa inducción", "intervalo_horas": 0 }, "duracion_tratamiento": "Dosis única", "notas_tecnicas": "Permite reducir dosis de inducción un 30%." },
-        { "indicacion": "Oral (Etiqueta FDA - Dosis alta)", "vias": ["PO"], "math": { "tipo_calculo": "mg_kg", "dosis_recomendada": 1.0, "dosis_min": 0.55, "dosis_max": 2.2, "tope_maximo_mg": null, "unidad_calculo": "mg/kg" }, "frecuencia": { "texto_ui": "Repetir según necesidad", "intervalo_horas": 0 }, "duracion_tratamiento": "Sintomático", "notas_tecnicas": "Muchos clínicos consideran esta dosis excesiva." }
-      ],
-      "gato": [
-        { "indicacion": "Sedación / Preanestesia (Extra-label)", "vias": ["IV", "IM", "SC"], "math": { "tipo_calculo": "mg_kg", "dosis_recomendada": 0.05, "dosis_min": 0.01, "dosis_max": 0.1, "tope_maximo_mg": null, "unidad_calculo": "mg/kg" }, "frecuencia": { "texto_ui": "Dosis única", "intervalo_horas": 0 }, "duracion_tratamiento": "Procedimiento", "notas_tecnicas": "IV administrar lento." },
-        { "indicacion": "Adjunto obstrucción uretral", "vias": ["IM"], "math": { "tipo_calculo": "fija", "dosis_recomendada": 0.25, "dosis_min": null, "dosis_max": null, "tope_maximo_mg": null, "unidad_calculo": "mg/gato" }, "frecuencia": { "texto_ui": "Dosis única", "intervalo_horas": 0 }, "duracion_tratamiento": "Agudo", "notas_tecnicas": "Combinar con buprenorfina. Evitar si hay hipotensión severa." }
+        {
+          "indicacion": "Sedación/Premedicación (Extra-label recomendado)",
+          "vias": ["IV", "IM", "SC"],
+          "math": {
+            "tipo_calculo": "mg_kg",
+            "dosis_recomendada": 0.03,
+            "dosis_min": 0.01,
+            "dosis_max": 0.1,
+            "tope_maximo_mg": 3,
+            "unidad_calculo": "mg/kg"
+          },
+          "frecuencia": {
+            "texto_ui": "Dosis única",
+            "intervalo_horas": 0
+          },
+          "notas_tecnicas": "IV administrar lento. Dosis máxima total: 3 mg/perro."
+        }
       ],
       "caballo": [
-        { "indicacion": "Sedación / Preanestesia (Extra-label)", "vias": ["IV", "IM", "SC"], "math": { "tipo_calculo": "mg_kg", "dosis_recomendada": 0.05, "dosis_min": 0.02, "dosis_max": 0.1, "tope_maximo_mg": null, "unidad_calculo": "mg/kg" }, "frecuencia": { "texto_ui": "Dosis única", "intervalo_horas": 0 }, "duracion_tratamiento": "Procedimiento", "notas_tecnicas": "Esperar 15 mins tras IV para efecto." },
-        { "indicacion": "Laminitis (Vasodilatación)", "vias": ["IV", "IM", "SC"], "math": { "tipo_calculo": "mg_kg", "dosis_recomendada": 0.05, "dosis_min": 0.04, "dosis_max": 0.066, "tope_maximo_mg": null, "unidad_calculo": "mg/kg" }, "frecuencia": { "texto_ui": "Según criterio (frecuentemente TID/QID)", "intervalo_horas": 8 }, "duracion_tratamiento": "Crónico/Agudo", "notas_tecnicas": "Mejora flujo sanguíneo al casco." }
-      ],
-      "bovino": [ { "indicacion": "Sedación (Extra-label)", "vias": ["IV", "IM"], "math": { "tipo_calculo": "mg_kg", "dosis_recomendada": 0.05, "dosis_min": 0.01, "dosis_max": 0.1, "tope_maximo_mg": null, "unidad_calculo": "mg/kg" }, "frecuencia": { "texto_ui": "Dosis única", "intervalo_horas": 0 }, "duracion_tratamiento": "Procedimiento", "notas_tecnicas": "Riesgo de regurgitación ruminal." } ],
-      "ovino_caprino": [ { "indicacion": "Sedación (Extra-label)", "vias": ["IM"], "math": { "tipo_calculo": "mg_kg", "dosis_recomendada": 0.05, "dosis_min": 0.05, "dosis_max": 0.1, "tope_maximo_mg": null, "unidad_calculo": "mg/kg" }, "frecuencia": { "texto_ui": "Dosis única", "intervalo_horas": 0 }, "duracion_tratamiento": "Procedimiento", "notas_tecnicas": "Dosis baja suele ser adecuada." } ],
-      "cerdo": [ { "indicacion": "Sedación (Extra-label)", "vias": ["IM", "IV", "SC"], "math": { "tipo_calculo": "mg_kg", "dosis_recomendada": 0.1, "dosis_min": 0.03, "dosis_max": 0.2, "tope_maximo_mg": null, "unidad_calculo": "mg/kg" }, "frecuencia": { "texto_ui": "Dosis única", "intervalo_horas": 0 }, "duracion_tratamiento": "Procedimiento", "notas_tecnicas": "Efecto inconsistente como agente único." } ],
-      "huron": [ { "indicacion": "Tranquilización", "vias": ["IM", "SC"], "math": { "tipo_calculo": "mg_kg", "dosis_recomendada": 0.5, "dosis_min": 0.25, "dosis_max": 0.75, "tope_maximo_mg": null, "unidad_calculo": "mg/kg" }, "frecuencia": { "texto_ui": "Dosis única", "intervalo_horas": 0 }, "duracion_tratamiento": "Procedimiento", "notas_tecnicas": "Dosis baja suele ser adecuada." } ],
-      "conejo": [ { "indicacion": "Sedación / Tranquilización", "vias": ["IM"], "math": { "tipo_calculo": "mg_kg", "dosis_recomendada": 0.8, "dosis_min": 0.75, "dosis_max": 1.0, "tope_maximo_mg": null, "unidad_calculo": "mg/kg" }, "frecuencia": { "texto_ui": "Dosis única", "intervalo_horas": 0 }, "duracion_tratamiento": "Procedimiento", "notas_tecnicas": "Efecto dura 1-2 horas." } ],
-      "roedores": [ { "indicacion": "Sedación (Ratones, Ratas, Hamsters, Cobayas)", "vias": ["IM", "SC", "PO"], "math": { "tipo_calculo": "mg_kg", "dosis_recomendada": 1.0, "dosis_min": 0.5, "dosis_max": 1.5, "tope_maximo_mg": null, "unidad_calculo": "mg/kg" }, "frecuencia": { "texto_ui": "Dosis única", "intervalo_horas": 0 }, "duracion_tratamiento": "Procedimiento", "notas_tecnicas": "En jerbos no recomendado por algunos clínicos." } ]
+        {
+          "indicacion": "Ayuda en control de animales fractious",
+          "vias": ["IV", "IM", "SC"],
+          "math": {
+            "tipo_calculo": "mg_kg",
+            "dosis_recomendada": 0.066,
+            "dosis_min": 0.044,
+            "dosis_max": 0.088,
+            "unidad_calculo": "mg/kg",
+            "tope_maximo_mg": null
+          },
+          "frecuencia": {
+            "texto_ui": "Dosis única",
+            "intervalo_horas": 0
+          },
+          "notas_tecnicas": "Asegurar retracción del pene en una hora tras protrusión."
+        }
+      ]
     },
     "seguridad_y_alertas": {
-      "contraindicaciones": ["Pacientes con exposición a organofosforados", "Pacientes en shock hipovolémico", "Insuficiencia cardiaca severa", "Historia de convulsiones por fenotiazinas (controversial)", "No usar Epinefrina para tratar hipotensión por Acepromazina"],
-      "precauciones": ["Mutación genética MDR1 (Collies, Pastores Australianos) -> Reducir dosis 25-50% o evitar", "Razas braquicéfalas (Boxers) -> Riesgo de síncope vagal", "Animales agresivos (puede aumentar reactividad al sobresalto)", "Sementales equinos (Prolapso peneano)", "Enfermedad hepática"],
-      "efectos_adversos": ["Hipotensión y bradicardia (colapso cardiovascular)", "Protrusión de la membrana nictitante", "Secuestro esplénico (baja hematocrito transitoria)", "Prolapso peneano en caballos (Paráfimosis)", "Agresión paradójica"],
-      "seguridad_reproductiva": { "gestacion": "Contraindicado en etiqueta, pero usado en bovinos/hurones. Evitar en cesáreas (hipotensión fetal).", "lactancia": "Seguridad no establecida, aunque usado en yeguas para estimular lactancia." },
-      "sobredosis": { "signos": ["Hipotensión severa", "Colapso", "Rigidez", "Temblores (signos extrapiramidales)"], "tratamiento": "Fluidos IV. Fenilefrina o Norepinefrina. NO USAR EPINEFRINA (Causa 'Inversión de Epinefrina' empeorando hipotensión).", "contraindicado_en_urgencia": ["Epinefrina"] },
+      "contraindicaciones": [
+        "Exposición a organofosforados o procaína.",
+        "Shock, hipovolemia severa o deshidratación.",
+        "Enfermedad hepática severa."
+      ],
+      "precauciones": [
+        "Mutación MDR1: Reducir dosis 25-50%.",
+        "Boxers: Riesgo de síncope vagal.",
+        "Razas gigantes: Mayor sensibilidad.",
+        "Galgos: Sensibles a efectos hipotensores."
+      ],
+      "efectos_adversos": [
+        "Hipotensión significativa.",
+        "Hipotermia.",
+        "Prolapso de la membrana nictitante.",
+        "Priapismo en caballos (raro pero grave)."
+      ],
+      "sobredosis": {
+        "signos": ["Hipotensión severa", "Depresión SNC", "Convulsiones"],
+        "tratamiento": "Fluidos IV, vasopresores (Norepinefrina). CONTRAINDICADA la Epinefrina.",
+        "contraindicado_en_urgencia": ["Epinefrina"]
+      },
       "interacciones_farmacologicas": [
-        { "farmaco": "Organofosforados", "efecto": "Potencia toxicidad", "severidad": "Grave" },
-        { "farmaco": "Epinefrina", "efecto": "Causa vasodilatación e hipotensión severa (Inversión)", "severidad": "Grave" },
-        { "farmaco": "Opioides / Anestésicos", "efecto": "Potencia depresión CNS e hipotensión", "severidad": "Moderada" },
-        { "farmaco": "Antiácidos", "efecto": "Reducen absorción oral", "severidad": "Leve" }
+        { "farmaco": "Epinefrina", "efecto": "Reversión de epinefrina (empeora hipotensión)", "severidad": "Grave" },
+        { "farmaco": "Opioides", "efecto": "Potencia hipotensión y sedación", "severidad": "Moderada" }
       ]
     },
     "farmacologia_clinica": {
-      "mecanismo_accion": "Bloqueo de receptores dopaminérgicos postsinápticos en SNC y bloqueo alfa-adrenérgico periférico (causando vasodilatación).",
-      "farmacocinetica": { "general": "Inicio acción 15-30 min. Duración 3-8 horas. Metabolismo hepático.", "datos_especie": { "perro": "Biodisponibilidad oral 20%. Vida media 7h (IV) a 16h (PO).", "caballo": "Efecto sedante en 5 min IV. Vida media 3h. Metabolitos en orina hasta 144h." } }
+      "mecanismo_accion": "Bloqueo dopaminérgico postsináptico en SNC y bloqueo alfa-1 adrenérgico periférico.",
+      "farmacocinetica": {
+        "general": "Metabolismo hepático. Metabolitos detectables en orina equina hasta 144 h.",
+        "datos_especie": {}
+      }
     },
-    "propiedades_fisicoquimicas": { "descripcion": "Polvo amarillo inodoro. Solución inyectable amarillo pálido.", "almacenamiento": "Proteger de luz. Temperatura ambiente (20-25°C).", "compatibilidad": { "compatibles": ["Mezclas con Ketamina/Xilacina estables si protegidas de luz"], "incompatibles": ["Glicopirrolato", "Diazepam"] } },
+    "propiedades_fisicoquimicas": {
+      "descripcion": "Polvo amarillo inodoro. Solución inyectable amarillo pálido.",
+      "almacenamiento": "Proteger de luz. Temperatura ambiente (20-25°C).",
+      "compatibilidad": { "compatibles": [], "incompatibles": [] }
+    },
     "presentaciones_comerciales": [
-      { "tipo": "Solución Inyectable", "concentracion_texto": "10 mg/mL", "valor_concentracion": 10, "unidad_concentracion": "mg/ml", "es_divisible": true },
-      { "tipo": "Tableta", "concentracion_texto": "10 mg", "valor_concentracion": 10, "unidad_concentracion": "mg", "es_divisible": true },
-      { "tipo": "Tableta", "concentracion_texto": "25 mg", "valor_concentracion": 25, "unidad_concentracion": "mg", "es_divisible": true }
+      { "tipo": "Inyección", "concentracion_texto": "10 mg/mL", "valor_concentracion": 10, "unidad_concentracion": "mg/ml", "es_divisible": true }
     ]
   },
   {
     "id": "acetaminofen",
     "meta_data": {
-      "nombre_generico": "Acetaminofén / Paracetamol",
-      "nombres_comerciales": ["Tylenol"],
-      "grupo_farmacologico": "Analgésico no opioide / Antipirético",
-      "status_regulatorio": "Uso humano (Uso Extra-label en veterinaria)"
+      "nombre_generico": "Acetaminofén",
+      "nombres_comerciales": [
+        "Tylenol",
+        "Paracetamol"
+      ],
+      "grupo_farmacologico": "Analgésico, Antipirético",
+      "status_regulatorio": "Uso extra-label en perros y caballos; CONTRAINDICADO en gatos."
     },
     "resumen_clinico": {
-      "puntos_clave": ["CONTRAINDICADO ABSOLUTAMENTE EN GATOS (Mortal).", "Contraindicado en Hurones.", "Útil en perros para dolor crónico o postquirúrgico (alternativa a AINEs).", "Riesgo de toxicidad hepática y metahemoglobinemia en dosis altas."],
-      "usos_principales": "Analgesia y control de fiebre en perros, caballos y pequeños mamíferos."
+      "puntos_clave": [
+        "Contraindicado en gatos y hurones a cualquier dosis.",
+        "No posee actividad antiinflamatoria significativa ni inhibe función plaquetaria.",
+        "Perros son más susceptibles que humanos a toxicidad en glóbulos rojos.",
+        "Útil para dolor crónico en perros cuando no se pueden usar AINEs."
+      ],
+      "usos_principales": "Analgésico oral o antipirético en perros, caballos y pequeños mamíferos."
     },
-    "informacion_cliente": ["NUNCA administre este medicamento a gatos. Puede causar la muerte rápidamente.", "No usar en Hurones.", "En perros, vigile si los ojos o encías se ponen amarillos, vómitos o falta de apetito.", "Mantener fuera del alcance de los niños y animales.", "No combinar con otros medicamentos para el dolor sin receta."],
+    "informacion_cliente": [
+      "NUNCA usar en gatos ni hurones.",
+      "Contactar al veterinario si el perro deja de comer o si el blanco de los ojos se pone amarillento.",
+      "No dar más de lo prescrito ni combinar con otros medicamentos para la fiebre sin instrucción."
+    ],
     "parametros_dosificacion": {
       "perro": [
-        { "indicacion": "Analgesia / Antipirético", "vias": ["PO", "Rectal"], "math": { "tipo_calculo": "mg_kg", "dosis_recomendada": 12.5, "dosis_min": 10, "dosis_max": 15, "tope_maximo_mg": null, "unidad_calculo": "mg/kg" }, "frecuencia": { "texto_ui": "Cada 8 horas (o 12h en uso crónico)", "intervalo_horas": 8 }, "duracion_tratamiento": "Según respuesta", "notas_tecnicas": "Si uso >5 días, bajar frecuencia a BID." }
+        {
+          "indicacion": "Analgésico o antipirético (Extra-label)",
+          "vias": ["PO", "Rectal"],
+          "math": {
+            "tipo_calculo": "mg_kg",
+            "dosis_recomendada": 12.5,
+            "dosis_min": 10,
+            "dosis_max": 15,
+            "unidad_calculo": "mg/kg",
+            "tope_maximo_mg": null
+          },
+          "frecuencia": {
+            "texto_ui": "Cada 8 horas",
+            "intervalo_horas": 8
+          },
+          "notas_tecnicas": "Si se usa >5 días, considerar cada 12 horas a dosis mínima."
+        }
       ],
       "caballo": [
-        { "indicacion": "Analgesia / Antipirético", "vias": ["PO"], "math": { "tipo_calculo": "mg_kg", "dosis_recomendada": 20, "dosis_min": null, "dosis_max": null, "tope_maximo_mg": null, "unidad_calculo": "mg/kg" }, "frecuencia": { "texto_ui": "Cada 12 horas o dosis única", "intervalo_horas": 12 }, "duracion_tratamiento": "Corto plazo", "notas_tecnicas": "Monitorear hígado si uso >14 días." }
-      ],
-      "conejo": [
-        { "indicacion": "Analgesia (Dolor leve-moderado)", "vias": ["PO (Agua)"], "math": { "tipo_calculo": "fija", "dosis_recomendada": 1.5, "dosis_min": 1.0, "dosis_max": 2.0, "tope_maximo_mg": null, "unidad_calculo": "mg/ml_agua" }, "frecuencia": { "texto_ui": "En agua de bebida ad libitum", "intervalo_horas": 24 }, "duracion_tratamiento": "Sintomático", "notas_tecnicas": "Dosis expresada en concentración mg/mL de agua de bebida." }
-      ],
-      "roedores": [
-        { "indicacion": "Analgesia (Dolor leve-moderado)", "vias": ["PO (Agua)"], "math": { "tipo_calculo": "fija", "dosis_recomendada": 1.5, "dosis_min": 1.0, "dosis_max": 2.0, "tope_maximo_mg": null, "unidad_calculo": "mg/ml_agua" }, "frecuencia": { "texto_ui": "En agua de bebida ad libitum", "intervalo_horas": 24 }, "duracion_tratamiento": "Sintomático", "notas_tecnicas": "Dosis expresada en concentración mg/mL de agua de bebida." }
+        {
+          "indicacion": "Analgésico o antipirético (Extra-label)",
+          "vias": ["PO"],
+          "math": {
+            "tipo_calculo": "mg_kg",
+            "dosis_recomendada": 20,
+            "unidad_calculo": "mg/kg",
+            "dosis_min": null,
+            "dosis_max": null,
+            "tope_maximo_mg": null
+          },
+          "frecuencia": {
+            "texto_ui": "Una o dos veces al día",
+            "intervalo_horas": 12
+          },
+          "notas_tecnicas": ""
+        }
       ]
     },
     "seguridad_y_alertas": {
-      "contraindicaciones": ["GATOS (Deficiencia de glucuronil transferasa)", "Hurones", "Petauros del azúcar (Sugar Gliders)", "Erizos", "Hipersensibilidad al fármaco"],
-      "precauciones": ["Insuficiencia hepática", "Uso crónico en perros (Hepatotoxicidad)", "Queratoconjuntivitis seca (dosis altas)"],
-      "efectos_adversos": ["Hepatotoxicidad (Ictericia, vómitos, anorexia)", "Metahemoglobinemia (Cianosis, sangre oscura, distress respiratorio)", "Queratoconjuntivitis seca (ojo seco) en dosis altas", "Daño renal"],
-      "seguridad_reproductiva": { "gestacion": "Cruza placenta. Considerado relativamente seguro para uso ocasional.", "lactancia": "Se excreta en leche en concentraciones bajas. Considerado aceptable." },
-      "sobredosis": { "signos": ["Edema facial (gatos)", "Cianosis", "Ictericia", "Vómitos", "Depresión"], "tratamiento": "N-Acetilcisteína (Antídoto). SAMe. Oxígeno. Transfusiones.", "contraindicado_en_urgencia": [] },
+      "contraindicaciones": [
+        "Gatos (Cualquier dosis).",
+        "Hurones.",
+        "Petauros del azúcar (Sugar gliders) o erizos (seguridad no establecida)."
+      ],
+      "precauciones": [
+        "Perros con sensibilidad idiosincrásica.",
+        "Uso crónico: riesgo de hepatotoxicidad.",
+        "Dosis altas: riesgo de metahemoglobinemia."
+      ],
+      "efectos_adversos": [
+        "Metahemoglobinemia (especialmente gatos y dosis altas en perros).",
+        "Hepatotoxicidad.",
+        "Queratoconjuntivitis seca (KCS) en perros a dosis >3 veces la recomendada.",
+        "Ictericia y hematuria."
+      ],
+      "sobredosis": {
+        "signos": [
+          "Edema facial/extremidades (gatos)",
+          "Cianosis",
+          "Ictericia",
+          "Vómitos",
+          "Dolor abdominal"
+        ],
+        "tratamiento": "N-acetilcisteína (Antídoto), SAMe, fluidoterapia, oxígeno, transfusiones de sangre.",
+        "contraindicado_en_urgencia": []
+      },
       "interacciones_farmacologicas": [
-        { "farmaco": "Barbitúricos", "efecto": "Aumenta metabolitos tóxicos hepáticos", "severidad": "Grave" },
-        { "farmaco": "Doxorrubicina", "efecto": "Depleta glutatión, aumenta riesgo hepático", "severidad": "Importante" },
-        { "farmaco": "Warfarina", "efecto": "Puede potenciar efectos anticoagulantes", "severidad": "Moderada" }
+        { "farmaco": "Anestésicos locales", "efecto": "Aumentan riesgo de metahemoglobinemia", "severidad": "Moderada" },
+        { "farmaco": "Barbitúricos", "efecto": "Aumentan riesgo de hepatotoxicidad", "severidad": "Importante" },
+        { "farmaco": "Warfarina", "efecto": "Dosis grandes pueden potenciar efectos anticoagulantes", "severidad": "Leve" }
       ]
     },
     "farmacologia_clinica": {
-      "mecanismo_accion": "Inhibición de COX (ciclooxigenasa) central y actividad serotoninérgica. Pobre actividad antiinflamatoria periférica.",
-      "farmacocinetica": { "general": "Absorción rápida. Metabolismo hepático (Glucuronidación - Vía deficiente en gatos).", "datos_especie": { "perro": "Biodisponibilidad oral 45%. Vida media 1-4h. Absorción rectal pobre (30%).", "caballo": "Biodisponibilidad oral 91%. Vida media 2-4h." } }
+      "mecanismo_accion": "Inhibición de la ciclooxigenasa y sitios de peroxidasa en la prostaglandina H2 sintetasa. Posible actividad serotoninérgica.",
+      "farmacocinetica": {
+        "general": "En perros: biodisponibilidad ~45%, vida media 1-4 h. En caballos: biodisponibilidad ~91%.",
+        "datos_especie": {}
+      }
     },
-    "propiedades_fisicoquimicas": { "descripcion": "Polvo cristalino blanco, sabor amargo.", "almacenamiento": "Menor a 40°C. No congelar soluciones.", "compatibilidad": { "compatibles": ["Alimentos (tabletas trituradas)"], "incompatibles": [] } },
+    "propiedades_fisicoquimicas": {
+        "descripcion": "Polvo cristalino blanco, sabor amargo.",
+        "almacenamiento": "Menor a 40°C. No congelar soluciones.",
+        "compatibilidad": { "compatibles": [], "incompatibles": [] }
+    },
     "presentaciones_comerciales": [
-      { "tipo": "Tableta", "concentracion_texto": "325 mg", "valor_concentracion": 325, "unidad_concentracion": "mg", "es_divisible": true },
-      { "tipo": "Tableta", "concentracion_texto": "500 mg", "valor_concentracion": 500, "unidad_concentracion": "mg", "es_divisible": true },
-      { "tipo": "Líquido Oral", "concentracion_texto": "32 mg/mL", "valor_concentracion": 32, "unidad_concentracion": "mg/ml", "es_divisible": true }
+      { "tipo": "Tableta", "concentracion_texto": "325 mg, 500 mg", "valor_concentracion": 325, "unidad_concentracion": "mg", "es_divisible": true },
+      { "tipo": "Líquido oral", "concentracion_texto": "32 mg/mL", "valor_concentracion": 32, "unidad_concentracion": "mg/ml", "es_divisible": false }
     ]
   },
   {
@@ -282,90 +461,370 @@ export const DB_MEDICAMENTOS: Drug[] = [
     "meta_data": {
       "nombre_generico": "Acetazolamida",
       "nombres_comerciales": ["Diamox"],
-      "grupo_farmacologico": "Diurético Inhibidor de Anhidrasa Carbónica / Antiglaucoma",
-      "status_regulatorio": "Uso humano (Uso Extra-label en veterinaria)"
+      "grupo_farmacologico": "Inhibidor de la anhidrasa carbónica, diurético, agente antiglaucoma",
+      "status_regulatorio": "Uso extra-label en perros, gatos y caballos."
     },
     "resumen_clinico": {
-      "puntos_clave": ["Usado para tratar alcalosis metabólica, glaucoma y Parálisis Periódica Hiperpotasémica (HYPP) en caballos.", "Contraindicado en insuficiencia hepática, renal, o desbalances electrolíticos graves.", "Monitorear electrolitos y estado ácido-base en terapias crónicas.", "Administrar con comida si hay molestias gástricas."],
-      "usos_principales": "Glaucoma (reduce humor acuoso), Alcalosis metabólica, HYPP en equinos."
+      "puntos_clave": [
+        "Tratamiento de glaucoma, alcalosis metabólica y HYPP en caballos.",
+        "Reduce la formación de humor acuoso.",
+        "Posee actividad anticonvulsiva independiente de su efecto diurético."
+      ],
+      "usos_principales": "Control de presión intraocular en glaucoma, diuresis en alcalosis metabólica y prevención de parálisis periódica hiperpotasémica (HYPP) en caballos."
     },
-    "informacion_cliente": ["El efecto secundario más común es malestar estomacal; dar con comida ayuda.", "Contacte al veterinario si ve jadeo inusual, debilidad o cambios de comportamiento.", "Los caballos deben tener acceso a agua fresca siempre.", "Se requerirán análisis de sangre frecuentes durante el tratamiento."],
+    "informacion_cliente": [
+      "Dar con comida para reducir el malestar estomacal.",
+      "Contactar al veterinario si nota jadeo inusual, debilidad, tambaleo o temblores.",
+      "Caballos deben tener acceso a agua fresca constante.",
+      "Requiere pruebas de laboratorio periódicas."
+    ],
     "parametros_dosificacion": {
       "perro": [
-        { "indicacion": "Glaucoma / Alcalosis metabólica", "vias": ["PO", "IV"], "math": { "tipo_calculo": "mg_kg", "dosis_recomendada": 7, "dosis_min": 4, "dosis_max": 10, "tope_maximo_mg": null, "unidad_calculo": "mg/kg" }, "frecuencia": { "texto_ui": "Cada 8 a 12 horas", "intervalo_horas": 8 }, "duracion_tratamiento": "Crónico/Agudo", "notas_tecnicas": "Monitorizar presión intraocular." }
-      ],
-      "gato": [
-        { "indicacion": "Glaucoma (Adjunto)", "vias": ["PO"], "math": { "tipo_calculo": "mg_kg", "dosis_recomendada": 7, "dosis_min": 6, "dosis_max": 8, "tope_maximo_mg": null, "unidad_calculo": "mg/kg" }, "frecuencia": { "texto_ui": "Cada 8 a 12 horas", "intervalo_horas": 8 }, "duracion_tratamiento": "Crónico", "notas_tecnicas": "Puede causar acidosis metabólica." }
+        {
+          "indicacion": "Glaucoma / Alcalosis metabólica (Extra-label)",
+          "vias": ["PO", "IV"],
+          "math": {
+            "tipo_calculo": "mg_kg",
+            "dosis_recomendada": 7,
+            "dosis_min": 4,
+            "dosis_max": 10,
+            "unidad_calculo": "mg/kg",
+            "tope_maximo_mg": null
+          },
+          "frecuencia": { "texto_ui": "Cada 8 a 12 horas", "intervalo_horas": 8 },
+          "notas_tecnicas": "Dosis IV solo una vez."
+        }
       ],
       "caballo": [
-        { "indicacion": "HYPP (Parálisis Periódica Hiperpotasémica)", "vias": ["PO"], "math": { "tipo_calculo": "mg_kg", "dosis_recomendada": 3.3, "dosis_min": 2.2, "dosis_max": 4.4, "tope_maximo_mg": null, "unidad_calculo": "mg/kg" }, "frecuencia": { "texto_ui": "Cada 12 horas", "intervalo_horas": 12 }, "duracion_tratamiento": "Crónico", "notas_tecnicas": "Preventivo o adjunto." }
+        {
+          "indicacion": "Prevención/Tratamiento de episodios de HYPP (Extra-label)",
+          "vias": ["PO"],
+          "math": {
+            "tipo_calculo": "mg_kg",
+            "dosis_recomendada": 3.3,
+            "dosis_min": 2.2,
+            "dosis_max": 4.4,
+            "unidad_calculo": "mg/kg",
+            "tope_maximo_mg": null
+          },
+          "frecuencia": { "texto_ui": "Dos veces al día", "intervalo_horas": 12 },
+          "notas_tecnicas": ""
+        }
       ]
     },
     "seguridad_y_alertas": {
-      "contraindicaciones": ["Insuficiencia hepática o renal severa", "Hiponatremia o Hipopotasemia", "Acidosis hiperclorémica", "Insuficiencia adrenocortical", "Obstrucción pulmonar severa"],
-      "precauciones": ["Gatos (sensibles a acidosis)", "Pacientes con cálculos renales (alcaliniza orina)"],
-      "efectos_adversos": ["Disturbios GI (Vómito, diarrea)", "Sedación / Depresión SNC", "Hipopotasemia", "Acidosis metabólica", "Cristaluria"],
-      "seguridad_reproductiva": { "gestacion": "Efectos teratogénicos en animales de laboratorio. Usar solo si beneficio supera riesgo.", "lactancia": "Se excreta en leche. Usar sustituto lácteo si es inevitable tratar a la madre." },
-      "sobredosis": { "signos": ["Desbalance electrolítico", "Acidosis", "Signos SNC"], "tratamiento": "Soporte, corrección electrolítica. Es dializable.", "contraindicado_en_urgencia": [] },
+      "contraindicaciones": [
+        "Insuficiencia hepática, renal, pulmonar o adrenocortical significativa.",
+        "Hiponatremia, hipopotasemia.",
+        "Acidosis hiperclorémica.",
+        "Obstrucción pulmonar severa."
+      ],
+      "precauciones": [
+        "Acidosis respiratoria severa.",
+        "Dosis altas crónicas: Reducen capacidad de ejercicio en caballos."
+      ],
+      "efectos_adversos": [
+        "Cristaluria y poliuria.",
+        "Hipopotasemia.",
+        "Sedación y debilidad.",
+        "Vómitos y diarrea.",
+        "Temblores leves tras administración IV rápida."
+      ],
+      "sobredosis": {
+        "signos": ["Alteración electrolítica severa", "Cambios en estado mental"],
+        "tratamiento": "Soporte, monitoreo de gases y electrolitos. Es dializable.",
+        "contraindicado_en_urgencia": []
+      },
       "interacciones_farmacologicas": [
-        { "farmaco": "Aspirina (Salicilatos)", "efecto": "Riesgo de toxicidad severa y acidosis", "severidad": "Grave" },
-        { "farmaco": "Digoxina", "efecto": "Hipopotasemia aumenta risco de toxicidad por digoxina", "severidad": "Importante" },
-        { "farmaco": "Fenobarbital", "efecto": "Aumenta excreción (reduce eficacia) por orina alcalina", "severidad": "Moderada" },
-        { "farmaco": "Bicarbonato de Sodio", "efecto": "Aumenta riesgo de cálculos renales", "severidad": "Moderada" }
+        { "farmaco": "Ciclosporina", "efecto": "Aumenta concentraciones de ciclosporina", "severidad": "Importante" },
+        { "farmaco": "Digoxina", "efecto": "Aumenta riesgo de toxicidad por hipopotasemia", "severidad": "Moderada" },
+        { "farmaco": "Fenobarbital", "efecto": "Aumenta excreción de fenobarbital por orina alcalina", "severidad": "Moderada" }
       ]
     },
     "farmacologia_clinica": {
-      "mecanismo_accion": "Inhibición reversible de la anhidrasa carbónica. Reduce formación de humor acuoso (ojo) y aumenta excreción renal de Na, K y Bicarbonato.",
-      "farmacocinetica": { "general": "Absorción oral buena. Excreción renal inalterada mayormente.", "datos_especie": { "perro": "Inicio acción IOP: 30 min. Duración 4-6h.", "caballo": "Biodisponibilidad oral baja (25%)." } }
+      "mecanismo_accion": "Inhibidor no competitivo reversible de la anhidrasa carbónica. Reduce formación de iones H+ y bicarbonato.",
+      "farmacocinetica": {
+        "general": "Inicio acción IOP: 30 min. Duración: 4-6 h. Excreción renal del 90% inalterada.",
+        "datos_especie": {}
+      }
     },
-    "propiedades_fisicoquimicas": { "descripcion": "Polvo cristalino blanco. Solubilidad ligera en agua.", "almacenamiento": "Temperatura ambiente.", "compatibilidad": { "compatibles": ["Mayoría de fluidos IV"], "incompatibles": [] } },
+    "propiedades_fisicoquimicas": {
+      "descripcion": "Polvo cristalino blanco. Solubilidad ligera en agua.",
+      "almacenamiento": "Temperatura ambiente.",
+      "compatibilidad": { "compatibles": [], "incompatibles": [] }
+    },
     "presentaciones_comerciales": [
-      { "tipo": "Tableta", "concentracion_texto": "250 mg", "valor_concentracion": 250, "unidad_concentracion": "mg", "es_divisible": true },
-      { "tipo": "Tableta", "concentracion_texto": "125 mg", "valor_concentracion": 125, "unidad_concentracion": "mg", "es_divisible": true }
+      { "tipo": "Tableta", "concentracion_texto": "125 mg, 250 mg", "valor_concentracion": 125, "unidad_concentracion": "mg", "es_divisible": true },
+      { "tipo": "Inyectable (Liofilizado)", "concentracion_texto": "500 mg", "valor_concentracion": 500, "unidad_concentracion": "mg", "es_divisible": false }
     ]
   },
   {
     "id": "acido_acetico",
     "meta_data": {
-      "nombre_generico": "Ácido Acético / Vinagre",
-      "nombres_comerciales": ["Vinagre Blanco"],
+      "nombre_generico": "Ácido Acético (Vinagre)",
+      "nombres_comerciales": ["Vinagre"],
       "grupo_farmacologico": "Acidificante Gastrointestinal",
-      "status_regulatorio": "Suplemento / Químico"
+      "status_regulatorio": "Uso extra-label en rumiantes y caballos."
     },
     "resumen_clinico": {
-      "puntos_clave": ["Usado para tratar intoxicación por urea (amoniaco) en rumiantes.", "Prevención de enterolitos en caballos.", "USAR SOLAMENTE VINAGRE (3-5%), NO ÁCIDO CONCENTRADO.", "Contraindicado si hay sospecha de acidosis láctica (sobrecarga de granos)."],
-      "usos_principales": "Intoxicación por urea en rumiantes, acidificación colónica en equinos."
+      "puntos_clave": [
+        "Usar solo vinagre (3%-5%), NUNCA ácido concentrado.",
+        "Administrar vía sonda gástrica debido al sabor desagradable.",
+        "Contraindicado si hay sospecha de acidosis láctica."
+      ],
+      "usos_principales": "Tratamiento de toxicosis por amoníaco inducida por nitrógeno no proteico (urea) en rumiantes y prevención de enterolitos en caballos."
     },
-    "informacion_cliente": ["Use vinagre de cocina común (blanco). No use químicos industriales.", "En caballos, se puede mezclar con la comida diariamente."],
+    "informacion_cliente": [
+      "Se administra generalmente mediante sonda gástrica por personal profesional.",
+      "No usar formas concentradas por riesgo de corrosión."
+    ],
     "parametros_dosificacion": {
       "bovino": [
-        { "indicacion": "Intoxicación por Urea (Extra-label)", "vias": ["Ruminal (Sonda)"], "math": { "tipo_calculo": "fija", "dosis_recomendada": 7, "dosis_min": 4, "dosis_max": 10, "tope_maximo_mg": null, "unidad_calculo": "Litros/animal (Vinagre 5%)" }, "frecuencia": { "texto_ui": "Repetir s/n", "intervalo_horas": 0 }, "duracion_tratamiento": "Agudo", "notas_tecnicas": "Seguir con agua fría (hasta 30L)." }
-      ],
-      "ovino_caprino": [
-        { "indicacion": "Intoxicación por Urea (Extra-label)", "vias": ["Ruminal (Sonda)"], "math": { "tipo_calculo": "fija", "dosis_recomendada": 0.6, "dosis_min": 0.25, "dosis_max": 1.0, "tope_maximo_mg": null, "unidad_calculo": "Litros/animal (Vinagre 5%)" }, "frecuencia": { "texto_ui": "Repetir s/n", "intervalo_horas": 0 }, "duracion_tratamiento": "Agudo", "notas_tecnicas": "Seguir con agua fría (2-8L)." }
+        {
+          "indicacion": "Envenenamiento por urea (Extra-label)",
+          "vias": ["Sonda gástrica"],
+          "math": {
+            "tipo_calculo": "fija",
+            "dosis_recomendada": 7,
+            "dosis_min": 4,
+            "dosis_max": 10,
+            "unidad_calculo": "Litros/animal",
+            "tope_maximo_mg": null
+          },
+          "frecuencia": { "texto_ui": "Dosis única, repetir si es necesario", "intervalo_horas": 0 },
+          "notas_tecnicas": "Usar vinagre al 5%. Seguir con agua fría (hasta 30L) para bajar temperatura ruminal."
+        }
       ],
       "caballo": [
-        { "indicacion": "Prevención Enterolitos (Extra-label)", "vias": ["PO"], "math": { "tipo_calculo": "fija", "dosis_recomendada": 250, "dosis_min": null, "dosis_max": null, "tope_maximo_mg": null, "unidad_calculo": "ml/caballo_450kg" }, "frecuencia": { "texto_ui": "Cada 24 horas", "intervalo_horas": 24 }, "duracion_tratamiento": "Preventivo", "notas_tecnicas": "Equivalente a 250ml por cada 450kg de peso." }
+        {
+          "indicacion": "Prevención de enterolitos (Extra-label)",
+          "vias": ["PO (en comida)"],
+          "math": {
+            "tipo_calculo": "fija",
+            "dosis_recomendada": 250,
+            "unidad_calculo": "mL/450kg",
+            "dosis_min": null,
+            "dosis_max": null,
+            "tope_maximo_mg": null
+          },
+          "frecuencia": { "texto_ui": "Una vez al día", "intervalo_horas": 24 },
+          "notas_tecnicas": ""
+        }
       ]
     },
     "seguridad_y_alertas": {
-      "contraindicaciones": ["Acidosis láctica (Sobrecarga de granos)", "Uso de formas concentradas (corrosivo)"],
-      "precauciones": ["Irritación de mucosas si no se usa sonda"],
-      "efectos_adversos": ["Irritación de mucosas", "Sabor desagradable"],
-      "seguridad_reproductiva": { "gestacion": "No especificado.", "lactancia": "No especificado." },
-      "sobredosis": { "signos": ["Irritación GI", "Acidosis sistémica (si dosis masiva)"], "tratamiento": "Dilución. Soporte.", "contraindicado_en_urgencia": [] },
+      "contraindicaciones": [
+        "Acidosis láctica (sobrecarga de grano).",
+        "Uso de formas concentradas de ácido acético."
+      ],
+      "precauciones": [
+        "Irritación de mucosas por contacto directo."
+      ],
+      "efectos_adversos": [
+        "Irritación gastrointestinal si no se diluye adecuadamente.",
+        "Sabor desagradable."
+      ],
+      "sobredosis": {
+        "signos": ["Corrosión de mucosas (si es concentrado)"],
+        "tratamiento": "Dilución con agua o leche.",
+        "contraindicado_en_urgencia": []
+      },
       "interacciones_farmacologicas": [
-        { "farmaco": "Aspirina", "efecto": "Orina ácida disminuye excreción de salicilatos", "severidad": "Moderada" },
-        { "farmaco": "Antifúngicos Azoles", "efecto": "Aumenta absorción de azoles", "severidad": "Leve" }
+        { "farmaco": "Aspirina", "efecto": "Orina ácida disminuye excreción de salicilatos", "severidad": "Leve" },
+        { "farmaco": "Fenobarbital", "efecto": "Orina ácida disminuye excreción de fenobarbital", "severidad": "Leve" }
       ]
     },
     "farmacologia_clinica": {
-      "mecanismo_accion": "Baja el pH ruminal, convirtiendo amoniaco (NH3) a amonio (NH4+), reduciendo su absorción.",
-      "farmacocinetica": { "general": "No informacion farmacocinética disponible.", "datos_especie": {} }
+      "mecanismo_accion": "Baja el pH ruminal, desplazando el amoníaco (NH3) a iones amonio (NH4+) para reducir su absorción.",
+      "farmacocinetica": {
+        "general": "No disponible.",
+        "datos_especie": {}
+      }
     },
-    "propiedades_fisicoquimicas": { "descripcion": "Líquido con olor distintivo y sabor ácido.", "almacenamiento": "Envases herméticos.", "compatibilidad": { "compatibles": ["Agua"], "incompatibles": [] } },
+    "propiedades_fisicoquimicas": {
+        "descripcion": "Líquido con olor distintivo y sabor ácido.",
+        "almacenamiento": "Envases herméticos.",
+        "compatibilidad": { "compatibles": [], "incompatibles": [] }
+    },
     "presentaciones_comerciales": [
-      { "tipo": "Solución (Vinagre)", "concentracion_texto": "5%", "valor_concentracion": 5, "unidad_concentracion": "%", "es_divisible": true }
+      { "tipo": "Solución (Vinagre)", "concentracion_texto": "3% - 5%", "valor_concentracion": 5, "unidad_concentracion": "%", "es_divisible": false }
     ]
-  }
+  },
+  {
+    "id": "albuterol_salbutamol",
+    "meta_data": {
+    "nombre_generico": "Albuterol (Salbutamol)",
+    "nombres_comerciales": ["Proventil", "Ventolin", "Salbutol"],
+    "grupo_farmacologico": "Agonista Beta-2 Adrenérgico",
+    "status_regulatorio": "Uso extra-label en perros, gatos y caballos."
+    },
+    "resumen_clinico": {
+    "puntos_clave": [
+    "Broncodilatador de acción rápida.",
+    "Eficaz para alivio agudo, pero el uso crónico puede disminuir la densidad de receptores (tolerancia).",
+    "La inhalación reduce drásticamente los efectos secundarios sistémicos en comparación con la vía oral."
+    ],
+    "usos_principales": "Broncoespasmo asociado a asma felina, bronquitis crónica en perros y enfermedad inflamatoria de las vías respiratorias en caballos."
+    },
+    "informacion_cliente": [
+    "Se requiere un espaciador (como AeroKat o AeroDawg) para administración efectiva en mascotas.",
+    "Limpiar el hocico tras la administración para evitar ingestión accidental.",
+    "Contactar al veterinario si el animal presenta temblores o agitación severa."
+    ],
+    "parametros_dosificacion": {
+    "gato": [
+    {
+    "indicacion": "Asma felina (Crisis aguda)",
+    "vias": ["Inhalación (MDI)"],
+    "math": {
+    "tipo_calculo": "fija",
+    "dosis_recomendada": 1,
+    "dosis_min": null,
+    "dosis_max": null,
+    "tope_maximo_mg": null,
+    "unidad_calculo": "puff (90 mcg)"
+    },
+    "frecuencia": { "texto_ui": "Según sea necesario cada 4-6 horas", "intervalo_horas": 4 },
+    "notas_tecnicas": "Usar solo para crisis. El uso diario crónico puede empeorar la inflamación de las vías respiratorias."
+    }
+    ],
+    "caballo": [
+    {
+    "indicacion": "Broncoespasmo (RAO/IAD)",
+    "vias": ["Inhalación"],
+    "math": {
+    "tipo_calculo": "mg_kg",
+    "dosis_recomendada": 2,
+    "dosis_min": null,
+    "dosis_max": null,
+    "tope_maximo_mg": null,
+    "unidad_calculo": "mcg/kg"
+    },
+    "frecuencia": { "texto_ui": "Cada 1-2 horas en crisis", "intervalo_horas": 1 },
+    "notas_tecnicas": ""
+    }
+    ]
+    },
+    "seguridad_y_alertas": {
+    "contraindicaciones": [
+    "Hipersensibilidad.",
+    "Arritmias cardiacas severas."
+    ],
+    "precauciones": [
+    "Diabetes mellitus (puede causar hiperglucemia).",
+    "Hipertiroidismo.",
+    "Enfermedad cardiaca o hipertensión."
+    ],
+    "efectos_adversos": [
+    "Taquicardia.",
+    "Temblores musculares.",
+    "Hipopotasemia.",
+    "Agitación / Nerviosismo."
+    ],
+    "sobredosis": {
+    "signos": ["Taquicardia severa", "Hipopotasemia crítica", "Vómitos", "Paro cardiaco"],
+    "tratamiento": "Bloqueadores beta (propranolol) si la taquicardia es severa, suplementación con potasio.",
+    "contraindicado_en_urgencia": []
+    },
+    "interacciones_farmacologicas": [
+    { "farmaco": "Bloqueadores Beta (Propranolol)", "efecto": "Antagonismo mutuo (anula el efecto del albuterol)", "severidad": "Grave" },
+    { "farmaco": "Digoxina", "efecto": "Riesgo de arritmias por hipopotasemia", "severidad": "Moderada" },
+    { "farmaco": "Anestésicos halogenados", "efecto": "Aumenta riesgo de arritmias ventriculares", "severidad": "Grave" }
+    ]
+    },
+    "farmacologia_clinica": {
+    "mecanismo_accion": "Estimula receptores beta-2 adrenérgicos en el músculo liso bronquial, activando la adenilciclasa y aumentando el AMP cíclico (relajación).",
+    "farmacocinetica": {
+      "general": "Inicio por inhalación: 5-15 min. Duración: 3-6 h.",
+      "datos_especie": {}
+    }
+    },
+    "propiedades_fisicoquimicas": {
+        "descripcion": "",
+        "almacenamiento": "",
+        "compatibilidad": { "compatibles": [], "incompatibles": [] }
+    },
+    "presentaciones_comerciales": [
+    { "tipo": "Inhalador (MDI)", "concentracion_texto": "90 mcg por puff", "valor_concentracion": 0.09, "unidad_concentracion": "mg", "es_divisible": false }
+    ]
+    },
+    {
+    "id": "altrenogest",
+    "meta_data": {
+    "nombre_generico": "Altrenogest",
+    "nombres_comerciales": ["Regu-Mate", "Altosyn", "Matrix"],
+    "grupo_farmacologico": "Progestina Sintética",
+    "status_regulatorio": "Aprobado FDA (Equinos y Porcinos)."
+    },
+    "resumen_clinico": {
+    "puntos_clave": [
+    "ADVERTENCIA: Se absorbe fácilmente por la piel humana.",
+    "Mujeres embarazadas o que planean estarlo NO deben manejarlo.",
+    "Suprime el estro de forma predecible en yeguas.",
+    "No es efectivo en yeguas con piómetra."
+    ],
+    "usos_principales": "Supresión del estro en yeguas para sincronización o control de comportamiento. Soporte del embarazo en yeguas con deficiencia de progesterona."
+    },
+    "informacion_cliente": [
+    "Usar guantes de vinilo o polietileno (los de látex pueden ser permeables).",
+    "Si hay contacto con la piel, lavar inmediatamente con agua y jabón.",
+    "Administrar sobre la comida o directamente en la boca."
+    ],
+    "parametros_dosificacion": {
+    "caballo": [
+    {
+    "indicacion": "Supresión del estro",
+    "vias": ["PO"],
+    "math": {
+    "tipo_calculo": "mg_kg",
+    "dosis_recomendada": 0.044,
+    "dosis_min": null,
+    "dosis_max": null,
+    "tope_maximo_mg": null,
+    "unidad_calculo": "mg/kg"
+    },
+    "frecuencia": { "texto_ui": "Una vez al día por 15 días", "intervalo_horas": 24 },
+    "notas_tecnicas": "El estro suele ocurrir 4-5 días después de suspender el tratamiento."
+    }
+    ]
+    },
+    "seguridad_y_alertas": {
+    "contraindicaciones": [
+    "Yeguas con inflamación uterina (endometritis).",
+    "No usar en caballos destinados al consumo humano."
+    ],
+    "precauciones": [
+    "Manejo extremadamente cuidadoso por humanos (riesgo de interrupción del ciclo menstrual o embarazo)."
+    ],
+    "efectos_adversos": [
+    "Cambios mínimos en yeguas a dosis terapéuticas.",
+    "Alteración de parámetros de calidad espermática en sementales (si se usa accidentalmente)."
+    ],
+    "sobredosis": {
+    "signos": ["No se han reportado efectos agudos graves en caballos"],
+    "tratamiento": "Soporte.",
+    "contraindicado_en_urgencia": []
+    },
+    "interacciones_farmacologicas": [
+    { "farmaco": "Rifampicina", "efecto": "Puede disminuir la eficacia del altrenogest", "severidad": "Leve" }
+    ]
+    },
+    "farmacologia_clinica": {
+    "mecanismo_accion": "Produce efectos similares a la progesterona natural, inhibiendo la liberación de gonadotropinas (LH/FSH) de la pituitaria.",
+    "farmacocinetica": {
+      "general": "Se une a proteínas plasmáticas. Metabolismo hepático.",
+      "datos_especie": {}
+    }
+    },
+    "propiedades_fisicoquimicas": {
+        "descripcion": "",
+        "almacenamiento": "",
+        "compatibilidad": { "compatibles": [], "incompatibles": [] }
+    },
+    "presentaciones_comerciales": [
+    { "tipo": "Solución oral", "concentracion_texto": "2.2 mg/mL (0.22%)", "valor_concentracion": 2.2, "unidad_concentracion": "mg/ml", "es_divisible": false }
+    ]
+    }
 ];
+
+    
