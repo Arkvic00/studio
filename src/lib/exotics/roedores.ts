@@ -147,7 +147,7 @@ export const roedoresData: ExoticSpeciesData = {
         content: [
             { 
                 category: "Virales y Ambientales",
-                icon: "Virus",
+                icon: "Bug",
                 diseases: [
                     { name: "Poliomavirus", description: "Causa verrugas/tumores en hámsteres.", tags: ["Hámster"] },
                     { name: "Coriomeningitis Linfocítica (LCMV)", description: "Zoonótico, afecta hámsteres y causa síntomas gripales severos en humanos.", tags: ["Hámster", "Zoonosis"] },
@@ -178,7 +178,7 @@ export const roedoresData: ExoticSpeciesData = {
                 icon: "Microscope",
                 diseases: [
                     { name: "Parásitos externos", description: "Ácaros (Myobia, Demodex) y piojos. Causan pérdida de pelo y comezón." },
-                    { name: "Dermatitis facial (Jerbos)", description: "Irritación por exceso de secreciones glandulares.", tags: ["Jerbo"] },
+                    { name: "Dermatitis facial (Jerbos)", description: "Irritación por exceso de secreciones glandulares debido a estrés o humedad alta.", tags: ["Jerbo"] },
                     { name: "Tumores Mamarios", description: "Comunes en ratas (benignos) y ratones (malignos).", tags: ["Rata", "Ratón"] },
                     { name: "Linfoma Cutáneo", description: "Segundo cáncer más común en hámsteres, afecta la piel.", tags: ["Hámster"] },
                     { name: "Tumor glándula de olor", description: "Común en jerbos.", tags: ["Jerbo"] }

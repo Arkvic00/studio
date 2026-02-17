@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { 
     ChevronRight, Plus, Search, BookOpen, Calendar, HeartPulse, AlertCircle, Utensils, Atom, Snowflake, Users, 
     VenetianMask, Info, Home, Ban, Hand, Syringe, FlaskConical, Stethoscope, Microscope, TestTube, Dna, Bone, Shield, 
-    Pill, Bug, Virus, TriangleAlert, Beaker
+    Pill, Bug, TriangleAlert, Beaker, Droplet, Brain
 } from 'lucide-react';
 import Image from 'next/image';
 import { DB_MEDICAMENTOS } from '@/lib/data';
@@ -108,7 +108,7 @@ const exoticSpecies = exoticSpeciesOrder.map(key => ({
 
 const iconMap: { [key: string]: React.ElementType } = {
     Calendar, HeartPulse, AlertCircle, Utensils, Atom, Snowflake, Users, VenetianMask, Info, Home, Ban, Hand, Syringe,
-    FlaskConical, Stethoscope, Microscope, TestTube, Dna, Bone, Shield, Pill, Bug, Virus, TriangleAlert, Beaker,
+    FlaskConical, Stethoscope, Microscope, TestTube, Dna, Bone, Shield, Pill, Bug, TriangleAlert, Beaker, Droplet, Brain
 };
 
 function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
