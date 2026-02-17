@@ -118,7 +118,7 @@ function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
     const speciesData = EXOTICS_DATA[speciesKey as keyof typeof EXOTICS_DATA];
     const speciesInfo = SPECIES_CONFIG[speciesKey as keyof typeof SPECIES_CONFIG];
     
-    if (!speciesData || !speciesData.sections.biologia) { // check for a real section
+    if (!speciesData || !speciesData.sections) {
         return (
              <PinterestCard>
                 <div className="text-center py-20 text-muted-foreground">
@@ -173,12 +173,52 @@ function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
                                 )})}
                             </div>
                         ) : (
-                            <p className="text-sm text-slate-300">{content as string}</p>
+                            typeof content === 'string' && <p className="text-sm text-slate-300">{content as string}</p>
                         )}
                     </PinterestCard>
                 );
 
                 switch (key) {
+                    case 'sexado_reproduccion':
+                        return (
+                             <PinterestCard key={key} id={key}>
+                                <h2 className="text-2xl font-bold text-accent mb-6 flex items-center gap-3"><SectionIcon size={24}/> {section.title}</h2>
+                                <div className="space-y-8">
+                                    <div>
+                                        <h3 className="font-bold text-white mb-2 text-lg">{content.sexing.title}</h3>
+                                        <p className="text-sm text-slate-300">{content.sexing.text}</p>
+                                    </div>
+                                    <div className="overflow-x-auto">
+                                        <h3 className="font-bold text-white mb-4 text-lg">Parámetros Reproductivos</h3>
+                                        <Table>
+                                            <TableHeader>
+                                                <TableRow>
+                                                    {content.repro_table.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}
+                                                </TableRow>
+                                            </TableHeader>
+                                            <TableBody>
+                                                {content.repro_table.rows.map((row: any, i: number) => (
+                                                    <TableRow key={i}>
+                                                        <TableCell className="font-medium text-white">{row.species}</TableCell>
+                                                        <TableCell>{row.puberty}</TableCell>
+                                                        <TableCell>{row.estrous}</TableCell>
+                                                        <TableCell>{row.gestation}</TableCell>
+                                                        <TableCell>{row.litter}</TableCell>
+                                                        <TableCell>{row.weaning}</TableCell>
+                                                    </TableRow>
+                                                ))}
+                                            </TableBody>
+                                        </Table>
+                                    </div>
+                                    <div>
+                                        <h3 className="font-bold text-white mb-2 text-lg">{content.considerations.title}</h3>
+                                        <ul className="list-disc list-inside text-sm text-slate-300 space-y-1">
+                                            {content.considerations.items.map((item: string, i: number) => <li key={i}>{item}</li>)}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </PinterestCard>
+                        )
                     case 'laboratorio':
                          return (
                             <PinterestCard key={key} id={key}>
@@ -207,11 +247,11 @@ function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
                                 {speciesKey === 'conejo' && (
                                     <div className="grid md:grid-cols-2 gap-8">
                                         <div className="overflow-x-auto">
-                                            <h3 className="font-bold text-white mb-4">Hematología</h3>
+                                            <h3 className="font-bold text-white mb-4">{content.hematology.title}</h3>
                                             <Table><TableHeader><TableRow>{content.hematology.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader><TableBody>{content.hematology.rows.map((row: any) => (<TableRow key={row.param}><TableCell className="font-medium text-white">{row.param}</TableCell><TableCell>{row.value}</TableCell></TableRow>))}</TableBody></Table>
                                         </div>
                                         <div className="overflow-x-auto">
-                                            <h3 className="font-bold text-white mb-4">Bioquímica</h3>
+                                            <h3 className="font-bold text-white mb-4">{content.biochemistry.title}</h3>
                                             <Table><TableHeader><TableRow>{content.biochemistry.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader><TableBody>{content.biochemistry.rows.map((row: any) => (<TableRow key={row.param}><TableCell className="font-medium text-white">{row.param}</TableCell><TableCell>{row.value}</TableCell></TableRow>))}</TableBody></Table>
                                         </div>
                                     </div>

@@ -6,6 +6,7 @@ export const roedoresData: ExoticSpeciesData = {
   sections: {
     biologia: {
       title: "Biología y Fisiología",
+      icon: "Dna",
       content: [
         { 
           title: "Esperanza de vida", 
@@ -41,6 +42,7 @@ export const roedoresData: ExoticSpeciesData = {
     },
     sexado_reproduccion: {
       title: "Sexado y Reproducción",
+      icon: "Users",
       content: {
         sexing: {
             title: "Sexado",
@@ -57,12 +59,13 @@ export const roedoresData: ExoticSpeciesData = {
         },
         considerations: {
             title: "Consideraciones",
-            items: ["Canibalismo: puede ocurrir si se les molesta post-parto.", "Hámsteres: pueden meter a sus crías en los abazones (bolsas de los cachetes) por estrés.", "Tapones eyaculatorios: común en ratas y ratones machos, no confundir con urolitos."]
+            items: ["Canibalismo: puede ocurrir si se les molesta.", "Hámsteres: pueden meter a sus crías en los abazones (bolsas de los cachetes) por estrés.", "Tapones eyaculatorios: común en ratas y ratones machos, no confundir con urolitos."]
         }
       }
     },
     alojamiento_manejo: {
         title: "Alojamiento, Nutrición y Manejo",
+        icon: "Home",
         content: [
             {
                 title: "Ambiente y Sustrato",
@@ -95,6 +98,7 @@ export const roedoresData: ExoticSpeciesData = {
     },
     procedimientos: {
         title: "Vías de Inyección",
+        icon: "Syringe",
         content: {
             injection_table: {
                 headers: ["Ruta", "Ratón", "Rata", "Hámster", "Jerbo"],
@@ -109,6 +113,7 @@ export const roedoresData: ExoticSpeciesData = {
     },
     anestesia_cirugia: {
         title: "Anestesia, Cirugía y Fluidos",
+        icon: "FlaskConical",
         content: [
             { title: "Ayuno", text: "Estrictamente contraindicado por riesgo de hipoglucemia fatal.", icon: "Ban", isCritical: true },
             { title: "Fluidos (Mantenimiento)", text: "General: ~100 ml/kg/día. Jerbos requieren menos (40-60 ml/kg/día).", icon: "Droplet", isCritical: false },
@@ -119,6 +124,7 @@ export const roedoresData: ExoticSpeciesData = {
     },
     laboratorio: {
         title: "Valores de Laboratorio",
+        icon: "TestTube",
         content: {
             blood_volume: [
                 { species: "Ratón 🐭", volume: "70-80", max_extraction: "0.14" },
@@ -144,6 +150,7 @@ export const roedoresData: ExoticSpeciesData = {
     },
     patologias: {
         title: "Patologías Comunes",
+        icon: "Stethoscope",
         content: [
             { 
                 category: "Virales y Ambientales",
@@ -199,6 +206,7 @@ export const roedoresData: ExoticSpeciesData = {
     },
     zoonosis: {
         title: "Zoonosis (Riesgo para Humanos)",
+        icon: "TriangleAlert",
         content: [
             { disease: "Salmonelosis", description: "Rara, pero de grave riesgo. La recomendación suele ser la eutanasia." },
             { disease: "Tenia Enana (Rodentolepis/Hymenolepis nana)", description: "Parásito intestinal con gran potencial zoonótico." },
