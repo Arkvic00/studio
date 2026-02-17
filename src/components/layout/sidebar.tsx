@@ -8,7 +8,6 @@ import {
   DollarSign,
   Droplet,
   HeartPulse,
-  Menu,
   Syringe,
   Thermometer,
   Utensils,
@@ -43,7 +42,7 @@ export function Sidebar({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) {
           <h1 className="text-3xl font-black text-white tracking-tighter leading-none mb-2">DOSIS <br/><span className="text-destructive">PERRONAS</span></h1>
           <p className="text-[12px] font-bold text-slate-500 uppercase tracking-widest">By: Arturo Alvarado</p>
         </div>
-        <button onClick={() => setIsSidebarOpen(false)} className="p-2 bg-white/5 rounded-full hover:bg-white/10 text-muted-foreground hover:text-white transition-colors md:hidden">
+        <button onClick={() => setIsSidebarOpen(false)} className="p-2 bg-white/5 rounded-full hover:bg-white/10 text-muted-foreground hover:text-white transition-colors">
           <X size={20}/>
         </button>
       </div>
@@ -79,33 +78,25 @@ export function Sidebar({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) {
   )
 
   return (
-    <>
-        {/* Mobile sidebar, as overlay */}
-        <div className={cn(
-            'fixed inset-0 z-50 md:hidden',
-            isSidebarOpen ? 'pointer-events-auto' : 'pointer-events-none'
-        )}>
-            <div 
-                className={cn(
-                    'absolute inset-0 bg-popover/80 backdrop-blur-sm transition-opacity',
-                    isSidebarOpen ? 'opacity-100' : 'opacity-0'
-                )}
-                onClick={() => setIsSidebarOpen(false)}
-            />
-            <aside 
-                className={cn(
-                    'absolute top-0 left-0 h-full w-80 bg-background p-10 shadow-2xl border-r border-border flex flex-col transition-transform duration-300 ease-in-out',
-                    isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-                )}
-            >
-                {sidebarContent}
-            </aside>
-        </div>
-
-        {/* Desktop sidebar, static */}
-        <aside className="hidden md:flex flex-col w-80 bg-background p-10 border-r border-border shrink-0">
+    <div className={cn(
+        'fixed inset-0 z-[60]',
+        isSidebarOpen ? 'pointer-events-auto' : 'pointer-events-none'
+    )}>
+        <div 
+            className={cn(
+                'absolute inset-0 bg-popover/80 backdrop-blur-sm transition-opacity',
+                isSidebarOpen ? 'opacity-100' : 'opacity-0'
+            )}
+            onClick={() => setIsSidebarOpen(false)}
+        />
+        <aside 
+            className={cn(
+                'absolute top-0 left-0 h-full w-80 bg-background p-10 shadow-2xl border-r border-border flex flex-col transition-transform duration-300 ease-in-out',
+                isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+            )}
+        >
             {sidebarContent}
         </aside>
-    </>
+    </div>
   );
 }

@@ -1,4 +1,3 @@
-
 export const SPECIES_THEMES = {
     Perro: { bg: 'bg-blue-500/10', border: 'border-blue-500/20', text: 'text-blue-400', accent: 'bg-blue-500', decoration: 'shadow-blue-500/10' },
     Gato: { bg: 'bg-purple-500/10', border: 'border-purple-500/20', text: 'text-purple-400', accent: 'bg-purple-500', decoration: 'shadow-purple-500/10' },
@@ -13,23 +12,31 @@ export const SPECIES_THEMES = {
     Reptil: { bg: 'bg-lime-500/10', border: 'border-lime-500/20', text: 'text-lime-400', accent: 'bg-lime-500', decoration: 'shadow-lime-500/10' },
     ovino_caprino: { bg: 'bg-teal-500/10', border: 'border-teal-500/20', text: 'text-teal-400', accent: 'bg-teal-500', decoration: 'shadow-teal-500/10' },
     roedores: { bg: 'bg-gray-500/10', border: 'border-gray-500/20', text: 'text-gray-400', accent: 'bg-gray-500', decoration: 'shadow-gray-500/10' },
+    mustelidos: { bg: 'bg-yellow-600/10', border: 'border-yellow-600/20', text: 'text-yellow-500', accent: 'bg-yellow-600', decoration: 'shadow-yellow-600/10' },
+    peces: { bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', text: 'text-cyan-400', accent: 'bg-cyan-500', decoration: 'shadow-cyan-500/10' },
+    primates: { bg: 'bg-orange-600/10', border: 'border-orange-600/20', text: 'text-orange-500', accent: 'bg-orange-600', decoration: 'shadow-orange-600/10' },
+    axolote: { bg: 'bg-pink-400/10', border: 'border-pink-400/20', text: 'text-pink-300', accent: 'bg-pink-400', decoration: 'shadow-pink-400/10' },
     default: { bg: 'bg-slate-500/10', border: 'border-slate-500/20', text: 'text-slate-400', accent: 'bg-slate-500', decoration: 'shadow-slate-500/10' }
 };
 
-export const SPECIES_CONFIG = {
-  perro: { label: 'Perro', icon: '🐶', theme: SPECIES_THEMES.Perro },
+export const SPECIES_CONFIG: Record<string, { label: string; icon: string; theme: typeof SPECIES_THEMES.default }> = {
+  perro: { label: 'Perro', icon: '🐩', theme: SPECIES_THEMES.Perro },
   gato: { label: 'Gato', icon: '🐱', theme: SPECIES_THEMES.Gato },
   caballo: { label: 'Caballo', icon: '🐴', theme: SPECIES_THEMES.Caballo },
   bovino: { label: 'Bovino', icon: '🐮', theme: SPECIES_THEMES.Bovino },
+  cerdo: { label: 'Cerdo', icon: '🐷', theme: SPECIES_THEMES.Cerdo },
+  ovino_caprino: { label: 'Ovino/Caprino', icon: '🐐', theme: SPECIES_THEMES.ovino_caprino },
+  roedores: { label: 'Roedores', icon: '🐭', theme: SPECIES_THEMES.roedores },
   conejo: { label: 'Conejo', icon: '🐰', theme: SPECIES_THEMES.Conejo },
-  huron: { label: 'Hurón', icon: '🦦', theme: SPECIES_THEMES.Hurón },
+  mustelidos: { label: 'Mustélidos', icon: '🦦', theme: SPECIES_THEMES.mustelidos },
   cobaya: { label: 'Cobaya', icon: '🐹', theme: SPECIES_THEMES.Cobaya },
   erizo: { label: 'Erizo', icon: '🦔', theme: SPECIES_THEMES.Erizo },
-  cerdo: { label: 'Cerdo', icon: '🐷', theme: SPECIES_THEMES.Cerdo },
   ave: { label: 'Ave', icon: '🦜', theme: SPECIES_THEMES.Ave },
   reptil: { label: 'Reptil', icon: '🦎', theme: SPECIES_THEMES.Reptil },
-  ovino_caprino: { label: 'Ovino/Caprino', icon: '🐐', theme: SPECIES_THEMES.ovino_caprino },
-  roedores: { label: 'Roedores', icon: '🐀', theme: SPECIES_THEMES.roedores }
+  peces: { label: 'Peces', icon: '🐠', theme: SPECIES_THEMES.peces },
+  primates: { label: 'Primates', icon: '🐒', theme: SPECIES_THEMES.primates },
+  axolote: { label: 'Axolote', icon: '👾', theme: SPECIES_THEMES.axolote },
+  huron: { label: 'Hurón', icon: '🦦', theme: SPECIES_THEMES.Hurón },
 };
 
 export const normalizeStr = (str: string): string => str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
@@ -38,5 +45,5 @@ export const getSpeciesKey = (s: string) => s ? normalizeStr(s) : 'perro';
 
 export const getSpeciesInfo = (key: string) => {
     const normalized = normalizeStr(key);
-    return SPECIES_CONFIG[normalized as keyof typeof SPECIES_CONFIG] || { label: key, icon: '🐾', theme: SPECIES_THEMES.default };
+    return SPECIES_CONFIG[normalized as keyof typeof SPECIES_CONFIG] || null;
 };

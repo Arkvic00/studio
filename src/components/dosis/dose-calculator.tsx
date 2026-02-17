@@ -1,14 +1,16 @@
-
 'use client';
+import { useMemo } from 'react';
 import type { Patient, Calculation } from '@/lib/types';
 import { DB_MEDICAMENTOS } from '@/lib/data';
-import { getSpeciesKey } from '@/lib/config';
-import { Plus, Trash2 } from 'lucide-react';
+import { getSpeciesKey, SPECIES_CONFIG } from '@/lib/config';
+import { Plus, Trash2, Save, Printer } from 'lucide-react';
 import { PinterestCard } from '@/components/ui/pinterest-card';
 import { GlassInput } from '@/components/ui/glass-input';
 import { DrugSelector } from '@/components/dosis/drug-selector';
 import { getSpeciesInfo } from '@/lib/config';
 import { Info } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Button } from '../ui/button';
 
 interface DoseCalculatorProps {
   patient: Patient;
@@ -18,6 +20,14 @@ interface DoseCalculatorProps {
     calculations: Calculation[] | ((prev: Calculation[]) => Calculation[])
   ) => void;
 }
+
+// Species from the screenshot, in order.
+const speciesList = [
+  'perro', 'gato', 'caballo', 'bovino', 'cerdo', 'ovino_caprino', 
+  'roedores', 'conejo', 'mustelidos', 'cobaya', 'erizo', 'ave', 
+  'reptil', 'peces', 'primates', 'axolote'
+];
+
 
 export function DoseCalculator({
   patient,
@@ -49,6 +59,14 @@ export function DoseCalculator({
       calculations.map((c) => (c.id === id ? { ...c, ...data } : c))
     );
   };
+  
+  const bsa = useMemo(() => {
+    const pesoKg = parseFloat(patient.peso as string);
+    if (!pesoKg || pesoKg <= 0) return null;
+    const k = speciesKey === 'gato' ? 10.0 : 10.1;
+    const bsaValue = (k * Math.pow(pesoKg * 1000, 2/3)) / 10000;
+    return bsaValue.toFixed(2);
+  }, [patient.peso, speciesKey]);
 
   const borderColors = [
     'border-l-primary',
@@ -61,47 +79,79 @@ export function DoseCalculator({
   return (
     <div className="max-w-5xl mx-auto space-y-8 pb-32 animate-in fade-in duration-700">
       <PinterestCard>
-        <div className="flex flex-col md:flex-row items-center gap-8">
-          <div className="w-32 h-32 bg-card border-2 border-border rounded-4xl flex items-center justify-center text-7xl shadow-2xl relative flex-shrink-0">
-            {getSpeciesInfo(patient.especie).icon}
-          </div>
-          <div className="flex-1 w-full">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-4">
-              <GlassInput
-                label="Nombre Paciente"
-                value={patient.nombre}
-                onChange={(v) => setPatient({ ...patient, nombre: v })}
-                placeholder="Ej: Firulais"
-              />
-              <div className="space-y-2">
-                <label className="text-[11px] font-bold text-slate-400 uppercase ml-2">
-                  Especie
-                </label>
-                <select
-                  value={patient.especie}
-                  onChange={(e) =>
-                    setPatient({ ...patient, especie: e.target.value })
-                  }
-                  className="w-full bg-card border-2 border-transparent focus:border-ring/30 rounded-2xl p-4 text-white font-bold appearance-none outline-none"
-                >
-                  {Object.values(getSpeciesInfo).map((s: any) => (
-                    <option key={s.label} value={s.label}>
-                      {s.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <GlassInput
-                label="Peso (kg)"
-                type="number"
-                value={patient.peso}
-                onChange={(v) => setPatient({ ...patient, peso: v })}
-                placeholder="0.0"
-              />
-            </div>
-          </div>
+        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 mb-8">
+            {speciesList.map(key => {
+                const info = getSpeciesInfo(key);
+                if (!info) return null;
+                const isActive = patient.especie === info.label;
+                return (
+                    <button 
+                        key={key}
+                        onClick={() => setPatient(p => ({...p, especie: info.label}))}
+                        className={cn(
+                            "flex flex-col items-center justify-center gap-2 p-2 rounded-2xl transition-all duration-200",
+                            isActive ? 'bg-primary/20 scale-110' : 'hover:bg-secondary'
+                        )}
+                    >
+                        <div className="text-4xl">{info.icon}</div>
+                        <span className={cn("text-[10px] font-bold uppercase tracking-wider text-center", isActive ? 'text-primary' : 'text-muted-foreground')}>{info.label}</span>
+                    </button>
+                )
+            })}
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
+          <GlassInput
+            label="Nombre Paciente"
+            value={patient.nombre}
+            onChange={(v) => setPatient({ ...patient, nombre: v })}
+            placeholder="Ej: Firulais"
+          />
+          <GlassInput
+            label="Peso (kg)"
+            type="number"
+            value={patient.peso}
+            onChange={(v) => setPatient({ ...patient, peso: v })}
+            placeholder="0.0"
+          />
+          {bsa && <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-green-500/20 text-green-300 text-xs font-bold px-3 py-1 rounded-full">ASC: {bsa} m²</div>}
         </div>
       </PinterestCard>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <button
+          onClick={addDrug}
+          className="w-full py-10 rounded-4xl border-4 border-dashed border-border text-muted-foreground hover:text-accent hover:border-accent/30 hover:bg-accent/5 transition-all flex flex-col items-center justify-center gap-4 group"
+        >
+          <div className="w-16 h-16 bg-card rounded-full flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300 shadow-xl">
+            <Plus size={32} />
+          </div>
+          <span className="font-black text-xs uppercase tracking-[0.2em] group-hover:tracking-[0.3em] transition-all">
+            Añadir Medicamento
+          </span>
+        </button>
+        <button
+          className="w-full py-10 rounded-4xl border-4 border-dashed border-border text-muted-foreground hover:text-blue-400 hover:border-blue-400/30 hover:bg-blue-400/5 transition-all flex flex-col items-center justify-center gap-4 group"
+        >
+          <div className="w-16 h-16 bg-card rounded-full flex items-center justify-center group-hover:bg-blue-400 group-hover:text-accent-foreground transition-all duration-300 shadow-xl">
+            <Save size={32} />
+          </div>
+          <span className="font-black text-xs uppercase tracking-[0.2em] group-hover:tracking-[0.3em] transition-all">
+            Guardar en Historial
+          </span>
+        </button>
+        <button
+          className="w-full py-10 rounded-4xl border-4 border-dashed border-border text-muted-foreground hover:text-purple-400 hover:border-purple-400/30 hover:bg-purple-400/5 transition-all flex flex-col items-center justify-center gap-4 group"
+        >
+          <div className="w-16 h-16 bg-card rounded-full flex items-center justify-center group-hover:bg-purple-400 group-hover:text-accent-foreground transition-all duration-300 shadow-xl">
+            <Printer size={32} />
+          </div>
+          <span className="font-black text-xs uppercase tracking-[0.2em] group-hover:tracking-[0.3em] transition-all">
+            Imprimir
+          </span>
+        </button>
+      </div>
+
 
       <div className="grid grid-cols-1 gap-6">
         {calculations.map((calc, index) => {
@@ -332,17 +382,6 @@ export function DoseCalculator({
             </PinterestCard>
           );
         })}
-        <button
-          onClick={addDrug}
-          className="w-full py-10 rounded-4xl border-4 border-dashed border-border text-muted-foreground hover:text-accent hover:border-accent/30 hover:bg-accent/5 transition-all flex flex-col items-center justify-center gap-4 group"
-        >
-          <div className="w-16 h-16 bg-card rounded-full flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300 shadow-xl">
-            <Plus size={32} />
-          </div>
-          <span className="font-black text-xs uppercase tracking-[0.2em] group-hover:tracking-[0.3em] transition-all">
-            Añadir Medicamento
-          </span>
-        </button>
       </div>
     </div>
   );
