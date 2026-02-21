@@ -104,31 +104,11 @@ export const acarbosaDrug: Drug = {
         "tratamiento": "No suele ser necesario. Si hay hipoglucemia por otros agentes, usar glucosa parenteral o dextrosa oral (la absorción de sacarosa está inhibida)."
       },
       "interacciones_farmacologicas": [
-        {
-          "farmaco": "Carbón activado",
-          "efecto": "Reduce la eficacia de la acarbosa",
-          "severidad": "Moderada"
-        },
-        {
-          "farmaco": "Digoxina",
-          "efecto": "Reduce concentraciones de digoxina en sangre",
-          "severidad": "Moderada"
-        },
-        {
-          "farmaco": "Agentes hiperglucemiantes (Corticosteroides, tiazidas, hormonas tiroideas)",
-          "efecto": "Reducen o niegan el efecto de la acarbosa",
-          "severidad": "Moderada"
-        },
-        {
-          "farmaco": "Insulina / Sulfonilureas",
-          "efecto": "Aumentan el riesgo de hipoglucemia",
-          "severidad": "Importante"
-        },
-        {
-          "farmaco": "Pancreatina / Amilasa",
-          "efecto": "Reducen la eficacia de la acarbosa",
-          "severidad": "Leve"
-        }
+        { "farmaco": "Carbón activado", "efecto": "Reduce la eficacia de la acarbosa", "severidad": "Moderada" },
+        { "farmaco": "Digoxina", "efecto": "Reduce concentraciones de digoxina en sangre", "severidad": "Moderada" },
+        { "farmaco": "Agentes hiperglucemiantes (Corticosteroides, tiazidas, hormonas tiroideas)", "efecto": "Reducen o niegan el efecto de la acarbosa", "severidad": "Moderada" },
+        { "farmaco": "Insulina / Sulfonilureas", "efecto": "Aumentan el riesgo de hipoglucemia", "severidad": "Importante" },
+        { "farmaco": "Pancreatina / Amilasa", "efecto": "Reducen la eficacia de la acarbosa", "severidad": "Leve" }
       ]
     },
     "farmacologia_clinica": {
