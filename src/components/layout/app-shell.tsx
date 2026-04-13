@@ -12,14 +12,8 @@ const TABS: { [key: string]: string } = {
   '/dosis': 'Calculadora Dosis',
   '/vademecum': 'Vademécum',
   '/fluidoterapia': 'Fluidoterapia',
-  '/nutricion': 'Cálculo Nutrición',
-  '/asistente-dx': 'Asistente DX',
-  '/clinical-trainer': 'Entrenador Clínico',
   '/gestacion': 'Gestación',
   '/transfusion': 'Transfusión',
-  '/costos': 'Costos',
-  '/constantes': 'Constantes',
-  '/vacunacion': 'Vacunación',
 };
 
 export function AppShell({ children }: { children: React.ReactNode }) {

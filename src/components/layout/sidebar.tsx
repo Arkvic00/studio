@@ -5,14 +5,8 @@ import {
   Baby,
   BookOpen,
   Calculator,
-  DollarSign,
   Droplet,
   HeartPulse,
-  Lightbulb,
-  Stethoscope,
-  Syringe,
-  Thermometer,
-  Utensils,
   X,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -21,14 +15,8 @@ const navItems = [
   { id: 'dosis', label: 'Calculadora Dosis', icon: Calculator, color: 'text-primary', bg: 'bg-primary/10' },
   { id: 'vademecum', label: 'Vademécum', icon: BookOpen, color: 'text-emerald-400', bg: 'bg-emerald-500/10' },
   { id: 'fluidoterapia', label: 'Fluidoterapia', icon: Droplet, color: 'text-blue-400', bg: 'bg-blue-500/10' },
-  { id: 'nutricion', label: 'Nutrición', icon: Utensils, color: 'text-orange-400', bg: 'bg-orange-500/10' },
-  { id: 'asistente-dx', label: 'Asistente DX', icon: Lightbulb, color: 'text-red-400', bg: 'bg-red-500/10' },
-  { id: 'clinical-trainer', label: 'Entrenador Clínico', icon: Stethoscope, color: 'text-indigo-400', bg: 'bg-indigo-500/10' },
   { id: 'gestacion', label: 'Gestación', icon: Baby, color: 'text-pink-400', bg: 'bg-pink-500/10' },
   { id: 'transfusion', label: 'Transfusión', icon: HeartPulse, color: 'text-rose-400', bg: 'bg-rose-500/10' },
-  { id: 'costos', label: 'Costos', icon: DollarSign, color: 'text-green-400', bg: 'bg-green-500/10' },
-  { id: 'constantes', label: 'Constantes', icon: Thermometer, color: 'text-yellow-400', bg: 'bg-yellow-500/10' },
-  { id: 'vacunacion', label: 'Vacunación', icon: Syringe, color: 'text-cyan-400', bg: 'bg-cyan-500/10' },
 ];
 
 interface SidebarProps {
