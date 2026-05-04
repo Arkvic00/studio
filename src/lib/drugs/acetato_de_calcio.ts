@@ -1,105 +1,92 @@
 import type { Drug } from '@/lib/types';
 
 export const acetatoDeCalcioDrug: Drug = {
-    "id": "acetato_de_calcio",
-    "meta_data": {
-        "nombre_generico": "Acetato de Calcio",
-        "nombres_comerciales": ["PhosLo", "Phoslyra (solución)", "Eliphos"],
-        "grupo_farmacologico": "Quelante de fosfato; Suplemento de calcio",
-        "status_regulatorio": "Uso veterinario"
-    },
-    "resumen_clinico": {
-        "puntos_clave": [
-            "Es un quelante de fosfato más potente (se une a más fósforo por mg) que el carbonato de calcio, pero también aporta calcio.",
-            "El hidróxido de aluminio es una alternativa si la hipercalcemia es una preocupación."
-        ],
-        "usos_principales": "Quelante de fosfato para el manejo de la hiperfosfatemia en pacientes con enfermedad renal crónica (ERC), especialmente si también son hipocalcémicos. Fuente de suplemento de calcio oral (menos común que carbonato o gluconato)."
-    },
-    "informacion_cliente": [
-        "Debe administrarse mezclado con la comida para que funcione como quelante de fósforo. Se requieren análisis de sangre regulares para monitorear los niveles de calcio y fósforo."
+  id: "acetato_de_calcio",
+  meta_data: {
+    nombre_generico: "Acetato de Calcio",
+    nombres_comerciales: ["PhosLo", "Phoslyra", "Eliphos"],
+    grupo_farmacologico: "Quelante de fosfato; Suplemento de calcio",
+    status_regulatorio: "Uso extra-label en medicina veterinaria."
+  },
+  resumen_clinico: {
+    puntos_clave: [
+      "Se usa principalmente como quelante de fósforo en enfermedad renal crónica.",
+      "Aporta calcio elemental.",
+      "Más potente que el carbonato de calcio para fijar fósforo.",
+      "Debe darse CON la comida para ser efectivo."
     ],
-    "monitoreo_paciente": [
-        "Niveles de fósforo sérico.",
-        "Niveles de calcio sérico (total e ionizado).",
-        "Producto Ca x P.",
-        "Signos de hipercalcemia (PU/PD, letargo)."
-    ],
-    "parametros_dosificacion": {
-        "perro": [
-            {
-                "indicacion": "Quelante de fosfato (ERC)",
-                "vias": ["PO"],
-                "math": {
-                    "tipo_calculo": "mg_kg",
-                    "dosis_recomendada": 80,
-                    "dosis_min": 60,
-                    "dosis_max": 100,
-                    "unidad_calculo": "mg/kg"
-                },
-                "frecuencia": {
-                    "texto_ui": "dividido con cada comida",
-                    "intervalo_horas": 8
-                },
-                "notas_tecnicas": "60–100 mg/kg/día PO (de Acetato de Ca), dividido con cada comida. Ajustar según niveles de fósforo y calcio."
-            }
-        ],
-        "gato": [
-            {
-                "indicacion": "Quelante de fosfato (ERC)",
-                "vias": ["PO"],
-                "math": {
-                    "tipo_calculo": "mg_kg",
-                    "dosis_recomendada": 80,
-                    "dosis_min": 60,
-                    "dosis_max": 100,
-                    "unidad_calculo": "mg/kg"
-                },
-                "frecuencia": {
-                    "texto_ui": "dividido con cada comida",
-                    "intervalo_horas": 8
-                },
-                "notas_tecnicas": "60–100 mg/kg/día PO (de Acetato de Ca), dividido con cada comida. Ajustar según niveles de fósforo y calcio."
-            }
-        ]
-    },
-    "seguridad_y_alertas": {
-        "contraindicaciones": ["Hipercalcemia.", "Hiperfosfatemia severa con producto Ca x P elevado (>60-70 mg²/dL²)."],
-        "efectos_adversos": ["Hipercalcemia (principal preocupación).", "Estreñimiento.", "Malestar GI (náuseas, vómitos)."],
-        "interacciones_farmacologicas": [
-            {
-                "farmaco": "Reduce la absorción de Tetraciclinas, Fluoroquinolonas",
-                "efecto": "Administrar con horas de diferencia.",
-                "severidad": "Moderada"
-            },
-            {
-                "farmaco": "Diuréticos tiazídicos",
-                "efecto": "Aumentan el riesgo de hipercalcemia.",
-                "severidad": "Moderada"
-            }
-        ],
-        "sobredosis": {
-            "signos": [],
-            "tratamiento": "Puede causar hipercalcemia. Descontinuar. Manejar la hipercalcemia (fluidos IV, furosemida)."
-        }
-    },
-    "farmacologia_clinica": {
-        "mecanismo_accion": "Como quelante de fosfato: Reacciona con el fosfato de la dieta en el intestino, formando fosfato de calcio insoluble, que se excreta en las heces. Aporta calcio elemental. Reduce la absorción de fósforo de la dieta. Aumenta los niveles de calcio sérico.",
-        "farmacocinetica": "La absorción de calcio es variable (influenciada por Vit D, pH intestinal). El acetato se absorbe y metaboliza. Excreción fecal (fosfato de calcio) y renal (calcio absorbido)."
-    },
-    "presentaciones_comerciales": [
-        {
-            "tipo": "Cápsulas/Comprimidos",
-            "concentracion_texto": "Equivalente a 169 mg de Calcio elemental por 667 mg de Acetato de Ca.",
-            "valor_concentracion": 169,
-            "unidad_concentracion": "mg",
-            "es_divisible": true
+    usos_principales: "Hiperfosfatemia en pacientes con ERC. Suplemento de calcio oral."
+  },
+  informacion_cliente: [
+    "Mezclar con la comida para que atrape el fósforo de la dieta.",
+    "Puede causar estreñimiento.",
+    "Se requieren análisis de sangre frecuentes para evitar exceso de calcio."
+  ],
+  parametros_dosificacion: {
+    perro: [
+      {
+        indicacion: "Quelante de fosfato (ERC)",
+        vias: ["PO"],
+        math: {
+          tipo_calculo: "mg_kg",
+          dosis_recomendada: 80,
+          dosis_min: 60,
+          dosis_max: 100,
+          unidad_calculo: "mg/kg"
         },
-        {
-            "tipo": "Solución oral (Phoslyra)",
-            "concentracion_texto": "169 mg Ca elemental / 5 mL",
-            "valor_concentracion": 169,
-            "unidad_concentracion": "mg",
-            "es_divisible": false
+        frecuencia: {
+          texto_ui: "Dividido con cada comida",
+          intervalo_horas: 8
         }
+      }
+    ],
+    gato: [
+      {
+        indicacion: "Quelante de fosfato (ERC)",
+        vias: ["PO"],
+        math: {
+          tipo_calculo: "mg_kg",
+          dosis_recomendada: 80,
+          dosis_min: 60,
+          dosis_max: 100,
+          unidad_calculo: "mg/kg"
+        },
+        frecuencia: {
+          texto_ui: "Dividido con cada comida",
+          intervalo_horas: 8
+        }
+      }
     ]
+  },
+  seguridad_y_alertas: {
+    contraindicaciones: [
+      "Hipercalcemia.",
+      "Producto Ca x P muy elevado (>70)."
+    ],
+    efectos_adversos: [
+      "Hipercalcemia (principal preocupación).",
+      "Estreñimiento.",
+      "Vómitos leves."
+    ],
+    sobredosis: {
+      signos: ["Letargo", "Vómitos", "Debilidad"],
+      tratamiento: "Fluidoterapia IV sin calcio."
+    },
+    interacciones_farmacologicas: [
+      { farmaco: "Tetraciclinas/Quinolonas", efecto: "Reduce la absorción del antibiótico", severidad: "Moderada" }
+    ]
+  },
+  farmacologia_clinica: {
+    mecanismo_accion: "Se une al fósforo dietético en el intestino formando complejos insolubles de fosfato de calcio que se eliminan en heces.",
+    farmacocinetica: "Actúa localmente en el lumen intestinal."
+  },
+  presentaciones_comerciales: [
+    {
+      tipo: "Cápsula",
+      concentracion_texto: "667 mg (169 mg Calcio elemental)",
+      valor_concentracion: 667,
+      unidad_concentracion: "mg",
+      es_divisible: false
+    }
+  ]
 };
