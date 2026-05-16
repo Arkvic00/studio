@@ -1,51 +1,94 @@
-# Guía de Recreación: DosisPaws
+# Guía Maestra de Recreación: DosisPaws
 
-DosisPaws es una herramienta clínica veterinaria construida con **Next.js 15 (App Router)**, **React 19**, **Tailwind CSS**, y **Shadcn UI**. Utiliza `localStorage` para persistencia de datos.
+DosisPaws es una suite clínica veterinaria de alto rendimiento. Esta guía contiene todo lo necesario para replicar la aplicación en cualquier entorno de desarrollo o chat de IA.
 
-## 1. Arquitectura y Estructura
-La app se organiza de la siguiente manera:
-- `/src/app`: Rutas principales (Dosis, Vademécum, Fluidoterapia, Gestación, Transfusión).
-- `/src/components`: Componentes de UI personalizados y módulos por funcionalidad.
-- `/src/lib`: Lógica de negocio, tipos de TypeScript y base de datos de medicamentos.
-- `/src/contexts`: Contexto global para compartir datos del paciente entre pestañas.
+## 1. Stack Tecnológico Obligatorio
+- **Framework**: Next.js 15 (App Router)
+- **Librería UI**: React 19 + Shadcn UI
+- **Estilos**: Tailwind CSS con enfoque en Glassmorphism
+- **Iconografía**: Lucide React
+- **Persistencia**: `localStorage` (vía hooks personalizados)
+- **Estado Global**: React Context API
 
-## 2. Definiciones de Datos (Types)
-Es fundamental definir los tipos en `src/lib/types.ts`:
-- **Drug**: Interfaz completa que incluye `meta_data`, `parametros_dosificacion`, `seguridad_y_alertas` y `presentaciones_comerciales`.
-- **Patient**: `nombre`, `especie`, `peso`.
-- **Calculation**: Estado de una fila en la calculadora de dosis.
+## 2. Prompt Maestro (Copiar y Pegar)
+> "Actúa como un experto desarrollador Senior en Next.js y React. Crea una aplicación veterinaria llamada 'DosisPaws'. La interfaz debe ser oscura (Dark Mode), con una estética moderna tipo 'Pinterest' usando tarjetas translúcidas (Glassmorphism). Implementa un Sidebar con: Calculadora de Dosis, Vademécum, Fluidoterapia, Gestación y Transfusión.
+>
+> Requisitos Críticos:
+> 1. Crea un Contexto Global (`AppContext`) que maneje los datos del paciente (nombre, peso, especie) y persista en `localStorage`.
+> 2. El Vademécum debe ser una base de datos modular en `src/lib/drugs/` donde cada medicamento sea un archivo TypeScript con una interfaz estricta.
+> 3. Implementa una 'DoseCalculator' que cruce el peso del paciente con los parámetros del medicamento seleccionado.
+> 4. Usa Tailwind para crear un componente `GlassInput` (con labels flotantes) y `PinterestCard` (bordes 4xl, sombras suaves).
+> 5. Las fórmulas deben ser precisas según medicina veterinaria clínica."
 
-## 3. Lógica de los Módulos
+## 3. Arquitectura de Datos (TypeScript)
 
-### A. Calculadora de Dosis (`/dosis`)
-- **Lógica**: Cruza el peso del paciente con el medicamento seleccionado.
-- **Fórmula**: 
-  - Si el cálculo es `mg_kg`: `(Peso * Dosis) / Concentración`.
-  - Si el cálculo es `fija`: `Dosis / Concentración`.
-- **UI**: Estilo "Pinterest" con `GlassInput` para entradas numéricas.
+### Interfaz del Medicamento (`Drug`)
+Es vital que el objeto `Drug` siga esta estructura para que los cálculos funcionen:
+```typescript
+export interface Drug {
+  id: string;
+  meta_data: {
+    nombre_generico: string;
+    nombres_comerciales: string[];
+    grupo_farmacologico: string;
+    status_regulatorio: string;
+  };
+  parametros_dosificacion: {
+    [especie: string]: {
+      indicacion: string;
+      vias: string | string[];
+      math: {
+        tipo_calculo: 'mg_kg' | 'fija';
+        dosis_recomendada: number;
+        unidad_calculo: string; // 'mg/kg' o 'ml'
+      };
+      frecuencia: { texto_ui: string; intervalo_horas: number; };
+    }[];
+  };
+  presentaciones_comerciales: {
+    tipo: string; // 'Tableta', 'Inyectable'
+    valor_concentracion: number; // Ej: 50
+    unidad_concentracion: string; // 'mg/ml'
+  }[];
+}
+```
 
-### B. Vademécum (`/vademecum`)
-- **DrugList**: Buscador con `fuzzySearch` que filtra por nombre, familia o indicación.
-- **DrugDetail**: Muestra toda la farmacología, contraindicaciones y tablas de dosis por especie.
+## 4. Lógica de Negocio (Fórmulas)
 
-### C. Fluidoterapia (`/fluidoterapia`)
-- **Reposición**: `Total (ml) = (Peso * % Deshid * 10) + (Peso * Mant) + Pérdidas`.
-- **CRI**: Calcula el volumen de fármaco a añadir a una bolsa basándose en `mcg/kg/min`.
-- **Diluciones**: Implementa la fórmula `C1 * V1 = C2 * V2`.
+### A. Calculadora de Dosis
+**Entradas**: `Peso (kg)`, `Dosis Elegida (mg/kg)`, `Concentración (mg/ml)`.
+**Lógica**:
+- Si `tipo_calculo === 'mg_kg'`: `Resultado (ml) = (Peso * Dosis) / Concentración`.
+- Si `tipo_calculo === 'fija'`: `Resultado (ml) = Dosis / Concentración`.
+- **Extra**: Calcular Superficie Corporal (ASC) en m²: `ASC = (K * (Peso_en_gramos ^ (2/3))) / 10000`. Donde K=10.1 para perros y K=10.0 para gatos.
 
-### D. Gestación (`/gestacion`)
-- **Lógica**: Genera un timeline basado en la fecha de monta y constantes por especie (Promedio 63 días para perros, 65 para gatos).
+### B. Fluidoterapia (Reposición)
+**Fórmula**: `Total_24h = Déficit + Mantenimiento + Pérdidas`.
+- `Déficit (ml) = Peso(kg) * %_Deshidratación * 10`.
+- `Mantenimiento (ml) = Peso(kg) * 60` (promedio).
+- `Gotas/min = (ml_por_hora * Factor_Goteo) / 60`. (Factor Goteo: 20 para Normo, 60 para Micro).
 
-### E. Transfusión (`/transfusion`)
-- **Volumen**: `ml = K * Peso * (HT_Meta - HT_Receptor) / HT_Donante`. Donde `K=90` para perros y `K=66` para gatos.
+### C. Transfusión Sanguínea
+**Fórmula**: `ml_a_transfundir = K * Peso * (HT_Deseado - HT_Receptor) / HT_Donante`.
+- `K`: 90 para Perros, 66 para Gatos.
 
-## 4. Componentes Clave de UI
-- **PinterestCard**: Tarjetas con bordes redondeados y sombras suaves.
-- **GlassInput**: Inputs con efecto translúcido y labels flotantes.
-- **AppShell**: Maneja el Sidebar lateral y el Header dinámico.
+### D. Gestación
+**Cálculo**: `Fecha_Parto = Fecha_Monta + Días_Especie`.
+- Perro: 63 días.
+- Gato: 65 días.
+- Conejo: 31 días.
 
-## 5. Base de Datos de Medicamentos
-Ubicada en `src/lib/drugs/`. Cada medicamento tiene su propio archivo `.ts` exportando un objeto de tipo `Drug`. El archivo `index.ts` centraliza las exportaciones.
+## 5. Diseño y Estética (globals.css)
+Usa estos valores de color para replicar el "Look & Feel":
+- `background`: `hsl(222 47% 11%)` (Azul muy oscuro)
+- `primary`: `hsl(261 100% 86%)` (Lavanda brillante)
+- `accent`: `hsl(174 45% 51%)` (Turquesa clínico)
+- `destructive`: `hsl(0 63% 31%)` (Rojo sangre suave)
+- **Bordes**: `rounded-4xl` para una apariencia orgánica.
 
-## 6. Prompt Maestro para Recreación
-"Crea una app veterinaria en Next.js con un sidebar que contenga: Calculadora de Dosis, Vademécum, Fluidoterapia, Gestación y Transfusión. Usa un diseño oscuro moderno con estética translúcida (glassmorphism). Implementa un contexto global para el paciente (nombre, peso, especie) que persista en localStorage. Los cálculos deben ser precisos y basados en guías clínicas veterinarias."
+## 6. Estructura de Archivos Clave
+- `src/contexts/app-context.tsx`: Cerebro de la app, maneja el estado del paciente.
+- `src/components/ui/glass-input.tsx`: Input estilizado con efectos de cristal.
+- `src/components/layout/app-shell.tsx`: Maneja el Sidebar y la navegación.
+- `src/lib/drugs/index.ts`: Punto central de exportación de la base de datos.
+- `src/app/dosis/page.tsx`: La vista principal con la lógica de cruce de datos.

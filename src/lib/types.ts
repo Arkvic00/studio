@@ -1,4 +1,3 @@
-
 export interface Patient {
   nombre: string;
   especie: string;
