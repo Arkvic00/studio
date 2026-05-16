@@ -71,19 +71,19 @@ export function Sidebar({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) {
 
   return (
     <div className={cn(
-        'fixed inset-0 z-[60]',
-        isSidebarOpen ? 'pointer-events-auto' : 'pointer-none'
+        'fixed inset-0 z-[60] transition-all duration-300',
+        isSidebarOpen ? 'pointer-events-auto' : 'pointer-events-none'
     )}>
         <div 
             className={cn(
-                'absolute inset-0 bg-popover/80 backdrop-blur-sm transition-opacity',
+                'absolute inset-0 bg-background/80 backdrop-blur-sm transition-opacity duration-300',
                 isSidebarOpen ? 'opacity-100' : 'opacity-0'
             )}
             onClick={() => setIsSidebarOpen(false)}
         />
         <aside 
             className={cn(
-                'absolute top-0 left-0 h-full w-4/5 sm:w-72 bg-background p-6 shadow-2xl border-r border-border flex flex-col transition-transform duration-300 ease-in-out',
+                'absolute top-0 left-0 h-full w-4/5 sm:w-72 bg-card p-6 shadow-2xl border-r border-border flex flex-col transition-transform duration-300 ease-in-out',
                 isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
             )}
         >
