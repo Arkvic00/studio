@@ -72,7 +72,7 @@ export function Sidebar({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) {
   return (
     <div className={cn(
         'fixed inset-0 z-[60]',
-        isSidebarOpen ? 'pointer-events-auto' : 'pointer-events-none'
+        isSidebarOpen ? 'pointer-events-auto' : 'pointer-none'
     )}>
         <div 
             className={cn(
