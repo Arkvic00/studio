@@ -1,0 +1,97 @@
+================================================================================
+🚀 GUÍA MAESTRA TÉCNICA: DOSISPAWS (V2.0) - PLANO PARA RECREACIÓN
+================================================================================
+
+Este documento contiene toda la información técnica necesaria para reconstruir
+DosisPaws desde cero en cualquier chat de IA (ChatGPT, Claude, etc.).
+
+1. STACK TECNOLÓGICO RECOMENDADO
+--------------------------------------------------------------------------------
+- Framework: Next.js 15 (App Router).
+- Lenguaje: TypeScript.
+- Estilos: Tailwind CSS.
+- Componentes: Shadcn UI (Radix Primitives).
+- Iconos: Lucide React.
+- Estado: React Context API + Persistencia en LocalStorage.
+
+2. IDENTIDAD VISUAL (UI/UX)
+--------------------------------------------------------------------------------
+- Tema: Dark Mode Profundo.
+- Color de Fondo: #0b111e (hsl(222 47% 11%)).
+- Estética: Glassmorphism (Tarjetas con backdrop-blur-xl y bordes white/10).
+- Bordes: Redondeado extremo (rounded-4xl).
+- Componente PinterestCard: Tarjeta translúcida con sombras suaves.
+- Componente GlassInput: Inputs con labels flotantes y diseño minimalista.
+- Animaciones: Fade-in y slide-up suaves al cargar vistas.
+
+3. LÓGICA DE ESTADO GLOBAL (AppContext)
+--------------------------------------------------------------------------------
+Se debe implementar un AppProvider que gestione:
+- Patient: { nombre: string, especie: string, peso: number|string }.
+- Calculations: Array de medicamentos añadidos a la calculadora.
+- LocalStorage: El estado debe sincronizarse automáticamente con una llave
+  (ej: 'dosispaws_data') para no perder datos al recargar.
+
+4. FÓRMULAS CLÍNICAS (EL CORAZÓN DE LA APP)
+--------------------------------------------------------------------------------
+
+A. CALCULADORA DE DOSIS:
+   - Dosis en mL: (Peso_Kg * Dosis_mg_kg) / Concentracion_mg_ml.
+   - Dosis Fija: Dosis_Total_mg / Concentracion_mg_ml.
+   - Superficie Corporal (ASC): (K * (Peso_en_gramos ^ (2/3))) / 10000.
+     * K Perro: 10.1
+     * K Gato: 10.0
+
+B. FLUIDOTERAPIA (3 PILARES):
+   1. Déficit (ml): Peso_Kg * %_Deshidratación * 10.
+   2. Mantenimiento (ml): Peso_Kg * Tasa_Diaria (Default 60 ml/kg/día).
+   3. Pérdidas (ml): Volumen estimado ingresado manualmente.
+   - Volumen Total 24h: Déficit + Mantenimiento + Pérdidas.
+   - Tasa Infusión: Total_24h / Horas_Plan.
+   - Gotas/Min: (ml_Hora * Factor_Goteo) / 60.
+     * Microgotero: 60 gotas/ml.
+     * Normogotero: 20 gotas/ml.
+
+C. TRANSFUSIÓN SANGUÍNEA:
+   - Volumen a Transfundir (ml): K * Peso * (HT_Deseado - HT_Receptor) / HT_Donante.
+     * K Perro: 90
+     * K Gato: 66
+   - Anticoagulante (CPDA-1): Proporción 1:7 (1ml CPDA por cada 7ml de sangre).
+
+D. GESTACIÓN:
+   - Fecha Probable Parto: Fecha_Monta + Dias_Especie.
+   - Duración Promedio: Perro (63d), Gato (65d), Conejo (31d), Hurón (42d).
+   - Hitos: Ecografía (Día 25), Desparasitación (Día 40), RX (Día 45).
+
+5. ARQUITECTURA DE ARCHIVOS SUGERIDA
+--------------------------------------------------------------------------------
+/src
+  /app
+    /dosis          -> Calculadora principal.
+    /vademecum      -> Lista de fármacos y detalle.
+    /fluidoterapia  -> Cálculos de líquidos.
+    /gestacion      -> Calendario reproductivo.
+    /transfusion    -> Plan de transfusión.
+  /components
+    /ui             -> PinterestCard, GlassInput, Botones.
+    /layout         -> Sidebar colapsable y AppShell.
+  /contexts         -> AppContext.tsx.
+  /lib
+    /drugs          -> Carpeta con archivos .ts individuales por fármaco.
+    types.ts        -> Interfaces de Drug, Patient, Calculation.
+
+6. MEGA-PROMPT PARA RECREACIÓN (COPIAR ESTO A OTRA IA)
+--------------------------------------------------------------------------------
+"Actúa como Desarrollador Fullstack Senior. Crea una app veterinaria llamada 'DosisPaws' con Next.js 15.
+Requisitos visuales: Dark mode (#0b111e), estética Glassmorphism, tarjetas con backdrop-blur y bordes white/10, esquinas redondeadas 4xl.
+Funcionalidad:
+1. Sidebar con: Calculadora de Dosis, Vademécum, Fluidoterapia, Gestación y Transfusión.
+2. AppContext que maneje un objeto 'Paciente' (nombre, especie, peso) persistido en LocalStorage.
+3. Calculadora de Dosis que permita añadir múltiples fármacos, seleccionarlos de un Vademécum modular (lib/drugs/) y calcular mL automáticamente según el peso del paciente global.
+4. Sección de Fluidoterapia que calcule Déficit, Mantenimiento y Pérdidas, dando como resultado ml/hr y Gotas/min.
+5. Vademécum con búsqueda fuzzy y vista de detalle técnica.
+Usa Lucide React para iconos y Shadcn UI para los componentes base."
+
+================================================================================
+FIN DEL DOCUMENTO
+================================================================================
