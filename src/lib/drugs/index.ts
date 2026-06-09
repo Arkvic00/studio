@@ -91,6 +91,7 @@ import { cimetidineDrug } from './cimetidine';
 import { cimicoxibDrug } from './cimicoxib';
 import { cinchophenDrug } from './cinchophen';
 import { ciprofloxacinDrug } from './ciprofloxacin';
+import { cisaprideDrug } from './cisapride';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -117,6 +118,7 @@ export const DB_MEDICAMENTOS = [
     amitrazDrug,
     amitriptylineDrug,
     amlodipineDrug,
+    amoxicilinaDrug,
     amoxicilinaDrug,
     ampicillinDrug,
     amphotericinBDrug,
@@ -186,4 +188,5 @@ export const DB_MEDICAMENTOS = [
     cimicoxibDrug,
     cinchophenDrug,
     ciprofloxacinDrug,
+    cisaprideDrug,
 ];
