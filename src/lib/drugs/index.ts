@@ -92,6 +92,7 @@ import { cimicoxibDrug } from './cimicoxib';
 import { cinchophenDrug } from './cinchophen';
 import { ciprofloxacinDrug } from './ciprofloxacin';
 import { cisaprideDrug } from './cisapride';
+import { cisaprideDrug } from './cisapride';
 import { cisatracuriumDrug } from './cisatracurium';
 import { clarithromycinDrug } from './clarithromycin';
 import { clazurilDrug } from './clazuril';
@@ -129,6 +130,7 @@ import { dexamethasoneDrug } from './dexamethasone';
 import { dexmedetomidineDrug } from './dexmedetomidine';
 import { dexrazoxaneDrug } from './dexrazoxane';
 import { diazepamDrug } from './diazepam';
+import { diazoxideDrug } from './diazoxide';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -262,4 +264,5 @@ export const DB_MEDICAMENTOS = [
     dexmedetomidineDrug,
     dexrazoxaneDrug,
     diazepamDrug,
+    diazoxideDrug,
 ];
