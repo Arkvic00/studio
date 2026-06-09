@@ -44,6 +44,7 @@ import { benzocaineDrug } from './benzocaine';
 import { betamethasoneDrug } from './betamethasone';
 import { betaxololDrug } from './betaxolol';
 import { bethanecolDrug } from './bethanecol';
+import { bisacodylDrug } from './bisacodyl';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -92,4 +93,5 @@ export const DB_MEDICAMENTOS = [
     betamethasoneDrug,
     betaxololDrug,
     bethanecolDrug,
+    bisacodylDrug,
 ];
