@@ -24,5 +24,25 @@ export const pathologiesP: Pathology[] = [
     prevencion_control: 'Vacunación estricta desde las 6-8 semanas. Desinfección de áreas con cloro diluido. Cuarentena de animales enfermos.',
     especies_afectadas: ['Perro'],
     categoria: 'Infecciosa'
+  },
+  {
+    id: 'panosteitis',
+    nombre: 'Panosteitis (Enostosis)',
+    descripcion: 'Inflamación de la superficie de los huesos largos ("dolores de crecimiento").',
+    etiology: 'Desconocida, sospecha metabólica o infecciosa; afecta la cavidad medular ósea.',
+    sintomas: [
+      'Cojera aguda que "salta" de una pata a otra',
+      'Dolor severo a la palpación de la diáfisis ósea',
+      'Fiebre leve y letargo en crisis',
+      'Inapetencia'
+    ],
+    diagnostico: [
+      'Examen ortopédico',
+      'Radiografía (aumento de densidad medular, manchas radio-opacas)'
+    ],
+    tratamiento: 'Analgésicos (AINEs) y reposo. Suele ser autolimitante al llegar a la madurez.',
+    prevencion_control: 'Evitar dietas hipercalóricas en cachorros.',
+    especies_afectadas: ['Perro'],
+    categoria: 'Ortopédica'
   }
 ];

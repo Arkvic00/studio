@@ -23,5 +23,26 @@ export const pathologiesD: Pathology[] = [
     prevencion_control: 'Selección genética de reproductores, evitar crecimiento acelerado en cachorros de razas grandes, control estricto de la dieta.',
     especies_afectadas: ['Perro', 'Gato'],
     categoria: 'Ortopédica'
+  },
+  {
+    id: 'displasia-codo',
+    nombre: 'Displasia de Codo',
+    descripcion: 'Término que engloba varias anomalías del desarrollo en la articulación del codo (FCP, UAP, OCD).',
+    etiology: 'Incongruencia articular hereditaria que causa sobrecarga de presión en puntos específicos del cúbito y radio.',
+    sintomas: [
+      'Cojera de patas delanteras que empeora tras el ejercicio',
+      'Rotación externa de la pata al caminar',
+      'Dolor a la flexión/extensión del codo',
+      'Derrame articular (hinchazón)'
+    ],
+    diagnostico: [
+      'Radiología (vistas en flexión)',
+      'Tomografía Computarizada (Estándar de oro)',
+      'Artroscopia'
+    ],
+    tratamiento: 'Cirugía artroscópica para remover fragmentos, osteotomías de nivelación o manejo médico paliativo.',
+    prevencion_control: 'Control del peso en el crecimiento y selección de reproductores libres de la enfermedad.',
+    especies_afectadas: ['Perro'],
+    categoria: 'Ortopédica'
   }
 ];
