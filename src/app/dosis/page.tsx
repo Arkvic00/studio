@@ -173,6 +173,10 @@ export function DoseCalculator({
 
             if (concentration > 0) {
               if (calcType === 'fija') result = calc.dose / concentration;
+              else if (calcType === 'mg_m2') {
+                const bsaValue = parseFloat(bsa || '0');
+                result = (bsaValue * calc.dose) / concentration;
+              }
               else result = (parseFloat(patient.peso as string) * calc.dose) / concentration;
             }
           }
@@ -269,7 +273,7 @@ export function DoseCalculator({
                           <div className="flex flex-col gap-4">
                             <div className="grid grid-cols-2 gap-4">
                               <GlassInput
-                                label={calcType === 'fija' ? 'Dosis Total' : 'Dosis (mg/kg)'}
+                                label={calcType === 'fija' ? 'Dosis Total' : (calcType === 'mg_m2' ? 'Dosis (mg/m²)' : 'Dosis (mg/kg)')}
                                 type="number"
                                 value={calc.dose}
                                 onChange={(v) => updateDrug(calc.id, { dose: parseFloat(v) || 0 })}

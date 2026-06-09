@@ -18,7 +18,7 @@ export interface DrugImage {
 }
 
 interface MathParams {
-  tipo_calculo: 'fija' | 'mg_kg';
+  tipo_calculo: 'fija' | 'mg_kg' | 'mg_m2';
   dosis_recomendada: number;
   dosis_min?: number | null;
   dosis_max?: number | null;
