@@ -13,119 +13,116 @@ export const acepromazinaMaleatoDrug: Drug = {
       "Efecto depresor del SNC, sedación y reducción de actividad espontánea.",
       "Eleva el umbral para arritmias cardíacas y tiene propiedades antieméticas.",
       "La sedación es poco fiable si se usa sola; combinar con opioides (neuroleptanalgesia).",
-      "La profundidad de la sedación tiene un efecto meseta (plateau) a los 0.1 mg/kg."
+      "El efecto meseta (plateau) ocurre a los 0.1 mg/kg. Dosis mayores no mejoran la sedación pero aumentan riesgos.",
+      "En razas gigantes, usar el extremo inferior del rango de dosis."
     ],
     usos_principales: "Sedación o medicación pre-anestésica. Manejo de tromboembolismo en gatos por su acción vasodilatadora periférica.",
     inicio_accion: "20–30 minutos (IM)",
     duracion_efecto: "Hasta 6 horas (dosis clínicas)"
   },
   informacion_cliente: [
-    "No se recomienda para el manejo de fobias a sonidos (fuegos artificiales o truenos).",
-    "La dosis oral necesaria varía mucho entre individuos; dosis altas pueden causar sedación muy prolongada."
+    "No recomendada para el manejo de fobias a sonidos (fuegos artificiales/truenos).",
+    "La dosis oral varía mucho entre individuos; dosis altas pueden causar sedación muy prolongada."
   ],
   parametros_dosificacion: {
     perro: [
       {
-        indicacion: "Sedación / Premedicación (No Bóxers)",
+        indicacion: "Perros (No Bóxers): Sedación / Premedicación",
         vias: ["IV lento"],
         math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.015, dosis_min: 0.01, dosis_max: 0.02, unidad_calculo: "mg/kg" }
       },
       {
-        indicacion: "Sedación / Premedicación (No Bóxers)",
+        indicacion: "Perros (No Bóxers): Sedación / Premedicación",
         vias: ["IM", "SC"],
         math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.03, dosis_min: 0.01, dosis_max: 0.05, unidad_calculo: "mg/kg" }
       },
       {
-        indicacion: "Sedación Oral",
+        indicacion: "Perros: Sedación Oral",
         vias: ["PO"],
         math: { tipo_calculo: "mg_kg", dosis_recomendada: 2, dosis_min: 1, dosis_max: 3, unidad_calculo: "mg/kg" }
       },
       {
-        indicacion: "Bóxers (Riesgo de síncope)",
+        indicacion: "Bóxers: Riesgo de síncope por tono vagal excesivo",
         vias: ["IM"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.0075, dosis_min: 0.005, dosis_max: 0.01, unidad_calculo: "mg/kg" }
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.0075, dosis_min: 0.005, dosis_max: 0.01, unidad_calculo: "mg/kg" },
+        notas_tecnicas: "Usar dosis bajas o evitar para prevenir bloqueo sinoauricular."
       }
     ],
     gato: [
       {
-        indicacion: "Sedación / Premedicación",
+        indicacion: "Gatos: Sedación / Premedicación",
         vias: ["IV lento"],
         math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.015, dosis_min: 0.01, dosis_max: 0.02, unidad_calculo: "mg/kg" }
       },
       {
-        indicacion: "Sedación / Premedicación / Tromboembolismo",
+        indicacion: "Gatos: Sedación / Tromboembolismo",
         vias: ["IM", "SC"],
         math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.03, dosis_min: 0.01, dosis_max: 0.05, unidad_calculo: "mg/kg" }
-      },
-      {
-        indicacion: "Sedación Oral",
-        vias: ["PO"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 2, dosis_min: 1, dosis_max: 3, unidad_calculo: "mg/kg" }
       }
     ],
     huron: [
       {
-        indicacion: "Sedación",
+        indicacion: "Hurones (Ferrets): Sedación",
         vias: ["IM", "SC", "PO"],
         math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.35, dosis_min: 0.2, dosis_max: 0.5, unidad_calculo: "mg/kg" }
       }
     ],
     conejo: [
       {
-        indicacion: "Sedación",
+        indicacion: "Conejos (Rabbits): Sedación",
         vias: ["IM", "SC"],
         math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.55, dosis_min: 0.1, dosis_max: 1.0, unidad_calculo: "mg/kg" }
       }
     ],
     cobaya: [
       {
-        indicacion: "Sedación",
+        indicacion: "Cobayas (Guinea pigs): Sedación",
         vias: ["IM", "SC", "PO"],
         math: { tipo_calculo: "mg_kg", dosis_recomendada: 2.75, dosis_min: 0.5, dosis_max: 5.0, unidad_calculo: "mg/kg" }
       }
     ],
     roedores: [
       {
-        indicacion: "Ratas",
+        indicacion: "Ratas (Rats): Sedación",
         vias: ["IM", "SC", "PO"],
         math: { tipo_calculo: "mg_kg", dosis_recomendada: 1.5, dosis_min: 0.5, dosis_max: 2.5, unidad_calculo: "mg/kg" }
       },
       {
-        indicacion: "Ratones / Hámsteres",
+        indicacion: "Ratones / Hámsteres (Mice/Hamsters): Sedación",
         vias: ["IM", "SC", "PO"],
         math: { tipo_calculo: "mg_kg", dosis_recomendada: 2.75, dosis_min: 0.5, dosis_max: 5.0, unidad_calculo: "mg/kg" }
       },
       {
-        indicacion: "Jerbos",
+        indicacion: "Jerbos (Gerbils): ¡CONTRAINDICADO!",
         vias: ["N/A"],
         math: { tipo_calculo: "fija", dosis_recomendada: 0, unidad_calculo: "mg" },
-        notas_tecnicas: "No recomendado. Baja el umbral de convulsiones."
+        notas_tecnicas: "No recomendado. Baja el umbral de convulsiones en cepas susceptibles."
       }
     ],
     primates: [
       {
-        indicacion: "Primates pequeños",
+        indicacion: "Primates pequeños (Small primates): Sedación",
         vias: ["PO", "SC", "IM"],
         math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.75, dosis_min: 0.5, dosis_max: 1.0, unidad_calculo: "mg/kg" }
       }
     ],
     petauro: [
       {
-        indicacion: "Sedación",
+        indicacion: "Petauros (Sugar gliders): Sedación",
         vias: ["IM", "SC", "PO"],
         math: { tipo_calculo: "mg_kg", dosis_recomendada: 1.5, dosis_min: 1.0, dosis_max: 2.0, unidad_calculo: "mg/kg" }
       }
     ],
     erizo: [
       {
-        indicacion: "Sedación",
+        indicacion: "Erizos (Hedgehogs): Sedación",
         vias: ["PO", "SC", "IM"],
         math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.55, dosis_min: 0.1, dosis_max: 1.0, unidad_calculo: "mg/kg" }
       }
     ],
     reptil: [
       {
-        indicacion: "Sedación",
+        indicacion: "Reptiles: Sedación",
         vias: ["IM"],
         math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.3, dosis_min: 0.1, dosis_max: 0.5, unidad_calculo: "mg/kg" }
       }
@@ -134,37 +131,38 @@ export const acepromazinaMaleatoDrug: Drug = {
   seguridad_y_alertas: {
     contraindicaciones: [
       "Hipotensión por shock, trauma o enfermedad cardiovascular.",
-      "Evitar en animales <3 meses y con enfermedad hepática.",
-      "Usar con cautela en animales anémicos (secuestro esplénico de eritrocitos).",
+      "Animales menores de 3 meses.",
+      "Enfermedad hepática.",
+      "Animales anémicos (secuestro esplénico de eritrocitos).",
       "Jerbos (baja el umbral de convulsiones).",
       "No recomendado en aves."
     ],
     efectos_adversos: [
-      "Hipotensión profunda (raro en animales sanos).",
+      "Hipotensión profunda (ocasional en animales sanos).",
       "Hipotermia.",
       "Convulsiones en jerbos."
     ],
     monitoreo_recomendado: [
       "Presión arterial",
       "Temperatura corporal",
-      "Balance de fluidos"
+      "Frecuencia respiratoria"
     ],
     instrucciones_manejo: "Se deben observar las precauciones normales.",
     sobredosis: {
       signos: ["Hipotensión severa", "Sedación prolongada"],
-      tratamiento: "Terapia de soporte para mantener temperatura y fluidos."
+      tratamiento: "Terapia de soporte (fluidos y control de temperatura)."
     },
     interacciones_farmacologicas: [
-      { farmaco: "Adrenalina", efecto: "Vasodilatación y taquicardia (actividad beta sin oposición)", severidad: "Grave" },
-      { farmaco: "Depresores SNC", efecto: "Depresión aditiva del SNC", severidad: "Importante" },
-      { farmaco: "Propranolol", efecto: "Aumento de los niveles de ambos fármacos", severidad: "Moderada" },
-      { farmaco: "Quinidina", efecto: "Depresión cardíaca adicional", severidad: "Importante" },
-      { farmaco: "Antiácidos / Kaolín-Pectina", efecto: "Reducción de la absorción oral", severidad: "Leve" }
+      { farmaco: "Depresores SNC (Barbitúricos, Propofol)", efecto: "Depresión aditiva del SNC; reducir dosis de anestésicos.", severidad: "Importante" },
+      { farmaco: "Adrenalina", efecto: "Vasodilatación y taquicardia por actividad beta sin oposición.", severidad: "Grave" },
+      { farmaco: "Quinidina", efecto: "Depresión cardíaca adicional.", severidad: "Importante" },
+      { farmaco: "Propranolol", efecto: "Aumento de los niveles plasmáticos de ambos fármacos.", severidad: "Moderada" },
+      { farmaco: "Antiácidos / Kaolín-Pectina", efecto: "Reducción de la absorción oral.", severidad: "Leve" }
     ]
   },
   farmacologia_clinica: {
-    mecanismo_accion: "Fenotiazina con efecto depresor en el SNC.",
-    farmacocinetica: "Inicio IM en 20-30 min. Duración hasta 6 horas. El metabolismo varía por tamaño corporal (usar dosis bajas en razas gigantes)."
+    mecanismo_accion: "Fenotiazina con efecto depresor en el SNC que reduce la actividad espontánea.",
+    farmacocinetica: "Inicio IM en 20-30 min. Duración hasta 6 horas. La dosis oral varía mucho individualmente."
   },
   presentaciones_comerciales: [
     { tipo: "Inyectable", concentracion_texto: "2 mg/ml", valor_concentracion: 2, unidad_concentracion: "mg/ml", es_divisible: false },

@@ -4,124 +4,97 @@ export const acidoAceticoDrug: Drug = {
   id: "acido_acetico",
   meta_data: {
     nombre_generico: "Ácido Acético",
-    nombres_comerciales: ["Glacial Acetic Acid", "Vinagre de Manzana"],
-    grupo_farmacologico: "Ectoparasiticida; Antiséptico; Acidificante",
-    status_regulatorio: "OTC / Uso extra-label"
+    nombres_comerciales: ["Vinagre de Manzana", "Glacial Acetic Acid"],
+    grupo_farmacologico: "Ectoparasiticida; Acidificante",
+    status_regulatorio: "OTC"
   },
   resumen_clinico: {
     puntos_clave: [
-      "Tratamiento de ectoparásitos en peces (protozoos, monogeneos, crustáceos).",
-      "Manejo de disbiosis intestinal en aves, especialmente macrorhabdiasis.",
-      "Mucho más seguro que terapias alternativas para macrorhabdiasis en parvadas.",
-      "La evidencia de eficacia es baja en aves (datos de aves de corral)."
+      "Tratamiento de ectoparásitos en peces (protozoos, monogeneos).",
+      "Manejo de disbiosis intestinal en aves (macrorhabdiasis).",
+      "Más seguro que otras alternativas para parvadas de aves.",
+      "Corrosivo e irritante: manejar con cuidado extremo."
     ],
-    usos_principales: "Ectoparásitos en peces y disbiosis intestinal (macrorhabdiasis) en aves.",
-    inicio_accion: "Inmediato (baño) / Variable (oral)",
-    duracion_efecto: "Durante el tiempo de inmersión / Tránsito digestivo"
+    usos_principales: "Ectoparásitos en peces y disbiosis (macrorhabdiasis) en aves.",
+    inicio_accion: "Inmediato (inmersión)",
+    duracion_efecto: "Limitada al tiempo de contacto"
   },
   informacion_cliente: [
-    "Corrosivo para la piel e irritante para las mucosas; manejar con cuidado.",
-    "Para aves enfermas individualmente, la Anfotericina-B es una terapia más probada.",
-    "En peces, se recomienda precaución con especies tropicales pequeñas."
+    "Sustancia corrosiva; evitar contacto con piel y ojos.",
+    "En aves enfermas individualmente, la Anfotericina-B suele ser más efectiva.",
+    "Precaución en peces tropicales pequeños."
   ],
   parametros_dosificacion: {
     ave: [
       {
-        indicacion: "Disbiosis / Macrorhabdiasis (Agua de bebida)",
-        vias: ["PO"],
+        indicacion: "Aves Adultas: Disbiosis / Macrorhabdiasis (Agua)",
+        vias: ["PO (Agua de bebida)"],
         math: {
           tipo_calculo: "fija",
           dosis_recomendada: 15,
           unidad_calculo: "ml/l (Vinagre de manzana)"
-        },
-        frecuencia: {
-          texto_ui: "Diario en agua de bebida",
-          intervalo_horas: 24
         }
       },
       {
-        indicacion: "Disbiosis / Macrorhabdiasis (Alimento)",
-        vias: ["PO"],
+        indicacion: "Aves Adultas: Disbiosis / Macrorhabdiasis (Comida)",
+        vias: ["PO (Alimento fresco)"],
         math: {
           tipo_calculo: "fija",
           dosis_recomendada: 0.35,
           dosis_min: 0.25,
           dosis_max: 0.5,
-          unidad_calculo: "cucharadita/día (Adultos)"
-        },
-        frecuencia: {
-          texto_ui: "En alimento fresco",
-          intervalo_horas: 24
+          unidad_calculo: "cucharadita diaria"
         }
       },
       {
-        indicacion: "Polluelos (Fórmula de cría)",
-        vias: ["PO"],
+        indicacion: "Polluelos (Chicks): Crianza a mano",
+        vias: ["PO (Fórmula de cría)"],
         math: {
           tipo_calculo: "fija",
           dosis_recomendada: 1.5,
           dosis_min: 1,
           dosis_max: 2,
-          unidad_calculo: "gotas/día"
-        },
-        frecuencia: {
-          texto_ui: "En fórmula de crianza manual",
-          intervalo_horas: 24
+          unidad_calculo: "gotas diarias"
         }
       }
     ],
     peces: [
       {
-        indicacion: "Ectoparásitos (Inmersión)",
-        vias: ["Inmersión"],
+        indicacion: "Peces: Ectoparásitos",
+        vias: ["Inmersión (Ácido glacial 100%)"],
         math: {
           tipo_calculo: "fija",
           dosis_recomendada: 2,
-          unidad_calculo: "ml/l (Ácido acético glacial)"
+          unidad_calculo: "ml/l"
         },
-        duracion_tratamiento: "30 a 60 segundos",
-        notas_tecnicas: "Inmersión corta de 30-60 segundos únicamente. Puede ser tóxico para peces tropicales pequeños."
+        duracion_tratamiento: "30-60 segundos",
+        notas_tecnicas: "No exceder los 60 segundos. Riesgo de toxicidad en especies tropicales pequeñas."
       }
     ]
   },
   seguridad_y_alertas: {
-    contraindicaciones: [
-      "No hay información disponible específica de contraindicaciones médicas.",
-      "Evitar contacto directo con piel y mucosas por su naturaleza corrosiva."
-    ],
+    contraindicaciones: ["No hay información específica."],
     efectos_adversos: [
-      "Toxicidad en peces tropicales pequeños.",
-      "Irritación de mucosas."
+      "Toxicidad en peces pequeños.",
+      "Irritación severa de mucosas."
     ],
     monitoreo_recomendado: [
-      "Comportamiento y flotabilidad en peces tras baño",
+      "Flotabilidad en peces tras inmersión",
       "Estado de mucosas"
     ],
-    instrucciones_manejo: "Sustancia corrosiva para la piel e irritante para las mucosas. Usar equipo de protección adecuado durante la manipulación.",
+    instrucciones_manejo: "ALTAMENTE CORROSIVO. Usar guantes y protección ocular.",
     sobredosis: {
-      signos: ["Mortalidad en peces", "Irritación severa"],
-      tratamiento: "Dilución inmediata con agua limpia."
+      signos: ["Mortalidad rápida en peces", "Quemaduras químicas"],
+      tratamiento: "Dilución inmediata."
     },
     interacciones_farmacologicas: []
   },
   farmacologia_clinica: {
     mecanismo_accion: "Desconocido.",
-    farmacocinetica: "Actúa principalmente por contacto (peces) o cambio de pH en el lumen intestinal (aves)."
+    farmacocinetica: "Actúa principalmente por cambio local de pH."
   },
   presentaciones_comerciales: [
-    {
-      tipo: "Líquido (Glacial)",
-      concentracion_texto: "100%",
-      valor_concentracion: 100,
-      unidad_concentracion: "%",
-      es_divisible: false
-    },
-    {
-      tipo: "Vinagre",
-      concentracion_texto: "5% a 20%",
-      valor_concentracion: 5,
-      unidad_concentracion: "%",
-      es_divisible: false
-    }
+    { tipo: "Líquido (Glacial)", concentracion_texto: "100%", valor_concentracion: 100, unidad_concentracion: "%", es_divisible: false },
+    { tipo: "Vinagre", concentracion_texto: "5-20%", valor_concentracion: 5, unidad_concentracion: "%", es_divisible: false }
   ]
 };
