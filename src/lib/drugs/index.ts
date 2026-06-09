@@ -115,6 +115,10 @@ import { cipermetrinaDrug } from './cipermetrina';
 import { ciproheptadinaDrug } from './ciproheptadina';
 import { ciromazinaDrug } from './ciromazina';
 import { citarabinaDrug } from './citarabina';
+import { dacarbazineDrug } from './dacarbazine';
+import { dactinomycinDrug } from './dactinomycin';
+import { dantroleneDrug } from './dantrolene';
+import { darbepoetinDrug } from './darbepoetin';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -234,4 +238,9 @@ export const DB_MEDICAMENTOS = [
     ciproheptadinaDrug,
     ciromazinaDrug,
     citarabinaDrug,
+    dacarbazineDrug,
+    dactinomycinDrug,
+    dantroleneDrug,
+    darbepoetinDrug,
 ];
+
