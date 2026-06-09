@@ -35,6 +35,7 @@ import { atenololDrug } from './atenolol';
 import { atipamezoleDrug } from './atipamezole';
 import { atracuriumDrug } from './atracurium';
 import { atropinaDrug } from './atropina';
+import { azathioprineDrug } from './azathioprine';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -74,4 +75,5 @@ export const DB_MEDICAMENTOS = [
     atipamezoleDrug,
     atracuriumDrug,
     atropinaDrug,
+    azathioprineDrug,
 ];
