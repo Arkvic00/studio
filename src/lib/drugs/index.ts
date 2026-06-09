@@ -67,6 +67,7 @@ import { carnidazoleDrug } from './carnidazole';
 import { carprofenDrug } from './carprofen';
 import { carvedilolDrug } from './carvedilol';
 import { alphaCasozepineDrug } from './alpha_casozepine';
+import { catAppeasingPheromoneDrug } from './cat_appeasing_pheromone';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -138,4 +139,5 @@ export const DB_MEDICAMENTOS = [
     carprofenDrug,
     carvedilolDrug,
     alphaCasozepineDrug,
+    catAppeasingPheromoneDrug,
 ];
