@@ -80,6 +80,7 @@ import { celecoxibDrug } from './celecoxib';
 import { chitosanDrug } from './chitosan';
 import { chlorambucilDrug } from './chlorambucil';
 import { chloramineTDrug } from './chloramine_t';
+import { chloramphenicolDrug } from './chloramphenicol';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -164,4 +165,5 @@ export const DB_MEDICAMENTOS = [
     chitosanDrug,
     chlorambucilDrug,
     chloramineTDrug,
+    chloramphenicolDrug,
 ];
