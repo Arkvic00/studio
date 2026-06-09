@@ -109,6 +109,7 @@ import { coAmoxiclavDrug } from './co_amoxiclav';
 import { codeineDrug } from './codeine';
 import { colchicineDrug } from './colchicine';
 import { colestyramineDrug } from './colestyramine';
+import { cyclophosphamideDrug } from './cyclophosphamide';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -135,6 +136,7 @@ export const DB_MEDICAMENTOS = [
     amitrazDrug,
     amitriptylineDrug,
     amlodipineDrug,
+    amoxicilinaDrug,
     amoxicilinaDrug,
     ampicillinDrug,
     amphotericinBDrug,
@@ -222,4 +224,5 @@ export const DB_MEDICAMENTOS = [
     codeineDrug,
     colchicineDrug,
     colestyramineDrug,
+    cyclophosphamideDrug,
 ];
