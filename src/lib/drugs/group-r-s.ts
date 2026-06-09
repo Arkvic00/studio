@@ -16,6 +16,15 @@ import { selegilineDrug } from './selegiline';
 import { sertralineDrug } from './sertraline';
 import { sevelamerDrug } from './sevelamer';
 import { sevofluraneDrug } from './sevoflurane';
+import { sildenafilDrug } from './sildenafil';
+import { silverSulfadiazineDrug } from './silver_sulfadiazine';
+import { silybinDrug } from './silybin';
+import { sodiumBicarbonateDrug } from './sodium_bicarbonate';
+import { sodiumChlorideDrug } from './sodium_chloride';
+import { sodiumCitrateDrug } from './sodium_citrate';
+import { sodiumCromoglicateDrug } from './sodium_cromoglicate';
+import { sodiumHypochloriteDrug } from './sodium_hypochlorite';
+import { sodiumStibogluconateDrug } from './sodium_stibogluconate';
 
 export const groupRS = [
     rabacfosadineDrug,
@@ -36,4 +45,13 @@ export const groupRS = [
     sertralineDrug,
     sevelamerDrug,
     sevofluraneDrug,
+    sildenafilDrug,
+    silverSulfadiazineDrug,
+    silybinDrug,
+    sodiumBicarbonateDrug,
+    sodiumChlorideDrug,
+    sodiumCitrateDrug,
+    sodiumCromoglicateDrug,
+    sodiumHypochloriteDrug,
+    sodiumStibogluconateDrug,
 ];
