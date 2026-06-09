@@ -92,7 +92,6 @@ import { cimicoxibDrug } from './cimicoxib';
 import { cinchophenDrug } from './cinchophen';
 import { ciprofloxacinDrug } from './ciprofloxacin';
 import { cisaprideDrug } from './cisapride';
-import { cisaprideDrug } from './cisapride';
 import { cisatracuriumDrug } from './cisatracurium';
 import { clarithromycinDrug } from './clarithromycin';
 import { clazurilDrug } from './clazuril';
