@@ -145,6 +145,10 @@ import { diphenoxylateDrug } from './diphenoxylate';
 import { dobutamineDrug } from './dobutamine';
 import { docusateSodiumDrug } from './docusate_sodium';
 import { dogAppeasingPheromoneDrug } from './dog_appeasing_pheromone';
+import { domperidoneDrug } from './domperidone';
+import { dopamineDrug } from './dopamine';
+import { dorzolamideDrug } from './dorzolamide';
+import { doxapramDrug } from './doxapram';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -294,4 +298,8 @@ export const DB_MEDICAMENTOS = [
     dobutamineDrug,
     docusateSodiumDrug,
     dogAppeasingPheromoneDrug,
+    domperidoneDrug,
+    dopamineDrug,
+    dorzolamideDrug,
+    doxapramDrug,
 ];
