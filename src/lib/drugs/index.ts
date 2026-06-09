@@ -47,6 +47,7 @@ import { bethanecolDrug } from './bethanecol';
 import { bisacodylDrug } from './bisacodyl';
 import { bismuthSaltsDrug } from './bismuth_salts';
 import { bleomicinaDrug } from './bleomicina';
+import { bowelCleansingSolutionsDrug } from './bowel_cleansing_solutions';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -98,4 +99,5 @@ export const DB_MEDICAMENTOS = [
     bisacodylDrug,
     bismuthSaltsDrug,
     bleomicinaDrug,
+    bowelCleansingSolutionsDrug,
 ];
