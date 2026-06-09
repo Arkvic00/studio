@@ -124,7 +124,7 @@ import { delmadinoneDrug } from './delmadinone';
 import { deltamethrinDrug } from './deltamethrin';
 import { deslorelinDrug } from './deslorelin';
 import { desmopressinDrug } from './desmopressin';
-import { desoxycortone PivalateDrug } from './desoxycortone_pivalate';
+import { desoxycortonePivalateDrug } from './desoxycortone_pivalate';
 import { dexamethasoneDrug } from './dexamethasone';
 import { dexmedetomidineDrug } from './dexmedetomidine';
 import { dexrazoxaneDrug } from './dexrazoxane';
