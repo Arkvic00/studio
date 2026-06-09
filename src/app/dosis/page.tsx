@@ -3,7 +3,7 @@ import { useMemo, useRef, useEffect } from 'react';
 import type { Patient, Calculation } from '@/lib/types';
 import { DB_MEDICAMENTOS } from '@/lib/data';
 import { getSpeciesKey, getSpeciesInfo, speciesList } from '@/lib/config';
-import { Plus, Trash2, Save, Printer, ArrowDownUp, Info } from 'lucide-react';
+import { Plus, Trash2, Save, Printer, ArrowDownUp, Info, AlertTriangle } from 'lucide-react';
 import { PinterestCard } from '@/components/ui/pinterest-card';
 import { GlassInput } from '@/components/ui/glass-input';
 import { DrugSelector } from '@/components/dosis/drug-selector';
@@ -160,6 +160,8 @@ export function DoseCalculator({
           const presentations = drug?.presentaciones_comerciales || [];
           const selectedPresentation = presentations[calc.presentationIndex || 0];
 
+          const isContraindicated = drug?.seguridad_y_alertas.contraindicaciones_especie?.[patient.especie];
+
           let result = 0;
           let resultUnit = 'ml';
           let calcType = 'mg_kg';
@@ -212,7 +214,17 @@ export function DoseCalculator({
                       }}
                     />
 
-                    {drug && (
+                    {isContraindicated && (
+                        <div className="bg-red-500/10 border-2 border-red-500/30 p-6 rounded-3xl animate-in zoom-in-95 duration-300">
+                            <div className="flex items-center gap-3 text-red-500 mb-2">
+                                <AlertTriangle size={24} />
+                                <h4 className="font-black uppercase tracking-tighter text-xl">Alarma de Especie</h4>
+                            </div>
+                            <p className="text-red-200 font-bold text-sm leading-relaxed">{isContraindicated}</p>
+                        </div>
+                    )}
+
+                    {drug && !isContraindicated && (
                       <div className="space-y-6 animate-in slide-in-from-left-4 duration-500">
                         <div className="space-y-2">
                           <label className="text-[11px] font-bold text-slate-400 uppercase tracking-widest ml-2">Presentación</label>
@@ -275,34 +287,36 @@ export function DoseCalculator({
                     )}
                   </div>
 
-                  <div className={`w-full lg:w-80 bg-gradient-to-br from-slate-800 to-slate-900 rounded-4xl p-8 text-center transition-all duration-500 shadow-2xl relative overflow-hidden border border-border flex-shrink-0`}>
-                    <div className={`absolute top-0 left-0 w-full h-2 ${borderColorClass.replace('border-l-', 'bg-')}`}></div>
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Administrar</p>
-                    <h2 className="text-5xl sm:text-7xl font-extrabold text-white tracking-tighter drop-shadow-md">{result.toFixed(2)}</h2>
-                    <p className="text-sm font-bold text-slate-300 uppercase mt-2 opacity-80">{resultUnit}</p>
+                  {!isContraindicated && (
+                      <div className={`w-full lg:w-80 bg-gradient-to-br from-slate-800 to-slate-900 rounded-4xl p-8 text-center transition-all duration-500 shadow-2xl relative overflow-hidden border border-border flex-shrink-0`}>
+                        <div className={`absolute top-0 left-0 w-full h-2 ${borderColorClass.replace('border-l-', 'bg-')}`}></div>
+                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Administrar</p>
+                        <h2 className="text-5xl sm:text-7xl font-extrabold text-white tracking-tighter drop-shadow-md">{result.toFixed(2)}</h2>
+                        <p className="text-sm font-bold text-slate-300 uppercase mt-2 opacity-80">{resultUnit}</p>
 
-                    {rangeText && (
-                        <div className="mt-4 flex items-center justify-center gap-2 text-[10px] text-accent font-black uppercase bg-accent/10 px-3 py-1.5 rounded-full mx-auto w-fit border border-accent/20">
-                            <ArrowDownUp size={12} /> {rangeText}
-                        </div>
-                    )}
-
-                    {doseConfig && (
-                      <div className="mt-6 pt-6 border-t border-white/10 flex flex-col items-center gap-2">
-                        {doseConfig.vias && (
-                          <span className="text-[10px] font-black text-white uppercase tracking-widest bg-white/5 px-3 py-1 rounded-full">
-                            {Array.isArray(doseConfig.vias) ? doseConfig.vias.join(' / ') : doseConfig.vias}
-                          </span>
+                        {rangeText && (
+                            <div className="mt-4 flex items-center justify-center gap-2 text-[10px] text-accent font-black uppercase bg-accent/10 px-3 py-1.5 rounded-full mx-auto w-fit border border-accent/20">
+                                <ArrowDownUp size={12} /> {rangeText}
+                            </div>
                         )}
-                        {doseConfig.frecuencia && (
-                          <span className="text-[9px] font-bold text-accent uppercase tracking-wider">{doseConfig.frecuencia.texto_ui}</span>
+
+                        {doseConfig && (
+                          <div className="mt-6 pt-6 border-t border-white/10 flex flex-col items-center gap-2">
+                            {doseConfig.vias && (
+                              <span className="text-[10px] font-black text-white uppercase tracking-widest bg-white/5 px-3 py-1 rounded-full">
+                                {Array.isArray(doseConfig.vias) ? doseConfig.vias.join(' / ') : doseConfig.vias}
+                              </span>
+                            )}
+                            {doseConfig.frecuencia && (
+                              <span className="text-[9px] font-bold text-accent uppercase tracking-wider">{doseConfig.frecuencia.texto_ui}</span>
+                            )}
+                          </div>
                         )}
                       </div>
-                    )}
-                  </div>
+                  )}
                 </div>
 
-                {drug && drug.informacion_cliente && (
+                {drug && !isContraindicated && (doseConfig?.notas_tecnicas || (drug.informacion_cliente && drug.informacion_cliente.length > 0)) && (
                   <div className="mt-8 pt-8 border-t border-border">
                     <div className="bg-blue-500/5 border border-blue-500/10 p-5 rounded-3xl">
                       <h4 className="text-xs font-black text-blue-400 uppercase tracking-widest mb-3 flex items-center gap-2"><Info size={14} /> Notas Técnicas</h4>

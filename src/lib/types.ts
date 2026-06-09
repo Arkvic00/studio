@@ -74,6 +74,9 @@ export interface Drug {
   };
   seguridad_y_alertas: {
     contraindicaciones: string[];
+    contraindicaciones_especie?: {
+        [especie: string]: string;
+    };
     precauciones?: string[];
     efectos_adversos: string[];
     monitoreo_recomendado?: string[];
@@ -105,7 +108,7 @@ export interface Pathology {
   id: string;
   nombre: string;
   descripcion: string;
-  etiologia: string; // Agente causal o origen
+  etiologia: string;
   sintomas: string[];
   diagnostico: string[];
   tratamiento: string;
@@ -122,7 +125,7 @@ export interface Breed {
   descripcion: string;
   icon: string;
   predisposiciones: {
-    patologiaId: string; // Link a la patología
+    patologiaId: string;
     nota_especifica?: string;
   }[];
 }

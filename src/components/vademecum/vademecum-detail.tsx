@@ -3,12 +3,11 @@ import { useMemo, useState } from 'react';
 import { 
   Zap, AlertOctagon, Shield, Calculator, FileText, 
   GitCompareArrows, Search, Loader2, Timer, Eye, 
-  ShieldAlert, ArrowDownUp
+  ShieldAlert, ArrowDownUp, Info, AlertTriangle
 } from 'lucide-react';
 import { PinterestCard } from '@/components/ui/pinterest-card';
 import { Badge } from '@/components/ui/badge';
 import { getSpeciesInfo } from '@/lib/config';
-import type { Drug } from '@/lib/types';
 import { Button } from '../ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
@@ -152,7 +151,7 @@ export function VademecumDetail() {
                     <div className="space-y-8">
                         <PinterestCard className="h-fit">
                             <h3 className="text-sm font-black text-accent uppercase tracking-widest mb-6 flex items-center gap-3">
-                                <Zap size={18} className="text-accent"/> Mecanismo y Farmacocinética
+                                <Zap size={18} className="text-accent"/> Mecanismo y Farmacología
                             </h3>
                             <div className="space-y-6">
                                 <div className="bg-white/5 p-5 rounded-3xl border border-white/5">
@@ -160,19 +159,17 @@ export function VademecumDetail() {
                                     <p className="text-sm text-slate-200 leading-relaxed">{drug.farmacologia_clinica.mecanismo_accion}</p>
                                 </div>
                                 <div>
-                                    <p className="text-xs font-black text-slate-500 uppercase mb-3 tracking-widest">Farmacocinética</p>
-                                    <p className="text-sm text-slate-300 leading-relaxed">
-                                        {typeof drug.farmacologia_clinica.farmacocinetica === 'string' 
-                                            ? drug.farmacologia_clinica.farmacocinetica 
-                                            : drug.farmacologia_clinica.farmacocinetica.general}
-                                    </p>
+                                    <p className="text-xs font-black text-slate-500 uppercase mb-3 tracking-widest">Resumen Clínico</p>
+                                    <ul className="list-disc pl-5 space-y-2 text-sm text-slate-300">
+                                        {drug.resumen_clinico.puntos_clave.map((p, i) => <li key={i}>{p}</li>)}
+                                    </ul>
                                 </div>
                             </div>
                         </PinterestCard>
 
                         <PinterestCard className="border-orange-500/20 h-fit">
                             <h3 className="text-sm font-black text-orange-400 uppercase tracking-widest mb-6 flex items-center gap-3">
-                                <ShieldAlert size={18} className="text-orange-400"/> Monitoreo y Precauciones
+                                <ShieldAlert size={18} className="text-orange-400"/> Monitoreo y Seguridad
                             </h3>
                             <div className="space-y-6">
                                 {drug.seguridad_y_alertas.monitoreo_recomendado && (
@@ -190,11 +187,27 @@ export function VademecumDetail() {
                                     </div>
                                 )}
                                 <div className="bg-slate-500/5 p-5 rounded-3xl border border-slate-500/10">
-                                    <p className="text-[10px] font-black text-slate-500 uppercase mb-2 tracking-widest">Seguridad y Manipulación</p>
+                                    <p className="text-[10px] font-black text-slate-500 uppercase mb-2 tracking-widest">Instrucciones de Manejo</p>
                                     <p className="text-sm text-slate-300 leading-relaxed italic">{drug.seguridad_y_alertas.instrucciones_manejo || 'Seguir protocolos estándar de bioseguridad.'}</p>
                                 </div>
                             </div>
                         </PinterestCard>
+
+                        {drug.seguridad_y_alertas.contraindicaciones_especie && (
+                            <PinterestCard className="border-red-500/40 bg-red-500/5">
+                                <h3 className="text-sm font-black text-red-500 uppercase tracking-widest mb-6 flex items-center gap-3">
+                                    <AlertTriangle size={18} className="text-red-500"/> Alarmas de Especie
+                                </h3>
+                                <div className="space-y-4">
+                                    {Object.entries(drug.seguridad_y_alertas.contraindicaciones_especie).map(([sp, msg]) => (
+                                        <div key={sp} className="bg-red-500/10 border border-red-500/20 p-4 rounded-2xl">
+                                            <span className="font-black text-red-400 text-xs uppercase">{sp}:</span>
+                                            <p className="text-sm text-red-200 mt-1">{msg}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </PinterestCard>
+                        )}
                     </div>
 
                     <div className="space-y-8">
