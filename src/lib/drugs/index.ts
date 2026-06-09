@@ -10,6 +10,7 @@ import { alfaxalonaDrug } from './alfaxalona';
 import { alfentanilDrug } from './alfentanil';
 import { allopurinolDrug } from './allopurinol';
 import { alprazolamDrug } from './alprazolam';
+import { aluminiumHydroxideDrug } from './aluminium_hydroxide';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -24,4 +25,5 @@ export const DB_MEDICAMENTOS = [
     alfentanilDrug,
     allopurinolDrug,
     alprazolamDrug,
+    aluminiumHydroxideDrug,
 ];
