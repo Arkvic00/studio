@@ -141,6 +141,10 @@ import { dinotefuranDrug } from './dinotefuran';
 import { dinoprostTromethamineDrug } from './dinoprost_tromethamine';
 import { dinoprostoneDrug } from './dinoprostone';
 import { diphenhydramineDrug } from './diphenhydramine';
+import { diphenoxylateDrug } from './diphenoxylate';
+import { dobutamineDrug } from './dobutamine';
+import { docusateSodiumDrug } from './docusate_sodium';
+import { dog_appeasing_pheromoneDrug } from './dog_appeasing_pheromone';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -286,4 +290,8 @@ export const DB_MEDICAMENTOS = [
     dinoprostTromethamineDrug,
     dinoprostoneDrug,
     diphenhydramineDrug,
+    diphenoxylateDrug,
+    dobutamineDrug,
+    docusateSodiumDrug,
+    dog_appeasing_pheromoneDrug,
 ];
