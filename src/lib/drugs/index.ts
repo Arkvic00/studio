@@ -259,6 +259,10 @@ import { lorazepamDrug } from './lorazepam';
 import { lotilanerDrug } from './lotilaner';
 import { lufenuronDrug } from './lufenuron';
 import { lysineDrug } from './lysine';
+import { mitoxantroneDrug } from './mitoxantrone';
+import { morphineDrug } from './morphine';
+import { moxidectinDrug } from './moxidectin';
+import { moxifloxacinDrug } from './moxifloxacin';
 import { miconazoleDrug } from './miconazole';
 import { midazolamDrug } from './midazolam';
 import { milbemycinDrug } from './milbemycin';
@@ -530,6 +534,10 @@ export const DB_MEDICAMENTOS = [
     lotilanerDrug,
     lufenuronDrug,
     lysineDrug,
+    mitoxantroneDrug,
+    morphineDrug,
+    moxidectinDrug,
+    moxifloxacinDrug,
     miconazoleDrug,
     midazolamDrug,
     milbemycinDrug,
