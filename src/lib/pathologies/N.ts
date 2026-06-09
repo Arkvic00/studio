@@ -4,21 +4,19 @@ export const pathologiesN: Pathology[] = [
   {
     id: 'tumores-nasales',
     nombre: 'Tumores de Cavidad Nasal',
-    descripcion: 'Neoplasias malignas que se originan en el epitelio respiratorio o nasal.',
-    etiology: 'Multifactorial; mayor incidencia en perros de hocico largo (dolicocéfalos).',
+    descripcion: 'Cáncer en el epitelio respiratorio.',
+    etiology: 'Genética y carcinógenos ambientales.',
     sintomas: [
-      'Descarga nasal persistente (a menudo unilateral y hemorrágica)',
-      'Estornudos frecuentes',
-      'Deformidad facial (casos avanzados)',
-      'Dificultad respiratoria'
+      'Descarga nasal con sangre',
+      'Estornudos',
+      'Deformidad facial'
     ],
     diagnostico: [
       'Rinoscopia con biopsia',
-      'Tomografía Computarizada (TC) de cráneo',
-      'Radiografía de tórax (metástasis)'
+      'TC de cráneo'
     ],
-    tratamiento: 'Radioterapia es el tratamiento de elección. Cirugía y quimioterapia tienen éxito limitado.',
-    prevencion_control: 'Evitar exposición a carcinógenos ambientales (humo de tabaco).',
+    tratamiento: 'Radioterapia.',
+    prevencion_control: 'Evitar humo de tabaco.',
     especies_afectadas: ['Perro', 'Gato'],
     categoria: 'Otros'
   }

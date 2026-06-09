@@ -4,21 +4,19 @@ export const pathologiesG: Pathology[] = [
   {
     id: 'gangliosidosis-gm1',
     nombre: 'Gangliosidosis GM1',
-    descripcion: 'Enfermedad de almacenamiento lisosómico que causa acumulación de gangliósidos en el cerebro y otros órganos.',
-    etiology: 'Deficiencia de la enzima beta-galactosidasa, hereditaria autosómica recesiva.',
+    descripcion: 'Acumulación tóxica de lípidos en el cerebro.',
+    etiology: 'Deficiencia enzimática hereditaria recesiva.',
     sintomas: [
-      'Enanismo proporcional',
-      'Ataxia y dismetría (paso descoordinado)',
+      'Enanismo',
       'Temblores de cabeza',
-      'Deterioro neurológico progresivo rápido'
+      'Ataxia progresiva rápida'
     ],
     diagnostico: [
-      'Signos clínicos en jóvenes (5-7 meses)',
-      'Ensayo enzimático',
-      'Prueba de ADN (mutación identificada)'
+      'Signos en cachorros jóvenes',
+      'Prueba de ADN'
     ],
-    tratamiento: 'No hay tratamiento; enfermedad fatal.',
-    prevencion_control: 'Eliminación de portadores de la población reproductora.',
+    tratamiento: 'Ninguno; fatal.',
+    prevencion_control: 'Eliminar portadores.',
     especies_afectadas: ['Perro', 'Gato'],
     categoria: 'Genética'
   }

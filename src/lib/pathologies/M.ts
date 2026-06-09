@@ -4,42 +4,38 @@ export const pathologiesM: Pathology[] = [
   {
     id: 'mielopatia-afgana',
     nombre: 'Mielopatía Afgana',
-    descripcion: 'Enfermedad desmielinizante degenerativa específica de la médula espinal en galgos afganos.',
-    etiology: 'Hereditaria, de carácter autosómico recesivo.',
+    descripcion: 'Degeneración medular severa en galgos afganos.',
+    etiology: 'Hereditaria autosómica recesiva.',
     sintomas: [
-      'Ataxia progresiva en jóvenes (3-12 meses)',
-      'Parálisis de las cuatro patas (tetraplejia)',
-      'Ausencia de dolor en la columna',
-      'Deterioro rápido en semanas'
+      'Ataxia progresiva rápida',
+      'Parálisis total en semanas',
+      'Ausencia de dolor'
     ],
     diagnostico: [
-      'Resonancia Magnética (desmielinizacion)',
-      'Análisis de LCR',
-      'Biopsia post-mortem (diagnóstico definitivo)'
+      'RM medular',
+      'Exclusión de otras causas'
     ],
-    tratamiento: 'No existe tratamiento efectivo; es una enfermedad fatal o que requiere eutanasia por bienestar.',
-    prevencion_control: 'Pruebas genéticas y selección de reproductores.',
+    tratamiento: 'Paliativo; usualmente fatal.',
+    prevencion_control: 'Selección genética.',
     especies_afectadas: ['Perro'],
     categoria: 'Neurológica'
   },
   {
     id: 'migracion-espigas-gramineas',
-    nombre: 'Migración de Espigas de Gramíneas (Grass Awn)',
-    descripcion: 'Cuerpos extraños vegetales que penetran la piel o cavidades y migran por el cuerpo.',
-    etiology: 'Exposición ambiental a gramíneas en meses de verano.',
+    nombre: 'Migración de Espigas de Gramíneas',
+    descripcion: 'Cuerpos extraños vegetales que penetran y viajan por los tejidos.',
+    etiology: 'Exposición ambiental en verano.',
     sintomas: [
-      'Fístulas con drenaje',
-      'Estornudos (si es nasal)',
-      'Cojera (si es interdigital)',
-      'Dolor localizado e inflamación'
+      'Fístulas',
+      'Estornudos',
+      'Dolor localizado'
     ],
     diagnostico: [
-      'Examen físico detallado',
-      'Ecografía de tejidos blandos',
+      'Ecografía',
       'Exploración quirúrgica'
     ],
-    tratamiento: 'Extracción del cuerpo extraño y antibióticos.',
-    prevencion_control: 'Revisión del pelaje tras paseos y corte de pelo en zonas de riesgo.',
+    tratamiento: 'Extracción y antibióticos.',
+    prevencion_control: 'Revisar tras paseos.',
     especies_afectadas: ['Perro', 'Gato'],
     categoria: 'Otros'
   }

@@ -4,62 +4,61 @@ export const pathologiesD: Pathology[] = [
   {
     id: 'displasia-cadera',
     nombre: 'Displasia de Cadera',
-    descripcion: 'Malformación de la articulación coxofemoral que resulta en una laxitud articular y posterior enfermedad articular degenerativa.',
-    etiology: 'Multifactorial, con un fuerte componente genético hereditario (poligénico) agravado por nutrición y ejercicio excesivo.',
+    descripcion: 'Mala unión de la articulación coxofemoral que genera inestabilidad y artrosis.',
+    etiology: 'Multifactorial; genética hereditaria agravada por crecimiento rápido, obesidad y ejercicio excesivo.',
     sintomas: [
-      'Cojera intermitente o persistente de patas traseras',
-      'Dificultad para levantarse o subir escaleras',
-      'Marcha de "salto de conejo"',
+      'Cojera de patas traseras',
+      'Dificultad para levantarse',
+      'Marcha de conejo (salta con ambas patas)',
       'Atrofia muscular en muslos'
     ],
     diagnostico: [
-      'Examen físico (Prueba de Ortolani)',
-      'Radiografías (proyección ventrodorsal)',
-      'Método PennHIP'
+      'Prueba de Ortolani',
+      'Radiografías (OFFA o PennHIP)',
+      'Palpación bajo sedación'
     ],
-    tratamiento: 'Manejo médico (AINEs, condroprotectores, control de peso) o cirugía (Sinfisiodesis, TOP, Prótesis).',
-    prevencion_control: 'Selección genética y evitar crecimiento acelerado.',
+    tratamiento: 'AINEs, condroprotectores, control de peso o cirugía (TPLO, Prótesis).',
+    prevencion_control: 'Evitar sobrepeso en cachorros y selección genética rigurosa.',
     especies_afectadas: ['Perro', 'Gato'],
     categoria: 'Ortopédica'
   },
   {
     id: 'displasia-codo',
     nombre: 'Displasia de Codo',
-    descripcion: 'Anomalías del desarrollo en la articulación del codo (FCP, UAP, OCD).',
-    etiology: 'Incongruencia articular hereditaria.',
+    descripcion: 'Grupo de anomalías del desarrollo (FCP, UAP, OCD) que afectan la articulación del codo.',
+    etiology: 'Incongruencia articular de origen genético.',
     sintomas: [
       'Cojera de patas delanteras',
-      'Rotación externa de la pata',
-      'Dolor a la flexión del codo'
+      'Rotación del codo hacia afuera',
+      'Dolor marcado al flectar la articulación'
     ],
     diagnostico: [
-      'Radiología',
-      'Tomografía Computarizada',
-      'Artroscopia'
+      'Radiología lateral y craneocaudal',
+      'Tomografía Computarizada (TC)',
+      'Artroscopia diagnóstica'
     ],
-    tratamiento: 'Cirugía artroscópica o manejo médico paliativo.',
-    prevencion_control: 'Control del peso y selección de reproductores.',
+    tratamiento: 'Extracción de fragmentos óseos vía artroscopia y manejo de la osteoartritis.',
+    prevencion_control: 'Control estricto de dieta en cachorros de razas grandes.',
     especies_afectadas: ['Perro'],
     categoria: 'Ortopédica'
   },
   {
     id: 'condrodisplasia-malamute',
     nombre: 'Condrodisplasia del Malamute',
-    descripcion: 'Trastorno del crecimiento óseo que resulta en extremidades cortas y deformadas (enanismo).',
-    etiology: 'Hereditaria, autosómica recesiva con penetrancia completa.',
+    descripcion: 'Enanismo hereditario que deforma los huesos largos de las patas.',
+    etiology: 'Hereditaria, autosómica recesiva.',
     sintomas: [
-      'Extremidades anteriores curvas y cortas',
-      'Cojera o marcha anormal',
-      'Anemia (asociada en algunos casos)',
-      'Afectación visible desde las 5-12 semanas de edad'
+      'Patas delanteras curvas y cortas',
+      'Cojera persistente',
+      'Anemia ocasional'
     ],
     diagnostico: [
-      'Signos clínicos evidentes',
+      'Signos clínicos en cachorros',
       'Radiografía de huesos largos',
-      'Pruebas genéticas'
+      'Prueba genética de portadores'
     ],
-    tratamiento: 'No hay cura. Manejo sintomático de la artritis secundaria.',
-    prevencion_control: 'Eliminación de portadores de los programas de cría.',
+    tratamiento: 'No tiene cura. Manejo paliativo del dolor articular.',
+    prevencion_control: 'Eliminar portadores de los programas de reproducción.',
     especies_afectadas: ['Perro'],
     categoria: 'Genética'
   }

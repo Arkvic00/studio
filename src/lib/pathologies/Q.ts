@@ -4,21 +4,18 @@ export const pathologiesQ: Pathology[] = [
   {
     id: 'quilotorax-idiopatico',
     nombre: 'Quilotórax Idiopático',
-    descripcion: 'Acumulación de quilo (líquido linfático rico en grasas) en el espacio pleural.',
-    etiology: 'En la mayoría de los casos es desconocida (idiopática). Puede ser secundario a trauma o insuficiencia cardíaca.',
+    descripcion: 'Líquido linfático en el tórax.',
+    etiology: 'Desconocida.',
     sintomas: [
-      'Dificultad respiratoria (disnea)',
-      'Respiración rápida y superficial',
-      'Tos',
-      'Mucosas pálidas o azuladas'
+      'Dificultad respiratoria',
+      'Tos'
     ],
     diagnostico: [
-      'Radiografía de tórax',
-      'Toracocentesis (líquido lechoso)',
-      'Análisis del líquido (triglicéridos elevados)'
+      'Radiografía',
+      'Análisis líquido (triglicéridos)'
     ],
-    tratamiento: 'Drenaje pleural, dieta baja en grasas, rutina de ruda (Rutin). Quirúrgico: ligadura del conducto torácico.',
-    prevencion_control: 'No existe prevención para la forma idiopática.',
+    tratamiento: 'Drenaje o cirugía.',
+    prevencion_control: 'N/A.',
     especies_afectadas: ['Perro', 'Gato'],
     categoria: 'Otros'
   }

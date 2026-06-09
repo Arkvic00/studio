@@ -4,21 +4,18 @@ export const pathologiesV: Pathology[] = [
   {
     id: 'von-willebrand',
     nombre: 'Enfermedad de Von Willebrand (EvW)',
-    descripcion: 'Trastorno de la coagulación causado por la deficiencia o disfunción del factor de Von Willebrand.',
-    etiology: 'Defecto genético hereditario (Tipo I, II o III).',
+    descripcion: 'Trastorno de coagulación común.',
+    etiology: 'Defecto genético.',
     sintomas: [
-      'Sangrado de mucosas (epistaxis, encías)',
-      'Sangrado prolongado tras cortes o cirugías',
-      'Hematomas',
-      'Hemorragia intestinal (melena)'
+      'Sangrado de encías',
+      'Sangrado prolongado'
     ],
     diagnostico: [
-      'Tiempo de sangrado de la mucosa bucal (BMBT) prolongado',
-      'Ensayo de antígeno del factor Von Willebrand (vWF:Ag)',
-      'Prueba de ADN'
+      'Ensayo vWF:Ag',
+      'Prueba ADN'
     ],
-    tratamiento: 'Administración de Desmopresina (DDAVP) antes de cirugías en Tipo I. Transfusión de crioprecipitado.',
-    prevencion_control: 'Pruebas genéticas antes de la cría.',
+    tratamiento: 'Desmopresina.',
+    prevencion_control: 'Tamizaje genético.',
     especies_afectadas: ['Perro', 'Gato'],
     categoria: 'Otros'
   }

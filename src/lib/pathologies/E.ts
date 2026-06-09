@@ -4,59 +4,59 @@ export const pathologiesE: Pathology[] = [
   {
     id: 'edema-corneal-adenovirus',
     nombre: 'Edema Corneal (Ojo Azul)',
-    descripcion: 'Acumulación de líquido en el estroma corneal que le da un aspecto azulado.',
-    etiology: 'Reacción de hipersensibilidad tipo III tras infección o vacunación con CAV-1.',
+    descripcion: 'Opacidad azul brillante de la córnea debido a inflamación endotelial.',
+    etiology: 'Reacción inmunomediada tras infección natural o vacunación con CAV-1 vivo.',
     sintomas: [
-      'Córnea opaca azul brillante',
+      'Córnea azul pálida opaca',
       'Fotofobia',
-      'Lagrimeo'
+      'Dolor ocular leve'
     ],
     diagnostico: [
-      'Historia clínica',
+      'Historia de vacunación reciente',
       'Examen con lámpara de hendidura'
     ],
-    tratamiento: 'Suele ser autolimitante. Corticoides tópicos (sin úlcera).',
-    prevencion_control: 'Vacunas modernas (Adenovirus tipo 2).',
+    tratamiento: 'Generalmente autolimitante. Antibióticos y corticoides tópicos bajo supervisión.',
+    prevencion_control: 'Uso de vacunas con Adenovirus tipo 2 (CAV-2).',
     especies_afectadas: ['Perro'],
     categoria: 'Ocular'
   },
   {
     id: 'espondilomielopatia-cervical-wobbler',
     nombre: 'Espondilomielopatía Cervical (Wobbler)',
-    descripcion: 'Compresión de la médula espinal cervical.',
-    etiology: 'Genética y relacionada con el crecimiento rápido.',
+    descripcion: 'Compresión de la médula espinal en la región del cuello.',
+    etiology: 'Inestabilidad vertebral genética o relacionada con nutrición.',
     sintomas: [
-      'Ataxia del tren posterior',
-      'Debilidad',
-      'Cuello bajo y rígido'
+      'Ataxia (paso descoordinado)',
+      'Debilidad del tren posterior',
+      'Cuello rígido y bajo'
     ],
     diagnostico: [
-      'Resonancia Magnética',
-      'Mielografía'
+      'Resonancia Magnética (RM)',
+      'Mielografía',
+      'Radiografía con contraste'
     ],
-    tratamiento: 'Cirugía o restricción de ejercicio y corticoides.',
-    prevencion_control: 'Evitar suplementación excesiva de calcio.',
+    tratamiento: 'Cirugía de descompresión vertebral o manejo médico con reposo y corticoides.',
+    prevencion_control: 'Evitar exceso de calcio y calorías en el crecimiento.',
     especies_afectadas: ['Perro', 'Caballo'],
     categoria: 'Neurológica'
   },
   {
     id: 'encefalopatia-mitocondrial',
     nombre: 'Encefalopatía Mitocondrial',
-    descripcion: 'Trastorno neurológico degenerativo causado por una disfunción en las mitocondrias de las células nerviosas.',
-    etiology: 'Genética, mutación en el transportador de tiamina identificado en el Husky de Alaska.',
+    descripcion: 'Degeneración neurológica por fallo en el metabolismo energético celular.',
+    etiology: 'Genética, mutación en el transportador de tiamina.',
     sintomas: [
       'Convulsiones',
-      'Déficits sensoriales (ceguera)',
+      'Ataxia progresiva',
       'Desorientación',
-      'Ataxia progresiva'
+      'Ceguera'
     ],
     diagnostico: [
-      'Resonancia Magnética (lesiones simétricas en tálamo)',
-      'Pruebas genéticas',
-      'Análisis de niveles de lactato/piruvato'
+      'Resonancia Magnética (lesiones talámicas)',
+      'Prueba genética'
     ],
-    tratamiento: 'Soporte paliativo. La suplementación con tiamina rara vez es efectiva en la forma genética.',
-    prevencion_control: 'Pruebas genéticas en reproductores.',
+    tratamiento: 'Soporte paliativo.',
+    prevencion_control: 'Tamizaje genético de reproductores.',
     especies_afectadas: ['Perro'],
     categoria: 'Genética'
   }
