@@ -19,7 +19,7 @@ export interface DrugImage {
 
 interface MathParams {
   tipo_calculo: 'fija' | 'mg_kg';
-  dosis_recomendada?: number | null;
+  dosis_recommended?: number | null;
   dosis_min?: number | null;
   dosis_max?: number | null;
   tope_maximo_mg?: number | null;
@@ -67,8 +67,6 @@ export interface Drug {
     usos_principales: string;
   };
   informacion_cliente: string[];
-  monitoreo_paciente?: string[];
-  interferencia_laboratorio?: string[];
   parametros_dosificacion: {
     [key: string]: Dosis[];
   };
@@ -96,21 +94,45 @@ export interface Drug {
       };
     };
   };
-  propiedades_fisicoquimicas?: {
-    descripcion: string;
-    almacenamiento: string;
-    compatibilidad: {
-      compatibles: string[];
-      incompatibles: string[];
-    };
-  };
   presentaciones_comerciales: Presentacion[];
 }
 
-export interface Hemograma {
-  hto: string;
-  gb: string;
-  plaq: string;
+export interface Pathology {
+  id: string;
+  nombre: string;
+  descripcion: string;
+  etiologia: string; // Agente causal o origen
+  sintomas: string[];
+  diagnostico: string[];
+  tratamiento: string;
+  prevencion_control: string;
+  especies_afectadas: string[];
+  imagenes?: string[];
+  categoria?: 'Infecciosa' | 'Metabólica' | 'Genética' | 'Ortopédica' | 'Cardíaca' | 'Ocular' | 'Otros';
+}
+
+export interface Breed {
+  id: string;
+  nombre: string;
+  especie: string;
+  descripcion: string;
+  icon: string;
+  predisposiciones: {
+    patologiaId: string; // Link a la patología
+    nota_especifica?: string;
+  }[];
+}
+
+export interface ExoticSpeciesData {
+    id: string;
+    name: string;
+    sections: {
+        [key: string]: {
+            title: string;
+            icon: string;
+            content: any;
+        }
+    }
 }
 
 export interface Constante {
@@ -123,18 +145,7 @@ export interface Constante {
   fr_min: number;
   fr_max: number;
   tllc: string;
-  hemograma: Hemograma | null;
-}
-
-export interface ReptileVariant {
-  [key: string]: {
-    t_min: number;
-    t_max: number;
-    fc_min: number;
-    fc_max: number;
-    fr_min: number;
-    fr_max: number;
-  };
+  hemograma: { hto: string; gb: string; plaq: string; } | null;
 }
 
 export interface Vacuna {
@@ -150,28 +161,4 @@ export interface GestationData {
     deworm: number;
     rx: number;
   };
-}
-
-export interface ExoticSpeciesData {
-    id: string;
-    name: string;
-    sections: {
-        [key: string]: {
-            title: string;
-            icon: string;
-            content: any;
-        }
-    }
-}
-
-export interface BreedPredisposition {
-  id: string;
-  breed: string;
-  species: 'Perro' | 'Gato';
-  icon: string;
-  conditions: {
-    name: string;
-    description: string;
-    type: 'Ortopédico' | 'Cardíaco' | 'Ocular' | 'Endocrino' | 'Dermatológico' | 'Neurológico' | 'Otros';
-  }[];
 }
