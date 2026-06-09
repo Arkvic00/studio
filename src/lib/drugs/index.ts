@@ -160,6 +160,10 @@ import { enalaprilDrug } from './enalapril';
 import { enilconazoleDrug } from './enilconazole';
 import { enrofloxacinDrug } from './enrofloxacin';
 import { ephedrineDrug } from './ephedrine';
+import { epirubicinDrug } from './epirubicin';
+import { eprinomectinDrug } from './eprinomectin';
+import { erythromycinDrug } from './erythromycin';
+import { erythropoietinDrug } from './erythropoietin';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -324,4 +328,8 @@ export const DB_MEDICAMENTOS = [
     enilconazoleDrug,
     enrofloxacinDrug,
     ephedrineDrug,
+    epirubicinDrug,
+    eprinomectinDrug,
+    erythromycinDrug,
+    erythropoietinDrug,
 ];
