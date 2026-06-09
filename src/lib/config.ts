@@ -15,6 +15,7 @@ export const SPECIES_THEMES = {
     Roedores: { bg: 'bg-gray-500/10', border: 'border-gray-500/20', text: 'text-gray-400', accent: 'bg-gray-500', decoration: 'shadow-gray-500/10' },
     Primates: { bg: 'bg-orange-600/10', border: 'border-orange-600/20', text: 'text-orange-500', accent: 'bg-orange-600', decoration: 'shadow-orange-600/10' },
     Axolote: { bg: 'bg-pink-400/10', border: 'border-pink-400/20', text: 'text-pink-300', accent: 'bg-pink-400', decoration: 'shadow-pink-400/10' },
+    Petauro: { bg: 'bg-indigo-500/10', border: 'border-indigo-500/20', text: 'text-indigo-400', accent: 'bg-indigo-500', decoration: 'shadow-indigo-500/10' },
     default: { bg: 'bg-slate-500/10', border: 'border-slate-500/20', text: 'text-slate-400', accent: 'bg-slate-500', decoration: 'shadow-slate-500/10' }
 };
 
@@ -35,12 +36,13 @@ export const SPECIES_CONFIG: Record<string, { label: string; icon: string; theme
   reptil: { label: 'Reptil', icon: '🦎', theme: SPECIES_THEMES.Reptil },
   primates: { label: 'Primates', icon: '🐒', theme: SPECIES_THEMES.Primates },
   axolote: { label: 'Axolote', icon: '👾', theme: SPECIES_THEMES.Axolote },
+  petauro: { label: 'Petauro', icon: '🐿️', theme: SPECIES_THEMES.Petauro },
 };
 
 export const speciesList = [
   'perro', 'gato', 'caballo', 'bovino', 'ovino', 'caprino', 'cerdo', 
   'roedores', 'conejo', 'huron', 'cobaya', 'erizo', 'ave', 
-  'reptil', 'primates', 'axolote'
+  'reptil', 'primates', 'axolote', 'petauro'
 ];
 
 export const normalizeStr = (str: string): string => str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
