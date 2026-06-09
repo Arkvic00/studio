@@ -54,6 +54,7 @@ import { bronopolDrug } from './bronopol';
 import { budesonideDrug } from './budesonide';
 import { bupivacaineDrug } from './bupivacaine';
 import { buprenorphineDrug } from './buprenorphine';
+import { butorphanolDrug } from './butorphanol';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -112,4 +113,5 @@ export const DB_MEDICAMENTOS = [
     budesonideDrug,
     bupivacaineDrug,
     buprenorphineDrug,
+    butorphanolDrug,
 ];
