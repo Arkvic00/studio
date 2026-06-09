@@ -122,6 +122,9 @@ import { darbepoetinDrug } from './darbepoetin';
 import { deferoxamineDrug } from './deferoxamine';
 import { delmadinoneDrug } from './delmadinone';
 import { deltamethrinDrug } from './deltamethrin';
+import { deslorelinDrug } from './deslorelin';
+import { desmopressinDrug } from './desmopressin';
+import { desoxycortonePivalateDrug } from './desoxycortone_pivalate';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -248,4 +251,7 @@ export const DB_MEDICAMENTOS = [
     deferoxamineDrug,
     delmadinoneDrug,
     deltamethrinDrug,
+    deslorelinDrug,
+    desmopressinDrug,
+    desoxycortonePivalateDrug,
 ];
