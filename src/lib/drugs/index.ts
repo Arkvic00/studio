@@ -262,6 +262,11 @@ import { lysineDrug } from './lysine';
 import { miconazoleDrug } from './miconazole';
 import { midazolamDrug } from './midazolam';
 import { milbemycinDrug } from './milbemycin';
+import { miltefosineDrug } from './miltefosine';
+import { minocyclineDrug } from './minocycline';
+import { mirtazapineDrug } from './mirtazapine';
+import { misoprostolDrug } from './misoprostol';
+import { mitotaneDrug } from './mitotane';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -528,4 +533,9 @@ export const DB_MEDICAMENTOS = [
     miconazoleDrug,
     midazolamDrug,
     milbemycinDrug,
+    miltefosineDrug,
+    minocyclineDrug,
+    mirtazapineDrug,
+    misoprostolDrug,
+    mitotaneDrug,
 ];
