@@ -270,6 +270,12 @@ import { ofloxacinDrug } from './ofloxacin';
 import { olsalazineDrug } from './olsalazine';
 import { omeprazoleDrug } from './omeprazole';
 import { ondansetronDrug } from './ondansetron';
+import { pancuroniumDrug } from './pancuronium';
+import { pantoprazoleDrug } from './pantoprazole';
+import { papaveretumDrug } from './papaveretum';
+import { paracetamolDrug } from './paracetamol';
+import { paraffinDrug } from './paraffin';
+import { paroxetineDrug } from './paroxetine';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -306,6 +312,7 @@ export const DB_MEDICAMENTOS = [
     asparaginaseDrug,
     aspirinDrug,
     atenololDrug,
+    atipamezoleDrug,
     atipamezoleDrug,
     atracuriumDrug,
     atropinaDrug,
@@ -543,4 +550,10 @@ export const DB_MEDICAMENTOS = [
     olsalazineDrug,
     omeprazoleDrug,
     ondansetronDrug,
+    pancuroniumDrug,
+    pantoprazoleDrug,
+    papaveretumDrug,
+    paracetamolDrug,
+    paraffinDrug,
+    paroxetineDrug,
 ];
