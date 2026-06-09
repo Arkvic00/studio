@@ -97,6 +97,7 @@ import { clarithromycinDrug } from './clarithromycin';
 import { clazurilDrug } from './clazuril';
 import { clemastineDrug } from './clemastine';
 import { climbazoleDrug } from './climbazole';
+import { clindamycinDrug } from './clindamycin';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -198,4 +199,5 @@ export const DB_MEDICAMENTOS = [
     clazurilDrug,
     clemastineDrug,
     climbazoleDrug,
+    clindamycinDrug,
 ];
