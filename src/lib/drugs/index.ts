@@ -278,6 +278,10 @@ import { methadoneDrug } from './methadone';
 import { methenamineDrug } from './methenamine';
 import { methionineDrug } from './methionine';
 import { methocarbamolDrug } from './methocarbamol';
+import { metoprenoDrug } from './metopreno';
+import { metotrexatoDrug } from './metotrexato';
+import { metilprednisolonaDrug } from './metilprednisolona';
+import { azulDeMetilenoDrug } from './azul_de_metileno';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -560,4 +564,8 @@ export const DB_MEDICAMENTOS = [
     methenamineDrug,
     methionineDrug,
     methocarbamolDrug,
+    metoprenoDrug,
+    metotrexatoDrug,
+    metilprednisolonaDrug,
+    azulDeMetilenoDrug,
 ];
