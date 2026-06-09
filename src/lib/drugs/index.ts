@@ -112,6 +112,9 @@ import { colestyramineDrug } from './colestyramine';
 import { cyclophosphamideDrug } from './cyclophosphamide';
 import { sulfatoDeCobreDrug } from './sulfato_de_cobre';
 import { cipermetrinaDrug } from './cipermetrina';
+import { ciproheptadinaDrug } from './ciproheptadina';
+import { ciromazinaDrug } from './ciromazina';
+import { citarabinaDrug } from './citarabina';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -228,4 +231,7 @@ export const DB_MEDICAMENTOS = [
     cyclophosphamideDrug,
     sulfatoDeCobreDrug,
     cipermetrinaDrug,
+    ciproheptadinaDrug,
+    ciromazinaDrug,
+    citarabinaDrug,
 ];
