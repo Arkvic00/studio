@@ -158,6 +158,8 @@ import { emamectinBenzoateDrug } from './emamectin_benzoate';
 import { emodepsideDrug } from './emodepside';
 import { enalaprilDrug } from './enalapril';
 import { enilconazoleDrug } from './enilconazole';
+import { enrofloxacinDrug } from './enrofloxacin';
+import { ephedrineDrug } from './ephedrine';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -320,4 +322,6 @@ export const DB_MEDICAMENTOS = [
     emodepsideDrug,
     enalaprilDrug,
     enilconazoleDrug,
+    enrofloxacinDrug,
+    ephedrineDrug,
 ];
