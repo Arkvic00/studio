@@ -58,6 +58,7 @@ import { buprenorphineDrug } from './buprenorphine';
 import { butorphanolDrug } from './butorphanol';
 import { butylscopolamineDrug } from './butylscopolamine';
 import { cabergolineDrug } from './cabergoline';
+import { acetatoDeCalcioDrug } from './acetato_de_calcio';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -120,4 +121,5 @@ export const DB_MEDICAMENTOS = [
     butorphanolDrug,
     butylscopolamineDrug,
     cabergolineDrug,
+    acetatoDeCalcioDrug,
 ];
