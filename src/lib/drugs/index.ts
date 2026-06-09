@@ -5,6 +5,7 @@ import { acetylcysteineDrug } from './acetylcysteine';
 import { aciclovirDrug } from './aciclovir';
 import { acriflavineDrug } from './acriflavine';
 import { adrenalineDrug } from './adrenaline';
+import { afoxolanerDrug } from './afoxolaner';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -14,4 +15,5 @@ export const DB_MEDICAMENTOS = [
     aciclovirDrug,
     acriflavineDrug,
     adrenalineDrug,
+    afoxolanerDrug,
 ];
