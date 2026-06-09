@@ -228,6 +228,8 @@ import { immunoglobulinsDrug } from './immunoglobulins';
 import { indoxacarbDrug } from './indoxacarb';
 import { insulinDrug } from './insulin';
 import { interferonOmegaDrug } from './interferon_omega';
+import { ironSaltsDrug } from './iron_salts';
+import { isofluraneDrug } from './isoflurane';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -460,4 +462,6 @@ export const DB_MEDICAMENTOS = [
     indoxacarbDrug,
     insulinDrug,
     interferonOmegaDrug,
+    ironSaltsDrug,
+    isofluraneDrug,
 ];
