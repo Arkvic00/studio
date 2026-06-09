@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react';
 import { 
   Zap, AlertOctagon, Shield, Calculator, FileText, 
   GitCompareArrows, Search, Loader2, Timer, Eye, 
-  Stethoscope, ShieldAlert, ArrowDownUp
+  ShieldAlert, ArrowDownUp
 } from 'lucide-react';
 import { PinterestCard } from '@/components/ui/pinterest-card';
 import { Badge } from '@/components/ui/badge';
@@ -40,10 +40,6 @@ function DrugCompareModal({ currentDrugId }: { currentDrugId: string }) {
         });
     }, [searchTerm, currentDrugId, allDrugs]);
 
-    const handleSelectDrug = (drug: Drug) => {
-        setOpen(false); 
-    };
-
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
@@ -74,7 +70,7 @@ function DrugCompareModal({ currentDrugId }: { currentDrugId: string }) {
                     {!isLoading && filteredDrugs.map((drug) => (
                         <div
                             key={drug.id}
-                            onClick={() => handleSelectDrug(drug)}
+                            onClick={() => setOpen(false)}
                             className="p-4 -mx-4 rounded-xl hover:bg-secondary cursor-pointer border-b border-transparent last:border-0 transition-colors group"
                         >
                             <div className="flex justify-between items-center">
@@ -90,11 +86,6 @@ function DrugCompareModal({ currentDrugId }: { currentDrugId: string }) {
                             </p>
                         </div>
                     ))}
-                    {!isLoading && filteredDrugs.length === 0 && (
-                        <div className="text-center py-10 text-muted-foreground text-sm">
-                            No se encontraron fármacos.
-                        </div>
-                    )}
                     </div>
                 </ScrollArea>
             </DialogContent>
@@ -159,7 +150,7 @@ export function VademecumDetail() {
               <div className="lg:col-span-12 mt-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="space-y-8">
-                        <PinterestCard className="h-full">
+                        <PinterestCard className="h-fit">
                             <h3 className="text-sm font-black text-accent uppercase tracking-widest mb-6 flex items-center gap-3">
                                 <Zap size={18} className="text-accent"/> Mecanismo y Farmacocinética
                             </h3>
@@ -179,7 +170,7 @@ export function VademecumDetail() {
                             </div>
                         </PinterestCard>
 
-                        <PinterestCard className="border-orange-500/20">
+                        <PinterestCard className="border-orange-500/20 h-fit">
                             <h3 className="text-sm font-black text-orange-400 uppercase tracking-widest mb-6 flex items-center gap-3">
                                 <ShieldAlert size={18} className="text-orange-400"/> Monitoreo y Precauciones
                             </h3>
@@ -207,15 +198,15 @@ export function VademecumDetail() {
                     </div>
 
                     <div className="space-y-8">
-                        <PinterestCard className="border-red-500/20">
+                        <PinterestCard className="border-red-500/20 h-fit">
                             <h3 className="text-sm font-black text-red-400 uppercase tracking-widest mb-6 flex items-center gap-3">
                                 <AlertOctagon size={18} className="text-red-400"/> Contraindicaciones y Adversos
                             </h3>
                             <div className="space-y-6">
-                                <div className="grid grid-cols-1 gap-4">
+                                <div className="grid grid-cols-1 gap-3">
                                     {drug.seguridad_y_alertas.contraindicaciones.map((c, i) => (
                                         <div key={i} className="bg-red-500/10 border border-red-500/20 p-3 rounded-2xl flex items-center gap-3">
-                                            <Badge className="bg-red-600 h-2 w-2 p-0 rounded-full" />
+                                            <Badge className="bg-red-600 h-2 w-2 p-0 rounded-full flex-shrink-0" />
                                             <span className="text-xs font-bold text-red-200">{c}</span>
                                         </div>
                                     ))}
@@ -229,18 +220,18 @@ export function VademecumDetail() {
                             </div>
                         </PinterestCard>
 
-                        <PinterestCard className="border-purple-500/20">
+                        <PinterestCard className="border-purple-500/20 h-fit">
                              <h3 className="text-sm font-black text-purple-400 uppercase tracking-widest mb-6 flex items-center gap-3">
                                 <GitCompareArrows size={18} className="text-purple-400"/> Interacciones
                              </h3>
                              <div className="grid grid-cols-1 gap-3">
                                 {drug.seguridad_y_alertas.interacciones_farmacologicas.map((int, i) => (
                                     <div key={i} className="bg-white/5 p-4 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
-                                        <div className="flex justify-between items-center mb-2">
+                                        <div className="flex justify-between items-center mb-2 gap-4">
                                             <span className="font-black text-white text-sm">{int.farmaco}</span>
                                             <Badge 
                                                 variant={int.severidad === 'Grave' || int.severidad === 'Importante' ? 'destructive' : 'secondary'} 
-                                                className="text-[9px] uppercase font-black"
+                                                className="text-[9px] uppercase font-black flex-shrink-0"
                                             >
                                                 {int.severidad}
                                             </Badge>
@@ -265,7 +256,7 @@ export function VademecumDetail() {
                             if (!spInfo) return null;
                             const theme = spInfo.theme;
                             return (
-                            <div key={sp} className={`${theme.bg} ${theme.border} p-6 rounded-4xl relative overflow-hidden transition-all shadow-xl`}>
+                            <div key={sp} className={`${theme.bg} ${theme.border} p-6 rounded-4xl relative overflow-hidden transition-all shadow-xl h-fit`}>
                                 <div className="flex items-center gap-4 mb-6">
                                     <div className="text-5xl">{spInfo.icon}</div>
                                     <h4 className={`font-black uppercase text-3xl tracking-tighter ${theme.text}`}>{spInfo.label}</h4>
@@ -275,7 +266,7 @@ export function VademecumDetail() {
                                         <div key={i} className="bg-background/60 backdrop-blur-md p-5 rounded-3xl border border-white/5 shadow-inner">
                                             <div className="flex justify-between items-start mb-3 gap-2">
                                                 <span className={`text-[10px] font-black uppercase tracking-widest flex-1 ${theme.text}`}>{d.indicacion}</span>
-                                                <Badge variant="outline" className="text-[9px] uppercase border-white/10 text-slate-400">
+                                                <Badge variant="outline" className="text-[9px] uppercase border-white/10 text-slate-400 flex-shrink-0">
                                                     {Array.isArray(d.vias) ? d.vias.join(' / ') : d.vias}
                                                 </Badge>
                                             </div>
@@ -283,10 +274,10 @@ export function VademecumDetail() {
                                               {d.math.dosis_recomendada} <span className="text-sm text-slate-400">{d.math.unidad_calculo}</span>
                                             </p>
                                             
-                                            {(d.math.dosis_min || d.math.dosis_max) && (
-                                                <div className="flex items-center gap-2 text-[10px] text-accent font-black uppercase mb-3 bg-accent/10 px-2 py-1 rounded-md w-fit">
+                                            {(d.math.dosis_min !== undefined || d.math.dosis_max !== undefined) && (
+                                                <div className="flex items-center gap-2 text-[10px] text-accent font-black uppercase mb-3 bg-accent/10 px-2 py-1 rounded-md w-fit border border-accent/20">
                                                     <ArrowDownUp size={12} />
-                                                    Rango: {d.math.dosis_min || '—'} a {d.math.dosis_max || '—'}
+                                                    Rango: {d.math.dosis_min ?? '—'} a {d.math.dosis_max ?? '—'}
                                                 </div>
                                             )}
 

@@ -3,11 +3,10 @@ import { useMemo, useRef, useEffect } from 'react';
 import type { Patient, Calculation } from '@/lib/types';
 import { DB_MEDICAMENTOS } from '@/lib/data';
 import { getSpeciesKey, getSpeciesInfo, speciesList } from '@/lib/config';
-import { Plus, Trash2, Save, Printer, ArrowDownUp } from 'lucide-react';
+import { Plus, Trash2, Save, Printer, ArrowDownUp, Info } from 'lucide-react';
 import { PinterestCard } from '@/components/ui/pinterest-card';
 import { GlassInput } from '@/components/ui/glass-input';
 import { DrugSelector } from '@/components/dosis/drug-selector';
-import { Info } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAppContext } from '@/contexts/app-context';
 
@@ -176,9 +175,10 @@ export function DoseCalculator({
             }
           }
 
-          const rangeDisplay = doseConfig?.math.dosis_min || doseConfig?.math.dosis_max
-            ? `Rango: ${doseConfig.math.dosis_min || '—'} - ${doseConfig.math.dosis_max || '—'} ${doseConfig.math.unidad_calculo}`
-            : '';
+          const hasRange = doseConfig?.math.dosis_min !== undefined || doseConfig?.math.dosis_max !== undefined;
+          const rangeText = hasRange 
+            ? `Rango: ${doseConfig.math.dosis_min ?? '—'} a ${doseConfig.math.dosis_max ?? '—'} ${doseConfig.math.unidad_calculo}`
+            : null;
 
           const borderColorClass = borderColors[index % borderColors.length];
 
@@ -191,7 +191,7 @@ export function DoseCalculator({
                   </button>
                 </div>
 
-                <div className="flex flex-col lg:flex-row items-start gap-10">
+                <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-10">
                   <div className="flex-1 w-full space-y-6">
                     <DrugSelector
                       selectedDrugId={calc.drugId}
@@ -254,7 +254,7 @@ export function DoseCalculator({
                             </select>
                           </div>
 
-                          <div className="flex flex-col gap-2">
+                          <div className="flex flex-col gap-4">
                             <div className="grid grid-cols-2 gap-4">
                               <GlassInput
                                 label={calcType === 'fija' ? 'Dosis Total' : 'Dosis (mg/kg)'}
@@ -269,11 +269,6 @@ export function DoseCalculator({
                                 onChange={(v) => updateDrug(calc.id, { concentration: parseFloat(v) || 0 })}
                               />
                             </div>
-                            {rangeDisplay && (
-                              <div className="flex items-center gap-2 text-[10px] text-accent font-black uppercase ml-2 bg-accent/10 px-2 py-1 rounded-md w-fit">
-                                <ArrowDownUp size={12} /> {rangeDisplay}
-                              </div>
-                            )}
                           </div>
                         </div>
                       </div>
@@ -285,6 +280,12 @@ export function DoseCalculator({
                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Administrar</p>
                     <h2 className="text-5xl sm:text-7xl font-extrabold text-white tracking-tighter drop-shadow-md">{result.toFixed(2)}</h2>
                     <p className="text-sm font-bold text-slate-300 uppercase mt-2 opacity-80">{resultUnit}</p>
+
+                    {rangeText && (
+                        <div className="mt-4 flex items-center justify-center gap-2 text-[10px] text-accent font-black uppercase bg-accent/10 px-3 py-1.5 rounded-full mx-auto w-fit border border-accent/20">
+                            <ArrowDownUp size={12} /> {rangeText}
+                        </div>
+                    )}
 
                     {doseConfig && (
                       <div className="mt-6 pt-6 border-t border-white/10 flex flex-col items-center gap-2">
