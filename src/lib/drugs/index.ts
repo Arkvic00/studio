@@ -94,6 +94,7 @@ import { ciprofloxacinDrug } from './ciprofloxacin';
 import { cisaprideDrug } from './cisapride';
 import { cisatracuriumDrug } from './cisatracurium';
 import { clarithromycinDrug } from './clarithromycin';
+import { clazurilDrug } from './clazuril';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -192,4 +193,5 @@ export const DB_MEDICAMENTOS = [
     cisaprideDrug,
     cisatracuriumDrug,
     clarithromycinDrug,
+    clazurilDrug,
 ];
