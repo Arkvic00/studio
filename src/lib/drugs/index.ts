@@ -182,6 +182,10 @@ import { florfenicolDrug } from './florfenicol';
 import { fluconazoleDrug } from './fluconazole';
 import { flubendazoleDrug } from './flubendazole';
 import { flucloxacillinDrug } from './flucloxacillin';
+import { flucytosineDrug } from './flucytosine';
+import { fludrocortisoneDrug } from './fludrocortisone';
+import { flumazenilDrug } from './flumazenil';
+import { fluorouracilDrug } from './fluorouracil';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -368,4 +372,8 @@ export const DB_MEDICAMENTOS = [
     fluconazoleDrug,
     flubendazoleDrug,
     flucloxacillinDrug,
+    flucytosineDrug,
+    fludrocortisoneDrug,
+    flumazenilDrug,
+    fluorouracilDrug,
 ];
