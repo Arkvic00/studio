@@ -50,6 +50,7 @@ import { bleomicinaDrug } from './bleomicina';
 import { bowelCleansingSolutionsDrug } from './bowel_cleansing_solutions';
 import { bromhexineDrug } from './bromhexine';
 import { brinzolamideDrug } from './brinzolamide';
+import { bronopolDrug } from './bronopol';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -104,4 +105,5 @@ export const DB_MEDICAMENTOS = [
     bowelCleansingSolutionsDrug,
     bromhexineDrug,
     brinzolamideDrug,
+    bronopolDrug,
 ];
