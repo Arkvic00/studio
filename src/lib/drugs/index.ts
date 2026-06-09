@@ -267,6 +267,10 @@ import { maropitantDrug } from './maropitant';
 import { masitinibDrug } from './masitinib';
 import { mavacoxibDrug } from './mavacoxib';
 import { mebendazoleClosantelDrug } from './mebendazole_closantel';
+import { medetomidineDrug } from './medetomidine';
+import { medroxyprogesteroneDrug } from './medroxyprogesterone';
+import { meglumineAntimonateDrug } from './meglumine_antimonate';
+import { melatoninDrug } from './melatonin';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -538,4 +542,8 @@ export const DB_MEDICAMENTOS = [
     masitinibDrug,
     mavacoxibDrug,
     mebendazoleClosantelDrug,
+    medetomidineDrug,
+    medroxyprogesteroneDrug,
+    meglumineAntimonateDrug,
+    melatoninDrug,
 ];
