@@ -132,6 +132,10 @@ import { diazepamDrug } from './diazepam';
 import { diazoxideDrug } from './diazoxide';
 import { dichlorophenDrug } from './dichlorophen';
 import { diclofenacDrug } from './diclofenac';
+import { diflubenzuronDrug } from './diflubenzuron';
+import { digoxinDrug } from './digoxin';
+import { diltiazemDrug } from './diltiazem';
+import { dimercaprolDrug } from './dimercaprol';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -268,4 +272,8 @@ export const DB_MEDICAMENTOS = [
     diazoxideDrug,
     dichlorophenDrug,
     diclofenacDrug,
+    diflubenzuronDrug,
+    digoxinDrug,
+    diltiazemDrug,
+    dimercaprolDrug,
 ];
