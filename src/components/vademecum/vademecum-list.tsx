@@ -1,8 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { 
-    ChevronRight, Plus, Search, BookOpen, HeartPulse, Info, 
-    Stethoscope, Shield, Pill, TriangleAlert, Bone, Eye, Zap, Activity,
+    ChevronRight, Search, Pill, TriangleAlert, 
     Stethoscope as PathoIcon, GraduationCap
 } from 'lucide-react';
 import Image from 'next/image';
@@ -12,27 +11,25 @@ import { useState, useMemo } from 'react';
 import { Input } from '@/components/ui/input';
 import { fuzzySearch, cn } from '@/lib/utils';
 import { Badge } from '../ui/badge';
-import { Skeleton } from '../ui/skeleton';
 import { DB_MEDICAMENTOS } from '@/lib/data';
 import { ALL_BREEDS } from '@/lib/breeds';
 import { ALL_PATHOLOGIES } from '@/lib/pathologies';
-import { getSpeciesInfo, speciesList } from '@/lib/config';
+import { getSpeciesInfo, speciesList, normalizeStr } from '@/lib/config';
 
 export function VademecumList() {
     const [activeTab, setActiveTab] = useState('farmacos');
     const [selectedSpecies, setSelectedSpecies] = useState('Perro');
     const [searchTerm, setSearchTerm] = useState('');
-    const { drugImages, triggerUpload } = useAppContext();
-
-    const speciesInfo = getSpeciesInfo(selectedSpecies);
+    const { drugImages } = useAppContext();
 
     // Filter Logic
     const filteredContent = useMemo(() => {
         const q = searchTerm.toLowerCase();
+        const normalizedSelected = normalizeStr(selectedSpecies);
         
         if (activeTab === 'farmacos') {
             return DB_MEDICAMENTOS.filter(d => {
-                const matchesSpecies = d.parametros_dosificacion[selectedSpecies.toLowerCase()]?.length > 0;
+                const matchesSpecies = d.parametros_dosificacion[normalizedSelected]?.length > 0;
                 if (!matchesSpecies) return false;
                 if (!q) return true;
                 return fuzzySearch(q, d.meta_data.nombre_generico) || 
@@ -42,7 +39,7 @@ export function VademecumList() {
         
         if (activeTab === 'predisposicion') {
             return ALL_BREEDS.filter(b => {
-                const matchesSpecies = b.especie.toLowerCase() === selectedSpecies.toLowerCase();
+                const matchesSpecies = normalizeStr(b.especie) === normalizedSelected;
                 if (!matchesSpecies) return false;
                 if (!q) return true;
                 return fuzzySearch(q, b.nombre);
@@ -51,7 +48,7 @@ export function VademecumList() {
 
         if (activeTab === 'patologias') {
             return ALL_PATHOLOGIES.filter(p => {
-                const matchesSpecies = p.especies_afectadas.some(s => s.toLowerCase() === selectedSpecies.toLowerCase());
+                const matchesSpecies = p.especies_afectadas.some(s => normalizeStr(s) === normalizedSelected);
                 if (!matchesSpecies) return false;
                 if (!q) return true;
                 return fuzzySearch(q, p.nombre) || p.categoria?.toLowerCase().includes(q);
@@ -76,7 +73,7 @@ export function VademecumList() {
                                 onClick={() => setSelectedSpecies(info.label)}
                                 className={cn(
                                     "flex flex-col items-center justify-center gap-1 p-2 rounded-2xl transition-all duration-200 border-2",
-                                    isActive ? 'bg-primary/10 border-primary scale-105' : 'border-transparent hover:bg-secondary'
+                                    isActive ? 'bg-primary/10 border-primary scale-105 shadow-md' : 'border-transparent hover:bg-secondary'
                                 )}
                             >
                                 <div className="text-2xl sm:text-3xl">{info.icon}</div>

@@ -39,4 +39,10 @@ export const ALL_PATHOLOGIES: Pathology[] = [
   ...pathologiesV,
 ];
 
-export const getPathologyById = (id: string) => ALL_PATHOLOGIES.find(p => p.id === id);
+export const getPathologyById = (id: string) => {
+  const pathology = ALL_PATHOLOGIES.find(p => p.id === id);
+  if (!pathology) {
+    console.warn(`Pathology with id "${id}" not found.`);
+  }
+  return pathology;
+};

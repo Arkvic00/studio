@@ -2,15 +2,13 @@
 import { useMemo, useRef, useEffect } from 'react';
 import type { Patient, Calculation } from '@/lib/types';
 import { DB_MEDICAMENTOS } from '@/lib/data';
-import { getSpeciesKey, SPECIES_CONFIG } from '@/lib/config';
+import { getSpeciesKey, getSpeciesInfo, speciesList } from '@/lib/config';
 import { Plus, Trash2, Save, Printer } from 'lucide-react';
 import { PinterestCard } from '@/components/ui/pinterest-card';
 import { GlassInput } from '@/components/ui/glass-input';
 import { DrugSelector } from '@/components/dosis/drug-selector';
-import { getSpeciesInfo } from '@/lib/config';
 import { Info } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Button } from '../ui/button';
 import { useAppContext } from '@/contexts/app-context';
 
 interface DoseCalculatorProps {
@@ -21,14 +19,6 @@ interface DoseCalculatorProps {
     calculations: Calculation[] | ((prev: Calculation[]) => Calculation[])
   ) => void;
 }
-
-// Species from the screenshot, in order.
-const speciesList = [
-  'perro', 'gato', 'caballo', 'bovino', 'cerdo', 'ovino_caprino', 
-  'roedores', 'conejo', 'mustelidos', 'cobaya', 'erizo', 'ave', 
-  'reptil', 'primates', 'axolote'
-];
-
 
 export default function DosisPage() {
   const { patient, setPatient, calculations, setCalculations } = useAppContext();
@@ -90,12 +80,11 @@ export function DoseCalculator({
     if (lastAddedId.current) {
       const element = document.getElementById(`calc-${lastAddedId.current}`);
       if (element) {
-        // The delay helps ensure any entry animations on the card have completed.
         setTimeout(() => {
           element.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }, 100);
       }
-      lastAddedId.current = null; // Reset after scrolling
+      lastAddedId.current = null;
     }
   }, [calculations]);
 
@@ -120,11 +109,11 @@ export function DoseCalculator({
                         key={key}
                         onClick={() => setPatient(p => ({...p, especie: info.label}))}
                         className={cn(
-                            "flex flex-col items-center justify-center gap-2 p-2 rounded-2xl transition-all duration-200",
-                            isActive ? 'bg-primary/20 scale-110' : 'hover:bg-secondary'
+                            "flex flex-col items-center justify-center gap-2 p-2 rounded-2xl transition-all duration-200 border-2",
+                            isActive ? 'bg-primary/20 border-primary scale-110 shadow-lg' : 'border-transparent hover:bg-secondary'
                         )}
                     >
-                        <div className="text-3xl sm:text-4xl">{info.icon}</div>
+                        <div className="text-2xl sm:text-4xl">{info.icon}</div>
                         <span className={cn("text-[10px] font-bold uppercase tracking-wider text-center", isActive ? 'text-primary' : 'text-muted-foreground')}>{info.label}</span>
                     </button>
                 )

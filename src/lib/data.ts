@@ -5,8 +5,9 @@ export const DB_MEDICAMENTOS = drugs;
 
 export const SPECIES_ICONS: { [key: string]: string } = { 
     'perro': '🐶', 'gato': '🐱', 'caballo': '🐴', 'bovino': '🐮', 
+    'ovino': '🐏', 'caprino': '🐐', 'cerdo': '🐷',
     'huron': '🦦', 'conejo': '🐰', 'cobaya': '🐹', 'erizo': '🦔',
-    'ave': '🦜', 'reptil': '🦎', 'cerdo': '🐷', 'ovino_caprino': '🐐', 'roedores': '🐀'
+    'ave': '🦜', 'reptil': '🦎', 'roedores': '🐀'
 };
 
 export const CONSTANTES_DATA: Constante[] = [
@@ -14,6 +15,8 @@ export const CONSTANTES_DATA: Constante[] = [
   { esp: 'Gato', icon: '🐱', t_min: 38.0, t_max: 39.2, fc_min: 140, fc_max: 220, fr_min: 20, fr_max: 42, tllc: '< 2s', hemograma: { hto: '24-45%', gb: '5.5-19.5', plaq: '300-800' } },
   { esp: 'Caballo', icon: '🐴', t_min: 37.5, t_max: 38.5, fc_min: 28, fc_max: 40, fr_min: 8, fr_max: 16, tllc: '< 2.5s', hemograma: { hto: '32-52%', gb: '5-12.5', plaq: '100-350' } },
   { esp: 'Bovino', icon: '🐮', t_min: 38.0, t_max: 39.0, fc_min: 40, fc_max: 80, fr_min: 10, fr_max: 30, tllc: '< 2s', hemograma: { hto: '24-46%', gb: '4-12', plaq: '100-800' } },
+  { esp: 'Ovino', icon: '🐏', t_min: 38.5, t_max: 40.5, fc_min: 70, fc_max: 90, fr_min: 12, fr_max: 20, tllc: '< 2s', hemograma: { hto: '27-45%', gb: '4-12', plaq: '200-600' } },
+  { esp: 'Caprino', icon: '🐐', t_min: 38.5, t_max: 40.5, fc_min: 70, fc_max: 90, fr_min: 12, fr_max: 20, tllc: '< 2s', hemograma: { hto: '22-38%', gb: '4-13', plaq: '300-600' } },
   { esp: 'Cerdo', icon: '🐷', t_min: 38.0, t_max: 39.5, fc_min: 60, fc_max: 80, fr_min: 8, fr_max: 18, tllc: '< 2s', hemograma: { hto: '32-50%', gb: '11-22', plaq: '300-700' } },
   { esp: 'Conejo', icon: '🐰', t_min: 38.3, t_max: 39.4, fc_min: 130, fc_max: 325, fr_min: 30, fr_max: 60, tllc: '< 2s', hemograma: { hto: '30-50%', gb: '5-13', plaq: '250-650' } },
   { esp: 'Hurón', icon: '🦦', t_min: 37.8, t_max: 40.0, fc_min: 200, fc_max: 400, fr_min: 33, fr_max: 36, tllc: '< 2s', hemograma: { hto: '36-48%', gb: '2-8', plaq: '200-900' } },
@@ -73,6 +76,8 @@ export const GESTATION_DATA_FULL: GestationData = {
   'gato': { avg: 65, eco: 25, deworm: 40, rx: 45 },
   'caballo': { avg: 340, eco: 14, deworm: 0, rx: 0 },
   'bovino': { avg: 283, eco: 30, deworm: 0, rx: 0 },
+  'ovino': { avg: 150, eco: 30, deworm: 0, rx: 0 },
+  'caprino': { avg: 150, eco: 30, deworm: 0, rx: 0 },
   'cerdo': { avg: 114, eco: 25, deworm: 100, rx: 0 },
   'conejo': { avg: 31, eco: 10, deworm: 0, rx: 0 },
   'huron': { avg: 42, eco: 20, deworm: 0, rx: 35 },
