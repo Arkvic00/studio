@@ -200,6 +200,12 @@ import { ganciclovirDrug } from './ganciclovir';
 import { gelatineDrug } from './gelatine';
 import { gemcitabineDrug } from './gemcitabine';
 import { gentamicinDrug } from './gentamicin';
+import { glipizideDrug } from './glipizide';
+import { glucagonDrug } from './glucagon';
+import { glucoseDrug } from './glucose';
+import { glutamineDrug } from './glutamine';
+import { glycerylTrinitrateDrug } from './glyceryl_trinitrate';
+import { glycopyrroniumDrug } from './glycopyrronium';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -404,4 +410,10 @@ export const DB_MEDICAMENTOS = [
     gelatineDrug,
     gemcitabineDrug,
     gentamicinDrug,
+    glipizideDrug,
+    glucagonDrug,
+    glucoseDrug,
+    glutamineDrug,
+    glycerylTrinitrateDrug,
+    glycopyrroniumDrug,
 ];
