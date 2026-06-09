@@ -253,6 +253,12 @@ import { lipidInfusionsDrug } from './lipid_infusions';
 import { lithiumCarbonateDrug } from './lithium_carbonate';
 import { lokivetmabDrug } from './lokivetmab';
 import { lomustineDrug } from './lomustine';
+import { loperamideDrug } from './loperamide';
+import { loratadineDrug } from './loratadine';
+import { lorazepamDrug } from './lorazepam';
+import { lotilanerDrug } from './lotilaner';
+import { lufenuronDrug } from './lufenuron';
+import { lysineDrug } from './lysine';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -510,4 +516,10 @@ export const DB_MEDICAMENTOS = [
     lithiumCarbonateDrug,
     lokivetmabDrug,
     lomustineDrug,
+    loperamideDrug,
+    loratadineDrug,
+    lorazepamDrug,
+    lotilanerDrug,
+    lufenuronDrug,
+    lysineDrug,
 ];
