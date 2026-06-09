@@ -3,11 +3,10 @@ import { acetazolamidaDrug } from './acetazolamida';
 import { acidoAceticoDrug } from './acido_acetico';
 import { acetylcysteineDrug } from './acetylcysteine';
 import { aciclovirDrug } from './aciclovir';
-import { acriflavineDrug } from './acriflavine';
-import { adrenalineDrug } from './adrenaline';
 import { afoxolanerDrug } from './afoxolaner';
 import { aglepristoneDrug } from './aglepristone';
 import { alendronateDrug } from './alendronate';
+import { alfaxalonaDrug } from './alfaxalona';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -15,9 +14,8 @@ export const DB_MEDICAMENTOS = [
     acidoAceticoDrug,
     acetylcysteineDrug,
     aciclovirDrug,
-    acriflavineDrug,
-    adrenalineDrug,
     afoxolanerDrug,
     aglepristoneDrug,
     alendronateDrug,
+    alfaxalonaDrug,
 ];
