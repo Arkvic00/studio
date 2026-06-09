@@ -7,6 +7,7 @@ import { acriflavineDrug } from './acriflavine';
 import { adrenalineDrug } from './adrenaline';
 import { afoxolanerDrug } from './afoxolaner';
 import { aglepristoneDrug } from './aglepristone';
+import { alendronateDrug } from './alendronate';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -18,4 +19,5 @@ export const DB_MEDICAMENTOS = [
     adrenalineDrug,
     afoxolanerDrug,
     aglepristoneDrug,
+    alendronateDrug,
 ];
