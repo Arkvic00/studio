@@ -258,10 +258,50 @@ import { lorazepamDrug } from './lorazepam';
 import { lotilanerDrug } from './lotilaner';
 import { lufenuronDrug } from './lufenuron';
 import { lysineDrug } from './lysine';
+import { marbofloxacinDrug } from './marbofloxacin';
+import { maropitantDrug } from './maropitant';
+import { masitinibDrug } from './masitinib';
+import { mavacoxibDrug } from './mavacoxib';
+import { mebendazoleClosantelDrug } from './mebendazole_closantel';
+import { medetomidineDrug } from './medetomidine';
+import { medroxyprogesteroneDrug } from './medroxyprogesterone';
+import { meglumineAntimonateDrug } from './meglumine_antimonate';
+import { melatoninaDrug } from './melatonina';
+import { meloxicamDrug } from './meloxicam';
+import { melphalanDrug } from './melphalan';
+import { mepivacaineDrug } from './mepivacaine';
+import { methadoneDrug } from './methadone';
+import { methenamineDrug } from './methenamine';
+import { methionineDrug } from './methionine';
+import { methocarbamolDrug } from './methocarbamol';
+import { metilprednisolonaDrug } from './metilprednisolona';
+import { metoclopramideDrug } from './metoclopramide';
+import { metoprenoDrug } from './metopreno';
+import { metotrexatoDrug } from './metotrexato';
+import { metronidazoleDrug } from './metronidazole';
+import { mexiletineDrug } from './mexiletine';
+import { miconazoleDrug } from './miconazole';
+import { midazolamDrug } from './midazolam';
+import { milbemycinDrug } from './milbemycin';
+import { miltefosineDrug } from './miltefosine';
+import { minocyclineDrug } from './minocycline';
+import { mirtazapineDrug } from './mirtazapine';
+import { misoprostolDrug } from './misoprostol';
+import { mitotaneDrug } from './mitotane';
 import { mitoxantroneDrug } from './mitoxantrone';
 import { morphineDrug } from './morphine';
 import { moxidectinDrug } from './moxidectin';
 import { moxifloxacinDrug } from './moxifloxacin';
+import { mupirocinDrug } from './mupirocin';
+import { mycophenolateDrug } from './mycophenolate';
+import { naloxoneDrug } from './naloxone';
+import { nandroloneDrug } from './nandrolone';
+import { neomycinDrug } from './neomycin';
+import { neostigmineDrug } from './neostigmine';
+import { nicotinamideDrug } from './nicotinamide';
+import { nitenpyramDrug } from './nitenpyram';
+import { nitrofurantoinDrug } from './nitrofurantoin';
+import { nitrousOxideDrug } from './nitrous_oxide';
 import { nystatinDrug } from './nystatin';
 import { oclacitinibDrug } from './oclacitinib';
 import { octreotideDrug } from './octreotide';
@@ -316,6 +356,20 @@ import { rabacfosadineDrug } from './rabacfosadine';
 import { ramiprilDrug } from './ramipril';
 import { ranitidineDrug } from './ranitidine';
 import { rifampinDrug } from './rifampin';
+import { robenacoxibDrug } from './robenacoxib';
+import { rocuroniumDrug } from './rocuronium';
+import { ronidazoleDrug } from './ronidazole';
+import { ropiniroleDrug } from './ropinirole';
+import { ropivacaineDrug } from './ropivacaine';
+import { sameDrug } from './same';
+import { salbutamolDrug } from './salbutamol';
+import { sarolanerDrug } from './sarolaner';
+import { secobarbitalDrug } from './secobarbital';
+import { selamectinDrug } from './selamectin';
+import { selegilineDrug } from './selegiline';
+import { sertralineDrug } from './sertraline';
+import { sevelamerDrug } from './sevelamer';
+import { sevofluraneDrug } from './sevoflurane';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -578,10 +632,50 @@ export const DB_MEDICAMENTOS = [
     lotilanerDrug,
     lufenuronDrug,
     lysineDrug,
+    marbofloxacinDrug,
+    maropitantDrug,
+    masitinibDrug,
+    mavacoxibDrug,
+    mebendazoleClosantelDrug,
+    medetomidineDrug,
+    medroxyprogesteroneDrug,
+    meglumineAntimonateDrug,
+    melatoninaDrug,
+    meloxicamDrug,
+    melphalanDrug,
+    mepivacaineDrug,
+    methadoneDrug,
+    methenamineDrug,
+    methionineDrug,
+    methocarbamolDrug,
+    metilprednisolonaDrug,
+    metoclopramideDrug,
+    metoprenoDrug,
+    metotrexatoDrug,
+    metronidazoleDrug,
+    mexiletineDrug,
+    miconazoleDrug,
+    midazolamDrug,
+    milbemycinDrug,
+    miltefosineDrug,
+    minocyclineDrug,
+    mirtazapineDrug,
+    misoprostolDrug,
+    mitotaneDrug,
     mitoxantroneDrug,
     morphineDrug,
     moxidectinDrug,
     moxifloxacinDrug,
+    mupirocinDrug,
+    mycophenolateDrug,
+    naloxoneDrug,
+    nandroloneDrug,
+    neomycinDrug,
+    neostigmineDrug,
+    nicotinamideDrug,
+    nitenpyramDrug,
+    nitrofurantoinDrug,
+    nitrousOxideDrug,
     nystatinDrug,
     oclacitinibDrug,
     octreotideDrug,
@@ -636,4 +730,18 @@ export const DB_MEDICAMENTOS = [
     ramiprilDrug,
     ranitidineDrug,
     rifampinDrug,
+    robenacoxibDrug,
+    rocuroniumDrug,
+    ronidazoleDrug,
+    ropiniroleDrug,
+    ropivacaineDrug,
+    sameDrug,
+    salbutamolDrug,
+    sarolanerDrug,
+    secobarbitalDrug,
+    selamectinDrug,
+    selegilineDrug,
+    sertralineDrug,
+    sevelamerDrug,
+    sevofluraneDrug,
 ];
