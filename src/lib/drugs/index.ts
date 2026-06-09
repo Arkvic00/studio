@@ -267,6 +267,9 @@ import { nystatinDrug } from './nystatin';
 import { oclacitinibDrug } from './oclacitinib';
 import { octreotideDrug } from './octreotide';
 import { ofloxacinDrug } from './ofloxacin';
+import { olsalazineDrug } from './olsalazine';
+import { omeprazoleDrug } from './omeprazole';
+import { ondansetronDrug } from './ondansetron';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -537,4 +540,7 @@ export const DB_MEDICAMENTOS = [
     oclacitinibDrug,
     octreotideDrug,
     ofloxacinDrug,
+    olsalazineDrug,
+    omeprazoleDrug,
+    ondansetronDrug,
 ];
