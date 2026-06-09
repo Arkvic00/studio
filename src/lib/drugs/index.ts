@@ -90,6 +90,7 @@ import { ciclosporinDrug } from './ciclosporin';
 import { cimetidineDrug } from './cimetidine';
 import { cimicoxibDrug } from './cimicoxib';
 import { cinchophenDrug } from './cinchophen';
+import { ciprofloxacinDrug } from './ciprofloxacin';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -184,4 +185,5 @@ export const DB_MEDICAMENTOS = [
     cimetidineDrug,
     cimicoxibDrug,
     cinchophenDrug,
+    ciprofloxacinDrug,
 ];
