@@ -283,6 +283,11 @@ import { pentobarbitalDrug } from './pentobarbital';
 import { pentosanPolysulphateDrug } from './pentosan';
 import { pentoxifyllineDrug } from './pentoxifylline';
 import { permethrinDrug } from './permethrin';
+import { pethidineDrug } from './pethidine';
+import { phenoxybenzamineDrug } from './phenoxybenzamine';
+import { phenoxyethanolDrug } from './phenoxyethanol';
+import { phenylephrineDrug } from './phenylephrine';
+import { phenylbutazoneDrug } from './phenylbutazone';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -569,4 +574,10 @@ export const DB_MEDICAMENTOS = [
     pentosanPolysulphateDrug,
     pentoxifyllineDrug,
     permethrinDrug,
+    pethidineDrug,
+    phenoxybenzamineDrug,
+    phenoxyethanolDrug,
+    phenylephrineDrug,
+    phenylbutazoneDrug,
+    phenobarbitalDrug,
 ];
