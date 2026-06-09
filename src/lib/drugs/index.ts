@@ -217,6 +217,10 @@ import { hydrochlorothiazideDrug } from './hydrochlorothiazide';
 import { hydrocortisoneDrug } from './hydrocortisone';
 import { hydrocortisoneAceponateDrug } from './hydrocortisone_aceponate';
 import { hydroxycarbamideDrug } from './hydroxycarbamide';
+import { hydroxyzineDrug } from './hydroxyzine';
+import { hypromelloseDrug } from './hypromellose';
+import { imepitoinDrug } from './imepitoin';
+import { imidaclopridDrug } from './imidacloprid';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -438,4 +442,8 @@ export const DB_MEDICAMENTOS = [
     hydrocortisoneDrug,
     hydrocortisoneAceponateDrug,
     hydroxycarbamideDrug,
+    hydroxyzineDrug,
+    hypromelloseDrug,
+    imepitoinDrug,
+    imidaclopridDrug,
 ];
