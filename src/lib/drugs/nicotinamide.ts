@@ -29,7 +29,7 @@ export const nicotinamideDrug: Drug = {
   parametros_dosificacion: {
     perro: [
       {
-        indicacion: "Enfermedades inmunomediadas cutáneas (Perro <10 kg)",
+        indicacion: "Inmunomodulación (Perro hasta 25 kg)",
         vias: ["PO"],
         math: {
           tipo_calculo: "fija",
@@ -37,18 +37,17 @@ export const nicotinamideDrug: Drug = {
           unidad_calculo: "mg/perro"
         },
         frecuencia: { texto_ui: "Cada 8 horas", intervalo_horas: 8 },
-        notas_tecnicas: "Combinar con Doxiciclina (5 mg/kg q12h) o Tetraciclina (250 mg q8h)."
+        notas_tecnicas: "Reducir dosis según respuesta. Combinar con Doxiciclina (5 mg/kg q12h) o Tetraciclina."
       },
       {
-        indicacion: "Enfermedades inmunomediadas cutáneas (Perro >10 kg)",
+        indicacion: "Inmunomodulación (Perro >25 kg)",
         vias: ["PO"],
         math: {
           tipo_calculo: "fija",
           dosis_recomendada: 500,
           unidad_calculo: "mg/perro"
         },
-        frecuencia: { texto_ui: "Cada 8 horas", intervalo_horas: 8 },
-        notas_tecnicas: "Combinar con Doxiciclina (5 mg/kg q12h) o Tetraciclina (500 mg q8h)."
+        frecuencia: { texto_ui: "Cada 8 horas", intervalo_horas: 8 }
       }
     ]
   },

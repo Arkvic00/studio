@@ -274,6 +274,9 @@ import { mitotaneDrug } from './mitotane';
 import { neomycinDrug } from './neomycin';
 import { neostigmineDrug } from './neostigmine';
 import { nicotinamideDrug } from './nicotinamide';
+import { nitenpyramDrug } from './nitenpyram';
+import { nitrofurantoinDrug } from './nitrofurantoin';
+import { nitrousOxideDrug } from './nitrous_oxide';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -556,4 +559,7 @@ export const DB_MEDICAMENTOS = [
     neomycinDrug,
     neostigmineDrug,
     nicotinamideDrug,
+    nitenpyramDrug,
+    nitrofurantoinDrug,
+    nitrousOxideDrug,
 ];
