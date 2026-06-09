@@ -107,7 +107,7 @@ import { clotrimazoleDrug } from './clotrimazole';
 import { cloxacillinDrug } from './cloxacillin';
 import { coAmoxiclavDrug } from './co_amoxiclav';
 import { codeineDrug } from './codeine';
-import { colchicineDrug } from './colchicine';
+import { colchicineDrug } from './colcolchicine';
 import { colestyramineDrug } from './colestyramine';
 import { cyclophosphamideDrug } from './cyclophosphamide';
 import { sulfatoDeCobreDrug } from './sulfato_de_cobre';
@@ -221,6 +221,7 @@ import { hydroxyzineDrug } from './hydroxyzine';
 import { hypromelloseDrug } from './hypromellose';
 import { imepitoinDrug } from './imepitoin';
 import { imidaclopridDrug } from './imidacloprid';
+import { imidaprilDrug } from './imidapril';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -446,4 +447,5 @@ export const DB_MEDICAMENTOS = [
     hypromelloseDrug,
     imepitoinDrug,
     imidaclopridDrug,
+    imidaprilDrug,
 ];
