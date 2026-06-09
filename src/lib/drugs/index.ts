@@ -70,6 +70,7 @@ import { alphaCasozepineDrug } from './alpha_casozepine';
 import { catAppeasingPheromoneDrug } from './cat_appeasing_pheromone';
 import { cefalexinDrug } from './cefalexin';
 import { cefotaximeDrug } from './cefotaxime';
+import { cefovecinDrug } from './cefovecin';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -144,4 +145,5 @@ export const DB_MEDICAMENTOS = [
     catAppeasingPheromoneDrug,
     cefalexinDrug,
     cefotaximeDrug,
+    cefovecinDrug,
 ];
