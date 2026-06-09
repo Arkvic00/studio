@@ -117,7 +117,7 @@ export const desmopressinDrug: Drug = {
     ],
     instrucciones_manejo: "Las preparaciones intranasales pueden usarse vía conjuntival con buena tolerancia.",
     sobredosis: {
-      signs: ["Hinchazón (edema)", "Letargo", "Convulsiones por hiponatremia"],
+      signos: ["Hinchazón (edema)", "Letargo", "Convulsiones por hiponatremia"],
       tratamiento: "Restricción de líquidos y uso cuidadoso de diuréticos."
     },
     interacciones_farmacologicas: []
