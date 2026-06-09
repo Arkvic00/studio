@@ -196,6 +196,10 @@ import { framycetinDrug } from './framycetin';
 import { furosemidaDrug } from './furosemida';
 import { acidoFusidicoDrug } from './acido_fusidico';
 import { gabapentinaDrug } from './gabapentina';
+import { ganciclovirDrug } from './ganciclovir';
+import { gelatineDrug } from './gelatine';
+import { gemcitabineDrug } from './gemcitabine';
+import { gentamicinDrug } from './gentamicin';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -396,4 +400,8 @@ export const DB_MEDICAMENTOS = [
     furosemidaDrug,
     acidoFusidicoDrug,
     gabapentinaDrug,
+    ganciclovirDrug,
+    gelatineDrug,
+    gemcitabineDrug,
+    gentamicinDrug,
 ];
