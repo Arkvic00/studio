@@ -151,6 +151,10 @@ import { dorzolamideDrug } from './dorzolamide';
 import { doxapramDrug } from './doxapram';
 import { doxepinDrug } from './doxepin';
 import { doxorubicinDrug } from './doxorubicin';
+import { doxycyclineDrug } from './doxycycline';
+import { edetateCalciumDisodiumDrug } from './edetate_calcium_disodium';
+import { edrophoniumDrug } from './edrophonium';
+import { emamectinBenzoateDrug } from './emamectin_benzoate';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -306,4 +310,8 @@ export const DB_MEDICAMENTOS = [
     doxapramDrug,
     doxepinDrug,
     doxorubicinDrug,
+    doxycyclineDrug,
+    edetateCalciumDisodiumDrug,
+    edrophoniumDrug,
+    emamectinBenzoateDrug,
 ];
