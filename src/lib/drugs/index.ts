@@ -149,6 +149,8 @@ import { domperidoneDrug } from './domperidone';
 import { dopamineDrug } from './dopamine';
 import { dorzolamideDrug } from './dorzolamide';
 import { doxapramDrug } from './doxapram';
+import { doxepinDrug } from './doxepin';
+import { doxorubicinDrug } from './doxorubicin';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -302,4 +304,6 @@ export const DB_MEDICAMENTOS = [
     dopamineDrug,
     dorzolamideDrug,
     doxapramDrug,
+    doxepinDrug,
+    doxorubicinDrug,
 ];
