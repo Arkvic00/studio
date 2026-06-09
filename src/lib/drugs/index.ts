@@ -237,6 +237,7 @@ import { kaolinDrug } from './kaolin';
 import { ketamineDrug } from './ketamine';
 import { ketoconazoleDrug } from './ketoconazole';
 import { ketoprofenDrug } from './ketoprofen';
+import { ketorolacDrug } from './ketorolac';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -346,6 +347,7 @@ export const DB_MEDICAMENTOS = [
     clopidogrelDrug,
     clotrimazoleDrug,
     cloxacillinDrug,
+    coAmoxiclavDrug,
     codeineDrug,
     colchicineDrug,
     colestyramineDrug,
@@ -477,4 +479,5 @@ export const DB_MEDICAMENTOS = [
     ketamineDrug,
     ketoconazoleDrug,
     ketoprofenDrug,
+    ketorolacDrug,
 ];
