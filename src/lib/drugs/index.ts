@@ -173,6 +173,9 @@ import { famotidineDrug } from './famotidine';
 import { felineFacialFractionF3Drug } from './feline_facial_fraction_f3';
 import { fenbendazoleDrug } from './fenbendazole';
 import { fentanylDrug } from './fentanyl';
+import { fentanylFluanisoneDrug } from './fentanyl_fluanisone';
+import { filgrastimDrug } from './filgrastim';
+import { finasterideDrug } from './finasteride';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -350,4 +353,7 @@ export const DB_MEDICAMENTOS = [
     felineFacialFractionF3Drug,
     fenbendazoleDrug,
     fentanylDrug,
+    fentanylFluanisoneDrug,
+    filgrastimDrug,
+    finasterideDrug,
 ];
