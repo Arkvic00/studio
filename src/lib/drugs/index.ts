@@ -206,6 +206,12 @@ import { glucoseDrug } from './glucose';
 import { glutamineDrug } from './glutamine';
 import { glycerylTrinitrateDrug } from './glyceryl_trinitrate';
 import { glycopyrroniumDrug } from './glycopyrronium';
+import { grapiprantDrug } from './grapiprant';
+import { halothaneDrug } from './halothane';
+import { haloperidolDrug } from './haloperidol';
+import { heparinLmwDrug } from './heparin_lmw';
+import { heparinUfhDrug } from './heparin_ufh';
+import { hyaluronateDrug } from './hyaluronate';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -416,4 +422,10 @@ export const DB_MEDICAMENTOS = [
     glutamineDrug,
     glycerylTrinitrateDrug,
     glycopyrroniumDrug,
+    grapiprantDrug,
+    halothaneDrug,
+    haloperidolDrug,
+    heparinLmwDrug,
+    heparinUfhDrug,
+    hyaluronateDrug,
 ];
