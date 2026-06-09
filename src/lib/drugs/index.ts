@@ -83,6 +83,7 @@ import { chloramineTDrug } from './chloramine_t';
 import { chloramphenicolDrug } from './chloramphenicol';
 import { chlorhexidineDrug } from './chlorhexidine';
 import { chloroquineDrug } from './chloroquine';
+import { chlorphenamineDrug } from './chlorphenamine';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -170,4 +171,5 @@ export const DB_MEDICAMENTOS = [
     chloramphenicolDrug,
     chlorhexidineDrug,
     chloroquineDrug,
+    chlorphenamineDrug,
 ];
