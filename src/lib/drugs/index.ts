@@ -3,6 +3,8 @@ import { acetazolamidaDrug } from './acetazolamida';
 import { acidoAceticoDrug } from './acido_acetico';
 import { acetylcysteineDrug } from './acetylcysteine';
 import { aciclovirDrug } from './aciclovir';
+import { acriflavineDrug } from './acriflavine';
+import { adrenalineDrug } from './adrenaline';
 import { afoxolanerDrug } from './afoxolaner';
 import { aglepristoneDrug } from './aglepristone';
 import { alendronateDrug } from './alendronate';
@@ -12,6 +14,7 @@ import { allopurinolDrug } from './allopurinol';
 import { alprazolamDrug } from './alprazolam';
 import { aluminiumHydroxideDrug } from './aluminium_hydroxide';
 import { amantadinaDrug } from './amantadina';
+import { amikacinDrug } from './amikacin';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -19,6 +22,8 @@ export const DB_MEDICAMENTOS = [
     acidoAceticoDrug,
     acetylcysteineDrug,
     aciclovirDrug,
+    acriflavineDrug,
+    adrenalineDrug,
     afoxolanerDrug,
     aglepristoneDrug,
     alendronateDrug,
@@ -28,4 +33,5 @@ export const DB_MEDICAMENTOS = [
     alprazolamDrug,
     aluminiumHydroxideDrug,
     amantadinaDrug,
+    amikacinDrug,
 ];
