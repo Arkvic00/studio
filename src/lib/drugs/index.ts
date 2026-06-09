@@ -87,6 +87,7 @@ import { chlorphenamineDrug } from './chlorphenamine';
 import { chlortetracyclineDrug } from './chlortetracycline';
 import { chorionicGonadotrophinDrug } from './chorionic_gonadotrophin';
 import { ciclosporinDrug } from './ciclosporin';
+import { cimetidineDrug } from './cimetidine';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -178,4 +179,5 @@ export const DB_MEDICAMENTOS = [
     chlortetracyclineDrug,
     chorionicGonadotrophinDrug,
     ciclosporinDrug,
+    cimetidineDrug,
 ];
