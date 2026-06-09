@@ -259,6 +259,9 @@ import { lorazepamDrug } from './lorazepam';
 import { lotilanerDrug } from './lotilaner';
 import { lufenuronDrug } from './lufenuron';
 import { lysineDrug } from './lysine';
+import { magnesiumSaltsDrug } from './magnesium_salts';
+import { malachiteGreenDrug } from './malachite_green';
+import { mannitolDrug } from './mannitol';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -522,4 +525,7 @@ export const DB_MEDICAMENTOS = [
     lotilanerDrug,
     lufenuronDrug,
     lysineDrug,
+    magnesiumSaltsDrug,
+    malachiteGreenDrug,
+    mannitolDrug,
 ];
