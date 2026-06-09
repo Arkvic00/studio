@@ -193,6 +193,9 @@ import { fluticasoneDrug } from './fluticasone';
 import { fomepizoleDrug } from './fomepizole';
 import { formaldehydeDrug } from './formaldehyde';
 import { framycetinDrug } from './framycetin';
+import { furosemidaDrug } from './furosemida';
+import { acidoFusidicoDrug } from './acido_fusidico';
+import { gabapentinaDrug } from './gabapentina';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -390,4 +393,7 @@ export const DB_MEDICAMENTOS = [
     fomepizoleDrug,
     formaldehydeDrug,
     framycetinDrug,
+    furosemidaDrug,
+    acidoFusidicoDrug,
+    gabapentinaDrug,
 ];
