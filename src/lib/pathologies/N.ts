@@ -4,18 +4,20 @@ export const pathologiesN: Pathology[] = [
   {
     id: 'tumores-nasales',
     nombre: 'Tumores de Cavidad Nasal',
-    descripcion: 'Cáncer en el epitelio respiratorio.',
-    etiology: 'Genética y carcinógenos ambientales.',
+    descripcion: 'Neoplasias agresivas que crecen en los cornetes nasales y senos paranasales.',
+    etiology: 'Base genética (Airedales) agravada por contaminantes ambientales.',
     sintomas: [
-      'Descarga nasal con sangre',
-      'Estornudos',
-      'Deformidad facial'
+      'Estornudos crónicos',
+      'Descarga nasal unilateral o bilateral (mucosa o con sangre)',
+      'Deformidad de la cara o el puente nasal',
+      'Exoftalmos (ojo que sobresale)'
     ],
     diagnostico: [
-      'Rinoscopia con biopsia',
-      'TC de cráneo'
+      'Tomografía Computarizada (TC) de cráneo',
+      'Rinoscopia con toma de biopsia',
+      'Radiografía de tórax (para buscar metástasis)'
     ],
-    tratamiento: 'Radioterapia.',
+    tratamiento: 'Radioterapia es la opción principal; quimioterapia paliativa.',
     prevencion_control: 'Evitar humo de tabaco.',
     especies_afectadas: ['Perro', 'Gato'],
     categoria: 'Otros'
