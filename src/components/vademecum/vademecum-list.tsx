@@ -33,7 +33,7 @@ export function VademecumList() {
                 if (!matchesSpecies) return false;
                 if (!q) return true;
                 return fuzzySearch(q, d.meta_data.nombre_generico) || 
-                       d.meta_data.grupo_farmacologico.toLowerCase().includes(q);
+                       (d.meta_data.grupo_farmacologico || '').toLowerCase().includes(q);
             });
         }
         
@@ -145,7 +145,7 @@ export function VademecumList() {
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-black text-white group-hover:text-emerald-400 transition-colors">{drug.meta_data.nombre_generico}</h3>
-                                        <p className="text-[9px] text-muted-foreground font-bold uppercase tracking-widest">{drug.meta_data.grupo_farmacologico.split(',')[0]}</p>
+                                        <p className="text-[9px] text-muted-foreground font-bold uppercase tracking-widest">{(drug.meta_data.grupo_farmacologico || 'N/A').split(',')[0]}</p>
                                     </div>
                                 </div>
                                 <ChevronRight size={20} className="text-muted-foreground group-hover:text-white" />

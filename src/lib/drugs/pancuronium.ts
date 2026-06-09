@@ -5,7 +5,7 @@ export const pancuroniumDrug: Drug = {
   meta_data: {
     nombre_generico: "Pancuronio (Bromuro de pancuronio)",
     nombres_comerciales: ["Pancuronium*"],
-    group_farmacologico: "Bloqueador neuromuscular no despolarizante",
+    grupo_farmacologico: "Bloqueador neuromuscular no despolarizante",
     status_regulatorio: "POM"
   },
   resumen_clinico: {

@@ -41,7 +41,7 @@ export function DrugSelector({
       const matchCommercial = drug.meta_data.nombres_comerciales.some((n) =>
         fuzzySearch(searchTerm, n)
       );
-      const matchFamily = drug.meta_data.grupo_farmacologico
+      const matchFamily = (drug.meta_data.grupo_farmacologico || '')
         .toLowerCase()
         .includes(q);
       const matchUse = (
@@ -120,7 +120,7 @@ export function DrugSelector({
                     {drug.meta_data.nombre_generico}
                   </h4>
                   <Badge variant="secondary" className="text-[9px]">
-                    {drug.meta_data.grupo_farmacologico.split(',')[0]}
+                    {(drug.meta_data.grupo_farmacologico || 'N/A').split(',')[0]}
                   </Badge>
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">

@@ -81,7 +81,7 @@ export const dopamineDrug: Drug = {
     ]
   },
   seguridad_y_alertas: {
-    contraindications: [
+    contraindicaciones: [
       "Arritmias cardiacas no controladas.",
       "Feocromocitoma.",
       "Fibrilación ventricular."

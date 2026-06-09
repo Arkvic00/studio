@@ -136,7 +136,7 @@ import { diflubenzuronDrug } from './diflubenzuron';
 import { digoxinDrug } from './digoxin';
 import { diltiazemDrug } from './diltiazem';
 import { dimercaprolDrug } from './dimercaprol';
-import { dmsoDrug } from './dmso';
+import { dmsoDrug } from './dimetilsulfoxido';
 import { dinotefuranDrug } from './dinotefuran';
 import { dinoprostTromethamineDrug } from './dinoprost_tromethamine';
 import { dinoprostoneDrug } from './dinoprostone';
@@ -312,7 +312,6 @@ export const DB_MEDICAMENTOS = [
     asparaginaseDrug,
     aspirinDrug,
     atenololDrug,
-    atipamezoleDrug,
     atipamezoleDrug,
     atracuriumDrug,
     atropinaDrug,

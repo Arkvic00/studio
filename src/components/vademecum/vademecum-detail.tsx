@@ -34,7 +34,7 @@ function DrugCompareModal({ currentDrugId }: { currentDrugId: string }) {
             const q = searchTerm.toLowerCase();
             const matchName = fuzzySearch(searchTerm, drug.meta_data.nombre_generico);
             const matchCommercial = drug.meta_data.nombres_comerciales.some(n => fuzzySearch(searchTerm, n));
-            const matchFamily = drug.meta_data.grupo_farmacologico.toLowerCase().includes(q);
+            const matchFamily = (drug.meta_data.grupo_farmacologico || '').toLowerCase().includes(q);
             return matchName || matchCommercial || matchFamily;
         });
     }, [searchTerm, currentDrugId, allDrugs]);
@@ -77,7 +77,7 @@ function DrugCompareModal({ currentDrugId }: { currentDrugId: string }) {
                                     {drug.meta_data.nombre_generico}
                                 </h4>
                                 <Badge variant="secondary" className="text-[9px]">
-                                    {drug.meta_data.grupo_farmacologico.split(',')[0]}
+                                    {(drug.meta_data.grupo_farmacologico || 'N/A').split(',')[0]}
                                 </Badge>
                             </div>
                             <p className="text-xs text-muted-foreground mt-1">
@@ -330,4 +330,4 @@ export function VademecumDetail() {
           </div>
       </div>
   );
-};
+}
