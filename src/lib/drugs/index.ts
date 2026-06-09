@@ -77,6 +77,7 @@ import { cefuroximeDrug } from './cefuroxime';
 import { cetirizineDrug } from './cetirizine';
 import { activatedCharcoalDrug } from './activated_charcoal';
 import { celecoxibDrug } from './celecoxib';
+import { chitosanDrug } from './chitosan';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -158,4 +159,5 @@ export const DB_MEDICAMENTOS = [
     cetirizineDrug,
     activatedCharcoalDrug,
     celecoxibDrug,
+    chitosanDrug,
 ];
