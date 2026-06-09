@@ -276,7 +276,6 @@ export const DB_MEDICAMENTOS = [
     cimetidineDrug,
     cimicoxibDrug,
     cinchophenDrug,
-    ciclofosfamidaDrug,
     ciprofloxacinDrug,
     cisaprideDrug,
     cisatracuriumDrug,
