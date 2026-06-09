@@ -64,6 +64,7 @@ import { carbimazoleDrug } from './carbimazole';
 import { carbomer980Drug } from './carbomer_980';
 import { carboplatinDrug } from './carboplatin';
 import { carnidazoleDrug } from './carnidazole';
+import { carprofenDrug } from './carprofen';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -132,4 +133,5 @@ export const DB_MEDICAMENTOS = [
     carbomer980Drug,
     carboplatinDrug,
     carnidazoleDrug,
+    carprofenDrug,
 ];
