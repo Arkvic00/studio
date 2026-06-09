@@ -276,6 +276,13 @@ import { papaveretumDrug } from './papaveretum';
 import { paracetamolDrug } from './paracetamol';
 import { paraffinDrug } from './paraffin';
 import { paroxetineDrug } from './paroxetine';
+import { penicillamineDrug } from './penicillamine';
+import { penicillinGDrug } from './penicillin_g';
+import { pentamidineDrug } from './pentamidine';
+import { pentobarbitalDrug } from './pentobarbital';
+import { pentosanPolysulphateDrug } from './pentosan';
+import { pentoxifyllineDrug } from './pentoxifylline';
+import { permethrinDrug } from './permethrin';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -555,4 +562,11 @@ export const DB_MEDICAMENTOS = [
     paracetamolDrug,
     paraffinDrug,
     paroxetineDrug,
+    penicillamineDrug,
+    penicillinGDrug,
+    pentamidineDrug,
+    pentobarbitalDrug,
+    pentosanPolysulphateDrug,
+    pentoxifyllineDrug,
+    permethrinDrug,
 ];
