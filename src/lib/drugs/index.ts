@@ -28,6 +28,7 @@ import { amphotericinBDrug } from './amphotericin_b';
 import { amproliumDrug } from './amprolium';
 import { antivenomAdderDrug } from './antivenom_adder';
 import { apomorfinaDrug } from './apomorfina';
+import { apraclonidineDrug } from './apraclonidine';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -60,4 +61,5 @@ export const DB_MEDICAMENTOS = [
     amproliumDrug,
     antivenomAdderDrug,
     apomorfinaDrug,
+    apraclonidineDrug,
 ];
