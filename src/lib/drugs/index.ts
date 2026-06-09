@@ -124,7 +124,7 @@ import { delmadinoneDrug } from './delmadinone';
 import { deltamethrinDrug } from './deltamethrin';
 import { deslorelinDrug } from './deslorelin';
 import { desmopressinDrug } from './desmopressin';
-import { desoxycortonePivalateDrug } from './desoxycortone_pivalate';
+import { desoxycortone PivalateDrug } from './desoxycortone_pivalate';
 import { dexamethasoneDrug } from './dexamethasone';
 import { dexmedetomidineDrug } from './dexmedetomidine';
 import { dexrazoxaneDrug } from './dexrazoxane';
@@ -230,6 +230,9 @@ import { insulinDrug } from './insulin';
 import { interferonOmegaDrug } from './interferon_omega';
 import { ironSaltsDrug } from './iron_salts';
 import { isofluraneDrug } from './isoflurane';
+import { ispaghulaDrug } from './ispaghula';
+import { itraconazoleDrug } from './itraconazole';
+import { ivermectinDrug } from './ivermectin';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -464,4 +467,7 @@ export const DB_MEDICAMENTOS = [
     interferonOmegaDrug,
     ironSaltsDrug,
     isofluraneDrug,
+    ispaghulaDrug,
+    itraconazoleDrug,
+    ivermectinDrug,
 ];
