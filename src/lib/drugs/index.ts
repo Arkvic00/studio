@@ -186,6 +186,13 @@ import { flucytosineDrug } from './flucytosine';
 import { fludrocortisoneDrug } from './fludrocortisone';
 import { flumazenilDrug } from './flumazenil';
 import { fluorouracilDrug } from './fluorouracil';
+import { fluoxetineDrug } from './fluoxetine';
+import { fluralanerDrug } from './fluralaner';
+import { flurbiprofenDrug } from './flurbiprofen';
+import { fluticasoneDrug } from './fluticasone';
+import { fomepizoleDrug } from './fomepizole';
+import { formaldehydeDrug } from './formaldehyde';
+import { framycetinDrug } from './framycetin';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -376,4 +383,11 @@ export const DB_MEDICAMENTOS = [
     fludrocortisoneDrug,
     flumazenilDrug,
     fluorouracilDrug,
+    fluoxetineDrug,
+    fluralanerDrug,
+    flurbiprofenDrug,
+    fluticasoneDrug,
+    fomepizoleDrug,
+    formaldehydeDrug,
+    framycetinDrug,
 ];
