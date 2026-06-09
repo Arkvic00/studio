@@ -292,8 +292,6 @@ import { mitoxantroneDrug } from './mitoxantrone';
 import { morphineDrug } from './morphine';
 import { moxidectinDrug } from './moxidectin';
 import { moxifloxacinDrug } from './moxifloxacin';
-import { mupirocinDrug } from './mupirocin';
-import { mycophenolateDrug } from './mycophenolate';
 import { naloxoneDrug } from './naloxone';
 import { nandroloneDrug } from './nandrolone';
 import { neomycinDrug } from './neomycin';
@@ -666,8 +664,6 @@ export const DB_MEDICAMENTOS = [
     morphineDrug,
     moxidectinDrug,
     moxifloxacinDrug,
-    mupirocinDrug,
-    mycophenolateDrug,
     naloxoneDrug,
     nandroloneDrug,
     neomycinDrug,
