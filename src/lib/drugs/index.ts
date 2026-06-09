@@ -238,6 +238,13 @@ import { ketamineDrug } from './ketamine';
 import { ketoconazoleDrug } from './ketoconazole';
 import { ketoprofenDrug } from './ketoprofen';
 import { ketorolacDrug } from './ketorolac';
+import { lactuloseDrug } from './lactulose';
+import { lamivudineDrug } from './lamivudine';
+import { lanthanumCarbonateDrug } from './lanthanum_carbonate';
+import { latanoprostDrug } from './latanoprost';
+import { leflunomideDrug } from './leflunomide';
+import { lenograstimDrug } from './lenograstim';
+import { levamisoleDrug } from './levamisole';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -480,4 +487,11 @@ export const DB_MEDICAMENTOS = [
     ketoconazoleDrug,
     ketoprofenDrug,
     ketorolacDrug,
+    lactuloseDrug,
+    lamivudineDrug,
+    lanthanumCarbonateDrug,
+    latanoprostDrug,
+    leflunomideDrug,
+    lenograstimDrug,
+    levamisoleDrug,
 ];
