@@ -38,6 +38,7 @@ import { atropinaDrug } from './atropina';
 import { azathioprineDrug } from './azathioprine';
 import { azithromycinDrug } from './azithromycin';
 import { aztreonamDrug } from './aztreonam';
+import { benazeprilDrug } from './benazepril';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -80,4 +81,5 @@ export const DB_MEDICAMENTOS = [
     azathioprineDrug,
     azithromycinDrug,
     aztreonamDrug,
+    benazeprilDrug,
 ];
