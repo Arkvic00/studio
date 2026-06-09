@@ -259,32 +259,9 @@ import { lorazepamDrug } from './lorazepam';
 import { lotilanerDrug } from './lotilaner';
 import { lufenuronDrug } from './lufenuron';
 import { lysineDrug } from './lysine';
-import { magnesiumSaltsDrug } from './magnesium_salts';
-import { malachiteGreenDrug } from './malachite_green';
-import { mannitolDrug } from './mannitol';
-import { marbofloxacinDrug } from './marbofloxacin';
-import { maropitantDrug } from './maropitant';
-import { masitinibDrug } from './masitinib';
-import { mavacoxibDrug } from './mavacoxib';
-import { mebendazoleClosantelDrug } from './mebendazole_closantel';
-import { medetomidineDrug } from './medetomidine';
-import { medroxyprogesteroneDrug } from './medroxyprogesterone';
-import { meglumineAntimonateDrug } from './meglumine_antimonate';
-import { melatoninDrug } from './melatonin';
-import { meloxicamDrug } from './meloxicam';
-import { melphalanDrug } from './melphalan';
-import { mepivacaineDrug } from './mepivacaine';
-import { methadoneDrug } from './methadone';
-import { methenamineDrug } from './methenamine';
-import { methionineDrug } from './methionine';
-import { methocarbamolDrug } from './methocarbamol';
-import { metoprenoDrug } from './metopreno';
-import { metotrexatoDrug } from './metotrexato';
-import { metilprednisolonaDrug } from './metilprednisolona';
-import { azulDeMetilenoDrug } from './azul_de_metileno';
-import { metoclopramideDrug } from './metoclopramide';
-import { metronidazoleDrug } from './metronidazole';
-import { mexiletineDrug } from './mexiletine';
+import { miconazoleDrug } from './miconazole';
+import { midazolamDrug } from './midazolam';
+import { milbemycinDrug } from './milbemycin';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -548,30 +525,7 @@ export const DB_MEDICAMENTOS = [
     lotilanerDrug,
     lufenuronDrug,
     lysineDrug,
-    magnesiumSaltsDrug,
-    malachiteGreenDrug,
-    mannitolDrug,
-    marbofloxacinDrug,
-    maropitantDrug,
-    masitinibDrug,
-    mavacoxibDrug,
-    mebendazoleClosantelDrug,
-    medetomidineDrug,
-    medroxyprogesteroneDrug,
-    meglumineAntimonateDrug,
-    melatoninDrug,
-    meloxicamDrug,
-    melphalanDrug,
-    mepivacaineDrug,
-    methadoneDrug,
-    methenamineDrug,
-    methionineDrug,
-    methocarbamolDrug,
-    metoprenoDrug,
-    metotrexatoDrug,
-    metilprednisolonaDrug,
-    azulDeMetilenoDrug,
-    metoclopramideDrug,
-    metronidazoleDrug,
-    mexiletineDrug,
+    miconazoleDrug,
+    midazolamDrug,
+    milbemycinDrug,
 ];
