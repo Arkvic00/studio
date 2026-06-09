@@ -48,6 +48,7 @@ import { bisacodylDrug } from './bisacodyl';
 import { bismuthSaltsDrug } from './bismuth_salts';
 import { bleomicinaDrug } from './bleomicina';
 import { bowelCleansingSolutionsDrug } from './bowel_cleansing_solutions';
+import { bromhexineDrug } from './bromhexine';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -100,4 +101,5 @@ export const DB_MEDICAMENTOS = [
     bismuthSaltsDrug,
     bleomicinaDrug,
     bowelCleansingSolutionsDrug,
+    bromhexineDrug,
 ];
