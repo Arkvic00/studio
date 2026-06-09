@@ -22,5 +22,28 @@ export const pathologiesC: Pathology[] = [
     prevencion_control: 'Control glucémico en diabéticos y selección genética de reproductores.',
     especies_afectadas: ['Perro', 'Gato', 'Caballo'],
     categoria: 'Ocular'
+  },
+  {
+    id: 'cardiomiopatia-dilatada',
+    nombre: 'Cardiomiopatía Dilatada (MCD)',
+    descripcion: 'Enfermedad del músculo cardíaco caracterizada por el agrandamiento de las cámaras y la reducción de la contractilidad.',
+    etiology: 'Primaria (genética/familiar) o secundaria (deficiencia de taurina, carnitina o infecciosa).',
+    sintomas: [
+      'Tos y dificultad respiratoria',
+      'Letargo y debilidad',
+      'Síncope (desmayos)',
+      'Abdomen distendido (ascitis)',
+      'Arritmias'
+    ],
+    diagnostico: [
+      'Ecocardiografía (dilatación y baja fracción de acortamiento)',
+      'Radiografía de tórax (cardiomegalia)',
+      'Electrocardiograma (ECG)',
+      'Pro-BNP'
+    ],
+    tratamiento: 'Inotrópicos positivos (Pimobendan), diuréticos, inhibidores de la ECA y antiarrítmicos.',
+    prevencion_control: 'Suplementación nutricional en razas de riesgo y tamizaje ecográfico regular.',
+    especies_afectadas: ['Perro', 'Gato'],
+    categoria: 'Cardíaca'
   }
 ];

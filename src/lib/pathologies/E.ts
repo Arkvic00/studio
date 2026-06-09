@@ -4,43 +4,60 @@ export const pathologiesE: Pathology[] = [
   {
     id: 'edema-corneal-adenovirus',
     nombre: 'Edema Corneal (Ojo Azul)',
-    descripcion: 'Acumulación de líquido en el estroma corneal que le da un aspecto azulado/opaco.',
-    etiology: 'Reacción de hipersensibilidad tipo III tras la infección por Adenovirus Canino tipo 1 (Hepatitis) o uso de vacunas vivas modificadas antiguas.',
+    descripcion: 'Acumulación de líquido en el estroma corneal que le da un aspecto azulado.',
+    etiology: 'Reacción de hipersensibilidad tipo III tras infección o vacunación con CAV-1.',
     sintomas: [
-      'Córnea opaca de color azul brillante',
-      'Fotofobia (molestia a la luz)',
-      'Lagrimeo excesivo',
-      'Blefaroespasmo'
+      'Córnea opaca azul brillante',
+      'Fotofobia',
+      'Lagrimeo'
     ],
     diagnostico: [
-      'Historia de vacunación o enfermedad sistémica',
-      'Examen con lámpara de hendidura',
-      'Test de fluoresceína'
+      'Historia clínica',
+      'Examen con lámpara de hendidura'
     ],
-    tratamiento: 'Suele ser autolimitante. Uso de corticoides tópicos (solo si no hay úlceras) y atropina para el dolor.',
-    prevencion_control: 'Uso de vacunas modernas (Adenovirus tipo 2).',
+    tratamiento: 'Suele ser autolimitante. Corticoides tópicos (sin úlcera).',
+    prevencion_control: 'Vacunas modernas (Adenovirus tipo 2).',
     especies_afectadas: ['Perro'],
     categoria: 'Ocular'
   },
   {
     id: 'espondilomielopatia-cervical-wobbler',
-    nombre: 'Espondilomielopatía Cervical (Síndrome de Wobbler)',
-    descripcion: 'Compresión de la médula espinal cervical debido a malformaciones vertebrales o inestabilidad.',
-    etiology: 'Genética y relacionada con el crecimiento rápido en razas grandes/gigantes.',
+    nombre: 'Espondilomielopatía Cervical (Wobbler)',
+    descripcion: 'Compresión de la médula espinal cervical.',
+    etiology: 'Genética y relacionada con el crecimiento rápido.',
     sintomas: [
-      'Ataxia (paso tambaleante) del tren posterior',
-      'Debilidad progresiva',
-      'Cuello bajo y rígido por dolor',
-      'Desgaste de uñas por arrastre de patas'
+      'Ataxia del tren posterior',
+      'Debilidad',
+      'Cuello bajo y rígido'
     ],
     diagnostico: [
-      'Resonancia Magnética (MRI)',
-      'Mielografía',
-      'Tomografía Computarizada'
+      'Resonancia Magnética',
+      'Mielografía'
     ],
-    tratamiento: 'Cirugía descompresiva o manejo médico con restricción de ejercicio y corticoides en casos leves.',
-    prevencion_control: 'Evitar suplementación excesiva de calcio en cachorros de razas grandes.',
+    tratamiento: 'Cirugía o restricción de ejercicio y corticoides.',
+    prevencion_control: 'Evitar suplementación excesiva de calcio.',
     especies_afectadas: ['Perro', 'Caballo'],
     categoria: 'Neurológica'
+  },
+  {
+    id: 'encefalopatia-mitocondrial',
+    nombre: 'Encefalopatía Mitocondrial',
+    descripcion: 'Trastorno neurológico degenerativo causado por una disfunción en las mitocondrias de las células nerviosas.',
+    etiology: 'Genética, mutación en el transportador de tiamina identificado en el Husky de Alaska.',
+    sintomas: [
+      'Convulsiones',
+      'Déficits sensoriales (ceguera)',
+      'Desorientación',
+      'Ataxia progresiva'
+    ],
+    diagnostico: [
+      'Resonancia Magnética (lesiones simétricas en tálamo)',
+      'Pruebas genéticas',
+      'Análisis de niveles de lactato/piruvato'
+    ],
+    tratamiento: 'Soporte paliativo. La suplementación con tiamina rara vez es efectiva en la forma genética.',
+    prevencion_control: 'Pruebas genéticas en reproductores.',
+    especies_afectadas: ['Perro'],
+    categoria: 'Genética'
   }
 ];

@@ -5,44 +5,62 @@ export const pathologiesD: Pathology[] = [
     id: 'displasia-cadera',
     nombre: 'Displasia de Cadera',
     descripcion: 'Malformación de la articulación coxofemoral que resulta en una laxitud articular y posterior enfermedad articular degenerativa.',
-    etiology: 'Multifactorial, con un fuerte componente genético hereditario (poligénico) agravado por factores ambientales como nutrición y ejercicio excesivo en el crecimiento.',
+    etiology: 'Multifactorial, con un fuerte componente genético hereditario (poligénico) agravado por nutrición y ejercicio excesivo.',
     sintomas: [
       'Cojera intermitente o persistente de patas traseras',
       'Dificultad para levantarse o subir escaleras',
       'Marcha de "salto de conejo"',
-      'Atrofia muscular en muslos',
-      'Dolor a la extensión de la cadera'
+      'Atrofia muscular en muslos'
     ],
     diagnostico: [
-      'Examen físico y ortopédico (Prueba de Ortolani)',
-      'Radiografías (proyección ventrodorsal extendida)',
-      'Método PennHIP (evaluación de laxitud)',
-      'Tomografía Computarizada'
+      'Examen físico (Prueba de Ortolani)',
+      'Radiografías (proyección ventrodorsal)',
+      'Método PennHIP'
     ],
-    tratamiento: 'Manejo médico (AINEs, condroprotectores, control de peso, fisioterapia). Opciones quirúrgicas: Sinfisiodesis púbica juvenil, Triple osteotomía pélvica, Ostectomía de cabeza femoral o Prótesis total de cadera.',
-    prevencion_control: 'Selección genética de reproductores, evitar crecimiento acelerado en cachorros de razas grandes, control estricto de la dieta.',
+    tratamiento: 'Manejo médico (AINEs, condroprotectores, control de peso) o cirugía (Sinfisiodesis, TOP, Prótesis).',
+    prevencion_control: 'Selección genética y evitar crecimiento acelerado.',
     especies_afectadas: ['Perro', 'Gato'],
     categoria: 'Ortopédica'
   },
   {
     id: 'displasia-codo',
     nombre: 'Displasia de Codo',
-    descripcion: 'Término que engloba varias anomalías del desarrollo en la articulación del codo (FCP, UAP, OCD).',
-    etiology: 'Incongruencia articular hereditaria que causa sobrecarga de presión en puntos específicos del cúbito y radio.',
+    descripcion: 'Anomalías del desarrollo en la articulación del codo (FCP, UAP, OCD).',
+    etiology: 'Incongruencia articular hereditaria.',
     sintomas: [
-      'Cojera de patas delanteras que empeora tras el ejercicio',
-      'Rotación externa de la pata al caminar',
-      'Dolor a la flexión/extensión del codo',
-      'Derrame articular (hinchazón)'
+      'Cojera de patas delanteras',
+      'Rotación externa de la pata',
+      'Dolor a la flexión del codo'
     ],
     diagnostico: [
-      'Radiología (vistas en flexión)',
-      'Tomografía Computarizada (Estándar de oro)',
+      'Radiología',
+      'Tomografía Computarizada',
       'Artroscopia'
     ],
-    tratamiento: 'Cirugía artroscópica para remover fragmentos, osteotomías de nivelación o manejo médico paliativo.',
-    prevencion_control: 'Control del peso en el crecimiento y selección de reproductores libres de la enfermedad.',
+    tratamiento: 'Cirugía artroscópica o manejo médico paliativo.',
+    prevencion_control: 'Control del peso y selección de reproductores.',
     especies_afectadas: ['Perro'],
     categoria: 'Ortopédica'
+  },
+  {
+    id: 'condrodisplasia-malamute',
+    nombre: 'Condrodisplasia del Malamute',
+    descripcion: 'Trastorno del crecimiento óseo que resulta en extremidades cortas y deformadas (enanismo).',
+    etiology: 'Hereditaria, autosómica recesiva con penetrancia completa.',
+    sintomas: [
+      'Extremidades anteriores curvas y cortas',
+      'Cojera o marcha anormal',
+      'Anemia (asociada en algunos casos)',
+      'Afectación visible desde las 5-12 semanas de edad'
+    ],
+    diagnostico: [
+      'Signos clínicos evidentes',
+      'Radiografía de huesos largos',
+      'Pruebas genéticas'
+    ],
+    tratamiento: 'No hay cura. Manejo sintomático de la artritis secundaria.',
+    prevencion_control: 'Eliminación de portadores de los programas de cría.',
+    especies_afectadas: ['Perro'],
+    categoria: 'Genética'
   }
 ];

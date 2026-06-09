@@ -4,45 +4,88 @@ export const pathologiesP: Pathology[] = [
   {
     id: 'parvovirus-canino',
     nombre: 'Parvovirus Canino',
-    descripcion: 'Enfermedad viral altamente contagiosa y potencialmente mortal que afecta principalmente a cachorros y perros no vacunados.',
-    etiology: 'Causada por el Parvovirus Canino tipo 2 (CPV-2). Es un virus extremadamente resistente en el ambiente.',
-    sintomas: [
-      'Vómitos severos',
-      'Diarrea sanguinolenta con olor fétido',
-      'Letargo extremo',
-      'Anorexia',
-      'Fiebre alta o hipotermia',
-      'Deshidratación rápida'
-    ],
-    diagnostico: [
-      'Prueba rápida de antígeno en heces (ELISA)',
-      'Hemograma (leucopenia severa)',
-      'PCR',
-      'Signología clínica'
-    ],
-    tratamiento: 'Soporte intensivo: Fluidoterapia intravenosa, control de vómito (antieméticos), antibióticos para prevenir sepsis secundaria, soporte nutricional (sonda) y manejo del dolor.',
-    prevencion_control: 'Vacunación estricta desde las 6-8 semanas. Desinfección de áreas con cloro diluido. Cuarentena de animales enfermos.',
+    descripcion: 'Enfermedad viral altamente contagiosa.',
+    etiology: 'CPV-2.',
+    sintomas: ['Vómitos', 'Diarrea fétida', 'Leucopenia'],
+    diagnostico: ['ELISA', 'PCR'],
+    tratamiento: 'Soporte intensivo.',
+    prevencion_control: 'Vacunación.',
     especies_afectadas: ['Perro'],
     categoria: 'Infecciosa'
   },
   {
     id: 'panosteitis',
-    nombre: 'Panosteitis (Enostosis)',
-    descripcion: 'Inflamación de la superficie de los huesos largos ("dolores de crecimiento").',
-    etiology: 'Desconocida, sospecha metabólica o infecciosa; afecta la cavidad medular ósea.',
-    sintomas: [
-      'Cojera aguda que "salta" de una pata a otra',
-      'Dolor severo a la palpación de la diáfisis ósea',
-      'Fiebre leve y letargo en crisis',
-      'Inapetencia'
-    ],
-    diagnostico: [
-      'Examen ortopédico',
-      'Radiografía (aumento de densidad medular, manchas radio-opacas)'
-    ],
-    tratamiento: 'Analgésicos (AINEs) y reposo. Suele ser autolimitante al llegar a la madurez.',
-    prevencion_control: 'Evitar dietas hipercalóricas en cachorros.',
+    nombre: 'Panosteitis',
+    descripcion: 'Inflamación ósea en perros jóvenes.',
+    etiology: 'Desconocida.',
+    sintomas: ['Cojera cambiante', 'Dolor óseo severo'],
+    diagnostico: ['Radiografía'],
+    tratamiento: 'AINEs.',
+    prevencion_control: 'Evitar dietas hipercalóricas.',
     especies_afectadas: ['Perro'],
     categoria: 'Ortopédica'
+  },
+  {
+    id: 'pancreatitis',
+    nombre: 'Pancreatitis',
+    descripcion: 'Inflamación del páncreas que puede ser aguda o crónica.',
+    etiology: 'Inducida por dietas altas en grasa, fármacos, trauma o predisposición racial.',
+    sintomas: [
+      'Vómitos severos',
+      'Dolor abdominal (posición de rezo)',
+      'Anorexia',
+      'Deshidratación'
+    ],
+    diagnostico: [
+      'cPLI / fPLI (Prueba específica de lipasa pancreática)',
+      'Ecografía abdominal',
+      'Leucocitosis'
+    ],
+    tratamiento: 'Ayuno temporal (si hay vómito), fluidoterapia agresiva, analgesia potente (opioides), dieta baja en grasa.',
+    prevencion_control: 'Evitar ingesta de sobras de comida humana y grasas.',
+    especies_afectadas: ['Perro', 'Gato'],
+    categoria: 'Metabólica'
+  },
+  {
+    id: 'polineuropatia-idiopatica-malamute',
+    nombre: 'Polineuropatía del Malamute',
+    descripcion: 'Trastorno degenerativo de los nervios periféricos.',
+    etiology: 'Genética, herencia autosómica recesiva.',
+    sintomas: [
+      'Debilidad progresiva del tren posterior',
+      'Atrofia muscular',
+      'Cambio en la voz (parálisis laríngea asociada)',
+      'Pérdida de reflejos espinales'
+    ],
+    diagnostico: [
+      'Pruebas de electrodiagnóstico (EMG)',
+      'Biopsia de nervio',
+      'Prueba genética'
+    ],
+    tratamiento: 'No hay tratamiento curativo. Soporte físico.',
+    prevencion_control: 'Control genético en reproductores.',
+    especies_afectadas: ['Perro'],
+    categoria: 'Genética'
+  },
+  {
+    id: 'piometra',
+    nombre: 'Piometra',
+    descripcion: 'Infección uterina grave con acumulación de pus.',
+    etiology: 'Hiperplasia endometrial quística influenciada por progesterona seguida de invasión bacteriana (E. coli).',
+    sintomas: [
+      'Descarga vaginal purulenta (si es abierta)',
+      'Poliuria/Polidipsia (bebe y orina mucho)',
+      'Letargo y fiebre',
+      'Vómitos'
+    ],
+    diagnostico: [
+      'Ecografía abdominal (cuernos uterinos distendidos)',
+      'Radiografía',
+      'Hemograma (leucocitosis severa)'
+    ],
+    tratamiento: 'Ovariohisterectomía de urgencia (tratamiento de elección). Antibióticos.',
+    prevencion_control: 'Castración temprana de hembras que no serán destinadas a cría.',
+    especies_afectadas: ['Perro', 'Gato'],
+    categoria: 'Otros'
   }
 ];
