@@ -288,6 +288,7 @@ import { phenoxybenzamineDrug } from './phenoxybenzamine';
 import { phenoxyethanolDrug } from './phenoxyethanol';
 import { phenylephrineDrug } from './phenylephrine';
 import { phenylbutazoneDrug } from './phenylbutazone';
+import { phenobarbitalDrug } from './phenobarbital';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
