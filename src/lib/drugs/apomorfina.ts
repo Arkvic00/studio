@@ -93,9 +93,9 @@ export const apomorfinaDrug: Drug = {
       signos: ["Sedación profunda", "Apnea", "Hipotensión severa"],
       tratamiento: "Antidopaminérgicos (fenotiazinas) para detener el vómito; Naloxona puede ayudar con la depresión del SNC."
     },
-    interactions_farmacologicas: [
+    interacciones_farmacologicas: [
       { farmaco: "Fenotiazinas (Acepromazina)", efecto: "Antagonizan el efecto emético de la apomorfina.", severidad: "Importante" },
-      { farmaco: "Opioides", efecto: "Potencian la depresión respiratoria y del SNC.", severidad: "Grave" }
+      { farmaco: "Opioides", efecto: "Potenciación de la depresión respiratoria y del SNC.", severidad: "Grave" }
     ]
   },
   farmacologia_clinica: {

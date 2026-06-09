@@ -5,7 +5,7 @@ export const papaveretumDrug: Drug = {
   meta_data: {
     nombre_generico: "Papaveretum (Omnopon)",
     nombres_comerciales: ["Omnopon*", "Papaveretum*"],
-    group_farmacologico: "Mezcla de alcaloides del opio; Analgésico opioide",
+    grupo_farmacologico: "Mezcla de alcaloides del opio; Analgésico opioide",
     status_regulatorio: "POM CD SCHEDULE 2"
   },
   resumen_clinico: {

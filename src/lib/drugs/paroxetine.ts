@@ -5,7 +5,7 @@ export const paroxetineDrug: Drug = {
   meta_data: {
     nombre_generico: "Paroxetina",
     nombres_comerciales: ["Paxil", "Seroxat"],
-    group_farmacologico: "ISRS (Inhibidor selectivo de la recaptación de serotonina)",
+    grupo_farmacologico: "ISRS (Inhibidor selectivo de la recaptación de serotonina)",
     status_regulatorio: "POM"
   },
   resumen_clinico: {
@@ -15,7 +15,7 @@ export const paroxetineDrug: Drug = {
       "Alternativa a la fluoxetina o clomipramina en trastornos de ansiedad.",
       "En gatos, se usa para el marcaje urinario con agresividad.",
       "En aves, ayuda en el picaje de plumas y automutilación.",
-      "Requiere periodos de lavado (wash-out) prolongados al cambiar desde o hacia IMAOs."
+      "Requiere periodos de lavado (wash-out) prolongados al cambiar desde o hacia un IMAOs."
     ],
     usos_principales: "Tratamiento de la ansiedad generalizada, impulsividad, marcaje urinario y trastornos de comportamiento en aves.",
     inicio_accion: "Lento (4-6 semanas para efecto completo)",
@@ -85,7 +85,7 @@ export const paroxetineDrug: Drug = {
       "Aumento paradójico de la agresividad."
     ],
     monitoreo_recomendado: [
-      "Estado mental y conducta",
+      "Estado de la mente y conducta",
       "Frecuencia de micción en gatos",
       "Peso corporal"
     ],
