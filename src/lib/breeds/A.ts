@@ -5,7 +5,7 @@ export const breedsA: Breed[] = [
     id: 'affenpinscher',
     nombre: 'Affenpinscher',
     especie: 'Perro',
-    descripcion: 'Originario de Alemania, el Affenpinscher (perro mono) es una de las razas de juguete más antiguas. Originalmente criados para ser cazadores de roedores en establos, destacan por su cara traviesa y temperamento valiente e inquisitivo.',
+    descripcion: 'Originario de Alemania, el Affenpinscher (perro mono) es una de las razas de juguete más antiguas y valientes. Originalmente criados para ser cazadores de roedores en establos alemanes, destacan por su cara traviesa de expresión casi humana y un temperamento inquisitivo que no conoce el miedo ante perros más grandes.',
     icon: '🐶',
     predisposiciones: [
       { patologiaId: 'alopecia-estacional-flancos', nota_especifica: 'Reportado en series de casos; no ligado a niveles bajos de hormonas sexuales en esta raza.' }
@@ -15,7 +15,7 @@ export const breedsA: Breed[] = [
     id: 'afghan-hound',
     nombre: 'Afghan Hound (Galgo Afgano)',
     especie: 'Perro',
-    descripcion: 'Una raza aristocrática de gran antigüedad. Desarrollado para cazar presas grandes en las montañas de Afganistán, es un cazador de vista (sighthound) con velocidad increíble y una personalidad independiente pero leal.',
+    descripcion: 'Una de las razas más antiguas y aristocráticas del mundo. Desarrollado originalmente para cazar presas grandes como leopardos y gacelas en las montañas de Afganistán, es un galgo de vista con una agilidad y velocidad asombrosas. Su pelaje largo y sedoso servía como protección contra el frío extremo de las alturas, mientras que su personalidad es una mezcla fascinante de lealtad profunda e independencia felina.',
     icon: '🐕',
     predisposiciones: [
       { patologiaId: 'bloqueo-cardiaco-alto-grado', nota_especifica: 'Predispuestos a bloqueos de 2do y 3er grado. Hembras enteras y perros pesados en mayor riesgo.' },
@@ -32,7 +32,7 @@ export const breedsA: Breed[] = [
     id: 'african-boerboel',
     nombre: 'African Boerboel',
     especie: 'Perro',
-    descripcion: 'Mastín masivo y poderoso de Sudáfrica, desarrollado para proteger granjas contra depredadores peligrosos. Es robusto, musculoso y con una naturaleza protectora inquebrantable.',
+    descripcion: 'Mastín masivo y poderoso originario de Sudáfrica, diseñado para la protección de granjas contra depredadores peligrosos. Es un perro de trabajo robusto, de musculatura imponente y una naturaleza protectora inquebrantable hacia su familia. Requiere un manejo firme y socialización temprana debido a su fuerte instinto territorial.',
     icon: '🐕',
     predisposiciones: [
       { patologiaId: 'displasia-codo', nota_especifica: 'Muy común en la raza (incidencia >38%), especialmente en machos.' },
@@ -43,7 +43,7 @@ export const breedsA: Breed[] = [
     id: 'airedale-terrier',
     nombre: 'Airedale Terrier',
     especie: 'Perro',
-    descripcion: 'El "Rey de los Terriers", versátil e inteligente. Ha servido como perro policía, mensajero de guerra y cazador de nutrias. Posee un pelaje duro y una energía inagotable.',
+    descripcion: 'Conocido como el "Rey de los Terriers", es el más grande de su grupo y uno de los perros de trabajo más versátiles que existen. Ha servido históricamente como perro policía, mensajero de guerra y cazador de nutrias. Posee un pelaje duro, una inteligencia aguda y una energía inagotable que lo hace destacar en deportes caninos y búsqueda y rescate.',
     icon: '🐕',
     predisposiciones: [
       { patologiaId: 'cardiomiopatia-dilatada', nota_especifica: 'Prevalencia aumenta con la edad; común en machos.' },
@@ -64,7 +64,7 @@ export const breedsA: Breed[] = [
     id: 'alaskan-husky',
     nombre: 'Alaskan Husky',
     especie: 'Perro',
-    descripcion: 'Categoría de perros de trineo criados estrictamente por su rendimiento y velocidad. Son atletas de élite capaces de recorrer largas distancias en condiciones árticas.',
+    descripcion: 'Más que una raza pura, es una categoría de perros de trineo criados estrictamente por su rendimiento, velocidad y resistencia en climas extremos. Son atletas de élite capaces de recorrer distancias masivas tirando de cargas. Poseen un metabolismo único y una estructura física optimizada para el trabajo invernal, siendo animales sumamente activos y sociables.',
     icon: '🐕',
     predisposiciones: [
       { patologiaId: 'hipotiroidismo', nota_especifica: 'Alta prevalencia de autoanticuerpos tiroideos (THAA).' },
@@ -76,7 +76,7 @@ export const breedsA: Breed[] = [
     id: 'alaskan-klee-kai',
     nombre: 'Alaskan Klee Kai',
     especie: 'Perro',
-    descripcion: 'Versión de compañía del Husky, pequeño y lleno de energía. Reservado con extraños pero extremadamente leal a su familia.',
+    descripcion: 'Una raza joven desarrollada para ser una versión de compañía del Husky de Alaska. Es pequeño pero conserva el aspecto y la energía de sus ancestros nórdicos. Son perros sumamente inteligentes, reservados con los extraños pero extremadamente leales y afectuosos con su núcleo familiar, destacando por su agilidad y limpieza.',
     icon: '🐺',
     predisposiciones: [
       { patologiaId: 'deficiencia-factor-vii', nota_especifica: 'Condición hereditaria identificada frecuentemente en la raza.' }
@@ -86,7 +86,7 @@ export const breedsA: Breed[] = [
     id: 'alaskan-malamute',
     nombre: 'Alaskan Malamute',
     especie: 'Perro',
-    descripcion: 'Poderoso perro de trineo del Ártico, diseñado para cargas pesadas. De estructura sólida y pelaje denso, es independiente y afectuoso.',
+    descripcion: 'Poderoso perro de trineo originario del Ártico, diseñado para mover cargas pesadas a través de largas distancias. De estructura ósea sólida y pelaje denso e impermeable, es uno de los perros más antiguos del mundo. A diferencia del Husky Siberiano, el Malamute es más pesado y lento, con un carácter independiente pero profundamente afectuoso y digno.',
     icon: '🐺',
     predisposiciones: [
       { patologiaId: 'hipotiroidismo', nota_especifica: 'Más del 30% presenta niveles bajos de T4.' },

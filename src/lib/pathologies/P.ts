@@ -77,7 +77,7 @@ export const pathologiesP: Pathology[] = [
       'Electromiografía',
       'Biopsia de nervio/músculo'
     ],
-    treatment: 'Soporte paliativo; algunos perros pueden estabilizarse.',
+    tratamiento: 'Soporte paliativo; algunos perros pueden estabilizarse.',
     prevencion_control: 'Eliminar portadores del programa de cría.',
     especies_afectadas: ['Perro'],
     categoria: 'Neurológica'
