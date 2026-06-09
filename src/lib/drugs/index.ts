@@ -81,6 +81,7 @@ import { chitosanDrug } from './chitosan';
 import { chlorambucilDrug } from './chlorambucil';
 import { chloramineTDrug } from './chloramine_t';
 import { chloramphenicolDrug } from './chloramphenicol';
+import { chlorhexidineDrug } from './chlorhexidine';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -108,8 +109,6 @@ export const DB_MEDICAMENTOS = [
     amitriptylineDrug,
     amlodipineDrug,
     amoxicilinaDrug,
-    ampicillinDrug,
-    amphotericinBDrug,
     amproliumDrug,
     antivenomAdderDrug,
     apomorfinaDrug,
@@ -166,4 +165,5 @@ export const DB_MEDICAMENTOS = [
     chlorambucilDrug,
     chloramineTDrug,
     chloramphenicolDrug,
+    chlorhexidineDrug,
 ];
