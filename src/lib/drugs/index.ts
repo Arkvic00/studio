@@ -22,6 +22,7 @@ import { amiodaronaDrug } from './amiodarona';
 import { amitrazDrug } from './amitraz';
 import { amitriptylineDrug } from './amitriptyline';
 import { amlodipineDrug } from './amlodipine';
+import { amoxicilinaDrug } from './amoxicilina';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -48,4 +49,5 @@ export const DB_MEDICAMENTOS = [
     amitrazDrug,
     amitriptylineDrug,
     amlodipineDrug,
+    amoxicilinaDrug,
 ];
