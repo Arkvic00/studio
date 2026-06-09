@@ -27,15 +27,36 @@ export const bromhexineDrug: Drug = {
   parametros_dosificacion: {
     perro: [
       {
-        indicacion: "Enfermedad respiratoria (Oral)",
+        indicacion: "Mucólisis (Oral)",
+        vias: ["PO"],
+        math: {
+          tipo_calculo: "mg_kg",
+          dosis_recomendada: 2,
+          unidad_calculo: "mg/kg"
+        },
+        frecuencia: { texto_ui: "Cada 12 horas", intervalo_horas: 12 }
+      },
+      {
+        indicacion: "Mucólisis (Inyectable)",
+        vias: ["IM"],
+        math: {
+          tipo_calculo: "fija",
+          dosis_recomendada: 9,
+          dosis_min: 3,
+          dosis_max: 15,
+          unidad_calculo: "mg/perro"
+        },
+        frecuencia: { texto_ui: "Cada 12 horas", intervalo_horas: 12 }
+      },
+      {
+        indicacion: "Pequeños mamíferos / Exóticos",
         vias: ["PO"],
         math: {
           tipo_calculo: "fija",
           dosis_recomendada: 0.3,
           unidad_calculo: "mg/animal"
         },
-        frecuencia: { texto_ui: "Cada 24 horas", intervalo_horas: 24 },
-        notas_tecnicas: "Dosis basada en guías generales de mamíferos. En perros grandes, considerar dosis por peso si están disponibles en literatura específica."
+        frecuencia: { texto_ui: "Cada 24 horas", intervalo_horas: 24 }
       },
       {
         indicacion: "Nebulización",
@@ -52,12 +73,22 @@ export const bromhexineDrug: Drug = {
     ],
     gato: [
       {
-        indicacion: "Enfermedad respiratoria (Oral)",
+        indicacion: "Mucólisis (Oral)",
         vias: ["PO"],
         math: {
+          tipo_calculo: "mg_kg",
+          dosis_recomendada: 1,
+          unidad_calculo: "mg/kg"
+        },
+        frecuencia: { texto_ui: "Cada 24 horas", intervalo_horas: 24 }
+      },
+      {
+        indicacion: "Mucólisis (Inyectable)",
+        vias: ["IM"],
+        math: {
           tipo_calculo: "fija",
-          dosis_recomendada: 0.3,
-          unidad_calculo: "mg/animal"
+          dosis_recomendada: 3,
+          unidad_calculo: "mg/gato"
         },
         frecuencia: { texto_ui: "Cada 24 horas", intervalo_horas: 24 }
       },
@@ -163,7 +194,7 @@ export const bromhexineDrug: Drug = {
     instrucciones_manejo: "No usar la presentación en polvo para nebulizar. Almacenar a temperatura ambiente.",
     sobredosis: {
       signos: ["Trastornos digestivos leves"],
-      tratamiento: "Soporte sintomático."
+      treatment: "Soporte sintomático."
     },
     interacciones_farmacologicas: []
   },
