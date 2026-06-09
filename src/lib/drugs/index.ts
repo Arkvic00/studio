@@ -52,6 +52,7 @@ import { bromhexineDrug } from './bromhexine';
 import { brinzolamideDrug } from './brinzolamide';
 import { bronopolDrug } from './bronopol';
 import { budesonideDrug } from './budesonide';
+import { buserelinDrug } from './buserelin';
 import { bupivacaineDrug } from './bupivacaine';
 import { buprenorphineDrug } from './buprenorphine';
 import { butorphanolDrug } from './butorphanol';
@@ -111,6 +112,7 @@ export const DB_MEDICAMENTOS = [
     brinzolamideDrug,
     bronopolDrug,
     budesonideDrug,
+    buserelinDrug,
     bupivacaineDrug,
     buprenorphineDrug,
     butorphanolDrug,
