@@ -5,6 +5,7 @@ import { groupDF } from './group-d-f';
 import { groupGL } from './group-g-l';
 import { groupMP } from './group-m-p';
 import { groupRS } from './group-r-s';
+import { groupTZ } from './group-t-z';
 
 /**
  * Base de datos global del Vademécum.
@@ -17,4 +18,5 @@ export const DB_MEDICAMENTOS = [
     ...groupGL,
     ...groupMP,
     ...groupRS,
+    ...groupTZ,
 ];

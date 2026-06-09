@@ -25,6 +25,14 @@ import { sodiumCitrateDrug } from './sodium_citrate';
 import { sodiumCromoglicateDrug } from './sodium_cromoglicate';
 import { sodiumHypochloriteDrug } from './sodium_hypochlorite';
 import { sodiumStibogluconateDrug } from './sodium_stibogluconate';
+import { somatotropinDrug } from './somatotropin';
+import { sotalolDrug } from './sotalol';
+import { spinosadDrug } from './spinosad';
+import { spironolactoneDrug } from './spironolactone';
+import { sterculiaDrug } from './sterculia';
+import { sucralfateDrug } from './sucralfate';
+import { sulfasalazineDrug } from './sulfasalazine';
+import { suxamethoniumDrug } from './suxamethonium';
 
 export const groupRS = [
     rabacfosadineDrug,
@@ -54,4 +62,12 @@ export const groupRS = [
     sodiumCromoglicateDrug,
     sodiumHypochloriteDrug,
     sodiumStibogluconateDrug,
+    somatotropinDrug,
+    sotalolDrug,
+    spinosadDrug,
+    spironolactoneDrug,
+    sterculiaDrug,
+    sucralfateDrug,
+    sulfasalazineDrug,
+    suxamethoniumDrug,
 ];
