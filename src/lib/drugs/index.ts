@@ -127,6 +127,8 @@ import { desmopressinDrug } from './desmopressin';
 import { desoxycortonePivalateDrug } from './desoxycortone_pivalate';
 import { dexamethasoneDrug } from './dexamethasone';
 import { dexmedetomidineDrug } from './dexmedetomidine';
+import { dexrazoxaneDrug } from './dexrazoxane';
+import { diazepamDrug } from './diazepam';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -258,4 +260,6 @@ export const DB_MEDICAMENTOS = [
     desoxycortonePivalateDrug,
     dexamethasoneDrug,
     dexmedetomidineDrug,
+    dexrazoxaneDrug,
+    diazepamDrug,
 ];
