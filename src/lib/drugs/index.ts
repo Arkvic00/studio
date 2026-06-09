@@ -69,6 +69,7 @@ import { carvedilolDrug } from './carvedilol';
 import { alphaCasozepineDrug } from './alpha_casozepine';
 import { catAppeasingPheromoneDrug } from './cat_appeasing_pheromone';
 import { cefalexinDrug } from './cefalexin';
+import { cefotaximeDrug } from './cefotaxime';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -142,4 +143,5 @@ export const DB_MEDICAMENTOS = [
     alphaCasozepineDrug,
     catAppeasingPheromoneDrug,
     cefalexinDrug,
+    cefotaximeDrug,
 ];
