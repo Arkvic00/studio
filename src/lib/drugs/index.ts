@@ -39,6 +39,7 @@ import { azathioprineDrug } from './azathioprine';
 import { azithromycinDrug } from './azithromycin';
 import { aztreonamDrug } from './aztreonam';
 import { benazeprilDrug } from './benazepril';
+import { benzalkoniumChlorideDrug } from './benzalkonium_chloride';
 import { betamethasoneDrug } from './betamethasone';
 
 export const DB_MEDICAMENTOS = [
@@ -83,5 +84,6 @@ export const DB_MEDICAMENTOS = [
     azithromycinDrug,
     aztreonamDrug,
     benazeprilDrug,
+    benzalkoniumChlorideDrug,
     betamethasoneDrug,
 ];
