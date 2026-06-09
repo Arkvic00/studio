@@ -155,6 +155,9 @@ import { doxycyclineDrug } from './doxycycline';
 import { edetateCalciumDisodiumDrug } from './edetate_calcium_disodium';
 import { edrophoniumDrug } from './edrophonium';
 import { emamectinBenzoateDrug } from './emamectin_benzoate';
+import { emodepsideDrug } from './emodepside';
+import { enalaprilDrug } from './enalapril';
+import { enilconazoleDrug } from './enilconazole';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -314,4 +317,7 @@ export const DB_MEDICAMENTOS = [
     edetateCalciumDisodiumDrug,
     edrophoniumDrug,
     emamectinBenzoateDrug,
+    emodepsideDrug,
+    enalaprilDrug,
+    enilconazoleDrug,
 ];
