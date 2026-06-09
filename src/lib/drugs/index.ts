@@ -233,6 +233,10 @@ import { isofluraneDrug } from './isoflurane';
 import { ispaghulaDrug } from './ispaghula';
 import { itraconazoleDrug } from './itraconazole';
 import { ivermectinDrug } from './ivermectin';
+import { kaolinDrug } from './kaolin';
+import { ketamineDrug } from './ketamine';
+import { ketoconazoleDrug } from './ketoconazole';
+import { ketoprofenDrug } from './ketoprofen';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -342,7 +346,6 @@ export const DB_MEDICAMENTOS = [
     clopidogrelDrug,
     clotrimazoleDrug,
     cloxacillinDrug,
-    coAmoxiclavDrug,
     codeineDrug,
     colchicineDrug,
     colestyramineDrug,
@@ -470,4 +473,8 @@ export const DB_MEDICAMENTOS = [
     ispaghulaDrug,
     itraconazoleDrug,
     ivermectinDrug,
+    kaolinDrug,
+    ketamineDrug,
+    ketoconazoleDrug,
+    ketoprofenDrug,
 ];
