@@ -3,220 +3,172 @@ import type { Drug } from '@/lib/types';
 export const acepromazinaMaleatoDrug: Drug = {
   id: "acepromazina_maleato",
   meta_data: {
-    nombre_generico: "Acepromazina Maleato (ACP)",
-    nombres_comerciales: ["Acecare", "ACP", "PromAce", "Acesedate", "Aceproject", "Atravet"],
-    grupo_farmacologico: "Sedante Fenotiazínico; Neuroléptico",
-    status_regulatorio: "POM-V. Aprobado por la FDA para perros, gatos y caballos."
+    nombre_generico: "Acepromazina (ACP)",
+    nombres_comerciales: ["Acecare", "ACP", "Acesedate"],
+    grupo_farmacologico: "Fenotiazina",
+    status_regulatorio: "POM-V"
   },
   resumen_clinico: {
     puntos_clave: [
-      "Sedante y tranquilizante que reduce la actividad espontánea al deprimir el SNC.",
-      "Sin efectos analgésicos; debe combinarse con opioides para procedimientos dolorosos.",
-      "Posee propiedades antieméticas y eleva el umbral para arritmias cardíacas.",
-      "Efecto vasodilatador periférico, útil en el manejo de tromboembolismo en gatos.",
-      "¡ATENCIÓN!: No se recomienda para el manejo de fobias a ruidos (truenos, pirotecnia).",
-      "Efecto Meseta: La profundidad de la sedación alcanza un plateau a los 0.1 mg/kg; dosis superiores solo aumentan efectos adversos y duración."
+      "Efecto depresor del SNC, sedación y reducción de actividad espontánea.",
+      "Eleva el umbral para arritmias cardíacas y tiene propiedades antieméticas.",
+      "La sedación es poco fiable si se usa sola; combinar con opioides (neuroleptanalgesia).",
+      "La profundidad de la sedación tiene un efecto meseta (plateau) a los 0.1 mg/kg."
     ],
-    usos_principales: "Sedación, premedicación anestésica. Manejo de tromboembolismo felino. Coadyuvante en laminitis equina y obstrucciones uretrales.",
-    inicio_accion: "20–30 minutos (IM); variable (PO)",
-    duracion_efecto: "Hasta 6 horas (dosis clínicas); prolongada en dosis altas."
+    usos_principales: "Sedación o medicación pre-anestésica. Manejo de tromboembolismo en gatos por su acción vasodilatadora periférica.",
+    inicio_accion: "20–30 minutos (IM)",
+    duracion_efecto: "Hasta 6 horas (dosis clínicas)"
   },
   informacion_cliente: [
-    "Efecto óptimo oral 45-60 min después de la administración.",
-    "Puede causar que la orina sea rosa o marrón (inofensivo).",
-    "Los animales sedados pueden reaccionar violentamente a ruidos fuertes.",
-    "No usar para 'miedo a cohetes' ya que el animal sigue asustado pero no puede moverse.",
-    "Efectos pueden durar hasta 6-24 horas dependiendo de la dosis."
+    "No se recomienda para el manejo de fobias a sonidos (fuegos artificiales o truenos).",
+    "La dosis oral necesaria varía mucho entre individuos; dosis altas pueden causar sedación muy prolongada."
   ],
   parametros_dosificacion: {
     perro: [
       {
         indicacion: "Sedación / Premedicación (No Bóxers)",
         vias: ["IV lento"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.015, dosis_min: 0.01, dosis_max: 0.02, unidad_calculo: "mg/kg" },
-        frecuencia: { texto_ui: "Dosis única", intervalo_horas: 0 }
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.015, dosis_min: 0.01, dosis_max: 0.02, unidad_calculo: "mg/kg" }
       },
       {
         indicacion: "Sedación / Premedicación (No Bóxers)",
         vias: ["IM", "SC"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.03, dosis_min: 0.01, dosis_max: 0.05, unidad_calculo: "mg/kg" },
-        frecuencia: { texto_ui: "Dosis única", intervalo_horas: 0 }
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.03, dosis_min: 0.01, dosis_max: 0.05, unidad_calculo: "mg/kg" }
       },
       {
-        indicacion: "Sedación Oral (No Bóxers)",
+        indicacion: "Sedación Oral",
         vias: ["PO"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 2, dosis_min: 1, dosis_max: 3, unidad_calculo: "mg/kg" },
-        frecuencia: { texto_ui: "Cada 6-12 horas según necesidad", intervalo_horas: 12 }
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 2, dosis_min: 1, dosis_max: 3, unidad_calculo: "mg/kg" }
       },
       {
-        indicacion: "Bóxers (Dosis reducida por riesgo de síncope)",
+        indicacion: "Bóxers (Riesgo de síncope)",
         vias: ["IM"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.0075, dosis_min: 0.005, dosis_max: 0.01, unidad_calculo: "mg/kg" },
-        frecuencia: { texto_ui: "Dosis única", intervalo_horas: 0 },
-        notas_tecnicas: "Los Bóxers son propensos a síncope por bloqueo sinoauricular debido a tono vagal excesivo."
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.0075, dosis_min: 0.005, dosis_max: 0.01, unidad_calculo: "mg/kg" }
       }
     ],
     gato: [
       {
         indicacion: "Sedación / Premedicación",
         vias: ["IV lento"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.015, dosis_min: 0.01, dosis_max: 0.02, unidad_calculo: "mg/kg" },
-        frecuencia: { texto_ui: "Dosis única", intervalo_horas: 0 }
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.015, dosis_min: 0.01, dosis_max: 0.02, unidad_calculo: "mg/kg" }
       },
       {
         indicacion: "Sedación / Premedicación / Tromboembolismo",
         vias: ["IM", "SC"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.03, dosis_min: 0.01, dosis_max: 0.05, unidad_calculo: "mg/kg" },
-        frecuencia: { texto_ui: "Dosis única", intervalo_horas: 0 }
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.03, dosis_min: 0.01, dosis_max: 0.05, unidad_calculo: "mg/kg" }
       },
       {
         indicacion: "Sedación Oral",
         vias: ["PO"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 2, dosis_min: 1, dosis_max: 3, unidad_calculo: "mg/kg" },
-        frecuencia: { texto_ui: "Cada 8-12 horas", intervalo_horas: 12 }
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 2, dosis_min: 1, dosis_max: 3, unidad_calculo: "mg/kg" }
       }
     ],
     huron: [
       {
         indicacion: "Sedación",
         vias: ["IM", "SC", "PO"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.35, dosis_min: 0.2, dosis_max: 0.5, unidad_calculo: "mg/kg" },
-        frecuencia: { texto_ui: "Dosis única", intervalo_horas: 0 }
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.35, dosis_min: 0.2, dosis_max: 0.5, unidad_calculo: "mg/kg" }
       }
     ],
     conejo: [
       {
         indicacion: "Sedación",
         vias: ["IM", "SC"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.55, dosis_min: 0.1, dosis_max: 1.0, unidad_calculo: "mg/kg" },
-        frecuencia: { texto_ui: "Dosis única", intervalo_horas: 0 }
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.55, dosis_min: 0.1, dosis_max: 1.0, unidad_calculo: "mg/kg" }
       }
     ],
     cobaya: [
       {
-        indicacion: "Tranquilización",
+        indicacion: "Sedación",
         vias: ["IM", "SC", "PO"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 2.75, dosis_min: 0.5, dosis_max: 5.0, unidad_calculo: "mg/kg" },
-        frecuencia: { texto_ui: "Dosis única", intervalo_horas: 0 }
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 2.75, dosis_min: 0.5, dosis_max: 5.0, unidad_calculo: "mg/kg" }
       }
     ],
     roedores: [
       {
-        indicacion: "Ratas (Sedación)",
+        indicacion: "Ratas",
         vias: ["IM", "SC", "PO"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 1.5, dosis_min: 0.5, dosis_max: 2.5, unidad_calculo: "mg/kg" },
-        frecuencia: { texto_ui: "Dosis única", intervalo_horas: 0 }
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 1.5, dosis_min: 0.5, dosis_max: 2.5, unidad_calculo: "mg/kg" }
       },
       {
-        indicacion: "Ratones / Hámsteres (Sedación)",
+        indicacion: "Ratones / Hámsteres",
         vias: ["IM", "SC", "PO"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 2.75, dosis_min: 0.5, dosis_max: 5.0, unidad_calculo: "mg/kg" },
-        frecuencia: { texto_ui: "Dosis única", intervalo_horas: 0 }
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 2.75, dosis_min: 0.5, dosis_max: 5.0, unidad_calculo: "mg/kg" }
       },
       {
         indicacion: "Jerbos",
         vias: ["N/A"],
         math: { tipo_calculo: "fija", dosis_recomendada: 0, unidad_calculo: "mg" },
-        frecuencia: { texto_ui: "CONTRAINDICADO", intervalo_horas: 0 },
-        notas_tecnicas: "Baja el umbral de convulsiones en jerbos."
+        notas_tecnicas: "No recomendado. Baja el umbral de convulsiones."
       }
     ],
     primates: [
       {
-        indicacion: "Sedación (Primates pequeños)",
+        indicacion: "Primates pequeños",
         vias: ["PO", "SC", "IM"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.75, dosis_min: 0.5, dosis_max: 1.0, unidad_calculo: "mg/kg" },
-        frecuencia: { texto_ui: "Dosis única", intervalo_horas: 0 }
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.75, dosis_min: 0.5, dosis_max: 1.0, unidad_calculo: "mg/kg" }
       }
     ],
     petauro: [
       {
         indicacion: "Sedación",
         vias: ["IM", "SC", "PO"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 1.5, dosis_min: 1.0, dosis_max: 2.0, unidad_calculo: "mg/kg" },
-        frecuencia: { texto_ui: "Dosis única", intervalo_horas: 0 }
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 1.5, dosis_min: 1.0, dosis_max: 2.0, unidad_calculo: "mg/kg" }
       }
     ],
     erizo: [
       {
         indicacion: "Sedación",
         vias: ["PO", "SC", "IM"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.55, dosis_min: 0.1, dosis_max: 1.0, unidad_calculo: "mg/kg" },
-        frecuencia: { texto_ui: "Dosis única", intervalo_horas: 0 }
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.55, dosis_min: 0.1, dosis_max: 1.0, unidad_calculo: "mg/kg" }
       }
     ],
     reptil: [
       {
         indicacion: "Sedación",
         vias: ["IM"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.3, dosis_min: 0.1, dosis_max: 0.5, unidad_calculo: "mg/kg" },
-        frecuencia: { texto_ui: "Dosis única", intervalo_horas: 0 }
-      }
-    ],
-    caballo: [
-      {
-        indicacion: "Sedación / Control de animales difíciles",
-        vias: ["IV", "IM", "SC"],
-        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.066, dosis_min: 0.044, dosis_max: 0.088, unidad_calculo: "mg/kg" },
-        frecuencia: { texto_ui: "Dosis única", intervalo_horas: 0 }
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.3, dosis_min: 0.1, dosis_max: 0.5, unidad_calculo: "mg/kg" }
       }
     ]
   },
   seguridad_y_alertas: {
     contraindicaciones: [
-      "Hipotensión debida a shock, trauma o enfermedad cardiovascular.",
-      "Animales menores de 3 meses de edad.",
-      "Enfermedad hepática severa.",
-      "Animales anémicos (exacerba la anemia por secuestro esplénico de eritrocitos).",
+      "Hipotensión por shock, trauma o enfermedad cardiovascular.",
+      "Evitar en animales <3 meses y con enfermedad hepática.",
+      "Usar con cautela en animales anémicos (secuestro esplénico de eritrocitos).",
       "Jerbos (baja el umbral de convulsiones).",
       "No recomendado en aves."
     ],
-    precauciones: [
-      "Bóxers: Usar dosis extremadamente bajas o evitar (riesgo de síncope vagal).",
-      "Razas gigantes: Usar el extremo inferior del rango de dosis.",
-      "Evitar en animales con antecedentes de convulsiones."
-    ],
     efectos_adversos: [
-      "Hipotensión profunda (incluso en animales sanos).",
-      "Hipotermia y bradicardia.",
-      "Prolapso de la membrana nictitante.",
-      "Priapismo en caballos (riesgo de parálisis del músculo retractor del pene).",
+      "Hipotensión profunda (raro en animales sanos).",
+      "Hipotermia.",
       "Convulsiones en jerbos."
     ],
     monitoreo_recomendado: [
-      "Presión arterial (Hipotensión)",
-      "Temperatura corporal (Hipotermia)",
-      "Frecuencia cardíaca",
-      "Estado de hidratación"
+      "Presión arterial",
+      "Temperatura corporal",
+      "Balance de fluidos"
     ],
-    instrucciones_manejo: "Se deben observar las precauciones normales de manejo clínico.",
+    instrucciones_manejo: "Se deben observar las precauciones normales.",
     sobredosis: {
-      signos: ["Hipotensión severa", "Depresión severa del SNC", "Colapso"],
-      tratamiento: "Terapia de soporte (fluidos, mantener temperatura). CONTRAINDICADA la Adrenalina (puede empeorar la hipotensión).",
-      contraindicado_en_urgencia: ["Adrenalina (Epinefrina)"]
+      signos: ["Hipotensión severa", "Sedación prolongada"],
+      tratamiento: "Terapia de soporte para mantener temperatura y fluidos."
     },
     interacciones_farmacologicas: [
-      { farmaco: "Adrenalina", efecto: "Hipotensión paradójica y taquicardia", severidad: "Grave" },
-      { farmaco: "Otros depresores SNC", efecto: "Depresión aditiva (barbitúricos, propofol, gases)", severidad: "Importante" },
-      { farmaco: "Propranolol", efecto: "Aumento de los niveles sanguíneos de ambos fármacos", severidad: "Moderada" },
+      { farmaco: "Adrenalina", efecto: "Vasodilatación y taquicardia (actividad beta sin oposición)", severidad: "Grave" },
+      { farmaco: "Depresores SNC", efecto: "Depresión aditiva del SNC", severidad: "Importante" },
+      { farmaco: "Propranolol", efecto: "Aumento de los niveles de ambos fármacos", severidad: "Moderada" },
       { farmaco: "Quinidina", efecto: "Depresión cardíaca adicional", severidad: "Importante" },
-      { farmaco: "Antiácidos / Caolín-Pectina", efecto: "Reducción de la absorción oral", severidad: "Leve" }
+      { farmaco: "Antiácidos / Kaolín-Pectina", efecto: "Reducción de la absorción oral", severidad: "Leve" }
     ]
   },
   farmacologia_clinica: {
-    mecanismo_accion: "Bloqueo dopaminérgico postsináptico en el SNC y bloqueo alfa-1 adrenérgico periférico.",
-    farmacocinetica: {
-      general: "Inicio de acción: 20-30 min (IM). Duración: hasta 6 horas. Metabolismo hepático lento.",
-      datos_especie: {
-        "Caballo": "Metabolitos detectables en orina hasta 144 horas.",
-        "Perro": "Efectos pueden ser prolongados en individuos con sensibilidad genética."
-      }
-    }
+    mecanismo_accion: "Fenotiazina con efecto depresor en el SNC.",
+    farmacocinetica: "Inicio IM en 20-30 min. Duración hasta 6 horas. El metabolismo varía por tamaño corporal (usar dosis bajas en razas gigantes)."
   },
   presentaciones_comerciales: [
-    { tipo: "Inyección", concentracion_texto: "2 mg/ml", valor_concentracion: 2, unidad_concentracion: "mg/ml", es_divisible: false },
-    { tipo: "Inyección", concentracion_texto: "10 mg/ml", valor_concentracion: 10, unidad_concentracion: "mg/ml", es_divisible: false },
-    { tipo: "Tableta oral", concentracion_texto: "10 mg", valor_concentracion: 10, unidad_concentracion: "mg", es_divisible: true },
-    { tipo: "Tableta oral", concentracion_texto: "25 mg", valor_concentracion: 25, unidad_concentracion: "mg", es_divisible: true }
+    { tipo: "Inyectable", concentracion_texto: "2 mg/ml", valor_concentracion: 2, unidad_concentracion: "mg/ml", es_divisible: false },
+    { tipo: "Tableta", concentracion_texto: "10 mg", valor_concentracion: 10, unidad_concentracion: "mg", es_divisible: true },
+    { tipo: "Tableta", concentracion_texto: "25 mg", valor_concentracion: 25, unidad_concentracion: "mg", es_divisible: true }
   ]
 };
