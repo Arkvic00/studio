@@ -107,6 +107,8 @@ import { clotrimazoleDrug } from './clotrimazole';
 import { cloxacillinDrug } from './cloxacillin';
 import { coAmoxiclavDrug } from './co_amoxiclav';
 import { codeineDrug } from './codeine';
+import { colchicineDrug } from './colchicine';
+import { colestyramineDrug } from './colestyramine';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -218,4 +220,6 @@ export const DB_MEDICAMENTOS = [
     cloxacillinDrug,
     coAmoxiclavDrug,
     codeineDrug,
+    colchicineDrug,
+    colestyramineDrug,
 ];
