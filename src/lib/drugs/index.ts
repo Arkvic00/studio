@@ -245,6 +245,8 @@ import { latanoprostDrug } from './latanoprost';
 import { leflunomideDrug } from './leflunomide';
 import { lenograstimDrug } from './lenograstim';
 import { levamisoleDrug } from './levamisole';
+import { levetiracetamDrug } from './levetiracetam';
+import { lidocaineDrug } from './lidocaine';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -494,4 +496,6 @@ export const DB_MEDICAMENTOS = [
     leflunomideDrug,
     lenograstimDrug,
     levamisoleDrug,
+    levetiracetamDrug,
+    lidocaineDrug,
 ];
