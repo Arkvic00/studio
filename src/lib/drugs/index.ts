@@ -263,20 +263,10 @@ import { mitoxantroneDrug } from './mitoxantrone';
 import { morphineDrug } from './morphine';
 import { moxidectinDrug } from './moxidectin';
 import { moxifloxacinDrug } from './moxifloxacin';
-import { miconazoleDrug } from './miconazole';
-import { midazolamDrug } from './midazolam';
-import { milbemycinDrug } from './milbemycin';
-import { miltefosineDrug } from './miltefosine';
-import { minocyclineDrug } from './minocycline';
-import { mirtazapineDrug } from './mirtazapine';
-import { misoprostolDrug } from './misoprostol';
-import { mitotaneDrug } from './mitotane';
-import { neomycinDrug } from './neomycin';
-import { neostigmineDrug } from './neostigmine';
-import { nicotinamideDrug } from './nicotinamide';
-import { nitenpyramDrug } from './nitenpyram';
-import { nitrofurantoinDrug } from './nitrofurantoin';
-import { nitrousOxideDrug } from './nitrous_oxide';
+import { nystatinDrug } from './nystatin';
+import { oclacitinibDrug } from './oclacitinib';
+import { octreotideDrug } from './octreotide';
+import { ofloxacinDrug } from './ofloxacin';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -385,17 +375,12 @@ export const DB_MEDICAMENTOS = [
     clonidineDrug,
     clopidogrelDrug,
     clotrimazoleDrug,
-    clonazepamDrug,
-    clonidineDrug,
-    clopidogrelDrug,
-    clotrimazoleDrug,
     cloxacillinDrug,
     coAmoxiclavDrug,
     codeineDrug,
     colchicineDrug,
     colestyramineDrug,
     cyclophosphamideDrug,
-    sulfatoDeCobreDrug,
     cipermetrinaDrug,
     ciproheptadinaDrug,
     ciromazinaDrug,
@@ -548,18 +533,8 @@ export const DB_MEDICAMENTOS = [
     morphineDrug,
     moxidectinDrug,
     moxifloxacinDrug,
-    miconazoleDrug,
-    midazolamDrug,
-    milbemycinDrug,
-    miltefosineDrug,
-    minocyclineDrug,
-    mirtazapineDrug,
-    misoprostolDrug,
-    mitotaneDrug,
-    neomycinDrug,
-    neostigmineDrug,
-    nicotinamideDrug,
-    nitenpyramDrug,
-    nitrofurantoinDrug,
-    nitrousOxideDrug,
+    nystatinDrug,
+    oclacitinibDrug,
+    octreotideDrug,
+    ofloxacinDrug,
 ];
