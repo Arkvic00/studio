@@ -163,3 +163,15 @@ export interface ExoticSpeciesData {
         }
     }
 }
+
+export interface BreedPredisposition {
+  id: string;
+  breed: string;
+  species: 'Perro' | 'Gato';
+  icon: string;
+  conditions: {
+    name: string;
+    description: string;
+    type: 'Ortopédico' | 'Cardíaco' | 'Ocular' | 'Endocrino' | 'Dermatológico' | 'Neurológico' | 'Otros';
+  }[];
+}

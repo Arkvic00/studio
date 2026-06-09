@@ -1,9 +1,8 @@
 'use client';
 import Link from 'next/link';
 import { 
-    ChevronRight, Plus, Search, BookOpen, Calendar, HeartPulse, AlertCircle, Utensils, Atom, Snowflake, Users, 
-    VenetianMask, Info, Home, Ban, Hand, Syringe, FlaskConical, Stethoscope, Microscope, TestTube, Dna, Bone, Shield, 
-    Pill, Bug, TriangleAlert, Beaker, Droplet, Brain, Thermometer, Baby, Loader2
+    ChevronRight, Plus, Search, BookOpen, HeartPulse, Info, 
+    Stethoscope, Shield, Pill, TriangleAlert, Bone, Eye, Zap, Activity
 } from 'lucide-react';
 import Image from 'next/image';
 import { PinterestCard } from '@/components/ui/pinterest-card';
@@ -11,14 +10,11 @@ import { useAppContext } from '@/contexts/app-context';
 import { useState, useMemo } from 'react';
 import { Input } from '@/components/ui/input';
 import { fuzzySearch, cn } from '@/lib/utils';
-import { SPECIES_CONFIG } from '@/lib/config';
-import { EXOTICS_DATA } from '@/lib/exotics';
-import type { Drug, ExoticSpeciesData } from '@/lib/types';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from '../ui/badge';
 import { Skeleton } from '../ui/skeleton';
 import { DB_MEDICAMENTOS } from '@/lib/data';
+import { BREED_PREDISPOSITIONS } from '@/lib/predispositions';
+import type { BreedPredisposition } from '@/lib/types';
 
 // Sub-component for Fármacos list
 function DrugList() {
@@ -48,13 +44,13 @@ function DrugList() {
     }, [searchTerm, allDrugs]);
 
     return (
-        <>
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="relative mb-8">
                 <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-muted-foreground z-10" size={24} />
                 <Input
                     type="text"
                     placeholder="Buscar fármaco por nombre, uso, grupo..."
-                    className="w-full rounded-full bg-card p-6 pl-16 text-lg font-bold text-white border-2 border-border focus:border-primary transition-all"
+                    className="w-full rounded-full bg-card p-6 pl-16 text-lg font-bold text-white border-2 border-border focus:border-emerald-500/50 transition-all"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -80,7 +76,7 @@ function DrugList() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {filteredDrugs.map(drug => (
                         <Link key={drug.id} href={`/vademecum/${drug.id}`} passHref>
-                            <PinterestCard className="hover:bg-secondary cursor-pointer group transition-all hover:border-accent/30 h-full">
+                            <PinterestCard className="hover:bg-secondary cursor-pointer group transition-all hover:border-emerald-500/30 h-full">
                                 <div className="flex justify-between items-center gap-4">
                                     <div className="flex items-center gap-4">
                                         <button 
@@ -98,11 +94,11 @@ function DrugList() {
                                         </button>
                                         
                                         <div>
-                                            <h3 className="text-2xl font-black text-white mb-1 group-hover:text-accent transition-colors">{drug.meta_data.nombre_generico}</h3>
+                                            <h3 className="text-2xl font-black text-white mb-1 group-hover:text-emerald-400 transition-colors">{drug.meta_data.nombre_generico}</h3>
                                             <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">{drug.meta_data.grupo_farmacologico.split(',')[0]}</p>
                                         </div>
                                     </div>
-                                    <div className="p-3 bg-card rounded-full group-hover:bg-accent group-hover:text-accent-foreground transition-all text-muted-foreground"><ChevronRight size={20} /></div>
+                                    <div className="p-3 bg-card rounded-full group-hover:bg-emerald-500 group-hover:text-emerald-950 transition-all text-muted-foreground"><ChevronRight size={20} /></div>
                                 </div>
                             </PinterestCard>
                         </Link>
@@ -114,276 +110,115 @@ function DrugList() {
                     )}
                 </div>
             )}
-        </>
+        </div>
     );
 }
 
-// Order of species for the UI
-const exoticSpeciesOrder = [
-    'roedores', 'conejo', 'mustelidos', 'cobaya', 'erizo', 
-    'ave', 'reptil', 'primates', 'axolote'
-];
-const exoticSpecies = exoticSpeciesOrder.map(key => ({
-    key,
-    ...SPECIES_CONFIG[key]
-}));
+// Sub-component for Predisposición view
+function PredisposicionList() {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selectedBreed, setSelectedBreed] = useState<BreedPredisposition | null>(null);
 
-const iconMap: { [key: string]: React.ElementType } = {
-    Calendar, HeartPulse, AlertCircle, Utensils, Atom, Snowflake, Users, 
-    VenetianMask, Info, Home, Ban, Hand, Syringe, FlaskConical, Stethoscope, Microscope, TestTube, Dna, Bone, Shield, 
-    Pill, Bug, TriangleAlert, Beaker, Droplet, Brain, Thermometer, Baby
-};
+    const filteredBreeds = useMemo(() => {
+        if (!searchTerm.trim()) return BREED_PREDISPOSITIONS;
+        return BREED_PREDISPOSITIONS.filter(b => 
+            fuzzySearch(searchTerm, b.breed) || b.species.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    }, [searchTerm]);
 
-function ExoticDetailView({ speciesKey }: { speciesKey: string | null }) {
-    if (!speciesKey) {
-        return null;
-    }
-    const speciesData = EXOTICS_DATA[speciesKey as keyof typeof EXOTICS_DATA];
-    const speciesInfo = SPECIES_CONFIG[speciesKey as keyof typeof SPECIES_CONFIG];
-    
-    if (!speciesData || !speciesData.sections) {
-        return (
-             <PinterestCard>
-                <div className="text-center py-20 text-muted-foreground">
-                    <h2 className="text-2xl font-bold text-white mb-2">En Construcción</h2>
-                    <p>El formulario para {speciesInfo?.label || speciesKey} estará disponible próximamente.</p>
-                </div>
-            </PinterestCard>
-        )
-    }
+    const getIcon = (type: string) => {
+        switch (type) {
+            case 'Ortopédico': return <Bone size={16} className="text-orange-400" />;
+            case 'Cardíaco': return <HeartPulse size={16} className="text-red-400" />;
+            case 'Ocular': return <Eye size={16} className="text-blue-400" />;
+            case 'Endocrino': return <Zap size={16} className="text-yellow-400" />;
+            case 'Dermatológico': return <Shield size={16} className="text-purple-400" />;
+            case 'Neurológico': return <Activity size={16} className="text-pink-400" />;
+            default: return <Info size={16} className="text-slate-400" />;
+        }
+    };
 
     return (
-        <div className="space-y-8 animate-in fade-in duration-500">
-             <PinterestCard className="relative overflow-hidden border-l-8 border-l-destructive">
-                <div className="flex items-center gap-6">
-                    <div className="text-7xl">{speciesInfo.icon}</div>
-                     <div>
-                        <h1 className="text-6xl font-black text-white mb-2 tracking-tighter">{speciesInfo.label}</h1>
-                        <p className="text-lg text-muted-foreground font-medium">Formulario de Especies Exóticas</p>
-                    </div>
-                </div>
-            </PinterestCard>
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-8">
+            <div className="relative">
+                <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-muted-foreground z-10" size={24} />
+                <Input
+                    type="text"
+                    placeholder="Buscar raza (Ej: Pastor Alemán, Siamés...)"
+                    className="w-full rounded-full bg-card p-6 pl-16 text-lg font-bold text-white border-2 border-border focus:border-rose-500/50 transition-all"
+                    value={searchTerm}
+                    onChange={(e) => {
+                        setSearchTerm(e.target.value);
+                        setSelectedBreed(null);
+                    }}
+                />
+            </div>
 
-            {Object.entries(speciesData.sections).map(([key, section]) => {
-                const { content, title, icon } = section as any;
-                if (!content) return null;
-                const SectionIcon = iconMap[icon as string] || BookOpen;
-
-                const renderContent = () => {
-                    if (typeof content === 'string') {
-                      return <p className="text-sm text-slate-300">{content}</p>;
-                    }
-                  
-                    if (key === 'patologias' && Array.isArray(content)) {
-                      return (
-                        <Accordion type="multiple" className="w-full space-y-3">
-                          {content.map((cat: any, index: number) => {
-                            const Icon = iconMap[cat.icon] || TriangleAlert;
-                            return (
-                              <AccordionItem key={index} value={cat.category} className="border-none bg-card rounded-2xl overflow-hidden">
-                                <AccordionTrigger className="px-4 py-3 text-white font-bold text-sm hover:no-underline hover:bg-white/5 transition-colors">
-                                  <div className="flex items-center gap-3">
-                                    <Icon size={18} className="text-accent" />
-                                    {cat.category}
-                                  </div>
-                                </AccordionTrigger>
-                                <AccordionContent className="px-4 pb-4 pt-0 text-sm text-slate-300">
-                                  <ul className="space-y-3 mt-2">
-                                    {cat.diseases.map((d: any, dIndex: number) => (
-                                      <li key={dIndex} className="p-3 bg-background/50 rounded-lg border border-border">
-                                        <h5 className="font-bold text-white">{d.name}</h5>
-                                        <p className="text-xs text-slate-400">{d.description}</p>
-                                        {d.tags && <div className="flex gap-2 mt-2">{d.tags.map((t: string, tIndex: number) => <Badge key={tIndex} variant={t === 'Urgencia' || t === 'Mortal' || t === 'Iatrogénico' || t === 'Zoonosis' || t === 'Fatal' ? 'destructive' : 'secondary'} className="text-[9px]">{t}</Badge>)}</div>}
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </AccordionContent>
-                              </AccordionItem>
-                            );
-                          })}
-                        </Accordion>
-                      );
-                    }
-                  
-                    if (Array.isArray(content)) {
-                      return (
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                          {content.map((item: any, index: number) => {
-                            const ItemIcon = iconMap[item.icon as string] || TriangleAlert;
-                            return (
-                              <div key={index} className={cn("bg-card p-6 rounded-3xl border border-border h-full", item.isCritical && 'border-destructive')}>
-                                <h3 className="font-bold text-white mb-3 flex items-center gap-2 text-base"><ItemIcon size={18} className={cn("text-accent", item.isCritical && "text-destructive")} /> {item.title}</h3>
-                                {item.text && <p className="text-sm text-slate-300">{item.text}</p>}
-                                {item.items && <ul className="list-disc list-inside text-sm text-slate-300 space-y-2">
-                                  {item.items.map((li: string, i: number) => <li key={i}>{li}</li>)}
-                                </ul>}
-                                {item.points && <ul className="space-y-3">
-                                  {item.points.map((p: any, i: number) => (
-                                    <li key={i} className="flex gap-3 items-start text-sm text-slate-300">
-                                      {p.isProhibited ? <Ban size={20} className="text-destructive flex-shrink-0 mt-0.5" /> : <ChevronRight size={16} className="text-accent flex-shrink-0 mt-1" />}
-                                      <span>{p.text}</span>
-                                    </li>
-                                  ))}
-                                </ul>}
-                                {item.description && <p className="text-sm text-slate-300">{item.description}</p>}
-                              </div>
-                            );
-                          })}
+            {selectedBreed ? (
+                <div className="space-y-6 animate-in zoom-in-95 duration-300">
+                    <PinterestCard className="border-l-8 border-l-rose-500">
+                        <div className="flex items-center gap-6 mb-8">
+                            <div className="text-7xl">{selectedBreed.icon}</div>
+                            <div>
+                                <Badge variant="secondary" className="mb-2">{selectedBreed.species}</Badge>
+                                <h2 className="text-5xl font-black text-white tracking-tighter">{selectedBreed.breed}</h2>
+                                <p className="text-muted-foreground font-medium">Predisposiciones Genéticas y Clínicas</p>
+                            </div>
                         </div>
-                      );
-                    }
-                  
-                    if (typeof content === 'object' && !Array.isArray(content) && content !== null) {
-                      return (
-                        <div className="space-y-8">
-                          {content.text && <p className="text-sm text-slate-300 mb-6">{content.text}</p>}
-                          
-                          {(content.table || content.repro_table || content.headers) && (
-                                <div className="overflow-x-auto">
-                                    <h3 className="font-bold text-white mb-4 text-lg">{content.repro_table?.title || content.table?.title || ''}</h3>
-                                    <Table>
-                                        <TableHeader><TableRow>{(content.table || content.repro_table || content).headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader>
-                                        <TableBody>{(content.table || content.repro_table || content).rows.map((row: any, i: number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody>
-                                    </Table>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {selectedBreed.conditions.map((cond, i) => (
+                                <div key={i} className="bg-background/40 border border-border p-5 rounded-3xl hover:bg-background/60 transition-all">
+                                    <div className="flex justify-between items-center mb-3">
+                                        <h4 className="font-bold text-white text-lg">{cond.name}</h4>
+                                        <Badge variant="outline" className="flex items-center gap-2">
+                                            {getIcon(cond.type)} {cond.type}
+                                        </Badge>
+                                    </div>
+                                    <p className="text-sm text-slate-300 leading-relaxed">{cond.description}</p>
                                 </div>
-                          )}
-                          
-                          {content.sexing && (
-                              <div>
-                                  <h3 className="font-bold text-white mb-2 text-lg">{content.sexing.title}</h3>
-                                  <p className="text-sm text-slate-300">{content.sexing.text}</p>
-                              </div>
-                          )}
-                                
-                          {content.considerations && (
-                              <div>
-                                  <h3 className="font-bold text-white mb-2 text-lg">{content.considerations.title}</h3>
-                                  <ul className="list-disc list-inside text-sm text-slate-300 space-y-1">
-                                      {content.considerations.items.map((item: string, i: number) => <li key={i}>{item}</li>)}
-                                  </ul>
-                              </div>
-                          )}
-                          
-                          {content.points && Array.isArray(content.points) && (
-                               <ul className="space-y-3">
-                                  {content.points.map((p: any, i:number) => (
-                                       <li key={i} className="flex gap-3 items-start text-sm text-slate-300">
-                                          {p.isProhibited ? <Ban size={20} className="text-destructive flex-shrink-0 mt-0.5"/> : <ChevronRight size={16} className="text-accent flex-shrink-0 mt-1"/>}
-                                          <span>{p.text}</span>
-                                      </li>
-                                  ))}
-                              </ul>
-                          )}
-                  
-                          {content.injection_table && (
-                              <div className="overflow-x-auto">
-                                  <h3 className="font-bold text-white mb-4 text-lg">Vías y Volúmenes de Inyección</h3>
-                                  <Table>
-                                      <TableHeader><TableRow>{content.injection_table.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader>
-                                      <TableBody>{content.injection_table.rows.map((row: any, i: number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody>
-                                  </Table>
-                              </div>
-                          )}
-                  
-                          {(content.critical_points || content.anesthesia_risks) && (
-                              <div className="space-y-4">
-                                  {content.critical_points?.map((item:any, i: number) => {
-                                      const ItemIcon = iconMap[item.icon as string] || TriangleAlert;
-                                      return (
-                                        <div key={i} className="flex gap-3 items-start bg-card p-4 rounded-xl border border-border">
-                                            <div className="p-2 bg-background rounded-md"><ItemIcon size={20} className={cn("flex-shrink-0", item.isCritical ? "text-destructive" : "text-accent")} /></div>
-                                            <div>
-                                                <h4 className="font-bold text-white">{item.title}</h4>
-                                                <p className="text-xs text-slate-300">{item.text}</p>
-                                            </div>
-                                        </div>
-                                      )
-                                  })}
-                                  {content.anesthesia_risks?.map((item:any, i: number) => (
-                                      <div key={i} className="p-3 bg-card rounded-xl border border-border text-sm text-slate-300">{item.text}</div>
-                                  ))}
-                              </div>
-                          )}
-                  
-                           {(content.hematology || content.biochemistry) && (
-                              <div className="grid md:grid-cols-2 gap-8">
-                                  {content.hematology && (
-                                      <div className="overflow-x-auto">
-                                          <h3 className="font-bold text-white mb-4">{content.hematology.title || 'Hematología'}</h3>
-                                          <Table><TableHeader><TableRow>{content.hematology.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader><TableBody>{content.hematology.rows.map((row: any, i:number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody></Table>
-                                      </div>
-                                  )}
-                                  {content.biochemistry && (
-                                      <div className="overflow-x-auto">
-                                          <h3 className="font-bold text-white mb-4">{content.biochemistry.title || 'Bioquímica'}</h3>
-                                          <Table><TableHeader><TableRow>{content.biochemistry.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}</TableRow></TableHeader><TableBody>{content.biochemistry.rows.map((row: any, i:number) => (<TableRow key={i}>{Object.values(row).map((cell: any, j: number) => <TableCell key={j} className={j===0 ? 'font-medium text-white': ''}>{cell}</TableCell>)}</TableRow>))}</TableBody></Table>
-                                      </div>
-                                  )}
-                              </div>
-                          )}
-                          {content.blood_volume && (
-                               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                  {content.blood_volume.map((item: any) => (
-                                      <div key={item.species} className="bg-card p-3 rounded-xl border border-border text-center">
-                                          <p className="text-sm font-bold text-white">{item.species}</p>
-                                          <p className="text-[10px] text-muted-foreground font-bold">Vol: {item.volume} ml/kg</p>
-                                          <p className="text-[10px] text-muted-foreground font-bold">Ext. Máx: {item.max_extraction} ml</p>
-                                      </div>
-                                  ))}
-                              </div>
-                          )}
+                            ))}
                         </div>
-                      );
-                    }
-                    return null;
-                };
-
-                return (
-                    <PinterestCard key={key} id={key}>
-                        <h2 className="text-2xl font-bold text-accent mb-6 flex items-center gap-3"><SectionIcon size={24}/> {title}</h2>
-                        {renderContent()}
+                        <button 
+                            onClick={() => setSelectedBreed(null)}
+                            className="mt-8 text-sm font-black text-rose-400 uppercase tracking-widest hover:text-white transition-colors"
+                        >
+                            ← Volver al listado
+                        </button>
                     </PinterestCard>
-                )
-            })}
-        </div>
-    );
-}
-
-function ExoticsList() {
-    const [selectedSpeciesKey, setSelectedSpeciesKey] = useState<string | null>(null);
-
-    return (
-        <div className="space-y-8">
-            <PinterestCard>
-                 <div className="grid grid-cols-5 sm:grid-cols-10 gap-2 text-center">
-                    {exoticSpecies.map((species) => {
-                        if (!species.label) return null;
-                        const isSelected = selectedSpeciesKey === species.key;
-                        return (
-                            <button 
-                                onClick={() => setSelectedSpeciesKey(species.key)}
-                                key={species.key}
-                                className={cn(
-                                    "flex flex-col items-center justify-start gap-2 p-3 rounded-2xl transition-all duration-200",
-                                    isSelected ? 'ring-2 ring-destructive bg-destructive/10' : 'hover:bg-secondary'
-                                )}
-                            >
-                                <div className="text-4xl md:text-5xl flex-grow flex items-center">{species.icon}</div>
-                                <span className={cn(
-                                    "text-[10px] font-bold uppercase tracking-wider min-h-[20px]",
-                                    isSelected ? 'text-destructive' : 'text-muted-foreground'
-                                )}>{species.label}</span>
-                            </button>
-                        )
-                    })}
                 </div>
-            </PinterestCard>
-
-            {selectedSpeciesKey && <ExoticDetailView speciesKey={selectedSpeciesKey} />}
+            ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {filteredBreeds.map(item => (
+                        <PinterestCard 
+                            key={item.id} 
+                            onClick={() => setSelectedBreed(item)}
+                            className="hover:bg-secondary cursor-pointer group transition-all hover:border-rose-500/30"
+                        >
+                            <div className="flex justify-between items-center">
+                                <div className="flex items-center gap-4">
+                                    <div className="text-4xl">{item.icon}</div>
+                                    <div>
+                                        <h3 className="text-xl font-black text-white group-hover:text-rose-400 transition-colors">{item.breed}</h3>
+                                        <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">{item.species}</p>
+                                    </div>
+                                </div>
+                                <div className="p-2 bg-card rounded-full group-hover:bg-rose-500 group-hover:text-rose-950 transition-all text-muted-foreground">
+                                    <ChevronRight size={18} />
+                                </div>
+                            </div>
+                        </PinterestCard>
+                    ))}
+                    {filteredBreeds.length === 0 && (
+                        <div className="md:col-span-2 lg:col-span-3 text-center py-20">
+                            <p className="text-muted-foreground font-bold">No se encontraron resultados para "{searchTerm}"</p>
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     );
 }
-
 
 // Main Vademecum view with tabs
 export function VademecumList() {
@@ -391,28 +226,32 @@ export function VademecumList() {
 
     return (
         <div className="animate-in fade-in duration-500">
-             <div className="flex items-center gap-2 mb-8">
+             <div className="flex items-center gap-4 mb-10 bg-card/50 p-2 rounded-full w-fit border border-white/5 mx-auto md:mx-0">
                  <button
                     onClick={() => setActiveTab('farmacos')}
                     className={cn(
-                        'px-6 py-2 rounded-full text-base font-bold transition-all',
-                        activeTab === 'farmacos' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-white'
+                        'px-8 py-3 rounded-full text-sm font-black uppercase tracking-widest transition-all',
+                        activeTab === 'farmacos' 
+                            ? 'bg-emerald-500 text-emerald-950 shadow-lg shadow-emerald-500/20' 
+                            : 'text-muted-foreground hover:text-white'
                     )}
                 >
                     Fármacos
                 </button>
                 <button
-                    onClick={() => setActiveTab('exoticos')}
+                    onClick={() => setActiveTab('predisposicion')}
                     className={cn(
-                        'px-6 py-2 rounded-full text-base font-bold transition-all',
-                        activeTab === 'exoticos' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-white'
+                        'px-8 py-3 rounded-full text-sm font-black uppercase tracking-widest transition-all',
+                        activeTab === 'predisposicion' 
+                            ? 'bg-rose-500 text-rose-950 shadow-lg shadow-rose-500/20' 
+                            : 'text-muted-foreground hover:text-white'
                     )}
                 >
-                    Exóticos
+                    Predisposición
                 </button>
             </div>
 
-            {activeTab === 'farmacos' ? <DrugList /> : <ExoticsList />}
+            {activeTab === 'farmacos' ? <DrugList /> : <PredisposicionList />}
         </div>
     );
 }
