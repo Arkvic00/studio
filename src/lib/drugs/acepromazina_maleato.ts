@@ -13,7 +13,7 @@ export const acepromazinaMaleatoDrug: Drug = {
       "Efecto depresor del SNC, sedación y reducción de actividad espontánea.",
       "Eleva el umbral para arritmias cardíacas y tiene propiedades antieméticas.",
       "La sedación es poco fiable si se usa sola; combinar con opioides (neuroleptanalgesia).",
-      "El efecto meseta (plateau) ocurre a los 0.1 mg/kg. Dosis mayores no mejoran la sedación pero aumentan riesgos.",
+      "El efecto meseta (plateau) ocurre a los 0.1 mg/kg. Dosis mayores aumentan riesgos sin mejorar sedación.",
       "En razas gigantes, usar el extremo inferior del rango de dosis."
     ],
     usos_principales: "Sedación o medicación pre-anestésica. Manejo de tromboembolismo en gatos por su acción vasodilatadora periférica.",
@@ -22,7 +22,7 @@ export const acepromazinaMaleatoDrug: Drug = {
   },
   informacion_cliente: [
     "No recomendada para el manejo de fobias a sonidos (fuegos artificiales/truenos).",
-    "La dosis oral varía mucho entre individuos; dosis altas pueden causar sedación muy prolongada."
+    "La dosis oral varía mucho entre individuos; dosis altas causan sedación muy prolongada."
   ],
   parametros_dosificacion: {
     perro: [
@@ -45,7 +45,7 @@ export const acepromazinaMaleatoDrug: Drug = {
         indicacion: "Bóxers: Riesgo de síncope por tono vagal excesivo",
         vias: ["IM"],
         math: { tipo_calculo: "mg_kg", dosis_recomendada: 0.0075, dosis_min: 0.005, dosis_max: 0.01, unidad_calculo: "mg/kg" },
-        notas_tecnicas: "Usar dosis bajas o evitar para prevenir bloqueo sinoauricular."
+        notas_tecnicas: "Usar dosis bajas o evitar para prevenir síncope."
       }
     ],
     gato: [
@@ -88,15 +88,14 @@ export const acepromazinaMaleatoDrug: Drug = {
         math: { tipo_calculo: "mg_kg", dosis_recomendada: 1.5, dosis_min: 0.5, dosis_max: 2.5, unidad_calculo: "mg/kg" }
       },
       {
-        indicacion: "Ratones / Hámsteres (Mice/Hamsters): Sedación",
+        indicacion: "Ratones (Mice): Sedación",
         vias: ["IM", "SC", "PO"],
         math: { tipo_calculo: "mg_kg", dosis_recomendada: 2.75, dosis_min: 0.5, dosis_max: 5.0, unidad_calculo: "mg/kg" }
       },
       {
-        indicacion: "Jerbos (Gerbils): ¡CONTRAINDICADO!",
-        vias: ["N/A"],
-        math: { tipo_calculo: "fija", dosis_recomendada: 0, unidad_calculo: "mg" },
-        notas_tecnicas: "No recomendado. Baja el umbral de convulsiones en cepas susceptibles."
+        indicacion: "Hámsteres (Hamsters): Sedación",
+        vias: ["IM", "SC", "PO"],
+        math: { tipo_calculo: "mg_kg", dosis_recomendada: 2.75, dosis_min: 0.5, dosis_max: 5.0, unidad_calculo: "mg/kg" }
       }
     ],
     primates: [
@@ -131,15 +130,15 @@ export const acepromazinaMaleatoDrug: Drug = {
   seguridad_y_alertas: {
     contraindicaciones: [
       "Hipotensión por shock, trauma o enfermedad cardiovascular.",
-      "Animales menores de 3 meses.",
-      "Enfermedad hepática.",
-      "Animales anémicos (secuestro esplénico de eritrocitos).",
+      "Animales < 3 meses y enfermedad hepática.",
+      "Animales anémicos (secuestro de eritrocitos en el bazo).",
       "Jerbos (baja el umbral de convulsiones).",
       "No recomendado en aves."
     ],
     efectos_adversos: [
-      "Hipotensión profunda (ocasional en animales sanos).",
+      "Hipotensión profunda.",
       "Hipotermia.",
+      "Síncope en Bóxers.",
       "Convulsiones en jerbos."
     ],
     monitoreo_recomendado: [
@@ -147,22 +146,20 @@ export const acepromazinaMaleatoDrug: Drug = {
       "Temperatura corporal",
       "Frecuencia respiratoria"
     ],
-    instrucciones_manejo: "Se deben observar las precauciones normales.",
+    instrucciones_manejo: "Precauciones normales de manejo clínico.",
     sobredosis: {
       signos: ["Hipotensión severa", "Sedación prolongada"],
-      tratamiento: "Terapia de soporte (fluidos y control de temperatura)."
+      tratamiento: "Soporte (fluidoterapia y control térmico)."
     },
     interacciones_farmacologicas: [
-      { farmaco: "Depresores SNC (Barbitúricos, Propofol)", efecto: "Depresión aditiva del SNC; reducir dosis de anestésicos.", severidad: "Importante" },
-      { farmaco: "Adrenalina", efecto: "Vasodilatación y taquicardia por actividad beta sin oposición.", severidad: "Grave" },
+      { farmaco: "Adrenalina", efecto: "Vasodilatación y taquicardia severa.", severidad: "Grave" },
       { farmaco: "Quinidina", efecto: "Depresión cardíaca adicional.", severidad: "Importante" },
-      { farmaco: "Propranolol", efecto: "Aumento de los niveles plasmáticos de ambos fármacos.", severidad: "Moderada" },
-      { farmaco: "Antiácidos / Kaolín-Pectina", efecto: "Reducción de la absorción oral.", severidad: "Leve" }
+      { farmaco: "Antiácidos", efecto: "Reducción de absorción oral.", severidad: "Leve" }
     ]
   },
   farmacologia_clinica: {
-    mecanismo_accion: "Fenotiazina con efecto depresor en el SNC que reduce la actividad espontánea.",
-    farmacocinetica: "Inicio IM en 20-30 min. Duración hasta 6 horas. La dosis oral varía mucho individualmente."
+    mecanismo_accion: "Fenotiazina con efecto depresor del SNC que reduce la actividad espontánea.",
+    farmacocinetica: "Inicio IM en 20-30 min. Duración hasta 6 horas."
   },
   presentaciones_comerciales: [
     { tipo: "Inyectable", concentracion_texto: "2 mg/ml", valor_concentracion: 2, unidad_concentracion: "mg/ml", es_divisible: false },

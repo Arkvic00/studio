@@ -10,65 +10,43 @@ export const acidoAceticoDrug: Drug = {
   },
   resumen_clinico: {
     puntos_clave: [
-      "Tratamiento de ectoparásitos en peces (protozoos, monogeneos).",
+      "Tratamiento de ectoparásitos en peces.",
       "Manejo de disbiosis intestinal en aves (macrorhabdiasis).",
-      "Más seguro que otras alternativas para parvadas de aves.",
-      "Corrosivo e irritante: manejar con cuidado extremo."
+      "Sustancia corrosiva: manejar con precaución."
     ],
-    usos_principales: "Ectoparásitos en peces y disbiosis (macrorhabdiasis) en aves.",
+    usos_principales: "Ectoparásitos en peces y disbiosis en aves.",
     inicio_accion: "Inmediato (inmersión)",
     duracion_efecto: "Limitada al tiempo de contacto"
   },
   informacion_cliente: [
     "Sustancia corrosiva; evitar contacto con piel y ojos.",
-    "En aves enfermas individualmente, la Anfotericina-B suele ser más efectiva.",
-    "Precaución en peces tropicales pequeños."
+    "En aves, la Anfotericina-B suele ser más efectiva en casos individuales."
   ],
   parametros_dosificacion: {
     ave: [
       {
-        indicacion: "Aves Adultas: Disbiosis / Macrorhabdiasis (Agua)",
-        vias: ["PO (Agua de bebida)"],
-        math: {
-          tipo_calculo: "fija",
-          dosis_recomendada: 15,
-          unidad_calculo: "ml/l (Vinagre de manzana)"
-        }
+        indicacion: "Aves Adultas: Disbiosis / Macrorhabdiasis (Agua de bebida)",
+        vias: ["PO"],
+        math: { tipo_calculo: "fija", dosis_recomendada: 15, unidad_calculo: "ml/l (Vinagre de manzana)" }
       },
       {
-        indicacion: "Aves Adultas: Disbiosis / Macrorhabdiasis (Comida)",
-        vias: ["PO (Alimento fresco)"],
-        math: {
-          tipo_calculo: "fija",
-          dosis_recomendada: 0.35,
-          dosis_min: 0.25,
-          dosis_max: 0.5,
-          unidad_calculo: "cucharadita diaria"
-        }
+        indicacion: "Aves Adultas: Disbiosis / Macrorhabdiasis (Alimento fresco)",
+        vias: ["PO"],
+        math: { tipo_calculo: "fija", dosis_recomendada: 0.35, dosis_min: 0.25, dosis_max: 0.5, unidad_calculo: "cucharadita diaria" }
       },
       {
         indicacion: "Polluelos (Chicks): Crianza a mano",
-        vias: ["PO (Fórmula de cría)"],
-        math: {
-          tipo_calculo: "fija",
-          dosis_recomendada: 1.5,
-          dosis_min: 1,
-          dosis_max: 2,
-          unidad_calculo: "gotas diarias"
-        }
+        vias: ["PO"],
+        math: { tipo_calculo: "fija", dosis_recomendada: 1.5, dosis_min: 1, dosis_max: 2, unidad_calculo: "gotas diarias" }
       }
     ],
     peces: [
       {
         indicacion: "Peces: Ectoparásitos",
-        vias: ["Inmersión (Ácido glacial 100%)"],
-        math: {
-          tipo_calculo: "fija",
-          dosis_recomendada: 2,
-          unidad_calculo: "ml/l"
-        },
+        vias: ["Inmersión"],
+        math: { tipo_calculo: "fija", dosis_recomendada: 2, unidad_calculo: "ml/l (Ácido glacial 100%)" },
         duracion_tratamiento: "30-60 segundos",
-        notas_tecnicas: "No exceder los 60 segundos. Riesgo de toxicidad en especies tropicales pequeñas."
+        notas_tecnicas: "No exceder 60 segundos. Riesgo en especies tropicales pequeñas."
       }
     ]
   },
@@ -85,16 +63,16 @@ export const acidoAceticoDrug: Drug = {
     instrucciones_manejo: "ALTAMENTE CORROSIVO. Usar guantes y protección ocular.",
     sobredosis: {
       signos: ["Mortalidad rápida en peces", "Quemaduras químicas"],
-      tratamiento: "Dilución inmediata."
+      tratamiento: "Dilución inmediata con agua limpia."
     },
     interacciones_farmacologicas: []
   },
   farmacologia_clinica: {
-    mecanismo_accion: "Desconocido.",
-    farmacocinetica: "Actúa principalmente por cambio local de pH."
+    mecanismo_accion: "Desconocido. Probable cambio local de pH.",
+    farmacocinetica: "Actúa localmente por contacto."
   },
   presentaciones_comerciales: [
-    { tipo: "Líquido (Glacial)", concentracion_texto: "100%", valor_concentracion: 100, unidad_concentracion: "%", es_divisible: false },
+    { tipo: "Ácido Glacial", concentracion_texto: "100%", valor_concentracion: 100, unidad_concentracion: "%", es_divisible: false },
     { tipo: "Vinagre", concentracion_texto: "5-20%", valor_concentracion: 5, unidad_concentracion: "%", es_divisible: false }
   ]
 };
