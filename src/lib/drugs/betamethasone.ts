@@ -4,7 +4,7 @@ export const betamethasoneDrug: Drug = {
   id: "betamethasone",
   meta_data: {
     nombre_generico: "Betametasona",
-    nombres_comerciales: ["Isaderm", "Osurnia", "Otomax", "Betnesol", "Maxidex"],
+    nombres_comerciales: ["Isaderm", "Osurnia", "Otomax", "Betnesol", "Maxidex", "Fuciderm", "Norbet"],
     grupo_farmacologico: "Glucocorticoide de larga duración",
     status_regulatorio: "POM-V, POM"
   },
@@ -13,7 +13,8 @@ export const betamethasoneDrug: Drug = {
       "Potente actividad glucocorticoide con mínima actividad mineralocorticoide.",
       "Larga duración de acción (no apto para terapia de días alternos).",
       "0.12 mg de betametasona equivale a 1 mg de prednisolona.",
-      "Antagoniza los efectos de la insulina y la hormona antidiurética (ADH)."
+      "Antagoniza los efectos de la insulina y la hormona antidiurética (ADH).",
+      "En aves, existe un alto riesgo de hepatopatía e inmunosupresión severa."
     ],
     usos_principales: "Alivio a corto plazo de condiciones inflamatorias no infecciosas.",
     inicio_accion: "Variable (rápido vía parenteral)",
@@ -23,12 +24,23 @@ export const betamethasoneDrug: Drug = {
     "No suspender repentinamente tras un uso prolongado; requiere dosis decrecientes (tapering).",
     "Usar guantes al aplicar cremas tópicas.",
     "En tratamientos óticos de larga duración (Osurnia), no limpiar el oído hasta 21 días después de la segunda dosis.",
-    "Puede aumentar significativamente la sed y el apetito."
+    "Puede aumentar significativamente la sed y el apetito.",
+    "En hurones estresados, vigilar signos de úlceras gástricas."
   ],
   parametros_dosificacion: {
     perro: [
       {
-        indicacion: "Antiinflamatorio sistémico (Inyectable)",
+        indicacion: "Antiinflamatorio sistémico (General)",
+        vias: ["SC"],
+        math: {
+          tipo_calculo: "mg_kg",
+          dosis_recomendada: 0.1,
+          unidad_calculo: "mg/kg"
+        },
+        frecuencia: { texto_ui: "Cada 24 horas", intervalo_horas: 24 }
+      },
+      {
+        indicacion: "Antiinflamatorio de depósito (Inyectable)",
         vias: ["IV", "IM"],
         math: {
           tipo_calculo: "mg_kg",
@@ -55,8 +67,7 @@ export const betamethasoneDrug: Drug = {
           dosis_recomendada: 4,
           unidad_calculo: "gotas"
         },
-        frecuencia: { texto_ui: "Cada 12 horas", intervalo_horas: 12 },
-        notas_tecnicas: "Para geles de larga duración (ej. Osurnia), aplicar una dosis y repetir a los 7 días. No limpiar el oído hasta 21 días después."
+        frecuencia: { texto_ui: "Cada 12 horas", intervalo_horas: 12 }
       },
       {
         indicacion: "Oftálmico",
@@ -82,13 +93,23 @@ export const betamethasoneDrug: Drug = {
     gato: [
       {
         indicacion: "Antiinflamatorio sistémico",
+        vias: ["SC"],
+        math: {
+          tipo_calculo: "mg_kg",
+          dosis_recomendada: 0.1,
+          unidad_calculo: "mg/kg"
+        },
+        frecuencia: { texto_ui: "Cada 24 horas", intervalo_horas: 24 }
+      },
+      {
+        indicacion: "Antiinflamatorio de depósito",
         vias: ["IV"],
         math: {
           tipo_calculo: "mg_kg",
           dosis_recomendada: 0.04,
           unidad_calculo: "mg/kg"
         },
-        frecuencia: { texto_ui: "Cada 3 semanas (máximo 4 inyecciones)", intervalo_horas: 504 }
+        frecuencia: { texto_ui: "Cada 3 semanas", intervalo_horas: 504 }
       },
       {
         indicacion: "Oftálmico",
@@ -99,16 +120,32 @@ export const betamethasoneDrug: Drug = {
           unidad_calculo: "gota"
         },
         frecuencia: { texto_ui: "Cada 6 a 8 horas", intervalo_horas: 8 }
-      },
+      }
+    ],
+    huron: [
       {
-        indicacion: "Piel (Crema)",
-        vias: ["Tópica"],
+        indicacion: "Antiinflamatorio sistémico",
+        vias: ["SC"],
         math: {
-          tipo_calculo: "fija",
-          dosis_recomendada: 1,
-          unidad_calculo: "aplicación fina"
+          tipo_calculo: "mg_kg",
+          dosis_recomendada: 0.1,
+          unidad_calculo: "mg/kg"
         },
-        frecuencia: { texto_ui: "Cada 8 a 12 horas", intervalo_horas: 12 }
+        frecuencia: { texto_ui: "Cada 24 horas", intervalo_horas: 24 },
+        notas_tecnicas: "Muy susceptibles a úlceras GI. Se recomienda el uso de protectores gástricos concurrentes, especialmente en animales estresados."
+      }
+    ],
+    conejo: [
+      {
+        indicacion: "Uso sistémico (Extrema precaución)",
+        vias: ["SC"],
+        math: {
+          tipo_calculo: "mg_kg",
+          dosis_recomendada: 0.1,
+          unidad_calculo: "mg/kg"
+        },
+        frecuencia: { texto_ui: "Cada 24 horas", intervalo_horas: 24 },
+        notas_tecnicas: "Incluso dosis únicas pequeñas pueden causar reacciones adversas severas en esta especie."
       }
     ]
   },
@@ -119,6 +156,11 @@ export const betamethasoneDrug: Drug = {
       "Enfermedad renal (sistémico).",
       "Úlceras corneales (tópico ocular)."
     ],
+    contraindicaciones_especie: {
+      "Ave": "NO RECOMENDADO: Alto riesgo de inmunosupresión, hepatopatía y síndrome similar a diabetes mellitus.",
+      "Conejo": "ALERTA: Extrema sensibilidad; dosis mínimas pueden ser tóxicas.",
+      "Huron": "ALERTA: Alta susceptibilidad a úlceras gastrointestinales."
+    },
     efectos_adversos: [
       "Efectos catabólicos: pérdida de peso, atrofia muscular y cutánea.",
       "Hiperadrenocorticismo iatrogénico (uso prolongado).",
@@ -131,7 +173,7 @@ export const betamethasoneDrug: Drug = {
       "Función adrenal en uso crónico",
       "Niveles de T3 y T4 (pueden disminuir)"
     ],
-    instrucciones_manejo: "Usar guantes para aplicación tópica.",
+    instrucciones_manejo: "Usar guantes para aplicación tópica. El uso en shock suele no ser beneficioso y puede ser perjudicial.",
     sobredosis: {
       signos: ["Poliuria/Polidipsia severa", "Debilidad muscular", "Hiperglucemia"],
       tratamiento: "Soporte sintomático y retiro gradual."
