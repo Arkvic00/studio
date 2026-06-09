@@ -110,7 +110,6 @@ import { codeineDrug } from './codeine';
 import { colchicineDrug } from './colchicine';
 import { colestyramineDrug } from './colestyramine';
 import { cyclophosphamideDrug } from './cyclophosphamide';
-import { sulfatoDeCobreDrug } from './sulfato_de_cobre';
 import { cipermetrinaDrug } from './cipermetrina';
 import { ciproheptadinaDrug } from './ciproheptadina';
 import { ciromazinaDrug } from './ciromazina';
@@ -289,6 +288,20 @@ import { phenoxyethanolDrug } from './phenoxyethanol';
 import { phenylephrineDrug } from './phenylephrine';
 import { phenylbutazoneDrug } from './phenylbutazone';
 import { phenobarbitalDrug } from './phenobarbital';
+import { phenylpropanolamineDrug } from './phenylpropanolamine';
+import { phenytoinDrug } from './phenytoin';
+import { pholcodineDrug } from './pholcodine';
+import { toldimphosDrug } from './phosphate';
+import { phosphateEnemaDrug } from './phosphate_enema';
+import { pilocarpineDrug } from './pilocarpine';
+import { pimobendanDrug } from './pimobendan';
+import { piperacillinDrug } from './piperacillin';
+import { piperazineDrug } from './piperazine';
+import { polymyxinBDrug } from './polymyxin_b';
+import { adequanDrug } from './adequan';
+import { polyvinylAlcoholDrug } from './polyvinyl_alcohol';
+import { potassiumBromideDrug } from './potassium_bromide';
+import { potassiumCitrateDrug } from './potassium_citrate';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -581,4 +594,18 @@ export const DB_MEDICAMENTOS = [
     phenylephrineDrug,
     phenylbutazoneDrug,
     phenobarbitalDrug,
+    phenylpropanolamineDrug,
+    phenytoinDrug,
+    pholcodineDrug,
+    toldimphosDrug,
+    phosphateEnemaDrug,
+    pilocarpineDrug,
+    pimobendanDrug,
+    piperacillinDrug,
+    piperazineDrug,
+    polymyxinBDrug,
+    adequanDrug,
+    polyvinylAlcoholDrug,
+    potassiumBromideDrug,
+    potassiumCitrateDrug,
 ];
