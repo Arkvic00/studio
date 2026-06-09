@@ -136,6 +136,8 @@ import { diflubenzuronDrug } from './diflubenzuron';
 import { digoxinDrug } from './digoxin';
 import { diltiazemDrug } from './diltiazem';
 import { dimercaprolDrug } from './dimercaprol';
+import { dmsoDrug } from './dmso';
+import { dinotefuranDrug } from './dinotefuran';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -276,4 +278,6 @@ export const DB_MEDICAMENTOS = [
     digoxinDrug,
     diltiazemDrug,
     dimercaprolDrug,
+    dmsoDrug,
+    dinotefuranDrug,
 ];
