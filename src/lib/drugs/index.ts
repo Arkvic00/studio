@@ -271,6 +271,9 @@ import { minocyclineDrug } from './minocycline';
 import { mirtazapineDrug } from './mirtazapine';
 import { misoprostolDrug } from './misoprostol';
 import { mitotaneDrug } from './mitotane';
+import { neomycinDrug } from './neomycin';
+import { neostigmineDrug } from './neostigmine';
+import { nicotinamideDrug } from './nicotinamide';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -375,6 +378,10 @@ export const DB_MEDICAMENTOS = [
     clindamycinDrug,
     clofazimineDrug,
     clomipramineDrug,
+    clonazepamDrug,
+    clonidineDrug,
+    clopidogrelDrug,
+    clotrimazoleDrug,
     clonazepamDrug,
     clonidineDrug,
     clopidogrelDrug,
@@ -546,4 +553,7 @@ export const DB_MEDICAMENTOS = [
     mirtazapineDrug,
     misoprostolDrug,
     mitotaneDrug,
+    neomycinDrug,
+    neostigmineDrug,
+    nicotinamideDrug,
 ];
