@@ -249,6 +249,10 @@ import { levetiracetamDrug } from './levetiracetam';
 import { lidocaineDrug } from './lidocaine';
 import { lincomycinDrug } from './lincomycin';
 import { liothyronineDrug } from './liothyronine';
+import { lipidInfusionsDrug } from './lipid_infusions';
+import { lithiumCarbonateDrug } from './lithium_carbonate';
+import { lokivetmabDrug } from './lokivetmab';
+import { lomustineDrug } from './lomustine';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -502,4 +506,8 @@ export const DB_MEDICAMENTOS = [
     lidocaineDrug,
     lincomycinDrug,
     liothyronineDrug,
+    lipidInfusionsDrug,
+    lithiumCarbonateDrug,
+    lokivetmabDrug,
+    lomustineDrug,
 ];
