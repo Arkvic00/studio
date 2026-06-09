@@ -19,6 +19,7 @@ import { amiloridaDrug } from './amilorida';
 import { aminoAcidSolutionsDrug } from './amino_acid_solutions';
 import { aminophyllineDrug } from './aminophylline';
 import { amiodaronaDrug } from './amiodarona';
+import { amitrazDrug } from './amitraz';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -42,4 +43,5 @@ export const DB_MEDICAMENTOS = [
     aminoAcidSolutionsDrug,
     aminophyllineDrug,
     amiodaronaDrug,
+    amitrazDrug,
 ];
