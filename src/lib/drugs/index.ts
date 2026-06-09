@@ -262,6 +262,11 @@ import { lysineDrug } from './lysine';
 import { magnesiumSaltsDrug } from './magnesium_salts';
 import { malachiteGreenDrug } from './malachite_green';
 import { mannitolDrug } from './mannitol';
+import { marbofloxacinDrug } from './marbofloxacin';
+import { maropitantDrug } from './maropitant';
+import { masitinibDrug } from './masitinib';
+import { mavacoxibDrug } from './mavacoxib';
+import { mebendazoleClosantelDrug } from './mebendazole_closantel';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -528,4 +533,9 @@ export const DB_MEDICAMENTOS = [
     magnesiumSaltsDrug,
     malachiteGreenDrug,
     mannitolDrug,
+    marbofloxacinDrug,
+    maropitantDrug,
+    masitinibDrug,
+    mavacoxibDrug,
+    mebendazoleClosantelDrug,
 ];
