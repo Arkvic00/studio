@@ -176,6 +176,8 @@ import { fentanylDrug } from './fentanyl';
 import { fentanylFluanisoneDrug } from './fentanyl_fluanisone';
 import { filgrastimDrug } from './filgrastim';
 import { finasterideDrug } from './finasteride';
+import { fipronilDrug } from './fipronil';
+import { firocoxibDrug } from './firocoxib';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -285,7 +287,6 @@ export const DB_MEDICAMENTOS = [
     clopidogrelDrug,
     clotrimazoleDrug,
     cloxacillinDrug,
-    coAmoxiclavDrug,
     codeineDrug,
     colchicineDrug,
     colestyramineDrug,
@@ -356,4 +357,7 @@ export const DB_MEDICAMENTOS = [
     fentanylFluanisoneDrug,
     filgrastimDrug,
     finasterideDrug,
+    fipronilDrug,
+    firocoxibDrug,
+    coAmoxiclavDrug,
 ];
