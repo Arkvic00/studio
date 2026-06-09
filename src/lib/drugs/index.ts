@@ -89,6 +89,7 @@ import { chorionicGonadotrophinDrug } from './chorionic_gonadotrophin';
 import { ciclosporinDrug } from './ciclosporin';
 import { cimetidineDrug } from './cimetidine';
 import { cimicoxibDrug } from './cimicoxib';
+import { cinchophenDrug } from './cinchophen';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -182,4 +183,5 @@ export const DB_MEDICAMENTOS = [
     ciclosporinDrug,
     cimetidineDrug,
     cimicoxibDrug,
+    cinchophenDrug,
 ];
