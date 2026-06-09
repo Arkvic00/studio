@@ -302,6 +302,9 @@ import { adequanDrug } from './adequan';
 import { polyvinylAlcoholDrug } from './polyvinyl_alcohol';
 import { potassiumBromideDrug } from './potassium_bromide';
 import { potassiumCitrateDrug } from './potassium_citrate';
+import { potassiumSaltsDrug } from './potassium_salts';
+import { pradofloxacinDrug } from './pradofloxacin';
+import { pralidoximeDrug } from './pralidoxime';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -608,4 +611,7 @@ export const DB_MEDICAMENTOS = [
     polyvinylAlcoholDrug,
     potassiumBromideDrug,
     potassiumCitrateDrug,
+    potassiumSaltsDrug,
+    pradofloxacinDrug,
+    pralidoximeDrug,
 ];
