@@ -119,6 +119,9 @@ import { dacarbazineDrug } from './dacarbazine';
 import { dactinomycinDrug } from './dactinomycin';
 import { dantroleneDrug } from './dantrolene';
 import { darbepoetinDrug } from './darbepoetin';
+import { deferoxamineDrug } from './deferoxamine';
+import { delmadinoneDrug } from './delmadinone';
+import { deltamethrinDrug } from './deltamethrin';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -242,5 +245,7 @@ export const DB_MEDICAMENTOS = [
     dactinomycinDrug,
     dantroleneDrug,
     darbepoetinDrug,
+    deferoxamineDrug,
+    delmadinoneDrug,
+    deltamethrinDrug,
 ];
-
