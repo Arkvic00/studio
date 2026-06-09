@@ -305,6 +305,17 @@ import { potassiumCitrateDrug } from './potassium_citrate';
 import { potassiumSaltsDrug } from './potassium_salts';
 import { pradofloxacinDrug } from './pradofloxacin';
 import { pralidoximeDrug } from './pralidoxime';
+import { protamineSulphateDrug } from './protamine_sulphate';
+import { proxymetacaineDrug } from './proxymetacaine';
+import { pyrantelDrug } from './pyrantel';
+import { pyridostigmineDrug } from './pyridostigmine';
+import { pyrimethamineDrug } from './pyrimethamine';
+import { pyriproleDrug } from './pyriprole';
+import { pyriproxyfenDrug } from './pyriproxyfen';
+import { rabacfosadineDrug } from './rabacfosadine';
+import { ramiprilDrug } from './ramipril';
+import { ranitidineDrug } from './ranitidine';
+import { rifampinDrug } from './rifampin';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -614,4 +625,15 @@ export const DB_MEDICAMENTOS = [
     potassiumSaltsDrug,
     pradofloxacinDrug,
     pralidoximeDrug,
+    protamineSulphateDrug,
+    proxymetacaineDrug,
+    pyrantelDrug,
+    pyridostigmineDrug,
+    pyrimethamineDrug,
+    pyriproleDrug,
+    pyriproxyfenDrug,
+    rabacfosadineDrug,
+    ramiprilDrug,
+    ranitidineDrug,
+    rifampinDrug,
 ];
