@@ -61,6 +61,7 @@ import { cabergolineDrug } from './cabergoline';
 import { acetatoDeCalcioDrug } from './acetato_de_calcio';
 import { calciumSaltsDrug } from './calcium_salts';
 import { carbimazoleDrug } from './carbimazole';
+import { carbomer980Drug } from './carbomer_980';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -126,4 +127,5 @@ export const DB_MEDICAMENTOS = [
     acetatoDeCalcioDrug,
     calciumSaltsDrug,
     carbimazoleDrug,
+    carbomer980Drug,
 ];
