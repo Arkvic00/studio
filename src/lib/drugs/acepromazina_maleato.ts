@@ -15,9 +15,11 @@ export const acepromazinaMaleatoDrug: Drug = {
       "Posee propiedades antieméticas y eleva el umbral para arritmias cardíacas.",
       "Efecto vasodilatador periférico, útil en el manejo de tromboembolismo en gatos.",
       "¡ATENCIÓN!: No se recomienda para el manejo de fobias a ruidos (truenos, pirotecnia).",
-      "Dosis clínica usual: El efecto máximo se alcanza a los 0.1 mg/kg; dosis superiores solo aumentan efectos adversos."
+      "Efecto Meseta: La profundidad de la sedación alcanza un plateau a los 0.1 mg/kg; dosis superiores solo aumentan efectos adversos y duración."
     ],
-    usos_principales: "Sedación, premedicación anestésica. Manejo de tromboembolismo felino. Coadyuvante en laminitis equina y obstrucciones uretrales."
+    usos_principales: "Sedación, premedicación anestésica. Manejo de tromboembolismo felino. Coadyuvante en laminitis equina y obstrucciones uretrales.",
+    inicio_accion: "20–30 minutos (IM); variable (PO)",
+    duracion_efecto: "Hasta 6 horas (dosis clínicas); prolongada en dosis altas."
   },
   informacion_cliente: [
     "Efecto óptimo oral 45-60 min después de la administración.",
@@ -181,6 +183,13 @@ export const acepromazinaMaleatoDrug: Drug = {
       "Priapismo en caballos (riesgo de parálisis del músculo retractor del pene).",
       "Convulsiones en jerbos."
     ],
+    monitoreo_recomendado: [
+      "Presión arterial (Hipotensión)",
+      "Temperatura corporal (Hipotermia)",
+      "Frecuencia cardíaca",
+      "Estado de hidratación"
+    ],
+    instrucciones_manejo: "Se deben observar las precauciones normales de manejo clínico.",
     sobredosis: {
       signos: ["Hipotensión severa", "Depresión severa del SNC", "Colapso"],
       tratamiento: "Terapia de soporte (fluidos, mantener temperatura). CONTRAINDICADA la Adrenalina (puede empeorar la hipotensión).",

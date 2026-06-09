@@ -19,7 +19,7 @@ export interface DrugImage {
 
 interface MathParams {
   tipo_calculo: 'fija' | 'mg_kg';
-  dosis_recommended?: number | null;
+  dosis_recomendada: number;
   dosis_min?: number | null;
   dosis_max?: number | null;
   tope_maximo_mg?: number | null;
@@ -65,6 +65,8 @@ export interface Drug {
   resumen_clinico: {
     puntos_clave: string[];
     usos_principales: string;
+    inicio_accion?: string;
+    duracion_efecto?: string;
   };
   informacion_cliente: string[];
   parametros_dosificacion: {
@@ -74,6 +76,8 @@ export interface Drug {
     contraindicaciones: string[];
     precauciones?: string[];
     efectos_adversos: string[];
+    monitoreo_recomendado?: string[];
+    instrucciones_manejo?: string;
     seguridad_reproductiva?: {
       gestacion: string;
       lactancia: string;

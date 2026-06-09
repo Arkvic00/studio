@@ -15,7 +15,9 @@ export const acetaminofenDrug: Drug = {
       "En perros se usa con precaución, a menudo combinado con codeína.",
       "Carece de efectos antiinflamatorios significativos."
     ],
-    usos_principales: "Tratamiento del dolor leve a moderado y fiebre en perros. Coadyuvante antitusivo."
+    usos_principales: "Tratamiento del dolor leve a moderado y fiebre en perros. Coadyuvante antitusivo.",
+    inicio_accion: "30-60 minutos",
+    duracion_efecto: "8-12 horas"
   },
   informacion_cliente: [
     "¡NUNCA dar a gatos! Es mortal para ellos.",
@@ -67,6 +69,11 @@ export const acetaminofenDrug: Drug = {
     efectos_adversos: [
       "Perros: Hepatotoxicidad (dosis altas).",
       "Gatos: Metahemoglobinemia (mucosas marrones), anemia de cuerpos de Heinz, edema facial, necrosis hepática."
+    ],
+    monitoreo_recomendado: [
+      "Color de mucosas (cianosis)",
+      "Enzimas hepáticas",
+      "Hematocrito en gatos (toxicidad accidental)"
     ],
     sobredosis: {
       signos: ["Cianosis", "Ictericia", "Vómitos", "Muerte"],

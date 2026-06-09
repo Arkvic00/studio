@@ -15,7 +15,9 @@ export const acarbosaDrug: Drug = {
       "Poco probable que sea eficaz como terapia única para la diabetes mellitus.",
       "Debe administrarse con las comidas (preferiblemente justo antes de alimentar)."
     ],
-    usos_principales: "Reducción de concentraciones de glucosa en sangre en casos de hiperglucemia leve a moderada (rango 250-350 mg/dL) en perros y gatos con diabetes mellitus no dependiente de insulina, y como tratamiento adyuvante en diabetes dependiente de insulina."
+    usos_principales: "Reducción de concentraciones de glucosa en sangre en casos de hiperglucemia leve a moderada (rango 250-350 mg/dL) en perros y gatos con diabetes mellitus no dependiente de insulina, y como tratamiento adyuvante en diabetes dependiente de insulina.",
+    inicio_accion: "Inmediato (actúa en el lumen intestinal con la ingesta)",
+    duracion_efecto: "Limitado a la duración de la digestión de la comida"
   },
   informacion_cliente: [
     "Dar el medicamento justo antes de alimentar al animal para mejores resultados.",
@@ -78,6 +80,10 @@ export const acarbosaDrug: Drug = {
       "Pérdida de peso (en perros).",
       "Aumento de transaminasas hepáticas (raro)."
     ],
+    monitoreo_recomendado: [
+      "Glucosa en sangre postprandial",
+      "Enzimas hepáticas (ALT, AST) en uso crónico"
+    ],
     sobredosis: {
       signos: ["Diarrea", "Flatulencia"],
       tratamiento: "No suele ser necesario. Si hay hipoglucemia por otros agentes, usar glucosa parenteral o dextrosa oral (la absorción de sacarosa está inhibida)."
@@ -89,8 +95,8 @@ export const acarbosaDrug: Drug = {
     ]
   },
   farmacologia_clinica: {
-    mecanismo_accion: "Inhibe competitivamente la alfa-amilasa pancreática y las alfa-glucosidasas del intestino delgado, retrasando la digestión de carbohidratos complejos a glucosa.",
-    farmacocinetica: "En perros, solo se absorbe el ~4%. El resto es metabolizado por la flora bacteriana intestinal. En insuficiencia renal severa, los niveles séricos aumentan significativamente."
+    mecanismo_accion: "Inhibibe competitivamente la alfa-glucosidasa intestinal, retrasando la digestión y absorción de carbohidratos.",
+    farmacocinetica: "Mínima absorción sistémica. Metabolismo local por bacterias intestinales."
   },
   presentaciones_comerciales: [
     {
