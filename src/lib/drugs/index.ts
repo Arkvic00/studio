@@ -23,7 +23,7 @@ import { amitrazDrug } from './amitraz';
 import { amitriptylineDrug } from './amitriptyline';
 import { amlodipineDrug } from './amlodipine';
 import { amoxicilinaDrug } from './amoxicilina';
-import { ampicillinDrug } from './ampicillin';
+import { ampidillinDrug } from './ampicillin';
 import { amphotericinBDrug } from './amphotericin_b';
 import { amproliumDrug } from './amprolium';
 import { antivenomAdderDrug } from './antivenom_adder';
@@ -56,6 +56,7 @@ import { buserelinDrug } from './buserelin';
 import { bupivacaineDrug } from './bupivacaine';
 import { buprenorphineDrug } from './buprenorphine';
 import { butorphanolDrug } from './butorphanol';
+import { butylscopolamineDrug } from './butylscopolamine';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -83,7 +84,7 @@ export const DB_MEDICAMENTOS = [
     amitriptylineDrug,
     amlodipineDrug,
     amoxicilinaDrug,
-    ampicillinDrug,
+    ampidillinDrug,
     amphotericinBDrug,
     amproliumDrug,
     antivenomAdderDrug,
@@ -116,4 +117,5 @@ export const DB_MEDICAMENTOS = [
     bupivacaineDrug,
     buprenorphineDrug,
     butorphanolDrug,
+    butylscopolamineDrug,
 ];
