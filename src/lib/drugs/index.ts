@@ -130,6 +130,8 @@ import { dexmedetomidineDrug } from './dexmedetomidine';
 import { dexrazoxaneDrug } from './dexrazoxane';
 import { diazepamDrug } from './diazepam';
 import { diazoxideDrug } from './diazoxide';
+import { dichlorophenDrug } from './dichlorophen';
+import { diclofenacDrug } from './diclofenac';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -264,4 +266,6 @@ export const DB_MEDICAMENTOS = [
     dexrazoxaneDrug,
     diazepamDrug,
     diazoxideDrug,
+    dichlorophenDrug,
+    diclofenacDrug,
 ];
