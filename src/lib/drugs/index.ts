@@ -164,6 +164,10 @@ import { epirubicinDrug } from './epirubicin';
 import { eprinomectinDrug } from './eprinomectin';
 import { erythromycinDrug } from './erythromycin';
 import { erythropoietinDrug } from './erythropoietin';
+import { esmololDrug } from './esmolol';
+import { estriolDrug } from './estriol';
+import { eugenolDrug } from './eugenol';
+import { ethanolDrug } from './ethanol';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -332,4 +336,8 @@ export const DB_MEDICAMENTOS = [
     eprinomectinDrug,
     erythromycinDrug,
     erythropoietinDrug,
+    esmololDrug,
+    estriolDrug,
+    eugenolDrug,
+    ethanolDrug,
 ];
