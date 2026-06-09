@@ -5,7 +5,7 @@ export const pathologiesS: Pathology[] = [
     id: 'estomatocitosis',
     nombre: 'Estomatocitosis',
     descripcion: 'Anomalía de los glóbulos rojos donde presentan una palidez central en forma de boca.',
-    etiology: 'Defecto en la membrana del eritrocito, a menudo asociado a condrodisplasia.',
+    etiology: 'Defecto en la membrana del eritrocito, a menudo asociado a condrodisplasia en el Malamute.',
     sintomas: [
       'Anemia hemolítica leve a moderada',
       'Fragilidad osmótica aumentada',

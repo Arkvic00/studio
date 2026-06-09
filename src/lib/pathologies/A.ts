@@ -22,5 +22,25 @@ export const pathologiesA: Pathology[] = [
     prevencion_control: 'Exposición controlada a luz solar.',
     especies_afectadas: ['Perro'],
     categoria: 'Otros'
+  },
+  {
+    id: 'anomalias-ecg-airedale',
+    nombre: 'Anomalías Electrocardiográficas del Airedale',
+    descripcion: 'Alteraciones en la conducción eléctrica del corazón específicas de la raza Airedale Terrier.',
+    etiology: 'Base genética sospechada debido a la alta prevalencia en la raza.',
+    sintomas: [
+      'A menudo asintomático',
+      'Bloqueo AV de primer grado',
+      'Desviación del eje eléctrico medio',
+      'Complejos QRS de bajo voltaje'
+    ],
+    diagnostico: [
+      'Electrocardiograma (ECG) de cribado',
+      'Holter si hay síntomas de debilidad'
+    ],
+    tratamiento: 'Generalmente no requiere tratamiento si no hay signos clínicos.',
+    prevencion_control: 'Monitoreo cardíaco regular.',
+    especies_afectadas: ['Perro'],
+    categoria: 'Cardíaca'
   }
 ];
