@@ -274,6 +274,10 @@ import { melatoninDrug } from './melatonin';
 import { meloxicamDrug } from './meloxicam';
 import { melphalanDrug } from './melphalan';
 import { mepivacaineDrug } from './mepivacaine';
+import { methadoneDrug } from './methadone';
+import { methenamineDrug } from './methenamine';
+import { methionineDrug } from './methionine';
+import { methocarbamolDrug } from './methocarbamol';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -552,4 +556,8 @@ export const DB_MEDICAMENTOS = [
     meloxicamDrug,
     melphalanDrug,
     mepivacaineDrug,
+    methadoneDrug,
+    methenamineDrug,
+    methionineDrug,
+    methocarbamolDrug,
 ];
