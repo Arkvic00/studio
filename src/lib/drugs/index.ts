@@ -178,6 +178,10 @@ import { filgrastimDrug } from './filgrastim';
 import { finasterideDrug } from './finasteride';
 import { fipronilDrug } from './fipronil';
 import { firocoxibDrug } from './firocoxib';
+import { florfenicolDrug } from './florfenicol';
+import { fluconazoleDrug } from './fluconazole';
+import { flubendazoleDrug } from './flubendazole';
+import { flucloxacillinDrug } from './flucloxacillin';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -272,6 +276,7 @@ export const DB_MEDICAMENTOS = [
     cimetidineDrug,
     cimicoxibDrug,
     cinchophenDrug,
+    ciclofosfamidaDrug,
     ciprofloxacinDrug,
     cisaprideDrug,
     cisatracuriumDrug,
@@ -287,6 +292,7 @@ export const DB_MEDICAMENTOS = [
     clopidogrelDrug,
     clotrimazoleDrug,
     cloxacillinDrug,
+    coAmoxiclavDrug,
     codeineDrug,
     colchicineDrug,
     colestyramineDrug,
@@ -359,5 +365,8 @@ export const DB_MEDICAMENTOS = [
     finasterideDrug,
     fipronilDrug,
     firocoxibDrug,
-    coAmoxiclavDrug,
+    florfenicolDrug,
+    fluconazoleDrug,
+    flubendazoleDrug,
+    flucloxacillinDrug,
 ];
