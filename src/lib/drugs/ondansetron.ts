@@ -4,30 +4,29 @@ export const ondansetronDrug: Drug = {
   id: "ondansetron",
   meta_data: {
     nombre_generico: "Ondansetrón",
-    nombres_comerciales: ["Zofran", "Setofilm"],
-    grupo_farmacologico: "Antiemético (Antagonista de receptores 5-HT3)",
+    nombres_comerciales: ["Zofran"],
+    grupo_farmacologico: "Antagonista 5-HT3",
     status_regulatorio: "POM"
   },
   resumen_clinico: {
     puntos_clave: [
-      "Antiemético potente que actúa tanto en el tracto GI como en la zona gatillo central.",
-      "Especialmente eficaz para el control de vómitos inducidos por quimioterapia.",
-      "Útil en vómitos causados por estímulos periféricos (irritación GI severa).",
-      "La biodisponibilidad oral es baja; en gatos la vía SC es preferible para una exposición prolongada."
+      "Antiemético potente central y periférico.",
+      "Eficaz en vómitos por quimioterapia.",
+      "No posee efectos procinéticos."
     ],
-    usos_principales: "Manejo de náuseas y vómitos refractarios a otros fármacos (maropitant, metoclopramida).",
+    usos_principales: "Manejo de náuseas y vómitos refractarios.",
     inicio_accion: "Rápido",
-    duracion_efecto: "12 a 24 horas (oral); requiere infusión o dosis repetidas para uso IV"
+    duracion_efecto: "12 a 24 horas"
   },
   informacion_cliente: [
-    "Medicamento para tratar náuseas y vómitos intensos, especialmente durante tratamientos de cáncer.",
-    "Informe si nota estreñimiento severo en su mascota.",
-    "En gatos, el veterinario puede preferir inyecciones debajo de la piel para asegurar que el fármaco se absorba bien."
+    "Para náuseas intensas.",
+    "Informe si nota estreñimiento.",
+    "Vía SC preferible en gatos."
   ],
   parametros_dosificacion: {
     perro: [
       {
-        indicacion: "Vómitos refractarios / Quimioterapia",
+        indicacion: "Vómitos refractarios",
         vias: ["IV", "PO"],
         math: {
           tipo_calculo: "mg_kg",
@@ -36,96 +35,40 @@ export const ondansetronDrug: Drug = {
           dosis_max: 1.0,
           unidad_calculo: "mg/kg"
         },
-        frecuencia: {
-          texto_ui: "Cada 12 a 24 horas (PO) o carga IV + infusión",
-          intervalo_horas: 12
-        },
-        notas_tecnicas: "Protocolo IV: Carga de 0.5 mg/kg seguida de infusión de 0.5 mg/kg/h por 6 horas."
+        frecuencia: { texto_ui: "Cada 12 a 24 horas", intervalo_horas: 12 }
       }
     ],
     gato: [
       {
         indicacion: "Vómitos refractarios",
-        vias: ["SC", "PO", "IV"],
+        vias: ["SC", "PO"],
         math: {
           tipo_calculo: "mg_kg",
           dosis_recomendada: 0.75,
-          dosis_min: 0.5,
-          dosis_max: 1.0,
           unidad_calculo: "mg/kg"
         },
-        frecuencia: {
-          texto_ui: "Cada 12 a 24 horas",
-          intervalo_horas: 12
-        },
-        notas_tecnicas: "La vía SC es más biodisponible en gatos que la oral."
-      }
-    ],
-    huron: [
-      {
-        indicacion: "Antiemético",
-        vias: ["PO"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 1,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: {
-          texto_ui: "Cada 12 a 24 horas",
-          intervalo_horas: 12
-        }
+        frecuencia: { texto_ui: "Cada 12 a 24 horas", intervalo_horas: 12 }
       }
     ]
   },
   seguridad_y_alertas: {
-    contraindicaciones: [
-      "Obstrucción gastrointestinal mecánica."
-    ],
-    efectos_adversos: [
-      "Estreñimiento.",
-      "Dolor de cabeza (inferido de humanos).",
-      "Alteraciones leves y ocasionales de enzimas hepáticas.",
-      "Reacciones de hipersensibilidad (raras)."
-    ],
-    monitoreo_recommended: [
-      "Frecuencia de las deposiciones",
-      "Resolución de los vómitos",
-      "Enzimas hepáticas en uso prolongado"
-    ],
-    instrucciones_manejo: "Observar precauciones normales de higiene.",
+    contraindicaciones: ["Obstrucción GI."],
+    efectos_adversos: ["Estreñimiento.", "Sedación."],
+    monitoreo_recomendado: ["Resolución de náuseas"],
+    instrucciones_manejo: "Higiene normal.",
     sobredosis: {
-      signos: ["Estreñimiento severo", "Sedación"],
-      tratamiento: "Soporte sintomático."
+      signos: ["Sedación"],
+      tratamiento: "Soporte."
     },
-    interactions_farmacologicas: [
-      { farmaco: "Tramadol", efecto: "Ondansetrón puede reducir la efectividad analgésica del tramadol.", severidad: "Moderada" }
+    interacciones_farmacologicas: [
+      { farmaco: "Tramadol", efecto: "Reduce su efectividad.", severidad: "Moderada" }
     ]
   },
   farmacologia_clinica: {
-    mecanismo_accion: "Antagonista selectivo y potente de los receptores 5-HT3 de serotonina, bloqueando las señales de náusea en el vago periférico y el centro del vómito central.",
-    farmacocinetica: "Metabolismo hepático. Excreción renal y fecal."
+    mecanismo_accion: "Antagonista potente de receptores 5-HT3.",
+    farmacocinetica: "Metabolismo hepático."
   },
   presentaciones_comerciales: [
-    {
-      tipo: "Vial inyectable",
-      concentracion_texto: "2 mg/ml",
-      valor_concentracion: 2,
-      unidad_concentracion: "mg/ml",
-      es_divisible: false
-    },
-    {
-      tipo: "Tableta oral",
-      concentracion_texto: "4, 8 mg",
-      valor_concentracion: 4,
-      unidad_concentracion: "mg",
-      es_divisible: true
-    },
-    {
-      tipo: "Jarabe oral",
-      concentracion_texto: "4 mg/5 ml",
-      valor_concentracion: 0.8,
-      unidad_concentracion: "mg/ml",
-      es_divisible: false
-    }
+    { tipo: "Inyectable", concentracion_texto: "2 mg/ml", valor_concentracion: 2, unidad_concentracion: "mg/ml", es_divisible: false }
   ]
 };

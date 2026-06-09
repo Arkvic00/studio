@@ -3,27 +3,26 @@ import type { Drug } from '@/lib/types';
 export const pancuroniumDrug: Drug = {
   id: "pancuronium",
   meta_data: {
-    nombre_generico: "Pancuronio (Bromuro de pancuronio)",
+    nombre_generico: "Pancuronio",
     nombres_comerciales: ["Pancuronium*"],
-    grupo_farmacologico: "Bloqueador neuromuscular no despolarizante",
+    grupo_farmacologico: "Bloqueante neuromuscular no despolarizante",
     status_regulatorio: "POM"
   },
   resumen_clinico: {
     puntos_clave: [
       "Bloqueador neuromuscular de duración media a larga (>45 min).",
       "Inhibe competitivamente la acetilcolina en la unión neuromuscular.",
-      "Requiere obligatoriamente ventilación asistida (presión positiva).",
-      "Posee un ligero efecto estimulante cardiovascular (vago-lítico).",
-      "La reversión se realiza preferiblemente con neostigmina."
+      "Requiere obligatoriamente ventilación asistida.",
+      "Tiene un ligero efecto estimulante cardiovascular."
     ],
-    usos_principales: "Provisión de parálisis muscular durante la anestesia para facilitar ventilación mecánica o cirugía intraocular.",
+    usos_principales: "Parálisis muscular durante anestesia para facilitar ventilación o cirugía intraocular.",
     inicio_accion: "Rápido (2-3 min IV)",
     duracion_efecto: "45 a 60 minutos"
   },
   informacion_cliente: [
-    "Fármaco de uso estrictamente hospitalario bajo anestesia profunda.",
-    "El animal no puede respirar por sí solo mientras dure el efecto; requiere un respirador.",
-    "Se monitorizará la recuperación completa de la fuerza antes de despertar al paciente."
+    "Fármaco de uso hospitalario bajo anestesia profunda.",
+    "El animal no puede respirar por sí solo durante el efecto.",
+    "Se monitorizará la recuperación completa de la fuerza."
   ],
   parametros_dosificacion: {
     perro: [
@@ -37,7 +36,7 @@ export const pancuroniumDrug: Drug = {
           dosis_max: 0.075,
           unidad_calculo: "mg/kg"
         },
-        notas_tecnicas: "Iniciar con dosis alta y repetir dosis de mantenimiento de 0.01 mg/kg. Puede ser acumulativo."
+        frecuencia: { texto_ui: "Repetir dosis de 0.01 mg/kg según necesidad", intervalo_horas: 0 }
       }
     ],
     gato: [
@@ -47,8 +46,6 @@ export const pancuroniumDrug: Drug = {
         math: {
           tipo_calculo: "mg_kg",
           dosis_recomendada: 0.05,
-          dosis_min: 0.025,
-          dosis_max: 0.075,
           unidad_calculo: "mg/kg"
         }
       }
@@ -56,31 +53,30 @@ export const pancuroniumDrug: Drug = {
   },
   seguridad_y_alertas: {
     contraindicaciones: [
-      "Animales no anestesiados adecuadamente (causa parálisis consciente).",
-      "Falta de equipo de ventilación asistida."
+      "Falta de equipo de ventilación asistida.",
+      "Animales no anestesiados adecuadamente."
     ],
     efectos_adversos: [
-      "Apnea (efecto deseado pero mortal sin soporte).",
-      "Aumento de la frecuencia cardíaca.",
-      "Hipotermia, acidosis e hipopotasemia prolongan su efecto."
+      "Apnea (efecto deseado).",
+      "Taquicardia.",
+      "Hipotermia prolonga su efecto."
     ],
     monitoreo_recomendado: [
       "Ventilación asistida constante",
-      "Estimulador de nervios periféricos",
+      "Estimulador de nervios",
       "Frecuencia cardíaca"
     ],
-    instrucciones_manejo: "Mantener en refrigeración. No mezclar con otros fármacos.",
+    instrucciones_manejo: "Mantener en refrigeración.",
     sobredosis: {
-      signos: ["Parálisis prolongada", "Taquicardia"],
-      tratamiento: "Mantener ventilación asistida. Revertir con Neostigmina (previa Atropina)."
+      signos: ["Parálisis prolongada"],
+      tratamiento: "Revertir con Neostigmina (previa Atropina)."
     },
     interacciones_farmacologicas: [
-      { farmaco: "Aminoglucósidos / Lincosamidas", efecto: "Prolongan significativamente el bloqueo neuromuscular.", severidad: "Importante" },
-      { farmaco: "Anestésicos volátiles", efecto: "Sinergia en el bloqueo muscular.", severidad: "Moderada" }
+      { farmaco: "Aminoglucósidos", efecto: "Prolongan el bloqueo.", severidad: "Importante" }
     ]
   },
   farmacologia_clinica: {
-    mecanismo_accion: "Antagonista competitivo de los receptores nicotínicos en la placa motora terminal.",
+    mecanismo_accion: "Antagonista de receptores nicotínicos en la placa motora.",
     farmacocinetica: "Eliminación renal y biliar."
   },
   presentaciones_comerciales: [

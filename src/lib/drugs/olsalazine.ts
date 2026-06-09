@@ -5,25 +5,23 @@ export const olsalazineDrug: Drug = {
   meta_data: {
     nombre_generico: "Olsalazina",
     nombres_comerciales: ["Olsalazine*"],
-    grupo_farmacologico: "Dímero de ácido 5-aminosalicílico (5-ASA); Antiinflamatorio local colónico",
+    grupo_farmacologico: "Derivado 5-ASA",
     status_regulatorio: "POM"
   },
   resumen_clinico: {
     puntos_clave: [
-      "Dímero de 5-ASA que se descompone por bacterias colónicas en 5-ASA libre.",
-      "Efecto antiinflamatorio local en la mucosa del colon.",
-      "Útil en el manejo de la colitis, especialmente en pacientes sensibles a la sulfasalazina.",
-      "Riesgo de queratoconjuntivitis seca (KCS), aunque menor que con sulfasalazina."
+      "Dímero de 5-ASA que se activa en el colon.",
+      "Efecto antiinflamatorio local.",
+      "Menor riesgo de KCS que la sulfasalazina."
     ],
-    usos_principales: "Manejo de la colitis crónica.",
-    inicio_accion: "Variable (acción local en colon)",
-    duracion_efecto: "Requiere administración cada 12 horas"
+    usos_principales: "Manejo de la colitis crónica en perros.",
+    inicio_accion: "Variable",
+    duracion_efecto: "12 horas"
   },
   informacion_cliente: [
     "Medicamento para desinflamar el colon.",
-    "Se recomiendan pruebas de lágrima (Test de Schirmer) periódicas para vigilar la sequedad ocular.",
-    "Informe si nota que su mascota tiene los ojos rojos o produce menos legañas de lo normal.",
-    "No usar en animales alérgicos a la aspirina o salicilatos."
+    "Realizar pruebas de lágrima periódicas.",
+    "Informe si nota ojos rojos o menos lágrima."
   ],
   parametros_dosificacion: {
     perro: [
@@ -37,54 +35,28 @@ export const olsalazineDrug: Drug = {
           dosis_max: 20,
           unidad_calculo: "mg/kg"
         },
-        frecuencia: {
-          texto_ui: "Cada 12 horas",
-          intervalo_horas: 12
-        }
+        frecuencia: { texto_ui: "Cada 12 horas", intervalo_horas: 12 }
       }
     ]
   },
   seguridad_y_alertas: {
-    contraindicaciones: [
-      "Hipersensibilidad a los salicilatos.",
-      "Insuficiencia renal severa."
-    ],
-    efectos_adversos: [
-      "Queratoconjuntivitis seca (KCS).",
-      "Vómitos y diarrea ocasionales.",
-      "Reacciones de hipersensibilidad."
-    ],
-    monitoreo_recomendado: [
-      "Test de Schirmer periódico",
-      "Estado de las heces"
-    ],
-    instrucciones_manejo: "Observar precauciones normales de higiene.",
+    contraindicaciones: ["Salicilatos."],
+    efectos_adversos: ["Ojo seco (KCS).", "Vómitos."],
+    monitoreo_recomendado: ["Test de Schirmer"],
+    instrucciones_manejo: "Higiene normal.",
     sobredosis: {
-      signos: ["Trastornos GI", "Signos de toxicidad por salicilatos"],
-      tratamiento: "Soporte sintomático."
+      signos: ["Trastornos GI"],
+      tratamiento: "Soporte."
     },
     interacciones_farmacologicas: [
-      { farmaco: "Otros AINEs", efecto: "Potenciación del riesgo de efectos adversos.", severidad: "Importante" }
+      { farmaco: "AINEs", efecto: "Potenciación de efectos adversos.", severidad: "Importante" }
     ]
   },
   farmacologia_clinica: {
-    mecanismo_accion: "Dímero de 5-aminosalicilato que llega intacto al colon, donde las bacterias rompen el enlace liberando el componente activo para una acción tópica antiinflamatoria.",
-    farmacocinetica: "Mínima absorción sistémica de la olsalazina; la mayoría actúa localmente."
+    mecanismo_accion: "Acción tópica antiinflamatoria en colon tras liberación bacteriana.",
+    farmacocinetica: "Mínima absorción sistémica."
   },
   presentaciones_comerciales: [
-    {
-      tipo: "Cápsula oral",
-      concentracion_texto: "250 mg",
-      valor_concentracion: 250,
-      unidad_concentracion: "mg",
-      es_divisible: false
-    },
-    {
-      tipo: "Tableta oral",
-      concentracion_texto: "500 mg",
-      valor_concentracion: 500,
-      unidad_concentracion: "mg",
-      es_divisible: true
-    }
+    { tipo: "Cápsula oral", concentracion_texto: "250 mg", valor_concentracion: 250, unidad_concentracion: "mg", es_divisible: false }
   ]
 };
