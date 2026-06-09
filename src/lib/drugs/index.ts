@@ -100,6 +100,9 @@ import { climbazoleDrug } from './climbazole';
 import { clindamycinDrug } from './clindamycin';
 import { clofazimineDrug } from './clofazimine';
 import { clomipramineDrug } from './clomipramine';
+import { clonazepamDrug } from './clonazepam';
+import { clonidineDrug } from './clonidine';
+import { clopidogrelDrug } from './clopidogrel';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -204,4 +207,7 @@ export const DB_MEDICAMENTOS = [
     clindamycinDrug,
     clofazimineDrug,
     clomipramineDrug,
+    clonazepamDrug,
+    clonidineDrug,
+    clopidogrelDrug,
 ];
