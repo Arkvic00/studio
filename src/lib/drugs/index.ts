@@ -282,6 +282,9 @@ import { metoprenoDrug } from './metopreno';
 import { metotrexatoDrug } from './metotrexato';
 import { metilprednisolonaDrug } from './metilprednisolona';
 import { azulDeMetilenoDrug } from './azul_de_metileno';
+import { metoclopramideDrug } from './metoclopramide';
+import { metronidazoleDrug } from './metronidazole';
+import { mexiletineDrug } from './mexiletine';
 
 export const DB_MEDICAMENTOS = [
     acepromazinaMaleatoDrug,
@@ -568,4 +571,7 @@ export const DB_MEDICAMENTOS = [
     metotrexatoDrug,
     metilprednisolonaDrug,
     azulDeMetilenoDrug,
+    metoclopramideDrug,
+    metronidazoleDrug,
+    mexiletineDrug,
 ];
