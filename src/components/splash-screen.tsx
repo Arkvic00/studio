@@ -8,75 +8,80 @@ export function SplashScreen({ onFinish }: { onFinish: () => void }) {
   }, [onFinish]);
 
   return (
-    <div className="fixed inset-0 z-[100] bg-[#0b111e] flex flex-col items-center justify-center animate-in fade-in duration-700 font-sans">
-      <div className="relative w-32 h-64 mb-12 flex items-center justify-center">
+    <div className="fixed inset-0 z-[100] bg-[#0b111e] flex flex-col items-center justify-center animate-in fade-in duration-700 font-sans overflow-hidden">
+      {/* Background Glows for Depth */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-accent/5 blur-[80px] rounded-full pointer-events-none delay-700"></div>
+
+      <div className="relative w-48 h-48 mb-12 flex items-center justify-center">
+        {/* Animated Modern Logo */}
         <svg
-          viewBox="0 0 100 200"
-          className="w-24 h-48 drop-shadow-[0_0_20px_rgba(255,255,255,0.05)]"
+          viewBox="0 0 100 100"
+          className="w-full h-full relative z-10 drop-shadow-[0_0_30px_rgba(168,85,247,0.2)] animate-in zoom-in-50 duration-1000"
         >
-          {/* Main Syringe Body */}
-          <rect
-            x="35"
-            y="40"
-            width="30"
-            height="110"
-            rx="2"
+          <defs>
+            <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="hsl(var(--primary))" />
+              <stop offset="100%" stopColor="hsl(var(--accent))" />
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          {/* Clinical Shield Border */}
+          <path
+            d="M50 5 L85 25 L85 75 L50 95 L15 75 L15 25 Z"
             fill="none"
-            stroke="#475569"
-            strokeWidth="3"
-          />
-          {/* Top Handle */}
-          <line
-            x1="20"
-            y1="40"
-            x2="80"
-            y2="40"
-            stroke="#475569"
-            strokeWidth="4"
+            stroke="url(#logo-gradient)"
+            strokeWidth="1.5"
             strokeLinecap="round"
+            strokeLinejoin="round"
+            className="opacity-40"
           />
-          {/* Needle Base */}
-          <line
-            x1="50"
-            y1="150"
-            x2="50"
-            y2="175"
-            stroke="#475569"
-            strokeWidth="2"
-          />
-          {/* Liquid Filling */}
-          <rect
-            x="38"
-            y="43"
-            width="24"
-            height="104"
-            fill="#991b1b"
-            className="origin-bottom animate-syringe-fill"
-          />
-          {/* Inner Plunger line */}
-          <line
-            x1="50"
-            y1="20"
-            x2="50"
-            y2="40"
-            stroke="#475569"
-            strokeWidth="3"
-            strokeLinecap="round"
-          />
+
+          {/* Geometric Paw with Integrated Medical Cross */}
+          <g className="animate-in slide-in-from-bottom-4 duration-1000 delay-300">
+            {/* Toe Pads */}
+            <circle cx="32" cy="38" r="7" fill="url(#logo-gradient)" />
+            <circle cx="50" cy="30" r="7" fill="url(#logo-gradient)" />
+            <circle cx="68" cy="38" r="7" fill="url(#logo-gradient)" />
+
+            {/* Main Pad with Cross Cutout */}
+            <path
+              d="M50 48 C35 48 25 60 25 72 C25 85 35 93 50 93 C65 93 75 85 75 72 C75 60 65 48 50 48 Z"
+              fill="url(#logo-gradient)"
+            />
+
+            {/* Medical Cross (Negative Space) */}
+            <rect x="48.5" y="60" width="3" height="24" rx="1.5" fill="#0b111e" />
+            <rect x="38" y="70.5" width="24" height="3" rx="1.5" fill="#0b111e" />
+          </g>
         </svg>
+
+        {/* Outer Orbital Ring */}
+        <div className="absolute inset-0 border-2 border-primary/10 rounded-full animate-[spin_10s_linear_infinite]">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-accent rounded-full shadow-[0_0_15px_hsl(var(--accent))]"></div>
+        </div>
       </div>
-      
-      <div className="text-center space-y-2">
-        <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase flex items-baseline justify-center gap-2">
+
+      <div className="text-center space-y-3 relative z-10">
+        <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase flex items-baseline justify-center gap-2 drop-shadow-sm">
           <span className="text-white">DOSIS</span>
-          <span className="text-[#991b1b]">PERRONAS</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+            PERRONAS
+          </span>
         </h1>
         <div className="flex items-center justify-center gap-4">
-          <div className="h-[1px] w-8 bg-slate-700"></div>
-          <p className="text-slate-400 text-sm md:text-base font-bold uppercase tracking-[0.4em] translate-x-[0.2em]">
-            BY: ARTURO ALVARADO
+          <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-slate-700"></div>
+          <p className="text-slate-400 text-xs md:text-sm font-black uppercase tracking-[0.5em] translate-x-[0.25em]">
+            V 2.0 CLINICAL SUITE
           </p>
-          <div className="h-[1px] w-8 bg-slate-700"></div>
+          <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-slate-700"></div>
         </div>
       </div>
     </div>
