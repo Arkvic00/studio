@@ -25,7 +25,7 @@ export const SPECIES_CONFIG: Record<string, { label: string; icon: string; theme
   gato: { label: 'Gato', icon: '🐱', theme: SPECIES_THEMES.Gato },
   caballo: { label: 'Caballo', icon: '🐴', theme: SPECIES_THEMES.Caballo },
   bovino: { label: 'Bovino', icon: '🐮', theme: SPECIES_THEMES.Bovino },
-  ovino: { label: 'Ovino', icon: 'RAM', theme: SPECIES_THEMES.Ovino },
+  ovino: { label: 'Ovino', icon: '🐏', theme: SPECIES_THEMES.Ovino },
   caprino: { label: 'Caprino', icon: '🐐', theme: SPECIES_THEMES.Caprino },
   cerdo: { label: 'Cerdo', icon: '🐷', theme: SPECIES_THEMES.Cerdo },
   roedores: { label: 'Roedores', icon: '🐭', theme: SPECIES_THEMES.Roedores },
