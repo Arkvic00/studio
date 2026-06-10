@@ -20,6 +20,11 @@ import { tolfenamicAcidDrug } from './tolfenamic_acid';
 import { toltrazurilDrug } from './toltrazuril';
 import { topiramateDrug } from './topiramate';
 import { torasemideDrug } from './torasemide';
+import { trimethoprimSulphonamideDrug } from './trimethoprim_sulphonamide';
+import { tropicamideDrug } from './tropicamide';
+import { tylosinDrug } from './tylosin';
+import { ursodeoxycholicAcidDrug } from './ursodeoxycholic_acid';
+import { vecuroniumDrug } from './vecuronium';
 
 export const groupTZ = [
     tacrolimusDrug,
@@ -44,4 +49,9 @@ export const groupTZ = [
     toltrazurilDrug,
     topiramateDrug,
     torasemideDrug,
+    trimethoprimSulphonamideDrug,
+    tropicamideDrug,
+    tylosinDrug,
+    ursodeoxycholicAcidDrug,
+    vecuroniumDrug,
 ];
