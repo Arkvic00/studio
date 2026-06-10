@@ -70,8 +70,8 @@ export function SplashScreen({ onFinish }: { onFinish: () => void }) {
         </h1>
         <div className="flex items-center justify-center gap-4">
           <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-red-900/50"></div>
-          <p className="text-slate-400 text-xs md:text-sm font-black uppercase tracking-[0.5em] translate-x-[0.25em]">
-            V 2.0 CLINICAL SUITE
+          <p className="text-slate-400 text-xs md:text-sm font-bold uppercase tracking-[0.2em]">
+            By: Arturo Alvarado
           </p>
           <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-red-900/50"></div>
         </div>
