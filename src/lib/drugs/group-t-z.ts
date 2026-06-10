@@ -13,6 +13,13 @@ import { thiamazoleDrug } from './thiamazole';
 import { tshDrug } from './tsh';
 import { thyroxineDrug } from './thyroxine';
 import { ticarcillinDrug } from './ticarcillin';
+import { timololDrug } from './timolol';
+import { tobramycinDrug } from './tobramycin';
+import { toceranibDrug } from './toceranib';
+import { tolfenamicAcidDrug } from './tolfenamic_acid';
+import { toltrazurilDrug } from './toltrazuril';
+import { topiramateDrug } from './topiramate';
+import { torasemideDrug } from './torasemide';
 
 export const groupTZ = [
     tacrolimusDrug,
@@ -30,4 +37,11 @@ export const groupTZ = [
     tshDrug,
     thyroxineDrug,
     ticarcillinDrug,
+    timololDrug,
+    tobramycinDrug,
+    toceranibDrug,
+    tolfenamicAcidDrug,
+    toltrazurilDrug,
+    topiramateDrug,
+    torasemideDrug,
 ];
