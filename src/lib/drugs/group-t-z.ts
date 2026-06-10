@@ -12,6 +12,7 @@ import { theophyllineDrug } from './theophylline';
 import { thiamazoleDrug } from './thiamazole';
 import { tshDrug } from './tsh';
 import { thyroxineDrug } from './thyroxine';
+import { ticarcillinDrug } from './ticarcillin';
 
 export const groupTZ = [
     tacrolimusDrug,
@@ -28,4 +29,5 @@ export const groupTZ = [
     thiamazoleDrug,
     tshDrug,
     thyroxineDrug,
+    ticarcillinDrug,
 ];
