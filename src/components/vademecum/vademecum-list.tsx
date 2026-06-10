@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { 
     ChevronRight, Search, Pill, TriangleAlert, 
-    Stethoscope as PathoIcon, GraduationCap
+    Stethoscope as PathoIcon, GraduationCap, Globe
 } from 'lucide-react';
 import Image from 'next/image';
 import { PinterestCard } from '@/components/ui/pinterest-card';
@@ -18,18 +18,17 @@ import { getSpeciesInfo, speciesList, normalizeStr } from '@/lib/config';
 
 export function VademecumList() {
     const [activeTab, setActiveTab] = useState('farmacos');
-    const [selectedSpecies, setSelectedSpecies] = useState('Perro');
+    const [selectedSpecies, setSelectedSpecies] = useState('Todos');
     const [searchTerm, setSearchTerm] = useState('');
     const { drugImages } = useAppContext();
 
-    // Filter Logic
     const filteredContent = useMemo(() => {
         const q = searchTerm.toLowerCase();
         const normalizedSelected = normalizeStr(selectedSpecies);
         
         if (activeTab === 'farmacos') {
             return DB_MEDICAMENTOS.filter(d => {
-                const matchesSpecies = d.parametros_dosificacion[normalizedSelected]?.length > 0;
+                const matchesSpecies = selectedSpecies === 'Todos' || (d.parametros_dosificacion[normalizedSelected] && d.parametros_dosificacion[normalizedSelected].length > 0);
                 if (!matchesSpecies) return false;
                 if (!q) return true;
                 return fuzzySearch(q, d.meta_data.nombre_generico) || 
@@ -39,7 +38,7 @@ export function VademecumList() {
         
         if (activeTab === 'predisposicion') {
             return ALL_BREEDS.filter(b => {
-                const matchesSpecies = normalizeStr(b.especie) === normalizedSelected;
+                const matchesSpecies = selectedSpecies === 'Todos' || normalizeStr(b.especie) === normalizedSelected;
                 if (!matchesSpecies) return false;
                 if (!q) return true;
                 return fuzzySearch(q, b.nombre);
@@ -48,7 +47,7 @@ export function VademecumList() {
 
         if (activeTab === 'patologias') {
             return ALL_PATHOLOGIES.filter(p => {
-                const matchesSpecies = p.especies_afectadas.some(s => normalizeStr(s) === normalizedSelected);
+                const matchesSpecies = selectedSpecies === 'Todos' || p.especies_afectadas.some(s => normalizeStr(s) === normalizedSelected);
                 if (!matchesSpecies) return false;
                 if (!q) return true;
                 return fuzzySearch(q, p.nombre) || p.categoria?.toLowerCase().includes(q);
@@ -60,9 +59,18 @@ export function VademecumList() {
 
     return (
         <div className="animate-in fade-in duration-500 space-y-10">
-            {/* Shared Species Filter */}
             <PinterestCard className="!p-4">
                 <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3">
+                    <button 
+                        onClick={() => setSelectedSpecies('Todos')}
+                        className={cn(
+                            "flex flex-col items-center justify-center gap-1 p-2 rounded-2xl transition-all duration-200 border-2",
+                            selectedSpecies === 'Todos' ? 'bg-primary/10 border-primary scale-105 shadow-md' : 'border-transparent hover:bg-secondary'
+                        )}
+                    >
+                        <div className="text-2xl sm:text-3xl"><Globe/></div>
+                        <span className={cn("text-[8px] font-bold uppercase tracking-wider text-center", selectedSpecies === 'Todos' ? 'text-primary' : 'text-muted-foreground')}>Todos</span>
+                    </button>
                     {speciesList.map(key => {
                         const info = getSpeciesInfo(key);
                         if (!info) return null;
@@ -84,7 +92,6 @@ export function VademecumList() {
                 </div>
             </PinterestCard>
 
-            {/* Navigation Tabs */}
             <div className="flex items-center gap-4 bg-card/50 p-2 rounded-full w-full md:w-fit border border-white/5 mx-auto md:mx-0 overflow-x-auto">
                  <button
                     onClick={() => { setActiveTab('farmacos'); setSearchTerm(''); }}
@@ -121,7 +128,6 @@ export function VademecumList() {
                 </button>
             </div>
 
-            {/* Search Bar */}
             <div className="relative">
                 <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-muted-foreground z-10" size={24} />
                 <Input
@@ -133,7 +139,6 @@ export function VademecumList() {
                 />
             </div>
 
-            {/* Results Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {activeTab === 'farmacos' && filteredContent.map((drug: any) => (
                     <Link key={drug.id} href={`/vademecum/${drug.id}`}>

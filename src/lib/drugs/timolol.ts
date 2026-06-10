@@ -1,101 +1,76 @@
-import type { Drug } from '@/lib/types';
+import type { Drug } from '../index';
 
 export const timololDrug: Drug = {
-  id: "timolol",
+  id: 'timolol',
   meta_data: {
-    nombre_generico: "Timolol (Maleato de Timolol)",
-    nombres_comerciales: ["Azarga", "CoSopt", "Timoptol"],
-    grupo_farmacologico: "Bloqueador beta-adrenérgico no selectivo oftálmico",
-    status_regulatorio: "POM"
+    nombre_generico: 'Maleato de timolol',
+    nombres_comerciales: ['Azarga', 'CoSopt', 'Timolol', 'Timoptol'],
+    grupo_farmacologico: 'Betabloqueante no selectivo',
+    status_regulatorio: 'POM',
   },
   resumen_clinico: {
     puntos_clave: [
-      "Beta-bloqueador tópico que disminuye la producción de humor acuoso.",
-      "Utilizado para el manejo del glaucoma canino y felino.",
-      "A menudo se combina con inhibidores de la anhidrasa carbónica (ej. dorzolamida).",
-      "Provoca miosis (contracción pupilar), lo que debe considerarse en uveítis.",
-      "Riesgo de absorción sistémica en animales pequeños."
+      'Disminuye la producción de humor acuoso mediante el bloqueo de los receptores beta-adrenérgicos en el cuerpo ciliar.',
+      'Se utiliza para el tratamiento del glaucoma, solo o en combinación con otros fármacos tópicos para el glaucoma.',
+      'La combinación con dorzolamida/brinzolamida puede ser más eficaz que cualquiera de los fármacos por separado.',
+      'Puede ser apropiado usar una solución al 0.25% en pacientes más pequeños para reducir los riesgos de absorción sistémica.',
     ],
-    usos_principales: "Tratamiento del glaucoma primario y secundario en perros y gatos.",
-    inicio_accion: "Rápido (tópico)",
-    duracion_efecto: "8 a 12 horas"
+    usos_principales: 'Tratamiento del glaucoma.',
+    inicio_accion: 'Desconocido',
+    duracion_efecto: 'Desconocido',
   },
-  informacion_cliente: [
-    "Aplique las gotas siguiendo el horario estricto para evitar picos de presión dolorosos.",
-    "Informe si nota que su mascota parece muy cansada o tiene dificultad para respirar.",
-    "La pupila se verá más pequeña de lo normal tras la aplicación.",
-    "No usar en animales con insuficiencia cardíaca descompensada o asma."
-  ],
-  parametros_dosificacion: {
-    perro: [
-      {
-        indicacion: "Manejo del Glaucoma",
-        vias: ["Tópica ocular"],
-        math: {
-          tipo_calculo: "fija",
-          dosis_recomendada: 1,
-          unidad_calculo: "gota"
-        },
-        frecuencia: {
-          texto_ui: "Cada 8 a 12 horas",
-          intervalo_horas: 12
-        }
-      }
+  informacion_cliente: ['Observar las precauciones normales.'],
+  contraindicaciones_precauciones: {
+    contraindicaciones: ['Evitar en insuficiencia cardíaca no controlada y asma.'],
+    precauciones: [
+      'La absorción sistémica puede ocurrir después de la aplicación tópica, causando bradicardia y reducción de la presión arterial.',
     ],
-    gato: [
-      {
-        indicacion: "Manejo del Glaucoma",
-        vias: ["Tópica ocular"],
-        math: {
-          tipo_calculo: "fija",
-          dosis_recomendada: 1,
-          unidad_calculo: "gota"
-        },
-        frecuencia: {
-          texto_ui: "Cada 12 horas",
-          intervalo_horas: 12
-        }
-      }
-    ]
   },
-  seguridad_y_alertas: {
-    contraindicaciones: [
-      "Insuficiencia cardíaca no controlada.",
-      "Asma bronquial o enfermedad obstructiva de vías respiratorias.",
-      "Bradicardia severa."
+  reacciones_adversas: {
+    comunes: [
+      'Efectos adversos oculares: miosis, hiperemia conjuntival e irritación local.',
     ],
-    efectos_adversos: [
-      "Miosis (pupilas pequeñas).",
-      "Hiperemia conjuntival (enrojecimiento).",
-      "Bradicardia e hipotensión (por absorción sistémica).",
-      "Broncoespasmo (raro)."
+    raras: [],
+  },
+  interacciones_farmacos: {
+    observadas: [
+      {
+        farmaco: 'Betabloqueantes orales',
+        descripcion:
+          'Se pueden desarrollar efectos adversos aditivos si se administran concomitantemente.',
+      },
+      {
+        farmaco: 'Verapamilo',
+        descripcion:
+          'La administración concomitante de timolol con verapamilo puede causar bradicardia y asistolia.',
+      },
+      {
+        farmaco: 'Antagonistas del calcio o digoxina',
+        descripcion:
+          'Pueden producirse tiempos de conducción AV prolongados si se usan con timolol.',
+      },
     ],
-    monitoreo_recomendado: [
-      "Presión intraocular regular",
-      "Frecuencia cardíaca",
-      "Estado respiratorio"
-    ],
-    instrucciones_manejo: "Observar precauciones normales para productos oftálmicos estériles.",
-    sobredosis: {
-      signos: ["Bradicardia", "Hipotensión", "Letargo"],
-      tratamiento: "Lavar el ojo con salino; soporte cardiovascular si hay efectos sistémicos."
-    },
-    interacciones_farmacologicas: [
-      { farmaco: "Beta-bloqueadores orales", efecto: "Potenciación de efectos sistémicos adversos.", severidad: "Importante" },
-      { farmaco: "Bloqueadores de canales de calcio / Digoxina", efecto: "Riesgo de bloqueos de conducción cardíaca.", severidad: "Importante" }
-    ]
+    potenciales: [],
   },
   farmacologia_clinica: {
-    mecanismo_accion: "Bloquea los receptores beta-adrenérgicos en el cuerpo ciliar, reduciendo la producción de humor acuoso.",
-    farmacocinetica: "Efecto local predominante."
+    mecanismo_accion:
+      'Bloqueador beta no selectivo tópico que disminuye la producción de humor acuoso mediante el bloqueo de los receptores beta-adrenérgicos en el cuerpo ciliar.',
+    farmacocinetica: 'No hay información disponible.',
   },
   presentaciones_comerciales: [
     {
-      tipo: "Gotas oftálmicas",
-      concentracion_texto: "0.25%, 0.5%",
-      valor_concentracion: 5,
-      unidad_concentracion: "mg/ml",
-      es_divisible: false
-    }
-  ]
+      tipo: 'Oftálmico',
+      forma_farmaceutica: 'Solución',
+      concentraciones: ['0.25%', '0.5%'],
+    },
+  ],
+  dosis: {
+    mammals: [
+      {
+        especie: 'Conejos',
+        dosis: '1 gota por ojo q12h',
+        indicacion: 'Glaucoma',
+      },
+    ],
+  },
 };

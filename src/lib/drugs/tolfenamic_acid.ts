@@ -1,96 +1,80 @@
-import type { Drug } from '@/lib/types';
+import type { Drug } from '../index';
 
 export const tolfenamicAcidDrug: Drug = {
-  id: "tolfenamic_acid",
+  id: 'tolfenamic-acid',
   meta_data: {
-    nombre_generico: "Ácido Tolfenámico",
-    nombres_comerciales: ["Tolfedine"],
-    grupo_farmacologico: "AINE (Derivado del ácido antranílico)",
-    status_regulatorio: "POM-V"
+    nombre_generico: 'Ácido tolfenámico',
+    nombres_comerciales: ['Tolfedine'],
+    grupo_farmacologico: 'AINE',
+    status_regulatorio: 'POM-V',
   },
   resumen_clinico: {
     puntos_clave: [
-      "Inhibe la ciclooxigenasa (COX) y tiene acción antagonista directa sobre receptores de prostaglandinas.",
-      "Potente efecto antiinflamatorio, analgésico y antipirético.",
-      "Autorizado para uso preoperatorio en perros y gatos.",
-      "Vida media más larga en gatos (mayor riesgo de toxicidad por acumulación).",
-      "La enfermedad hepática prolonga su metabolismo."
+      'Alivio de la inflamación y el dolor agudos y crónicos.',
+      'La enfermedad hepática prolongará el metabolismo del ácido tolfenámico, lo que puede llevar a la acumulación del fármaco y a una sobredosis con dosis repetidas.',
+      'Usar con precaución en enfermedades renales y en el período perioperatorio.',
+      'Existe evidencia emergente de que el ácido tolfenámico puede tener actividad anticancerígena contra algunos tipos de tumores.',
     ],
-    usos_principales: "Alivio del dolor y la inflamación (aguda y crónica) y manejo de la fiebre.",
-    inicio_accion: "Rápido",
-    duracion_efecto: "24 a 48 horas"
+    usos_principales: 'Alivio de la inflamación y el dolor agudos y crónicos.',
+    inicio_accion: 'Desconocido',
+    duracion_efecto: 'Desconocido',
   },
-  informacion_cliente: [
-    "Administrar con comida.",
-    "Informe inmediatamente si nota heces negras, vómitos con sangre o pérdida de apetito.",
-    "No usar junto con otros antiinflamatorios o corticoides.",
-    "No usar en animales menores de 6 semanas.",
-    "En gatos, no exceder la dosis recomendada."
-  ],
-  parametros_dosificacion: {
-    perro: [
-      {
-        indicacion: "Dolor e Inflamación",
-        vias: ["IM", "SC", "PO"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 4,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: { texto_ui: "Cada 24 horas por 3 días", intervalo_horas: 24 },
-        notas_tecnicas: "El curso oral puede repetirse semanalmente (4 días de tratamiento, 3 de descanso)."
-      }
-    ],
-    gato: [
-      {
-        indicacion: "Dolor e Inflamación",
-        vias: ["SC", "PO"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 4,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: { texto_ui: "Una dosis, repetir a las 24h si es necesario", intervalo_horas: 24 },
-        notas_tecnicas: "¡PROHIBIDA la vía IM en gatos! No se recomienda repetir el curso semanalmente en esta especie."
-      }
-    ]
-  },
-  seguridad_y_alertas: {
+  informacion_cliente: ['Observar las precauciones normales.'],
+  contraindicaciones_precauciones: {
     contraindicaciones: [
-      "Deshidratación, hipovolemia o hipotensión.",
-      "Enfermedad GI activa o sangrado.",
-      "Trastornos de la coagulación.",
-      "Gatos: vía intramuscular.",
-      "Animales < 6 semanas.",
-      "Gestación."
+      'No administrar a pacientes deshidratados, hipovolémicos o hipotensos o a aquellos con enfermedad gastrointestinal o problemas de coagulación sanguínea.',
+      'No administrar a animales gestantes o a animales de menos de 6 semanas de edad.',
     ],
-    efectos_adversos: [
-      "Vómitos y diarrea.",
-      "Hemorragia gastrointestinal.",
-      "Nefrotoxicidad (riesgo perioperatorio si hay hipotensión).",
-      "Letargo."
+    precauciones: [
+      'Los signos gastrointestinales pueden ocurrir en todos los animales después de la administración de AINE. Suspender la terapia si esto persiste más de 1-2 días.',
+      'Algunos animales desarrollan signos con un fármaco AINE y no con otro. Se debe permitir un período de lavado de 1 a 2 semanas antes de comenzar con otro AINE después del cese de la terapia.',
+      'Suspender la terapia inmediatamente si se sospecha de sangrado gastrointestinal.',
     ],
-    monitoreo_recomendado: [
-      "Función renal (Creatinina/BUN)",
-      "Función hepática",
-      "Signos de sangrado GI"
+  },
+  reacciones_adversas: {
+    comunes: ['Signos gastrointestinales.'],
+    raras: [],
+  },
+  interacciones_farmacos: {
+    observadas: [
+      {
+        farmaco: 'Otros AINE y glucocorticoides',
+        descripcion:
+          'No administrar concomitantemente o dentro de las 24 horas posteriores.',
+      },
+      {
+        farmaco: 'Otros agentes potencialmente nefrotóxicos (p. ej., aminoglucósidos)',
+        descripcion: 'No administrar con estos agentes.',
+      },
     ],
-    instrucciones_manejo: "Observar precauciones normales de higiene. Usar jeringas graduadas de 1ml para gatos.",
-    sobredosis: {
-      signos: ["Vómitos severos", "Melena", "Fallo renal"],
-      tratamiento: "Lavado gástrico, carbón activado y soporte sintomático intensivo."
-    },
-    interacciones_farmacologicas: [
-      { farmaco: "Otros AINEs / Corticosteroides", efecto: "Riesgo extremo de úlceras GI. Esperar 24h entre cambios.", severidad: "Grave" },
-      { farmaco: "Aminoglucósidos", efecto: "Aumento del riesgo de nefrotoxicidad.", severidad: "Importante" }
-    ]
+    potenciales: [],
   },
   farmacologia_clinica: {
-    mecanismo_accion: "Inhibidor de la COX y antagonista de prostaglandinas.",
-    farmacocinetica: "Metabolismo hepático y excreción biliar/renal."
+    mecanismo_accion:
+      'Inhibición de la ciclooxigenasa (COX), pero no está claro si inhibe preferentemente la COX-2 sobre la COX-1. La inhibición de la COX limita la producción de prostaglandinas implicadas en la inflamación. También se ha informado que tiene una acción antagonista directa sobre los receptores de prostaglandinas.',
+    farmacocinetica: 'No hay información disponible.',
   },
   presentaciones_comerciales: [
-    { tipo: "Inyectable", concentracion_texto: "40 mg/ml", valor_concentracion: 40, unidad_concentracion: "mg/ml", es_divisible: false },
-    { tipo: "Tableta oral", concentracion_texto: "6 mg, 20 mg, 60 mg", valor_concentracion: 20, unidad_concentracion: "mg", es_divisible: true }
-  ]
+    {
+      tipo: 'Inyectable',
+      forma_farmaceutica: 'Solución',
+      concentracion_texto: '40 mg/ml',
+      valor_concentracion: 40,
+      unidad_concentracion: 'mg/ml',
+    },
+    {
+      tipo: 'Oral',
+      forma_farmaceutica: 'Tabletas',
+      concentraciones: ['6 mg', '20 mg', '60 mg'],
+    },
+  ],
+  dosis: {
+    mammals: [
+      {
+        especie: 'Cobayas',
+        dosis: '2 mg/kg s.c. q24h',
+        indicacion: 'Alivio de la inflamación y el dolor',
+      },
+    ],
+  },
 };

@@ -75,15 +75,28 @@ import { pilocarpineDrug } from './pilocarpine';
 import { pimobendanDrug } from './pimobendan';
 import { piperacillinDrug } from './piperacillin';
 import { piperazineDrug } from './piperazine';
+import { piroxicamDrug } from './piroxicam';
 import { polymyxinBDrug } from './polymyxin_b';
 import { adequanDrug } from './adequan';
 import { polyvinylAlcoholDrug } from './polyvinyl_alcohol';
 import { potassiumBromideDrug } from './potassium_bromide';
 import { potassiumCitrateDrug } from './potassium_citrate';
+import { potassiumPermanganateDrug } from './potassium_permanganate';
+import { povidoneIodineDrug } from './povidone_iodine';
 import { potassiumSaltsDrug } from './potassium_salts';
 import { pradofloxacinDrug } from './pradofloxacin';
+import { praziquantelDrug } from './praziquantel';
+import { prazosinDrug } from './prazosin';
+import { prednisoloneDrug } from './prednisolone';
 import { pralidoximeDrug } from './pralidoxime';
 import { protamineSulphateDrug } from './protamine_sulphate';
+import { proligestoneDrug } from './proligestone';
+import { promethazineDrug } from './promethazine';
+import { propanthelineDrug } from './propantheline';
+import { prochlorperazineDrug } from './prochlorperazine';
+import { propentofyllineDrug } from './propentofylline';
+import { propofolDrug } from './propofol';
+import { propranololDrug } from './propranolol';
 import { proxymetacaineDrug } from './proxymetacaine';
 import { pyrantelDrug } from './pyrantel';
 import { pyridostigmineDrug } from './pyridostigmine';
@@ -169,15 +182,28 @@ export const groupMP = [
     pimobendanDrug,
     piperacillinDrug,
     piperazineDrug,
+    piroxicamDrug,
     polymyxinBDrug,
     adequanDrug,
     polyvinylAlcoholDrug,
     potassiumBromideDrug,
     potassiumCitrateDrug,
+    potassiumPermanganateDrug,
+    povidoneIodineDrug,
     potassiumSaltsDrug,
     pradofloxacinDrug,
+    praziquantelDrug,
+    prazosinDrug,
+    prednisoloneDrug,
     pralidoximeDrug,
     protamineSulphateDrug,
+    proligestoneDrug,
+    promethazineDrug,
+    propanthelineDrug,
+    prochlorperazineDrug,
+    propentofyllineDrug,
+    propofolDrug,
+    propranololDrug,
     proxymetacaineDrug,
     pyrantelDrug,
     pyridostigmineDrug,

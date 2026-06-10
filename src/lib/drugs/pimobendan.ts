@@ -1,137 +1,83 @@
-import type { Drug } from '@/lib/types';
+import { Drug } from "@/lib/types/drug";
 
 export const pimobendanDrug: Drug = {
   id: "pimobendan",
   meta_data: {
     nombre_generico: "Pimobendan",
-    nombres_comerciales: ["Vetmedin", "Cardisure", "Pimocard", "Fortekor-Plus"],
-    grupo_farmacologico: "Inodilatador; Sensibilizador al calcio",
+    nombres_comerciales: ["Cardisure", "Fortekor-Plus", "Pimocard", "Vetmedin"],
+    grupo_farmacologico: "Inodilatador",
     status_regulatorio: "POM-V"
   },
   resumen_clinico: {
+    usos_principales: "Insuficiencia cardíaca congestiva. Uso en especies exóticas es anecdótico.",
     puntos_clave: [
-      "Inodilatador: inotrópico positivo y vasodilatador equilibrado.",
-      "Sensibiliza el miocardio al calcio sin aumentar la demanda de oxígeno.",
-      "Inhibe la fosfodiesterasa (PDE) III y V.",
-      "Tratamiento de elección para la falla cardíaca congestiva (mitral/MCD).",
-      "Eficaz en la fase preclínica para retrasar la aparición de signos de falla cardíaca.",
-      "Administrar estrictamente en ayunas (1h antes de comer)."
-    ],
-    usos_principales: "Tratamiento de la insuficiencia cardíaca congestiva (mitral o MCD), manejo preclínico de MCD en Dobermanns y enfermedad valvular en razas pequeñas. Hipertensión pulmonar.",
-    inicio_accion: "Rápido (1 hora)",
-    duracion_efecto: "12 horas"
-  },
-  informacion_cliente: [
-    "Dar el medicamento siempre 1 hora ANTES de la comida.",
-    "Es vital no saltarse ninguna dosis.",
-    "El tratamiento suele ser de por vida para el corazón.",
-    "Informe si nota que el perro parece tener el corazón muy rápido o vomita.",
-    "Seguro para usar junto con diuréticos y otros medicamentos del corazón."
-  ],
-  parametros_dosificacion: {
-    perro: [
-      {
-        indicacion: "Falla Cardíaca / Preclínica / Hipertensión Pulmonar",
-        vias: ["PO"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 0.25,
-          dosis_min: 0.1,
-          dosis_max: 0.3,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: { texto_ui: "Cada 12 horas (En ayunas)", intervalo_horas: 12 },
-        notas_tecnicas: "Administrar 1h antes de alimentar. La dosis inyectable es de 0.15 mg/kg IV única vez."
-      }
-    ],
-    gato: [
-      {
-        indicacion: "Falla cardíaca por disfunción sistólica (Uso extra-label)",
-        vias: ["PO"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 0.2,
-          dosis_min: 0.1,
-          dosis_max: 0.3,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: { texto_ui: "Cada 12 horas", intervalo_horas: 12 }
-      }
-    ],
-    huron: [
-      {
-        indicacion: "Cardiomiopatía dilatada",
-        vias: ["PO"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 0.5,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: { texto_ui: "Cada 12 horas", intervalo_horas: 12 }
-      }
-    ],
-    conejo: [
-      {
-        indicacion: "Falla cardíaca",
-        vias: ["PO"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 0.2,
-          dosis_min: 0.1,
-          dosis_max: 0.3,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: { texto_ui: "Cada 12 a 24 horas", intervalo_horas: 12 }
-      }
-    ],
-    ave: [
-      {
-        indicacion: "Falla cardíaca / Cor pulmonale",
-        vias: ["PO"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 5.125,
-          dosis_min: 0.25,
-          dosis_max: 10,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: { texto_ui: "Cada 12 horas", intervalo_horas: 12 },
-        notas_tecnicas: "Amazonas pueden requerir hasta 10 mg/kg q12h para efecto terapéutico óptimo."
-      }
+      "Inodilatador con efectos inotrópicos positivos y vasodilatadores.",
+      "La presencia de alimentos puede reducir la biodisponibilidad."
     ]
   },
-  seguridad_y_alertas: {
-    contraindicaciones: [
-      "Cardiomiopatía hipertrófica.",
-      "Obstrucciones del tracto de salida (ej. estenosis aórtica).",
-      "Fallo hepático severo (precaución)."
-    ],
-    efectos_adversos: [
-      "Taquicardia moderada (cronotropía positiva).",
-      "Vómitos y diarrea leves.",
-      "Letargo.",
-      "Poliuria (raro)."
-    ],
-    monitoreo_recomendado: [
-      "Ecocardiografía de seguimiento",
-      "Frecuencia y ritmo cardíaco",
-      "Presión arterial"
-    ],
-    instrucciones_manejo: "Observar precauciones normales.",
-    sobredosis: {
-      signos: ["Taquicardia severa", "Vómitos"],
-      tratamiento: "Soporte sintomático; el efecto suele remitir al bajar la dosis."
+  seguridad_y_manejo: {
+    precauciones: [
+      "Observar precauciones normales."
+    ]
+  },
+  contraindicaciones: {
+    puntos_clave: [
+      "No usar en cardiomiopatía hipertrófica y en casos donde no es posible aumentar el gasto cardíaco por aumento de la contractilidad (ej. estenosis aórtica)."
+    ]
+  },
+  reacciones_adversas: {
+    puntos_clave: [
+      "Puede ocurrir un efecto cronotrópico positivo moderado y vómitos, que pueden evitarse con la reducción de la dosis."
+    ]
+  },
+  interacciones: [
+    {
+      farmaco: "Beta-bloqueadores y bloqueadores de los canales de calcio (especialmente verapamilo)",
+      efecto: "Atenúan los efectos inotrópicos positivos.",
+      severidad: "Moderada"
     },
-    interacciones_farmacologicas: [
-      { farmaco: "Beta-bloqueadores / Calcio-antagonistas (Verapamilo)", efecto: "Antagonizan el efecto inotrópico del pimobendan.", severidad: "Importante" }
-    ]
-  },
+    {
+      farmaco: "Glucósidos digitálicos",
+      efecto: "No se ha observado interacción.",
+      severidad: "Leve"
+    }
+  ],
+  dosis: [
+    {
+      especie: "Hurones",
+      dosis: [{ via: "p.o.", dosis: "0.5 mg/kg q12h" }]
+    },
+    {
+      especie: "Conejos",
+      dosis: [{ via: "p.o.", dosis: "0.1–0.3 mg/kg q12–24h" }]
+    },
+    {
+      especie: "Roedores",
+      dosis: [{ via: "p.o.", dosis: "0.2–0.4 mg/kg q12h" }]
+    },
+    {
+      especie: "Primates",
+      dosis: [{ via: "p.o.", dosis: "0.2 mg/kg q24h" }]
+    },
+    {
+      especie: "Petauros del azúcar",
+      dosis: [{ via: "p.o.", dosis: "0.3–0.5 mg/kg q12h" }]
+    },
+    {
+      especie: "Erizos",
+      dosis: [{ via: "p.o.", dosis: "0.3 mg/kg q12h" }]
+    },
+    {
+      especie: "Aves",
+      dosis: [{ via: "p.o.", dosis: "0.25 mg/kg q12h. Dosis de hasta 10 mg/kg p.o. q12h pueden ser necesarias en loros amazónicos." }]
+    }
+  ],
   farmacologia_clinica: {
-    mecanismo_accion: "Sensibiliza el miocardio al calcio al unirse a la troponina C. Inhibe la PDE III resultando en vasodilatación arterial y venosa.",
-    farmacocinetica: "Absorción oral rápida; la comida reduce drásticamente su biodisponibilidad."
+    mecanismo_accion: "Inodilatador que produce efectos inotrópicos y vasodilatadores. Los efectos inotrópicos se median a través de la sensibilización del aparato contráctil del miocardio al calcio intracelular y por la inhibición de la fosfodiesterasa (PDE) III. La vasodilatación se media por la inhibición de PDE III y V, lo que resulta en arterio y venodilatación.",
+    farmacocinetica: "No hay información disponible."
   },
   presentaciones_comerciales: [
-    { tipo: "Cápsula / Tableta masticable", concentracion_texto: "1.25 mg, 2.5 mg, 5 mg, 10 mg", valor_concentracion: 5, unidad_concentracion: "mg", es_divisible: true },
-    { tipo: "Inyectable", concentracion_texto: "0.75 mg/ml", valor_concentracion: 0.75, unidad_concentracion: "mg/ml", es_divisible: false }
+    { tipo: "Solución inyectable", concentracion_texto: "0.75 mg/ml (Vetmedin)" },
+    { tipo: "Oral", concentracion_texto: "Cápsulas de 5 mg o tabletas masticables de 1.25 mg, 5 mg o 10 mg (Vetmedin); tabletas saborizadas de 1.25 mg, 2.5 mg, 5 mg, 10 mg (Cardisure, Pimocard). Preparaciones compuestas con benazepril (Fortekor-Plus)." }
   ]
 };

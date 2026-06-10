@@ -1,100 +1,54 @@
-import type { Drug } from '@/lib/types';
+import type { Drug } from '../drugs.types';
 
 export const prochlorperazineDrug: Drug = {
-  id: "prochlorperazine",
-  meta_data: {
-    nombre_generico: "Proclorperazina",
-    nombres_comerciales: ["Stemetil"],
-    grupo_farmacologico: "Antiemético (Fenotiazina)",
-    status_regulatorio: "POM"
-  },
-  resumen_clinico: {
-    puntos_clave: [
-      "Antagonista dopaminérgico, muscarínico y 5-HT3.",
-      "Efecto antiemético potente para causas vestibulares.",
-      "Menos potente para emesis de origen sistémico que maropitant.",
-      "Uso común en el mareo por movimiento (cinetosis)."
-    ],
-    usos_principales: "Control de mareo por movimiento y vómitos asociados a enfermedad vestibular.",
-    inicio_accion: "Rápido",
-    duracion_efecto: "6 a 12 horas"
-  },
-  informacion_cliente: [
-    "Informe si nota que su mascota está excesivamente somnolienta o rígida.",
-    "Se administra generalmente tres veces al día.",
-    "Informe si el animal tiene problemas de corazón o hígado."
-  ],
-  parametros_dosificacion: {
-    perro: [
-      {
-        indicacion: "Vómitos / Mareo",
-        vias: ["IV", "IM", "SC"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 0.3,
-          dosis_min: 0.1,
-          dosis_max: 0.5,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: { texto_ui: "Cada 6 a 8 horas", intervalo_horas: 8 }
-      },
-      {
-        indicacion: "Control oral",
-        vias: ["PO"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 0.75,
-          dosis_min: 0.5,
-          dosis_max: 1.0,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: { texto_ui: "Cada 8 a 12 horas", intervalo_horas: 12 }
-      }
-    ],
-    gato: [
-      {
-        indicacion: "Emesis vestibular",
-        vias: ["SC", "IM"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 0.3,
-          unidad_calculo: "mg/kg"
-        }
-      }
-    ]
-  },
-  seguridad_y_alertas: {
-    contraindicaciones: [
-      "Hipotensión severa.",
-      "Fallo hepático o cardíaco severo.",
-      "Obstrucción intestinal."
-    ],
-    efectos_adversos: [
-      "Sedación profunda.",
-      "Hipotensión.",
-      "Reacciones extrapiramidales (rigidez muscular, temblores).",
-      "Sequedad de mucosas."
-    ],
-    monitoreo_recomendado: [
-      "Estado de alerta",
-      "Presión arterial"
-    ],
-    instrucciones_manejo: "Observar precauciones normales.",
-    sobredosis: {
-      signos: ["Letargo extremo", "Hipotensión", "Rigidez"],
-      tratamiento: "Soporte sintomático; difenhidramina para efectos extrapiramidales."
+    id: "prochlorperazine",
+    meta_data: {
+      nombre_generico: "Proclorperazina",
+      nombres_comerciales: "Buccastem, Prochlorperazine, Stemetil",
+      grupo_farmacologico: "Antiemético (Fenotiazina)",
+      status_regulatorio: "POM",
     },
-    interacciones_farmacologicas: [
-      { farmaco: "Depresores del SNC", efecto: "Potenciación del efecto sedante.", severidad: "Importante" },
-      { farmaco: "Adrenalina", efecto: "Puede causar hipotensión paradójica.", severidad: "Moderada" }
+    resumen_clinico: {
+      puntos_clave: [
+        "Antiemético fenotiazínico.",
+        "Bloquea receptores de dopamina, muscarínicos y 5-HT3 en la zona gatillo quimiorreceptora.",
+        "Principalmente usado para controlar el mareo por movimiento y vómitos asociados a enfermedad vestibular.",
+        "Puede causar sedación e hipotensión.",
+      ],
+      usos_principales: "Control de emesis por mareo por movimiento y enfermedad vestibular.",
+      inicio_accion: "Variable",
+      duracion_efecto: "Variable",
+    },
+    informacion_cliente: [
+      "Puede causar somnolencia o debilidad.",
+      "Evitar el uso con otros medicamentos sedantes sin consultar al veterinario.",
+    ],
+    farmacologia_y_seguridad: {
+      farmacodinamia: "Bloquea receptores de dopamina, acetilcolina muscarínicos y 5-HT3 en la zona gatillo quimiorreceptora y el centro del vómito.",
+      contraindicaciones: [],
+      efectos_adversos: [
+        "Sedación, depresión.",
+        "Hipotensión.",
+        "Reacciones extrapiramidales (rigidez, temblores, debilidad, inquietud).",
+      ],
+      interacciones_farmacologicas: [
+        { interaccion: "Depresores del SNC (anestésicos, analgésicos narcóticos)", efecto: "Aumento de la depresión del SNC." },
+        { interaccion: "Antiácidos o antidiarreicos (subsalicilato de bismuto, caolín/pectina)", efecto: "Pueden reducir la absorción gastrointestinal de las fenotiazinas orales." },
+        { interaccion: "Propranolol", efecto: "Puede resultar en niveles sanguíneos elevados de ambos fármacos." },
+        { interaccion: "Adrenalina", efecto: "Las fenotiazinas bloquean los receptores alfa-adrenérgicos, lo que puede llevar a una actividad beta sin oposición, causando vasodilatación y aumento de la frecuencia cardíaca si se administra adrenalina." },
+      ],
+      monitoreo_recomendado: ["Vigilar nivel de sedación.", "Monitorear la presión arterial, especialmente con dosis altas o uso concomitante de otros fármacos."],
+      instrucciones_manejo: "Observar precauciones normales.",
+      sobredosis: {},
+    },
+    parametros_dosificacion: {
+      mamiferos: [
+        { especie: "Conejo", via: "p.o.", dosis: "0.2–0.5 mg/kg", frecuencia: "q8h", notas: "Para reducción de posible mareo por movimiento con tortícolis." },
+      ]
+    },
+    presentaciones_comerciales: [
+      { tipo: "Inyectable", concentracion_texto: "12.5 mg/ml solución", valor_concentracion: 12.5, unidad_concentracion: "mg/ml", es_divisible: false },
+      { tipo: "Oral", concentracion_texto: "3 mg, 5 mg tabletas", es_divisible: true },
+      { tipo: "Oral", concentracion_texto: "5 mg/5 ml jarabe", valor_concentracion: 1, unidad_concentracion: "mg/ml", es_divisible: false },
     ]
-  },
-  farmacologia_clinica: {
-    mecanismo_accion: "Bloquea receptores de dopamina, muscarínicos y de serotonina en el centro del vómito y zona gatillo.",
-    farmacocinetica: "Metabolismo hepático. Excreción renal."
-  },
-  presentaciones_comerciales: [
-    { tipo: "Inyectable", concentracion_texto: "12.5 mg/ml", valor_concentracion: 12.5, unidad_concentracion: "mg/ml", es_divisible: false },
-    { tipo: "Tableta oral", concentracion_texto: "3 mg, 5 mg", valor_concentracion: 5, unidad_concentracion: "mg", es_divisible: true }
-  ]
-};
+  };

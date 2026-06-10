@@ -114,6 +114,7 @@ import { cipermetrinaDrug } from './cipermetrina';
 import { ciproheptadinaDrug } from './ciproheptadina';
 import { ciromazinaDrug } from './ciromazina';
 import { citarabinaDrug } from './citarabina';
+import { adequanDrug } from './adequan';
 
 export const groupAC = [
     acepromazinaMaleatoDrug,
@@ -232,4 +233,5 @@ export const groupAC = [
     ciproheptadinaDrug,
     ciromazinaDrug,
     citarabinaDrug,
+    adequanDrug,
 ];

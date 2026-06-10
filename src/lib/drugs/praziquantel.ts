@@ -1,84 +1,98 @@
-import type { Drug } from '@/lib/types';
+import { Drug } from "@/lib/types/drug";
 
 export const praziquantelDrug: Drug = {
   id: "praziquantel",
   meta_data: {
     nombre_generico: "Praziquantel",
-    nombres_comerciales: ["Droncit", "Drontal", "Milbemax", "Profender"],
+    nombres_comerciales: ["Anthelmin", "Broadline Spot-on", "Cazitel", "Cestem", "Dolpac", "Droncit", "Droncit Spot-on", "Dronspot Spot-on", "Drontal", "Endoguard", "Fluke-Solve", "Milbactor", "Milbemax", "MilbeVet", "Milprazon", "Milpro", "NexGard", "Prazitel", "Profender Spot-on", "Veloxa", "WormCat", "WORMclear"],
     grupo_farmacologico: "Cestocida",
-    status_regulatorio: "AVM-GSL"
+    status_regulatorio: "POM-V, NFA-VPS, AVM-GSL"
   },
   resumen_clinico: {
+    usos_principales: "Tratamiento de trematodos y cestodos, incluyendo infecciones por trematodos de la piel y las branquias y tenias en peces ornamentales.",
     puntos_clave: [
-      "Aumenta la permeabilidad al calcio, provocando parálisis y muerte del cestodo.",
-      "Eficacia del 100% contra Echinococcus spp.",
-      "No mata huevos de tenia; requiere higiene ambiental.",
-      "Seguro en animales gestantes y lactantes.",
-      "No requiere ayuno previo."
-    ],
-    usos_principales: "Tratamiento de infestaciones por tenias (Dipylidium, Taenia, Echinococcus, Mesocestoides).",
-    inicio_accion: "Rápido",
-    duracion_efecto: "Dosis única (repetir si hay reinfección)"
-  },
-  informacion_cliente: [
-    "Medicamento para eliminar tenias (lombrices planas).",
-    "Los parásitos suelen digerirse en el intestino, por lo que no siempre se ven en las heces.",
-    "Seguro para perras y gatas embarazadas.",
-    "El control de pulgas es vital para evitar que la tenia vuelva.",
-    "No usar en cachorros/gatitos no destetados."
-  ],
-  parametros_dosificacion: {
-    perro: [
-      {
-        indicacion: "Infección por Tenias",
-        vias: ["PO", "SC", "IM"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 5,
-          unidad_calculo: "mg/kg (PO)"
-        },
-        notas_tecnicas: "Dosis Spot-on: 8 mg/kg."
-      }
-    ],
-    gato: [
-      {
-        indicacion: "Infección por Tenias",
-        vias: ["PO", "SC", "IM"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 5,
-          unidad_calculo: "mg/kg"
-        }
-      }
+      "Aumenta la permeabilidad de la membrana celular de los gusanos susceptibles, lo que resulta en la pérdida de calcio intracelular y parálisis."
     ]
   },
-  seguridad_y_alertas: {
-    contraindicaciones: [
-      "Cachorros o gatitos no destetados.",
-      "Animales < 1 kg (Spot-on)."
-    ],
-    efectos_adversos: [
-      "Vómitos y salivación (si lamen sitio de aplicación).",
-      "Letargo transitorio.",
-      "Reacción local en sitio de inyección (especialmente en gatos)."
-    ],
-    monitoreo_recomendado: [
-      "Presencia de proglótides en heces"
-    ],
-    instrucciones_manejo: "Lavar manos tras uso de spot-on. No administrar vía oral en un animal no destetado.",
-    sobredosis: {
-      signos: ["Vómitos", "Anorexia"],
-      tratamiento: "Soporte sintomático."
-    },
-    interacciones_farmacologicas: []
+  seguridad_y_manejo: {
+    precauciones: [
+      "Observar precauciones normales.",
+      "Las personas que están o pueden quedar embarazadas no deben manipular soluciones que contengan emodepside."
+    ]
   },
+  contraindicaciones: {
+    puntos_clave: [
+      "No usar al mismo tiempo que cualquier otro tratamiento para peces o estanques.",
+      "Apagar los filtros UV y de carbón durante 24 horas después de agregar el producto al agua.",
+      "No usar (Fluke-Solve Plus) en estanques que contengan orfe (Leuciscus spp.) o tortugas de orejas rojas."
+    ]
+  },
+  reacciones_adversas: {
+    puntos_clave: [
+      "La administración oral puede ocasionar anorexia, vómitos, letargo y diarrea."
+    ]
+  },
+  interacciones: [
+    {
+      farmaco: "No hay información disponible",
+      efecto: "",
+      severidad: "N/A"
+    }
+  ],
+  dosis: [
+    {
+      especie: "Hurones",
+      dosis: [{ via: "p.o.", dosis: "5–10 mg/kg, repetir en 10–14 días" }]
+    },
+    {
+      especie: "Conejos",
+      dosis: [{ via: "p.o.", dosis: "5–10 mg/kg, repetir en 10 días" }]
+    },
+    {
+      especie: "Jerbos, Ratas, Ratones",
+      dosis: [{ via: "p.o.", dosis: "30 mg/kg q14d (por 3 tratamientos)" }]
+    },
+    {
+      especie: "Primates",
+      dosis: [
+        { via: "p.o., i.m.", dosis: "20 mg/kg una vez (cestodos)" },
+        { via: "p.o., i.m.", dosis: "15–20 mg/kg una vez (trematodos), pero podría necesitar repetirse a intervalos de 10 días o 40 mg/kg una vez" }
+      ]
+    },
+    {
+      especie: "Erizos",
+      dosis: [{ via: "p.o.", dosis: "7 mg/kg, repetir en 14 días" }]
+    },
+    {
+      especie: "Petauros del azúcar",
+      dosis: [{ via: "p.o., s.c.", dosis: "5–10 mg/kg, repetir en 10–14 días" }]
+    },
+    {
+      especie: "Aves",
+      dosis: [{ via: "i.m., p.o.", dosis: "10-20 mg/kg, repetir en 10–14 días" }]
+    },
+    {
+      especie: "Reptiles",
+      dosis: [{ via: "p.o.", dosis: "5–8 mg/kg, repetir en 2 semanas en la mayoría de las especies" }]
+    },
+    {
+      especie: "Anfibios",
+      dosis: [
+        { via: "p.o.", dosis: "8–24 mg/kg q7–21d" },
+        { via: "Baño", dosis: "10 mg/l durante 3 horas, repetir q7–21d" }
+      ]
+    },
+    {
+      especie: "Peces",
+      dosis: [{ via: "Inmersión", dosis: "2 mg/l, repetir cada 3 semanas por 3 dosis" }]
+    }
+  ],
   farmacologia_clinica: {
-    mecanismo_accion: "Induce la contracción tetánica de la musculatura del parásito al aumentar la permeabilidad de membrana al calcio.",
-    farmacocinetica: "Absorción oral rápida. Metabolismo hepático de primer paso significativo."
+    mecanismo_accion: "Cestocida que aumenta la permeabilidad de la membrana celular de los gusanos susceptibles, lo que resulta en la pérdida de calcio intracelular y parálisis. Esto permite que los parásitos sean fagocitados o digeridos.",
+    farmacocinetica: "No hay información disponible."
   },
   presentaciones_comerciales: [
-    { tipo: "Tableta oral", concentracion_texto: "20 mg a 175 mg", valor_concentracion: 50, unidad_concentracion: "mg", es_divisible: true },
-    { tipo: "Spot-on", concentracion_texto: "20 mg a 96 mg por pipeta", valor_concentracion: 1, unidad_concentracion: "pipeta", es_divisible: false },
-    { tipo: "Inyectable", concentracion_texto: "56.8 mg/ml", valor_concentracion: 56.8, unidad_concentracion: "mg/ml", es_divisible: false }
+    { tipo: "Variedad de tabletas y pipetas spot-on", concentracion_texto: "Disponible solo o en combinación con otros agentes" },
+    { tipo: "Polvo para inmersión", concentracion_texto: "Sachets de 10 g, 50 g, 100 g" }
   ]
 };

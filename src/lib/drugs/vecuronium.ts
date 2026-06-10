@@ -1,107 +1,78 @@
-import type { Drug } from '@/lib/types';
+import type { Drug } from '../index';
 
 export const vecuroniumDrug: Drug = {
-  id: "vecuronium",
+  id: 'vecuronium',
   meta_data: {
-    nombre_generico: "Vecuronio (Bromuro de vecuronio)",
-    nombres_comerciales: ["Norcuron"],
-    grupo_farmacologico: "Bloqueante neuromuscular no despolarizante",
-    status_regulatorio: "POM"
+    nombre_generico: 'Vecuronio',
+    nombres_comerciales: ['Norcuron'],
+    grupo_farmacologico: 'Bloqueador neuromuscular',
+    status_regulatorio: 'POM',
   },
   resumen_clinico: {
     puntos_clave: [
-      "Impide la acción de la acetilcolina en la unión neuromuscular.",
-      "Duración intermedia (~20 min) dependiente de la dosis.",
-      "Carece de efectos cardiovasculares significativos y no libera histamina.",
-      "Ideal para cirugía intraocular (centraliza el globo ocular).",
-      "La duración del bloqueo es menor en perros diabéticos.",
-      "Requiere obligatoriamente ventilación asistida."
+      'Usado tópicamente como midriático en aves.',
+      'Proporciona bloqueo neuromuscular durante la anestesia para mejorar el acceso quirúrgico, facilitar la ventilación con presión positiva o para cirugía intraocular.',
+      'Duración de acción intermedia de aproximadamente 20 minutos, dependiente de la dosis.',
+      'No tiene efectos cardiovasculares y no causa liberación de histamina.',
+      'Se recomienda la monitorización y reversión del bloqueo neuromuscular.',
+      'La hipotermia, la acidosis y la hipopotasemia prolongan la duración del bloqueo.',
+      'Metabolizado por el hígado; en disfunción hepática se prefiere atracurio.'
     ],
-    usos_principales: "Bloqueo neuromuscular en anestesia general para facilitar ventilación, mejorar acceso quirúrgico o cirugía ocular.",
-    inicio_accion: "Rápido (1-2 min IV)",
-    duracion_efecto: "20 a 30 minutos"
+    usos_principales: 'Bloqueo neuromuscular durante la anestesia y midriasis tópica en aves.',
+    inicio_accion: 'Desconocido',
+    duracion_efecto: 'Aproximadamente 20 minutos',
   },
   informacion_cliente: [
-    "Fármaco de uso hospitalario bajo anestesia profunda.",
-    "El animal no podrá respirar por sí solo durante el efecto del medicamento.",
-    "Se monitorizará la recuperación completa de la fuerza antes de despertar al paciente.",
-    "Reversible con antídotos específicos (Sugammadex o Neostigmina)."
+    'Inestable en solución, se presenta como polvo liofilizado.',
+    'La solución preparada se puede diluir más si es necesario.'
   ],
-  parametros_dosificacion: {
-    perro: [
-      {
-        indicacion: "Bloqueo neuromuscular (Inducción)",
-        vias: ["IV"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 0.1,
-          unidad_calculo: "mg/kg"
-        },
-        notas_tecnicas: "Proporciona 25-30 min de bloqueo. Dosis de 0.05 mg/kg dura 16-19 min."
-      },
-      {
-        indicacion: "Mantenimiento (CRI)",
-        vias: ["IV"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 0.15,
-          dosis_min: 0.1,
-          dosis_max: 0.2,
-          unidad_calculo: "mg/kg/h"
-        }
-      }
-    ],
-    gato: [
-      {
-        indicacion: "Bloqueo neuromuscular",
-        vias: ["IV"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 0.1,
-          unidad_calculo: "mg/kg"
-        }
-      }
-    ]
-  },
-  seguridad_y_alertas: {
+  contraindicaciones_precauciones: {
     contraindicaciones: [
-      "Falta de equipo de ventilación a presión positiva.",
-      "Animales no anestesiados adecuadamente.",
-      "Insuficiencia hepática severa (preferir atracurio)."
+      'No administrar sistémicamente a menos que el animal esté anestesiado y se disponga de ventilación con presión positiva.',
     ],
-    efectos_adversos: [
-      "Apnea (efecto deseado).",
-      "Hipotermia prolonga el bloqueo.",
-      "No tiene efectos cardiovasculares directos."
+    precauciones: [
+      'La hipotermia, acidosis e hipopotasemia prolongan el bloqueo.',
+      'En disfunción hepática, considerar atracurio.',
     ],
-    monitoreo_recomendado: [
-      "Ventilación asistida constante",
-      "Estimulador de nervios periféricos (TOF)",
-      "Temperatura corporal",
-      "Niveles de potasio"
+  },
+  reacciones_adversas: {
+    comunes: [],
+    raras: [],
+  },
+  interacciones_farmacos: {
+    observadas: [
+      {
+        farmaco: 'Anestésicos volátiles, aminoglucósidos, clindamicina y lincomicina',
+        descripcion: 'Prolongan el bloqueo neuromuscular.',
+      },
     ],
-    instrucciones_manejo: "Inestable en solución; reconstituir el polvo liofilizado justo antes de usar. No requiere refrigeración tras preparar por un periodo corto.",
-    sobredosis: {
-      signos: ["Parálisis muscular prolongada"],
-      tratamiento: "Mantener ventilación asistida. Revertir con Sugammadex (8 mg/kg IV) o Neostigmina."
-    },
-    interacciones_farmacologicas: [
-      { farmaco: "Anestésicos inhalados (Isoflurano)", efecto: "Prolongan significativamente el bloqueo.", severidad: "Importante" },
-      { farmaco: "Aminoglucósidos / Clindamicina", efecto: "Potencian el efecto bloqueador.", severidad: "Importante" },
-      { farmaco: "Sugammadex", efecto: "Antagonista específico de reversión rápida.", severidad: "Leve" }
-    ]
+    potenciales: [],
   },
   farmacologia_clinica: {
-    mecanismo_accion: "Antagonista competitivo de los receptores nicotínicos en la placa motora.",
-    farmacocinetica: "Metabolismo hepático y excreción biliar/renal."
+    mecanismo_accion: 'Inhibe las acciones de la acetilcolina en la unión neuromuscular al unirse competitivamente al receptor nicotínico de acetilcolina en la membrana post-sináptica.',
+    farmacocinetica: 'Metabolizado por el hígado. Las dosis repetidas son relativamente no acumulativas en animales sanos y puede administrarse por infusión i.v.'
   },
   presentaciones_comerciales: [
     {
-      tipo: "Vial inyectable (Polvo)",
-      concentracion_texto: "10 mg (para reconstituir)",
-      valor_concentracion: 10,
-      unidad_concentracion: "mg",
-      es_divisible: false
-    }
-  ]
+      tipo: 'Inyectable',
+      forma_farmaceutica: 'Polvo para reconstitución',
+      concentraciones: ['10 mg'],
+    },
+  ],
+  dosis: {
+    birds: [
+      {
+        especie: 'Aves',
+        dosis: '1 gota de solución de 0.8 mg/ml en solución salina al 0.9% aplicada tópicamente en el ojo; repetir después de 2 minutos',
+        indicacion: 'Midriasis',
+      },
+    ],
+    reptiles: [
+      {
+        especie: 'Reptiles',
+        dosis: '1 gota de solución al 0.4% aplicada tópicamente en el ojo c/15-20min',
+        indicacion: 'Midriasis',
+      },
+    ],
+  },
 };

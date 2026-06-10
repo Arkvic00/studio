@@ -1,73 +1,54 @@
-import type { Drug } from '@/lib/types';
+import { Drug } from "@/lib/types/drug";
 
 export const polyvinylAlcoholDrug: Drug = {
-  id: "polyvinyl_alcohol",
+  id: "polyvinyl-alcohol",
   meta_data: {
-    nombre_generico: "Alcohol Polivinílico",
+    nombre_generico: "Alcohol polivinílico",
     nombres_comerciales: ["Liquifilm Tears", "Sno Tears"],
-    grupo_farmacologico: "Sustituto lagrimal; Lacrimomimético",
+    grupo_farmacologico: "Lágrimas artificiales (Lacrimomimético)",
     status_regulatorio: "P"
   },
   resumen_clinico: {
+    usos_principales: "Lubricación de ojos secos.",
     puntos_clave: [
-      "Sustituto lagrimal sintético de base acuosa.",
-      "Imita la capa acuosa de la película lagrimal.",
-      "Más adherente y menos viscoso que la hipromelosa.",
-      "Mejora el confort en casos de queratoconjuntivitis seca (KCS).",
-      "Requiere aplicaciones frecuentes para ser efectivo."
-    ],
-    usos_principales: "Lubricación ocular en ojo seco y protección corneal inicial.",
-    inicio_accion: "Inmediato",
-    duracion_efecto: "Corta (requiere dosis q1h en casos severos)"
-  },
-  informacion_cliente: [
-    "Aplique las gotas según el horario indicado; si el animal parpadea mucho, puede necesitar más frecuencia.",
-    "No permita que la punta del frasco toque el ojo.",
-    "Si nota que el animal no mejora con aplicaciones cada 4 horas, consulte para cambiar a un gel de mayor duración.",
-    "Muy seguro para su uso frecuente."
-  ],
-  parametros_dosificacion: {
-    perro: [
-      {
-        indicacion: "Ojo seco / Lubricación",
-        vias: ["Tópica ocular"],
-        math: {
-          tipo_calculo: "fija",
-          dosis_recomendada: 1,
-          unidad_calculo: "gota"
-        },
-        frecuencia: { texto_ui: "Cada 1 hora (según necesidad)", intervalo_horas: 1 }
-      }
-    ],
-    gato: [
-      {
-        indicacion: "Lubricación ocular",
-        vias: ["Tópica ocular"],
-        math: {
-          tipo_calculo: "fija",
-          dosis_recomendada: 1,
-          unidad_calculo: "gota"
-        },
-        frecuencia: { texto_ui: "Cada 1 hora", intervalo_horas: 1 }
-      }
+      "Mejora la lubricación de la superficie ocular, la retención de lágrimas y la comodidad del paciente mientras se inicia la terapia de lacrostimulación (ej. ciclosporina tópica).",
+      "Es más adherente y menos viscoso que la hipromelosa.",
+      "El cumplimiento del paciente es deficiente si se administra >q4h."
     ]
   },
-  seguridad_y_alertas: {
-    contraindicaciones: ["Ninguna conocida."],
-    efectos_adversos: ["Visión borrosa momentánea."],
-    monitoreo_recomendado: ["Integridad de la córnea"],
-    instrucciones_manejo: "Observar asepsia en la punta del frasco.",
-    sobredosis: {
-      signos: ["No aplica"],
-      tratamiento: "No requerido."
-    },
-    interacciones_farmacologicas: []
+  seguridad_y_manejo: {
+    precauciones: [
+      "Observar precauciones normales."
+    ]
   },
+  contraindicaciones: {
+    puntos_clave: [
+      "No hay información disponible."
+    ]
+  },
+  reacciones_adversas: {
+    puntos_clave: [
+      "No hay información disponible."
+    ]
+  },
+  interacciones: [
+    {
+      farmaco: "No hay información disponible",
+      efecto: "",
+      severidad: "N/A"
+    }
+  ],
+  dosis: [
+    {
+      especie: "Mamíferos",
+      dosis: [{ via: "Tópico", dosis: "1 gota por ojo q1h" }]
+    }
+  ],
   farmacologia_clinica: {
-    mecanismo_accion: "Resina sintética que aumenta la humectabilidad corneal y el tiempo de ruptura de la lágrima.",
-    farmacocinetica: "Acción puramente local."
+    mecanismo_accion: "El alcohol polivinílico es una resina sintética sustituta de las lágrimas (lacrimomimético).",
+    farmacocinetica: "No hay información disponible."
   },
   presentaciones_comerciales: [
-    { tipo: "Gotas oftálmicas", concentracion_texto: "1.4%", valor_concentracion: 14, unidad_concentracion: "mg/ml", es_divisible: false }
+    { tipo: "Solución oftálmica", concentracion_texto: "1.4% (10 ml, 15 ml)" }
   ]
 };

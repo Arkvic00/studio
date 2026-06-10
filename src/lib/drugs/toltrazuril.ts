@@ -1,92 +1,91 @@
-import type { Drug } from '@/lib/types';
+import type { Drug } from '../index';
 
 export const toltrazurilDrug: Drug = {
-  id: "toltrazuril",
+  id: 'toltrazuril',
   meta_data: {
-    nombre_generico: "Toltrazuril",
-    nombres_comerciales: ["Procox"],
-    grupo_farmacologico: "Antiprotozoario; Coccidiocida",
-    status_regulatorio: "POM-V"
+    nombre_generico: 'Toltrazuril (Triazinona)',
+    nombres_comerciales: ['Baycox', 'Zorabel'],
+    grupo_farmacologico: 'Anticoccidial',
+    status_regulatorio: 'POM-V',
   },
   resumen_clinico: {
     puntos_clave: [
-      "Agente coccidiocida que detiene la replicación del parásito y la eliminación de oocistos.",
-      "No es efectivo contra los signos clínicos si el animal ya está gravemente infectado (daño tisular previo).",
-      "Muy eficaz contra Isospora spp. y Hepatozoon canis.",
-      "A menudo formulado con emodepside para cobertura completa.",
-      "Uso extra-label en gatos reportado como seguro y eficaz."
+      'Tratamiento de la coccidiosis en conejos y la microsporidiosis en peces.',
+      'Puede usarse en combinación con clindamicina para el tratamiento de Choleoeimeria.',
+      'La solución altamente alcalina es desagradable e irritante y debe diluirse con al menos un volumen igual de agua inmediatamente antes de la administración oral en conejos.',
+      'Se ha utilizado experimental y eficazmente contra una serie de parásitos ciliados, mixozoos y microsporidios en peces.',
     ],
-    usos_principales: "Tratamiento de la coccidiosis (Isospora) en cachorros y gatitos. Prevención de la diseminación de oocistos.",
-    inicio_accion: "Rápido (interrupción de replicación)",
-    duracion_efecto: "Dosis única (repetir solo si persiste eliminación)"
+    usos_principales: 'Tratamiento de la coccidiosis y la microsporidiosis.',
+    inicio_accion: 'Desconocido',
+    duracion_efecto: 'Desconocido',
   },
-  informacion_cliente: [
-    "Medicamento para eliminar parásitos microscópicos (coccidios).",
-    "Generalmente se administra una sola dosis por boca.",
-    "No usar en cachorros/gatitos menores de 2 semanas o de menos de 0.4 kg.",
-    "Informe si nota diarrea persistente tras la dosis.",
-    "Mantener la higiene del entorno para evitar la reinfección."
-  ],
-  parametros_dosificacion: {
-    perro: [
-      {
-        indicacion: "Coccidiosis (Isospora)",
-        vias: ["PO"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 9,
-          dosis_max: 20,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: { texto_ui: "Dosis única", intervalo_horas: 0 },
-        notas_tecnicas: "9 mg/kg corresponde a 0.5 ml/kg de Procox. Repetir solo si el conteo de oocistos sigue alto."
-      }
+  informacion_cliente: ['Observar las precauciones normales.'],
+  contraindicaciones_precauciones: {
+    contraindicaciones: ['No hay información disponible.'],
+    precauciones: [
+      'En conejos, irritación oral cuando se usan soluciones concentradas; dosis más altas han resultado en inapetencia transitoria.',
     ],
-    gato: [
-      {
-        indicacion: "Coccidiosis (Isospora)",
-        vias: ["PO"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 9,
-          dosis_max: 20,
-          unidad_calculo: "mg/kg"
-        }
-      }
-    ]
   },
-  seguridad_y_alertas: {
-    contraindicaciones: [
-      "Animales menores de 2 semanas.",
-      "Animales con un peso inferior a 0.4 kg.",
-      "Hipersensibilidad conocida."
-    ],
-    efectos_adversos: [
-      "Vómitos y diarrea leves ocasionales.",
-      "Anorexia transitoria."
-    ],
-    monitoreo_recomendado: [
-      "Presencia de oocistos en heces (coprológico)",
-      "Consistencia de las heces"
-    ],
-    instrucciones_manejo: "Observar precauciones normales de higiene.",
-    sobredosis: {
-      signos: ["Trastornos GI leves"],
-      tratamiento: "Soporte sintomático."
-    },
-    interacciones_farmacologicas: []
+  reacciones_adversas: {
+    comunes: ['Irritación oral en conejos con soluciones concentradas.'],
+    raras: ['Inapetencia transitoria con dosis más altas en conejos.'],
+  },
+  interacciones_farmacos: {
+    observadas: [],
+    potenciales: [],
   },
   farmacologia_clinica: {
-    mecanismo_accion: "Inhibe las enzimas de la cadena respiratoria y la síntesis de pirimidinas en todas las etapas del desarrollo del parásito.",
-    farmacocinetica: "Absorción oral parcial con persistencia en el lumen intestinal."
+    mecanismo_accion:
+      'Daña todas las etapas de desarrollo intracelular de Eimeria spp. Interfiere con la división del núcleo y con la actividad de las mitocondrias, que son responsables del metabolismo respiratorio de los coccidios. En los macrogametos, el toltrazuril daña los llamados cuerpos formadores de pared. En todas las etapas de desarrollo intracelular, se produce una vacuolización severa debido a la inflación del retículo endoplásmico.',
+    farmacocinetica: 'No hay información disponible.',
   },
   presentaciones_comerciales: [
     {
-      tipo: "Suspensión oral",
-      concentracion_texto: "18 mg/ml (+ 0.9 mg/ml Emodepside)",
-      valor_concentracion: 18,
-      unidad_concentracion: "mg/ml",
-      es_divisible: false
-    }
-  ]
+      tipo: 'Oral',
+      forma_farmaceutica: 'Solución',
+      concentraciones: ['25 mg/ml', '50 mg/ml'],
+    },
+  ],
+  dosis: {
+    mammals: [
+      {
+        especie: 'Conejos',
+        dosis: '2.5-10 mg/kg p.o. q24h durante 2-3 días, repetir en 7-14 días',
+        indicacion: 'Coccidiosis',
+      },
+    ],
+    birds: [
+      {
+        especie: 'Raptors',
+        dosis:
+          'Coccidiosis: 10 mg/kg p.o. q24h para 2 dosis; repetir semanalmente durante 3 semanas',
+        indicacion: 'Coccidiosis',
+      },
+      {
+        especie: 'Zorzales de corona azul',
+        dosis: '10 mg/kg p.o. q24h para 2 dosis; repetir semanalmente según sea necesario',
+        indicacion: 'Atoxoplasmosis',
+      },
+    ],
+    reptiles: [
+      {
+        especie: 'Reptiles',
+        dosis: '5-15 mg/kg p.o. q24h',
+        indicacion: 'Coccidiosis',
+      },
+      {
+        especie: 'Dragones de Rankin',
+        dosis:
+          '10 mg/kg p.o. q24h durante 3 días repetido una vez en 7 días en combinación con clindamicina',
+        indicacion: 'Tratamiento de Choleoeimeria',
+      },
+    ],
+    fish: [
+      {
+        especie: 'Peces',
+        dosis: '5-20 mg/l por inmersión durante 1-4 horas q48h, repetido 3 veces',
+        indicacion: 'Microsporidiosis',
+      },
+    ],
+  },
 };

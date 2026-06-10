@@ -14,6 +14,7 @@ import { secobarbitalDrug } from './secobarbital';
 import { selamectinDrug } from './selamectin';
 import { selegilineDrug } from './selegiline';
 import { sertralineDrug } from './sertraline';
+import { serumGonadotrophinDrug } from './serum-gonadotrophin';
 import { sevelamerDrug } from './sevelamer';
 import { sevofluraneDrug } from './sevoflurane';
 import { sildenafilDrug } from './sildenafil';
@@ -31,6 +32,7 @@ import { spinosadDrug } from './spinosad';
 import { spironolactoneDrug } from './spironolactone';
 import { sterculiaDrug } from './sterculia';
 import { sucralfateDrug } from './sucralfate';
+import { sulfadimethoxineDrug } from './sulfadimethoxine';
 import { sulfasalazineDrug } from './sulfasalazine';
 import { suxamethoniumDrug } from './suxamethonium';
 
@@ -51,6 +53,7 @@ export const groupRS = [
     selamectinDrug,
     selegilineDrug,
     sertralineDrug,
+    serumGonadotrophinDrug,
     sevelamerDrug,
     sevofluraneDrug,
     sildenafilDrug,
@@ -68,6 +71,7 @@ export const groupRS = [
     spironolactoneDrug,
     sterculiaDrug,
     sucralfateDrug,
+    sulfadimethoxineDrug,
     sulfasalazineDrug,
     suxamethoniumDrug,
 ];

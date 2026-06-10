@@ -56,7 +56,28 @@ export function DoseCalculator({
 
   const updateDrug = (id: number, data: Partial<Calculation>) => {
     setCalculations(
-      calculations.map((c) => (c.id === id ? { ...c, ...data } : c))
+      calculations.map((c) => {
+        if (c.id === id) {
+          const drug = DB_MEDICAMENTOS.find((d) => d.id === (data.drugId || c.drugId));
+          if (drug && data.dose) {
+            const speciesKey = getSpeciesKey(patient.especie);
+            const doses = drug?.parametros_dosificacion?.[speciesKey] || [];
+            const indicationIndex = data.indicationIndex ?? c.indicationIndex;
+            const doseConfig = doses[indicationIndex];
+
+            if (doseConfig && doseConfig.math.tipo_calculo === 'mg_kg') {
+              const { dosis_min, dosis_max } = doseConfig.math;
+              if (dosis_min && dosis_max) {
+                if (data.dose < dosis_min || data.dose > dosis_max) {
+                  alert('La dosis está fuera del rango recomendado.');
+                }
+              }
+            }
+          }
+          return { ...c, ...data };
+        }
+        return c;
+      })
     );
   };
   

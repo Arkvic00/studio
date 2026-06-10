@@ -1,108 +1,102 @@
-import type { Drug } from '@/lib/types';
+import type { Drug } from '../index';
 
 export const theophyllineDrug: Drug = {
-  id: "theophylline",
+  id: 'theophylline',
   meta_data: {
-    nombre_generico: "Teofilina",
-    nombres_comerciales: ["Corvental-D"],
-    grupo_farmacologico: "Broncodilatador (Xantina); Inhibidor de la fosfodiesterasa",
-    status_regulatorio: "POM-V"
+    nombre_generico: 'Teofilina',
+    nombres_comerciales: ['Corvental-D'],
+    grupo_farmacologico: 'Metilxantina',
+    status_regulatorio: 'POM-V',
   },
   resumen_clinico: {
     puntos_clave: [
-      "Produce relajación del músculo liso bronquial.",
-      "Aumenta el aclaramiento mucociliar y estimula el centro respiratorio.",
-      "Efecto inotrópico positivo leve.",
-      "Bajo índice terapéutico; dosificar según peso magro.",
-      "Las formulaciones de liberación sostenida permiten dosis q24h."
+      'La teofilina tiene un índice terapéutico bajo y debe dosificarse según el peso corporal magro.',
+      'Administrar con precaución en pacientes con enfermedad cardíaca grave, úlceras gástricas, hipertiroidismo, enfermedad renal o hepática, hipoxia grave o hipertensión grave.',
+      'Los valores plasmáticos terapéuticos de teofilina son de 5 a 20 µg/ml.',
     ],
-    usos_principales: "Tratamiento de enfermedades de las vías respiratorias pequeñas (bronquitis crónica, colapso traqueal).",
-    inicio_accion: "30 a 60 minutos",
-    duracion_efecto: "24 horas (liberación sostenida)"
+    usos_principales:
+      'Agente espasmolítico con una leve acción diurética. Se ha utilizado en el tratamiento de la enfermedad de las vías respiratorias pequeñas.',
+    inicio_accion: 'Desconocido',
+    duracion_efecto: 'Desconocido',
   },
-  informacion_cliente: [
-    "Informe si nota temblores, inquietud o si el animal bebe/orina mucho.",
-    "No triturar las cápsulas de liberación prolongada.",
-    "El ajuste de la dosis depende de la mejoría respiratoria y la ausencia de efectos secundarios.",
-    "Muchos medicamentos pueden interferir con la teofilina; informe al veterinario de todo lo que toma su mascota."
-  ],
-  parametros_dosificacion: {
-    perro: [
-      {
-        indicacion: "Broncodilatación (Sostenida)",
-        vias: ["PO"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 20,
-          dosis_min: 10,
-          dosis_max: 20,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: {
-          texto_ui: "Cada 24 horas (puede dividirse q12h si es necesario)",
-          intervalo_horas: 24
-        },
-        notas_tecnicas: "Dosificar según peso magro para evitar toxicidad en animales obesos."
-      }
-    ],
-    gato: [
-      {
-        indicacion: "Broncodilatación (Sostenida)",
-        vias: ["PO"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 17,
-          dosis_min: 15,
-          dosis_max: 19,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: {
-          texto_ui: "Cada 24 horas",
-          intervalo_horas: 24
-        }
-      }
-    ]
-  },
-  seguridad_y_alertas: {
+  informacion_cliente: ['Observar las precauciones normales.'],
+  contraindicaciones_precauciones: {
     contraindicaciones: [
-      "Historial de convulsiones.",
-      "Arritmias cardíacas severas.",
-      "Enfermedad hepática o renal severa."
+      'Pacientes con antecedentes conocidos de arritmias o convulsiones.',
     ],
-    efectos_adversos: [
-      "Vómitos y diarrea.",
-      "Taquicardia y agitación.",
-      "PU/PD (bebe y orina mucho).",
-      "Gatos: Hipereestesia marcada.",
-      "Convulsiones (en toxicidad)."
+    precauciones: [
+      'Administrar con precaución en pacientes con enfermedad cardíaca grave, úlceras gástricas, hipertiroidismo, enfermedad renal o hepática, hipoxia grave o hipertensión grave.',
     ],
-    monitoreo_recomendado: [
-      "Frecuencia cardíaca",
-      "Estado mental",
-      "Niveles séricos (Rango: 5-20 μg/ml)"
+  },
+  reacciones_adversas: {
+    comunes: [
+      'Vómitos, diarrea, polidipsia, poliuria, reducción del apetito, taquicardia, arritmias, náuseas, espasmos, inquietud, agitación, excitación y convulsiones.',
     ],
-    instrucciones_manejo: "Observar precauciones normales. No abrir las cápsulas.",
-    sobredosis: {
-      signos: ["Convulsiones", "Arritmias fatales", "Vómitos severos"],
-      tratamiento: "Lavado gástrico, carbón activado y diazepam para convulsiones."
-    },
-    interacciones_farmacologicas: [
-      { farmaco: "Cimetidina / Eritromicina / Quinolonas", efecto: "Aumentan los niveles de teofilina (riesgo de toxicidad).", severidad: "Importante" },
-      { farmaco: "Fenobarbital", efecto: "Disminuye los niveles de teofilina.", severidad: "Moderada" },
-      { farmaco: "Propranolol", efecto: "Antagonismo mutuo; riesgo de broncoespasmo.", severidad: "Importante" }
-    ]
+    raras: [],
+  },
+  interacciones_farmacos: {
+    observadas: [
+      {
+        farmaco: 'Cimetidina, diltiazem, eritromicina, fluoroquinolonas, alopurinol',
+        descripcion: 'Pueden aumentar los niveles séricos de teofilina.',
+      },
+      {
+        farmaco: 'Fenobarbital',
+        descripcion: 'Puede disminuir la concentración sérica de teofilina.',
+      },
+      {
+        farmaco: 'Pancuronio',
+        descripcion: 'La teofilina puede disminuir los efectos del pancuronio.',
+      },
+      {
+        farmaco: 'Bloqueadores beta-adrenérgicos (p. ej., propranolol)',
+        descripcion:
+          'La teofilina y los bloqueadores beta-adrenérgicos pueden antagonizar los efectos del otro.',
+      },
+      {
+        farmaco: 'Halotano',
+        descripcion:
+          'La administración de teofilina con halotano puede causar una mayor incidencia de arritmias cardíacas.',
+      },
+      {
+        farmaco: 'Ketamina',
+        descripcion:
+          'La administración de teofilina con ketamina puede causar una mayor incidencia de convulsiones.',
+      },
+    ],
+    potenciales: [],
   },
   farmacologia_clinica: {
-    mecanismo_accion: "Inhibidor de la fosfodiesterasa que aumenta el AMPc intracelular y antagoniza los receptores de adenosina.",
-    farmacocinetica: "Metabolismo hepático extenso."
+    mecanismo_accion:
+      'Provoca la inhibición de la fosfodiesterasa, la alteración del calcio intracelular, la liberación de catecolaminas y el antagonismo de la adenosina y la prostaglandina, lo que conduce a la broncodilatación y otros efectos.',
+    farmacocinetica: 'No hay información disponible.',
   },
   presentaciones_comerciales: [
     {
-      tipo: "Cápsula de liberación sostenida",
-      concentracion_texto: "100 mg, 200 mg, 500 mg",
-      valor_concentracion: 200,
-      unidad_concentracion: "mg",
-      es_divisible: false
-    }
-  ]
+      tipo: 'Oral',
+      forma_farmaceutica: 'Cápsulas de liberación sostenida',
+      concentraciones: ['100 mg', '200 mg', '500 mg'],
+    },
+  ],
+  dosis: {
+    mammals: [
+      {
+        especie: 'Hurones',
+        dosis: '4.25-10 mg/kg p.o. q8-12h',
+        indicacion: 'Tratamiento de la enfermedad de las vías respiratorias pequeñas',
+      },
+      {
+        especie: 'Cobayas, Ratas',
+        dosis: '10-20 mg/kg p.o. q8-12h',
+        indicacion: 'Tratamiento de la enfermedad de las vías respiratorias pequeñas',
+      },
+    ],
+    birds: [
+      {
+        especie: 'Aves',
+        dosis: '10 mg/kg p.o. q12h',
+        indicacion: 'Tratamiento de la enfermedad de las vías respiratorias pequeñas',
+      },
+    ],
+  },
 };

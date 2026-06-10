@@ -1,150 +1,78 @@
-import type { Drug } from '@/lib/types';
+import { Drug } from "@/lib/types/drug";
 
 export const piperacillinDrug: Drug = {
   id: "piperacillin",
   meta_data: {
-    nombre_generico: "Piperacilina (con Tazobactam)",
+    nombre_generico: "Piperacilina",
     nombres_comerciales: ["Tazocin"],
-    grupo_farmacologico: "Penicilina de espectro extendido (Antipseudomonal)",
-    status_regulatorio: "POM. Categoría A (Evitar) por la EMA."
+    grupo_farmacologico: "Antibiótico beta-lactámico (ureidopenicilina)",
+    status_regulatorio: "POM"
   },
   resumen_clinico: {
+    usos_principales: "Infecciones potencialmente mortales (ej. endocarditis, septicemia) donde las pruebas de cultivo y sensibilidad predicen una respuesta clínica. Activo contra Pseudomonas aeruginosa y Bacteroides fragilis.",
     puntos_clave: [
-      "Bactericida tiempo-dependiente con amplio espectro.",
-      "Actividad superior contra Pseudomonas aeruginosa y anaerobios (B. fragilis).",
-      "Uso reservado para infecciones potencialmente fatales (sepsis, endocarditis).",
-      "La combinación con Tazobactam supera la resistencia por beta-lactamasas.",
-      "Requiere administración parenteral frecuente o infusión continua."
-    ],
-    usos_principales: "Tratamiento de sepsis grave, endocarditis e infecciones por Pseudomonas resistentes confirmadas.",
-    inicio_accion: "Inmediato (IV)",
-    duracion_efecto: "Corta (requiere dosis q6-8h)"
+      "Reservado para infecciones graves en pacientes neutropénicos.",
+      "Usualmente combinado con un inhibidor de beta-lactamasa (tazobactam).",
+      "La experiencia en especies veterinarias es limitada."
+    ]
   },
-  informacion_cliente: [
-    "Fármaco de uso hospitalario para infecciones de extrema gravedad.",
-    "La inyección puede ser dolorosa.",
-    "Es vital cumplir estrictamente con el horario de las dosis.",
-    "¡PELIGRO!: No administrar a conejos, cobayas o hámsteres (riesgo de muerte).",
-    "Informe si nota diarrea severa o erupciones cutáneas."
+  seguridad_y_manejo: {
+    precauciones: [
+      "Observar precauciones normales."
+    ]
+  },
+  contraindicaciones: {
+    puntos_clave: [
+      "Evitar en animales con sensibilidad conocida a las penicilinas.",
+      "No administrar a conejos, cobayas, chinchillas, hámsters, jerbos o degús (riesgo de enterotoxemia fatal)."
+    ]
+  },
+  reacciones_adversas: {
+    puntos_clave: [
+      "Náuseas, diarrea y erupciones cutáneas.",
+      "Doloroso si se administra por inyección i.m.",
+      "El contenido de sodio puede ser clínicamente importante para pacientes con dietas restringidas en sodio."
+    ]
+  },
+  interacciones: [
+    {
+      farmaco: "Relajantes musculares no despolarizantes",
+      efecto: "Potencia los efectos.",
+      severidad: "Moderada"
+    },
+    {
+      farmaco: "Gentamicina",
+      efecto: "Inactiva la piperacilina si se mezcla en la misma jeringa. Sinergismo con aminoglucósidos.",
+      severidad: "Leve"
+    }
   ],
-  parametros_dosificacion: {
-    perro: [
-      {
-        indicacion: "Sepsis grave / Pseudomonas",
-        vias: ["IV lenta", "IM"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 45,
-          dosis_min: 40,
-          dosis_max: 50,
-          unidad_calculo: "mg/kg (Combinado)"
-        },
-        frecuencia: { texto_ui: "Cada 6 a 8 horas", intervalo_horas: 8 }
-      }
-    ],
-    gato: [
-      {
-        indicacion: "Sepsis grave",
-        vias: ["IV lenta", "IM"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 45,
-          dosis_min: 40,
-          dosis_max: 50,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: { texto_ui: "Cada 8 horas", intervalo_horas: 8 }
-      }
-    ],
-    huron: [
-      {
-        indicacion: "Infecciones sistémicas",
-        vias: ["IV", "IM"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 100,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: { texto_ui: "Cada 8 a 12 horas", intervalo_horas: 8 }
-      }
-    ],
-    ave: [
-      {
-        indicacion: "Infecciones graves por Gram-negativos",
-        vias: ["IM", "IV"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 100,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: { texto_ui: "Cada 12 horas", intervalo_horas: 12 }
-      }
-    ],
-    reptil: [
-      {
-        indicacion: "Infecciones sistémicas / Neumonía",
-        vias: ["IM"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 75,
-          dosis_min: 50,
-          dosis_max: 100,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: { texto_ui: "Cada 24 a 48 horas", intervalo_horas: 24 },
-        notas_tecnicas: "Nebulización: 100 mg en 10 ml de salino por 20 min q8-12h."
-      }
-    ],
-    axolote: [
-      {
-        indicacion: "Sepsis bacteriana (Anfibios)",
-        vias: ["IM", "SC"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 100,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: { texto_ui: "Cada 24 horas", intervalo_horas: 24 }
-      }
-    ]
-  },
-  seguridad_y_alertas: {
-    contraindicaciones: [
-      "Hipersensibilidad a penicilinas o cefalosporinas.",
-      "Pequeños herbívoros (conejos, cobayas, hámsteres) - Mortal."
-    ],
-    contraindicaciones_especie: {
-      "Conejo": "¡PROHIBIDO!: Causa enterotoxemia fatal.",
-      "Cobaya": "¡PROHIBIDO!: Causa enterotoxemia fatal.",
-      "Hamster": "¡PROHIBIDO!: Causa enterotoxemia fatal."
+  dosis: [
+    {
+      especie: "Erizos",
+      dosis: [{ via: "s.c.", dosis: "10 mg/kg q8–12h" }]
     },
-    efectos_adversos: [
-      "Náuseas, diarrea y vómitos.",
-      "Erupciones cutáneas.",
-      "Dolor en el sitio de inyección.",
-      "Potencial nefrotoxicidad en dosis muy altas.",
-      "Enterotoxemia fatal en especies sensibles."
-    ],
-    monitoreo_recomendado: [
-      "Función renal (Creatinina/BUN)",
-      "Respuesta clínica de la infección",
-      "Signos de hipersensibilidad inmediata"
-    ],
-    instrucciones_manejo: "Observar precauciones para alérgicos a beta-lactámicos.",
-    sobredosis: {
-      signos: ["Trastornos GI severos", "Signos neurológicos (raro)"],
-      tratamiento: "Soporte sintomático."
+    {
+      especie: "Aves",
+      dosis: [{ via: "i.m., i.v.", dosis: "100 mg/kg q12h" }]
     },
-    interacciones_farmacologicas: [
-      { farmaco: "Aminoglucósidos (Gentamicina)", efecto: "Sinergia positiva in vivo; se inactivan si se mezclan en la misma jeringa.", severidad: "Leve" },
-      { farmaco: "Relajantes musculares", efecto: "Piperacilina puede potenciar su efecto.", severidad: "Moderada" }
-    ]
-  },
+    {
+      especie: "Quelonios, Lagartos",
+      dosis: [{ via: "i.m.", dosis: "50–100 mg/kg q24h durante 7–14 días" }, { via: "Nebulización", dosis: "100 mg de piperacilina diluida en 10 ml de solución salina durante 15–20 min q8–12h" }]
+    },
+    {
+      especie: "Pitones de sangre",
+      dosis: [{ via: "i.m.", dosis: "<100 mg/kg q48h" }]
+    },
+    {
+      especie: "Anfibios",
+      dosis: [{ via: "s.c., i.m.", dosis: "100 mg/kg q24h" }]
+    }
+  ],
   farmacologia_clinica: {
-    mecanismo_accion: "Inhibe la síntesis de la pared celular bacteriana al unirse a las PBPs. El tazobactam inhibe irreversiblemente las beta-lactamasas.",
-    farmacocinetica: "Eliminación renal predominante. La piperacilina inhibe la excreción del tazobactam en perros."
+    mecanismo_accion: "Los antibióticos beta-lactámicos se unen a las proteínas de unión a penicilina implicadas en la síntesis de la pared celular, disminuyendo la fuerza y rigidez de la pared celular bacteriana y afectando la división celular, el crecimiento y la formación del septo.",
+    farmacocinetica: "No hay información disponible."
   },
   presentaciones_comerciales: [
-    { tipo: "Vial inyectable (Polvo)", concentracion_texto: "2 g Pip. + 0.25 g Tazo.", valor_concentracion: 2250, unidad_concentracion: "mg", es_divisible: false }
+    { tipo: "Polvo para inyección", concentracion_texto: "2.25 g, 4.5 g (2 g o 4 g de piperacilina sódica + 0.25 g o 0.5 g de tazobactam)" }
   ]
 };

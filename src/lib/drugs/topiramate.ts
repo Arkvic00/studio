@@ -1,93 +1,63 @@
-import type { Drug } from '@/lib/types';
+import type { Drug } from '../index';
 
 export const topiramateDrug: Drug = {
-  id: "topiramate",
+  id: 'topiramate',
   meta_data: {
-    nombre_generico: "Topiramato",
-    nombres_comerciales: ["Topamax", "Topiramate*"],
-    grupo_farmacologico: "Anticonvulsivo; Modulador de canales iónicos",
-    status_regulatorio: "POM"
+    nombre_generico: 'Topiramato',
+    nombres_comerciales: ['Topamax', 'Topiramate'],
+    grupo_farmacologico: 'Anticonvulsivo',
+    status_regulatorio: 'POM',
   },
   resumen_clinico: {
     puntos_clave: [
-      "Múltiples mecanismos: bloquea canales de Na+, potencia GABA y antagoniza Glutamato.",
-      "Utilizado como terapia adjunta en epilepsia refractaria.",
-      "Uso reportado en dolor neuropático y dermatitis ulcerativa idiopática felina.",
-      "Vida media corta en perros (2-4 horas) pero efecto biológico persistente.",
-      "No requiere monitoreo de niveles séricos rutinario."
+      'Se utiliza para el tratamiento de las convulsiones y las conductas convulsivas en conejos.',
+      'Los efectos adversos son comunes y pueden estar relacionados con la dosis.',
+      'La vida media es de 2 a 4 horas y puede ser necesaria una dosificación frecuente.',
     ],
-    usos_principales: "Tratamiento adjunto de convulsiones refractarias y manejo del dolor neuropático.",
-    inicio_accion: "Rápido",
-    duracion_efecto: "8 a 12 horas"
+    usos_principales: 'Tratamiento de las convulsiones y las conductas convulsivas.',
+    inicio_accion: 'Desconocido',
+    duracion_efecto: 'Desconocido',
   },
-  informacion_cliente: [
-    "No suspenda el medicamento de forma repentina; requiere retirada gradual.",
-    "Puede causar somnolencia o una disminución del apetito.",
-    "Informe si nota que su mascota camina de forma inestable (ataxia).",
-    "Generalmente se administra dos o tres veces al día."
-  ],
-  parametros_dosificacion: {
-    perro: [
-      {
-        indicacion: "Epilepsia refractaria (Adjunto)",
-        vias: ["PO"],
-        math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 10,
-          dosis_min: 2,
-          dosis_max: 20,
-          unidad_calculo: "mg/kg"
-        },
-        frecuencia: { texto_ui: "Cada 8 a 12 horas", intervalo_horas: 12 },
-        notas_tecnicas: "Iniciar en el rango bajo y escalar incrementalmente según respuesta."
-      }
+  informacion_cliente: ['Observar las precauciones normales.'],
+  contraindicaciones_precauciones: {
+    contraindicaciones: ['No hay información disponible.'],
+    precauciones: [
+      'Suspender gradualmente para minimizar la posibilidad de un aumento de la frecuencia de las convulsiones.',
     ],
-    gato: [
-      {
-        indicacion: "Convulsiones / Dermatitis ulcerativa",
-        vias: ["PO"],
-        math: {
-          tipo_calculo: "fija",
-          dosis_recomendada: 18.75,
-          dosis_min: 12.5,
-          dosis_max: 25,
-          unidad_calculo: "mg/gato"
-        },
-        frecuencia: { texto_ui: "Cada 12 horas", intervalo_horas: 12 }
-      }
-    ]
   },
-  seguridad_y_alertas: {
-    contraindicaciones: [
-      "Hipersensibilidad conocida.",
-      "Fallo hepático o renal severo (usar con precaución)."
+  reacciones_adversas: {
+    comunes: ['Ataxia, sedación, disminución del apetito y pérdida de peso.'],
+    raras: [],
+  },
+  interacciones_farmacos: {
+    observadas: [
+      {
+        farmaco: 'Fenitoína o carbamazepina',
+        descripcion:
+          'Pueden disminuir las concentraciones plasmáticas de topiramato hasta en un 50%.',
+      },
     ],
-    efectos_adversos: [
-      "Sedación y letargo.",
-      "Anorexia (pérdida de apetito).",
-      "Ataxia (falta de coordinación).",
-      "Vómitos."
-    ],
-    monitoreo_recomendado: [
-      "Frecuencia de convulsiones",
-      "Peso corporal",
-      "Estado mental"
-    ],
-    instrucciones_manejo: "Observar precauciones normales. Tapering obligatorio para evitar convulsiones de rebote.",
-    sobredosis: {
-      signos: ["Sedación profunda", "Vómitos", "Signos neurológicos"],
-      tratamiento: "Soporte sintomático."
-    },
-    interacciones_farmacologicas: [
-      { farmaco: "Otros anticonvulsivos", efecto: "Efectos sedantes aditivos.", severidad: "Moderada" },
-      { farmaco: "Inhibidores de la anhidrasa carbónica", efecto: "Topiramato también tiene esta acción; riesgo de acidosis.", severidad: "Leve" }
-    ]
+    potenciales: [],
   },
   farmacologia_clinica: {
-    mecanismo_accion: "Bloquea los canales de sodio dependientes de voltaje, aumenta la frecuencia de activación de los receptores GABA-A y antagoniza los receptores AMPA de glutamato.",
-    farmacocinetica: "Eliminación renal predominante."
+    mecanismo_accion:
+      'Anticonvulsivo que potencia la actividad del GABA, reduce la actividad del glutamato y bloquea los canales de sodio y calcio dependientes del voltaje.',
+    farmacocinetica: 'No hay información disponible.',
   },
   presentaciones_comerciales: [
-    { tipo: "Tableta / Cápsula", concentracion_texto: "25 mg, 50 mg, 100 mg", valor_concentracion: 50, unidad_concentracion: "mg", es_divisible: true }
-  ]
+    {
+      tipo: 'Oral',
+      forma_farmaceutica: 'Tabletas',
+      concentraciones: ['25 mg', '50 mg', '100 mg', '200 mg'],
+    },
+  ],
+  dosis: {
+    mammals: [
+      {
+        especie: 'Conejos',
+        dosis: '5-10 mg/kg p.o. q12h',
+        indicacion: 'Convulsiones y conductas convulsivas',
+      },
+    ],
+  },
 };

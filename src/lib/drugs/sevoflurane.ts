@@ -1,101 +1,85 @@
-import type { Drug } from '@/lib/types';
+import { Drug } from '../drug.model';
 
 export const sevofluraneDrug: Drug = {
-  id: "sevoflurane",
+  id: 'sevoflurane',
   meta_data: {
-    nombre_generico: "Sevoflurano",
-    nombres_comerciales: ["SevoFlo", "Sevotek"],
-    grupo_farmacologico: "Anestésico volátil inhalatorio",
-    status_regulatorio: "POM-V"
+    nombre_generico: 'Sevoflurano',
+    nombres_comerciales: ['SevoFlo', 'Sevohale', 'Sevotek'],
+    grupo_farmacologico: 'Anestésico inhalatorio',
+    status_regulatorio: 'POM-V',
   },
   resumen_clinico: {
     puntos_clave: [
-      "Anestésico inhalatorio potente de muy baja solubilidad en sangre.",
-      "Inducción y recuperación extremadamente rápidas.",
-      "Olor menos penetrante que el isoflurano (mejor tolerado para mascarilla).",
-      "Causa hipotensión dosis-dependiente persistente.",
-      "Se degrada en cal sodada caliente formando el compuesto A (nefrotóxico en ratas, no probado en perros).",
-      "Requiere vaporizadores de precisión específicos."
+      'Inducción y mantenimiento de la anestesia.',
+      'Menos soluble en sangre que el isoflurano, por lo que la inducción y la recuperación son más rápidas.',
+      'Olor menos penetrante que el isoflurano, bien tolerado para la inducción con mascarilla.',
+      'Causa hipotensión dosis-dependiente.',
+      'Atraviesa la barrera placentaria.',
+      'Evitar flujos de gas bajos y altas temperaturas del absorbente en cirugías largas.',
+      'Los agonistas opioides, las benzodiacepinas y el óxido nitroso reducen la concentración requerida.',
     ],
-    usos_principales: "Inducción y mantenimiento de la anestesia general en perros y gatos.",
-    inicio_accion: "Muy rápido",
-    duracion_efecto: "Limitada al tiempo de administración"
+    usos_principales: 'Inducción y mantenimiento de la anestesia general.',
   },
   informacion_cliente: [
-    "Fármaco de uso hospitalario bajo monitorización intensiva.",
-    "El animal despierta casi instantáneamente tras cerrar el gas.",
-    "Puede causar agitación momentánea en el despertar por su rápida acción.",
-    "Suele causar una bajada de la presión arterial."
+    'Gas anestésico que se administra mediante un vaporizador calibrado.',
+    'El animal estará completamente monitorizado durante todo el procedimiento anestésico.',
+    'La recuperación de la anestesia es rápida.',
   ],
   parametros_dosificacion: {
-    perro: [
+    mamiferos: [
       {
-        indicacion: "Inducción (sin premedicación)",
-        vias: ["Inhalada"],
+        indicacion: 'Anestesia general',
+        vias: ['Inhalatoria'],
         math: {
-          tipo_calculo: "fija",
-          dosis_recomendada: 7,
-          dosis_min: 6,
-          dosis_max: 8,
-          unidad_calculo: "%"
-        }
-      },
-      {
-        indicacion: "Mantenimiento",
-        vias: ["Inhalada"],
-        math: {
-          tipo_calculo: "fija",
-          dosis_recomendada: 2.5,
-          unidad_calculo: "% (MAC)"
+          tipo_calculo: 'concentracion',
+          induccion_min: 6,
+          induccion_max: 8,
+          mantenimiento_min: 2.5,
+          mantenimiento_max: 3.7,
+          unidad_calculo: '%'
         },
-        notas_tecnicas: "Ajustar según profundidad anestésica. La premedicación reduce estos requerimientos significativamente."
+        notas_tecnicas: 'La concentración espirada requerida para mantener la anestesia quirúrgica en el 50% de los receptores es de aproximadamente 2.5% en la mayoría de los animales (concentración alveolar mínima, CAM). La CAM en conejos es de 3.7%. La administración de otros agentes anestésicos y analgésicos opioides reduce los requerimientos de dosis de sevoflurano.'
       }
     ],
-    gato: [
+    aves: [
       {
-        indicacion: "Inducción / Mantenimiento",
-        vias: ["Inhalada"],
+        indicacion: 'Anestesia general',
+        vias: ['Inhalatoria'],
         math: {
-          tipo_calculo: "fija",
-          dosis_recomendada: 2.5,
-          unidad_calculo: "% (MAC)"
-        }
+          tipo_calculo: 'concentracion',
+          induccion_min: 6,
+          induccion_max: 8,
+          mantenimiento_min: 2.5,
+          mantenimiento_max: 2.5,
+          unidad_calculo: '%'
+        },
+        notas_tecnicas: 'La concentración espirada requerida para mantener la anestesia quirúrgica en el 50% de los receptores es de aproximadamente 2.5% (CAM).'
+      }
+    ],
+    reptiles: [
+      {
+        indicacion: 'Anestesia general',
+        vias: ['Inhalatoria'],
+        math: {
+          tipo_calculo: 'concentracion',
+          induccion_min: 6,
+          induccion_max: 8,
+          mantenimiento_min: 3,
+          mantenimiento_max: 5,
+          unidad_calculo: '%'
+        },
+        notas_tecnicas: 'Inducción: 6-8% en oxígeno al 100%; Mantenimiento: 3-5% en oxígeno al 100%.'
+      }
+    ],
+    anfibios: [
+      {
+        indicacion: 'Anestesia general',
+        vias: ['Tópica', 'Inhalatoria'],
+        math: {
+          tipo_calculo: 'dosis_unitaria',
+        },
+        notas_tecnicas: 'Inducción: 37.5 µl/g de una mezcla tópica (3 partes de sevoflurano líquido, 3.5 partes de gel KY, 1.5 partes de agua destilada) en una cámara cerrada. Inducción en cámara gaseosa: En sapos de caña, 1.75% de sevoflurano resultó en la pérdida del reflejo de enderezamiento en 15 minutos en el 50% de los sapos.'
       }
     ]
-  },
-  seguridad_y_alertas: {
-    contraindicaciones: [
-      "Hipersensibilidad a gases halogenados.",
-      "Predisposición a hipertermia maligna."
-    ],
-    efectos_adversos: [
-      "Hipotensión dosis-dependiente (no remite con el tiempo).",
-      "Depresión respiratoria marcada.",
-      "Agitación en la recuperación.",
-      "Potencial nefrotoxicidad por Compuesto A (evitar flujos muy bajos en cirugías largas).",
-      "Atraviesa barrera placentaria."
-    ],
-    monitoreo_recomendado: [
-      "Presión arterial (constante)",
-      "Capnografía (EtCO2)",
-      "Saturación de oxígeno (SpO2)",
-      "Profundidad anestésica"
-    ],
-    instrucciones_manejo: "Utilizar sistemas de extracción de gases. Requiere vaporizador calibrado para sevoflurano.",
-    sobredosis: {
-      signos: ["Paro respiratorio", "Hipotensión profunda", "Bradicardia"],
-      tratamiento: "Cerrar vaporizador, ventilar con O2 al 100%, soporte cardiovascular agresivo."
-    },
-    interacciones_farmacologicas: [
-      { farmaco: "Sedantes / Opioides / N2O", efecto: "Reducen significativamente la MAC necesaria.", severidad: "Importante" },
-      { farmaco: "Relajantes musculares", efecto: "Sevoflurano potencia su efecto bloqueador.", severidad: "Moderada" }
-    ]
-  },
-  farmacologia_clinica: {
-    mecanismo_accion: "Depresor general inespecífico del SNC.",
-    farmacocinetica: "Eliminación pulmonar casi total. Metabolismo hepático mínimo (3%)."
-  },
-  presentaciones_comerciales: [
-    { tipo: "Líquido para vaporización", concentracion_texto: "100% (botella 250 ml)", valor_concentracion: 100, unidad_concentracion: "%", es_divisible: false }
-  ]
+  }
 };

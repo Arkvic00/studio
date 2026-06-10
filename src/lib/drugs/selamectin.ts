@@ -1,96 +1,94 @@
-import type { Drug } from '@/lib/types';
+import { Drug } from '../drug.model';
 
 export const selamectinDrug: Drug = {
-  id: "selamectin",
+  id: 'selamectin',
   meta_data: {
-    nombre_generico: "Selamectina",
-    nombres_comerciales: ["Stronghold", "Selehold", "Stronghold Plus"],
-    grupo_farmacologico: "Lactona macrocíclica; Endectocida",
-    status_regulatorio: "POM-V"
+    nombre_generico: 'Selamectina',
+    nombres_comerciales: ['Evicto', 'Selehold', 'Stronghold', 'Stronghold Plus'],
+    grupo_farmacologico: 'Endectocida',
+    status_regulatorio: 'POM-V',
   },
   resumen_clinico: {
     puntos_clave: [
-      "Provoca parálisis flácida al interaccionar con canales de cloruro.",
-      "Eficaz contra pulgas, ácaros del oído, piojos y nematodos.",
-      "Prevención mensual de Dirofilaria immitis.",
-      "Tratamiento de sarna sarcóptica.",
-      "Seguro en gestación y lactancia.",
-      "En combinación con sarolaner para gatos (Stronghold Plus)."
+      'Tratamiento y prevención de pulgas, ácaros de los oídos, Trixascaris, Cheyletiella, sarna sarcóptica, piojos mordedores, anquilostomas y ascárides.',
+      'Prevención de la dirofilariosis.',
+      'Puede usarse en lactancia y preñez.',
+      'Altamente tóxico para organismos acuáticos.',
+      'No usar en quelonios por riesgo de neurotoxicidad.',
     ],
-    usos_principales: "Control de parásitos internos y externos en perros y gatos.",
-    inicio_accion: "Rápido (tópico)",
-    duracion_efecto: "30 días (Mensual)"
+    usos_principales: 'Tratamiento y prevención de una amplia gama de parásitos externos e internos.',
   },
   informacion_cliente: [
-    "Aplicar directamente sobre la piel de la nuca.",
-    "Seguro para perras y gatas embarazadas o lactantes.",
-    "Para prevenir el gusano del corazón, aplicar mensualmente.",
-    "El baño frecuente puede reducir su eficacia.",
-    "No usar en cachorros/gatitos < 6 semanas."
+    'Aplicar el producto directamente sobre la piel, apartando el pelo.',
+    'No bañar al animal hasta pasadas al menos 24 horas de la aplicación.',
+    'Evitar el contacto del producto con los ojos y la boca del animal y del aplicador.',
+    'Desechar el envase de forma segura.',
   ],
   parametros_dosificacion: {
-    perro: [
+    mamiferos: [
       {
-        indicacion: "Control de parásitos / Prevención Filaria",
-        vias: ["Tópica (Spot-on)"],
+        especie: ['hurones', 'conejos', 'roedores'],
+        indicacion: 'Parasitosis',
+        vias: ['Tópica'],
         math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 6,
-          unidad_calculo: "mg/kg"
+          tipo_calculo: 'mg_kg',
+          dosis_min: 6,
+          dosis_max: 15,
+          unidad_calculo: 'mg/kg'
         },
-        frecuencia: { texto_ui: "Cada 30 días", intervalo_horas: 720 }
+        intervalo: 'Mensual'
       },
       {
-        indicacion: "Sarna sarcóptica (Tratamiento)",
-        vias: ["Tópica (Spot-on)"],
+        especie: ['petauros_del_azucar', 'erizos'],
+        indicacion: 'Parasitosis',
+        vias: ['Tópica'],
         math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 6,
-          unidad_calculo: "mg/kg"
+          tipo_calculo: 'mg_kg',
+          dosis_min: 6,
+          dosis_max: 18,
+          unidad_calculo: 'mg/kg'
         },
-        frecuencia: { texto_ui: "3 aplicaciones con intervalos de 2 semanas", intervalo_horas: 336 }
-      }
-    ],
-    gato: [
+        intervalo: 'Mensual'
+      },
       {
-        indicacion: "Control de parásitos / Prevención Filaria",
-        vias: ["Tópica (Spot-on)"],
+        especie: ['primates'],
+        indicacion: 'Parasitosis',
+        vias: ['Tópica'],
         math: {
-          tipo_calculo: "mg_kg",
-          dosis_recomendada: 6,
-          unidad_calculo: "mg/kg"
+          tipo_calculo: 'mg_kg',
+          dosis_min: 6,
+          dosis_max: 6,
+          unidad_calculo: 'mg/kg'
         },
-        frecuencia: { texto_ui: "Cada 30 días", intervalo_horas: 720 }
+        intervalo: 'Mensual'
+      }
+    ],
+    aves: [
+      {
+        indicacion: 'Parasitosis',
+        vias: ['Tópica'],
+        math: {
+          tipo_calculo: 'mg_kg',
+          dosis_min: 20,
+          dosis_max: 20,
+          unidad_calculo: 'mg/kg'
+        },
+        intervalo: 'Dosis única'
+      }
+    ],
+    anfibios: [
+      {
+        especie: ['ranas_toro'],
+        indicacion: 'Parasitosis',
+        vias: ['Tópica'],
+        math: {
+          tipo_calculo: 'mg_kg',
+          dosis_min: 6,
+          dosis_max: 6,
+          unidad_calculo: 'mg/kg'
+        },
+        intervalo: 'Dosis única'
       }
     ]
-  },
-  seguridad_y_alertas: {
-    contraindicaciones: [
-      "Animales menores de 6 semanas.",
-      "Hipersensibilidad conocida."
-    ],
-    efectos_adversos: [
-      "Alopecia o irritación local transitoria.",
-      "Vómitos y salivación (si se ingiere)."
-    ],
-    monitoreo_recomendado: [
-      "Test de Filaria previo",
-      "Integridad de la piel tratada"
-    ],
-    instrucciones_manejo: "Altamente tóxico para organismos acuáticos.",
-    sobredosis: {
-      signos: ["Ataxia", "Temblores", "Depresión"],
-      tratamiento: "Soporte sintomático."
-    },
-    interacciones_farmacologicas: [
-      { farmaco: "Otros sustratos de P-gp", efecto: "Aumento potencial de la toxicidad.", severidad: "Leve" }
-    ]
-  },
-  farmacologia_clinica: {
-    mecanismo_accion: "Potencia la apertura de los canales de cloruro en invertebrados, causando parálisis neuromuscular.",
-    farmacocinetica: "Absorción percutánea con niveles sistémicos persistentes."
-  },
-  presentaciones_comerciales: [
-    { tipo: "Pipeta Spot-on", concentracion_texto: "60 mg/ml o 120 mg/ml", valor_concentracion: 60, unidad_concentracion: "mg/ml", es_divisible: false }
-  ]
+  }
 };
