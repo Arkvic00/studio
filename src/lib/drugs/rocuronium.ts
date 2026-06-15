@@ -1,58 +1,75 @@
-import { Drug } from '../drug.model';
+import type { Drug } from '@/lib/types';
 
 export const rocuroniumDrug: Drug = {
-  id: 'rocuronium',
+  id: "rocuronium",
   meta_data: {
-    nombre_generico: 'Rocuronio',
-    nombres_comerciales: ['Esmeron'],
-    grupo_farmacologico: 'Bloqueante neuromuscular no despolarizante',
-    status_regulatorio: 'POM',
+    nombre_generico: "Rocuronio",
+    nombres_comerciales: ["Esmeron"],
+    grupo_farmacologico: "Bloqueante neuromuscular no despolarizante",
+    status_regulatorio: "POM"
   },
   resumen_clinico: {
     puntos_clave: [
-      'Inhibe la acción de la acetilcolina en la unión neuromuscular.',
-      'Inicio de acción más rápido y duración más corta que el vecuronio.',
-      'Conveniente por su solución acuosa y mayor vida útil.',
-      'Se recomienda monitorización y reversión del bloqueo neuromuscular.',
-      'Reversible con sugammadex (8 mg/kg IV en perros).',
-      'La hipotermia, acidosis e hipopotasemia prolongan su efecto.',
-      'La enfermedad hepática puede prolongar la duración del efecto.',
-      'No administrar sin anestesia adecuada y soporte ventilatorio.',
-      'Puede causar aumento de la frecuencia cardíaca e hipertensión leve a dosis altas.',
-      'El bloqueo se prolonga con anestésicos volátiles, aminoglucósidos, clindamicina y lincomicina.',
+      "Bloqueante neuromuscular de acción intermedia.",
+      "Inicio de acción muy rápido (especialmente IV).",
+      "No libera histamina significativamente.",
+      "Requiere ventilación mecánica obligatoria.",
+      "Sus efectos pueden revertirse con sugammadex o neostigmina."
     ],
-    usos_principales: 'Proporcionar bloqueo neuromuscular durante la anestesia para mejorar el acceso quirúrgico, facilitar la ventilación por presión positiva o en cirugía intraocular.',
-    inicio_accion: 'Rápido',
-    duracion_efecto: 'Corta',
+    usos_principales: "Relajación muscular durante anestesia general y facilitación de la intubación traqueal.",
+    inicio_accion: "Rápido (< 2 min)",
+    duracion_efecto: "20 a 30 minutos"
   },
   informacion_cliente: [
-    'Fármaco de uso estrictamente hospitalario bajo anestesia profunda.',
-    'El animal requerirá ventilación asistida mientras dure el efecto del medicamento.',
-    'Se monitorizará la recuperación completa de la fuerza muscular antes de despertar al paciente.',
+    "Uso hospitalario exclusivo bajo anestesia.",
+    "El animal no podrá respirar por sí solo mientras dure el efecto.",
+    "Se utiliza para cirugías complejas."
   ],
   parametros_dosificacion: {
-    aves: [
+    perro: [
       {
-        indicacion: 'Cirugía ocular',
-        vias: ['Tópica ocular'],
+        indicacion: "Relajación neuromuscular",
+        vias: ["IV"],
         math: {
-          tipo_calculo: 'dosis_unitaria',
+          tipo_calculo: "mg_kg",
+          dosis_recomendada: 0.4,
+          dosis_min: 0.2,
+          dosis_max: 0.6,
+          unidad_calculo: "mg/kg"
         },
-        notas_tecnicas: 'Lechuzas comunes: 0.35 mg/ojo. Mochuelos: 0.2 mg/ojo. Autillos: 0.15 mg/ojo. Cernícalos: 0.12 mg/ojo. Loros amazónicos: 20 µl/ojo. Las dosis pueden repetirse.'
+        frecuencia: { texto_ui: "Bolo único, repetir según monitoreo (tren de cuatro)", intervalo_horas: 0 }
       }
     ],
-    reptiles: [
+    gato: [
       {
-        indicacion: 'Bloqueo neuromuscular',
-        vias: ['IM'],
+        indicacion: "Relajación neuromuscular",
+        vias: ["IV"],
         math: {
-          tipo_calculo: 'mg_kg',
-          dosis_min: 0.25,
-          dosis_max: 0.5,
-          unidad_calculo: 'mg/kg'
-        },
-        notas_tecnicas: 'No sustituye a la analgesia o anestesia general.'
+          tipo_calculo: "mg_kg",
+          dosis_recomendada: 0.4,
+          unidad_calculo: "mg/kg"
+        }
       }
     ]
-  }
+  },
+  seguridad_y_alertas: {
+    contraindicaciones: ["Ausencia de medios de ventilación mecánica.", "Insuficiencia hepática severa."],
+    efectos_adversos: ["Apnea.", "Taquicardia leve.", "Hipotensión (rara)."],
+    monitoreo_recomendado: ["Monitorización neuromuscular (TOF)", "Capnografía", "Saturación de O2"],
+    instrucciones_manejo: "Mantener refrigerado. No administrar sin anestesia profunda previa.",
+    sobredosis: {
+      signos: ["Parálisis prolongada"],
+      treatment: "Sugammadex (antídoto de elección) o Neostigmina + Atropina/Glicopirrolato."
+    },
+    interacciones_farmacologicas: [
+      { farmaco: "Aminoglucósidos", efecto: "Potencian el bloqueo neuromuscular.", severidad: "Moderada" }
+    ]
+  },
+  farmacologia_clinica: {
+    mecanismo_accion: "Compite con la acetilcolina por los receptores nicotínicos en la placa motora terminal.",
+    farmacocinetica: "Eliminación principalmente biliar y renal."
+  },
+  presentaciones_comerciales: [
+    { tipo: "Inyectable", concentracion_texto: "10 mg/ml", valor_concentracion: 10, unidad_concentracion: "mg/ml" }
+  ]
 };

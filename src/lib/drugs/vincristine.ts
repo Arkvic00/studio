@@ -10,33 +10,25 @@ export const vincristineDrug: Drug = {
   },
   resumen_clinico: {
     puntos_clave: [
-      'Interfiere con el ensamblaje de los microtúbulos, provocando la detención de la metafase y, en última instancia, la muerte celular.',
-      'Se utiliza con otros agentes neoplásicos en el tratamiento de las enfermedades neoplásicas de los hurones, en particular el linfoma.',
+      'Se utiliza con otros agentes neoplásicos en el tratamiento de enfermedades neoplásicas de hurones, particularmente linfoma.',
       'Se ha utilizado para tratar el linfoma en una iguana verde.',
-      'Usar con precaución en pacientes con enfermedad hepática, leucopenia, infección o enfermedad neuromuscular preexistente.',
-      'La solución es irritante local y debe administrarse por vía i.v. a través de un catéter cuidadosamente colocado previamente.',
+      'La solución es irritante localmente y debe administrarse por vía intravenosa a través de un catéter precolocado cuidadosamente.',
+      'Fármaco citotóxico; consulte textos especializados para obtener más consejos sobre agentes quimioterapéuticos.',
     ],
-    usos_principales: 'Tratamiento de enfermedades neoplásicas, especialmente linfoma.',
+    usos_principales: 'Tratamiento de enfermedades neoplásicas, particularmente linfoma.',
     inicio_accion: 'Desconocido',
     duracion_efecto: 'Desconocido',
   },
-  informacion_cliente: [
-    'Fármaco citotóxico; consulte textos especializados para obtener más consejos sobre agentes quimioterapéuticos.',
-    'Almacenar en refrigeración.',
-  ],
+  informacion_cliente: ['Almacenar bajo refrigeración.'],
   contraindicaciones_precauciones: {
     contraindicaciones: ['No hay información disponible.'],
     precauciones: [
-      'Administrar i.v. a través de un catéter pre-colocado cuidadosamente.',
       'Usar con precaución en pacientes con enfermedad hepática, leucopenia, infección o enfermedad neuromuscular preexistente.',
     ],
   },
   reacciones_adversas: {
     comunes: [
-      'Neuropatía periférica',
-      'íleo',
-      'toxicidad del tracto gastrointestinal/estreñimiento',
-      'irritación local grave si se administra por vía perivascular.',
+      'Neuropatía periférica, íleo, toxicidad/estreñimiento del tracto gastrointestinal e irritación local grave si se administra por vía perivascular.',
       'Potencialmente mielosupresor.',
     ],
     raras: [],
@@ -51,14 +43,13 @@ export const vincristineDrug: Drug = {
       {
         farmaco: 'Asparaginasa',
         descripcion:
-          'Si se usa en combinación, la vincristina debe administrarse de 12 a 24 horas antes de la enzima.',
+          'Si se usa en combinación con asparaginasa, debe administrarse 12-24 horas antes de la enzima. La administración de asparaginasa con o antes de la vincristina puede reducir el aclaramiento de la vincristina y aumentar la toxicidad.',
       },
     ],
     potenciales: [],
   },
   farmacologia_clinica: {
-    mecanismo_accion:
-      'Interfiere con el ensamblaje de los microtúbulos, provocando la detención de la metafase y, en última instancia, la muerte celular.',
+    mecanismo_accion: 'Interfiere con el ensamblaje de microtúbulos, provocando la detención de la metafase y, en última instancia, la muerte celular.',
     farmacocinetica: 'No hay información disponible.',
   },
   presentaciones_comerciales: [
@@ -72,22 +63,22 @@ export const vincristineDrug: Drug = {
     mammals: [
       {
         especie: 'Hurones',
-        dosis: '0.12–0.2 mg/kg i.v. como parte del protocolo de quimioterapia para el linfoma.',
+        dosis: '0.12-0.2 mg/kg i.v. como parte del protocolo de quimioterapia para el linfoma.',
         indicacion: 'Linfoma',
+        notas: ['Consulte el Apéndice para los protocolos de quimioterapia en hurones.'],
       },
     ],
     birds: [
       {
         especie: 'Aves',
-        dosis: '0.1 mg/kg i.v. c/7–14d',
-        indicacion: 'Linfoma cutáneo de células B no epiteliotrópico',
+        dosis: '0.1 mg/kg i.v. q7-14d',
+        indicacion: 'Linfoma no epiteliotrópico de células B cutáneo (en cacatúa paraguas)',
       },
     ],
     reptiles: [
       {
-        especie: 'Reptiles',
-        dosis:
-          '0.008 mg/kg i.v. como parte del protocolo de quimioterapia para el linfoma (un informe de caso en la iguana verde)',
+        especie: 'Iguana verde',
+        dosis: '0.008 mg/kg i.v. como parte del protocolo de quimioterapia para el linfoma (un informe de caso).',
         indicacion: 'Linfoma',
       },
     ],

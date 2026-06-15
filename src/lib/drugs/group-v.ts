@@ -1,6 +1,8 @@
+import { vecuroniumDrug } from './vecuronium';
 import { verapamilDrug } from './verapamil';
 import { vinblastineDrug } from './vinblastine';
 import { vincristineDrug } from './vincristine';
+import { virkonSDrug } from './virkon_s';
 import { vitaminADrug } from './vitamin-a';
 import { vitaminBComplexDrug } from './vitamin-b-complex';
 import { vitaminB1Drug } from './vitamin-b1';
@@ -11,9 +13,11 @@ import { vitaminEDrug } from './vitamin-e';
 import { vitaminK1Drug } from './vitamin-k1';
 
 export const groupV = [
+    vecuroniumDrug,
     verapamilDrug,
     vinblastineDrug,
     vincristineDrug,
+    virkonSDrug,
     vitaminADrug,
     vitaminBComplexDrug,
     vitaminB1Drug,

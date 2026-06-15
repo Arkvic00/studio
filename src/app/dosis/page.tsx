@@ -1,14 +1,19 @@
+
 'use client';
 import { useMemo, useRef, useEffect } from 'react';
 import type { Patient, Calculation } from '@/lib/types';
 import { DB_MEDICAMENTOS } from '@/lib/data';
 import { getSpeciesKey, getSpeciesInfo, speciesList } from '@/lib/config';
-import { Plus, Trash2, Save, Printer, ArrowDownUp, Info, AlertTriangle } from 'lucide-react';
+import { 
+  Plus, Trash2, Save, Printer, ArrowDownUp, 
+  Info, AlertTriangle, AlertCircle, Activity, ShieldAlert 
+} from 'lucide-react';
 import { PinterestCard } from '@/components/ui/pinterest-card';
 import { GlassInput } from '@/components/ui/glass-input';
 import { DrugSelector } from '@/components/dosis/drug-selector';
 import { cn } from '@/lib/utils';
 import { useAppContext } from '@/contexts/app-context';
+import { Badge } from '@/components/ui/badge';
 
 interface DoseCalculatorProps {
   patient: Patient;
@@ -320,11 +325,60 @@ export function DoseCalculator({
                   )}
                 </div>
 
-                {drug && !isContraindicated && (doseConfig?.notas_tecnicas || (drug.informacion_cliente && drug.informacion_cliente.length > 0)) && (
-                  <div className="mt-8 pt-8 border-t border-border">
-                    <div className="bg-blue-500/5 border border-blue-500/10 p-5 rounded-3xl">
-                      <h4 className="text-xs font-black text-blue-400 uppercase tracking-widest mb-3 flex items-center gap-2"><Info size={14} /> Notas Técnicas</h4>
-                      <ul className="text-xs text-slate-300 space-y-2 list-disc pl-4">
+                {drug && !isContraindicated && (
+                  <div className="mt-8 pt-8 border-t border-border space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {/* Contraindicaciones */}
+                        {drug.seguridad_y_alertas.contraindicaciones?.length > 0 && (
+                            <div className="bg-red-500/5 border border-red-500/10 p-4 rounded-2xl">
+                                <h4 className="text-[10px] font-black text-red-400 uppercase tracking-widest mb-2 flex items-center gap-2">
+                                    <AlertCircle size={14} /> Contraindicaciones
+                                </h4>
+                                <p className="text-[11px] text-slate-300 leading-tight">
+                                    {drug.seguridad_y_alertas.contraindicaciones.slice(0, 3).join(" • ")}
+                                    {drug.seguridad_y_alertas.contraindicaciones.length > 3 && " ..."}
+                                </p>
+                            </div>
+                        )}
+
+                        {/* Monitoreo */}
+                        {drug.seguridad_y_alertas.monitoreo_recomendado?.length > 0 && (
+                            <div className="bg-blue-500/5 border border-blue-500/10 p-4 rounded-2xl">
+                                <h4 className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-2 flex items-center gap-2">
+                                    <Activity size={14} /> Monitoreo
+                                </h4>
+                                <p className="text-[11px] text-slate-300 leading-tight">
+                                    {drug.seguridad_y_alertas.monitoreo_recomendado.slice(0, 3).join(" • ")}
+                                </p>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Interacciones */}
+                    {drug.seguridad_y_alertas.interacciones_farmacologicas?.length > 0 && (
+                        <div className="bg-purple-500/5 border border-purple-500/10 p-4 rounded-2xl">
+                            <h4 className="text-[10px] font-black text-purple-400 uppercase tracking-widest mb-2 flex items-center gap-2">
+                                <ShieldAlert size={14} /> Interacciones Clave
+                            </h4>
+                            <div className="flex flex-wrap gap-2">
+                                {drug.seguridad_y_alertas.interacciones_farmacologicas.slice(0, 4).map((int, i) => (
+                                    <Badge key={i} variant="outline" className={cn(
+                                        "text-[9px] border-purple-500/20",
+                                        int.severidad === 'Grave' ? 'bg-red-500/10 text-red-300 border-red-500/20' : 'bg-purple-500/10 text-purple-200'
+                                    )}>
+                                        {int.farmaco}: {int.severidad}
+                                    </Badge>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Notas Técnicas / Indicaciones Cliente */}
+                    <div className="bg-emerald-500/5 border border-emerald-500/10 p-4 rounded-2xl">
+                      <h4 className="text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-2 flex items-center gap-2">
+                        <Info size={14} /> Notas y Comunicación
+                      </h4>
+                      <ul className="text-[11px] text-slate-300 space-y-1 list-disc pl-4">
                         {drug.informacion_cliente.slice(0, 2).map((info, i) => <li key={i}>{info}</li>)}
                         {doseConfig?.notas_tecnicas && <li className="text-accent font-bold italic">{doseConfig.notas_tecnicas}</li>}
                       </ul>

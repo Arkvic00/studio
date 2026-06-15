@@ -4,7 +4,7 @@ export const propofolDrug: Drug = {
     id: "propofol",
     meta_data: {
       nombre_generico: "Propofol",
-      nombres_comerciales: "Inductofol, Propodine, PropoFlo Plus, PropoFol-Lipuro Vet, Propomitor, Proposure, Vetofol",
+      nombres_comerciales: ["Inductofol", "Propodine", "PropoFlo Plus", "PropoFol-Lipuro Vet", "Propomitor", "Proposure", "Vetofol"],
       grupo_farmacologico: "Anestésico General (Inyectable)",
       status_regulatorio: "POM-V",
     },

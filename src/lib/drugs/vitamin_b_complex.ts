@@ -8,17 +8,16 @@ export const vitaminBComplexDrug: Drug = {
       'Anivit 4BC',
       'Duphafral',
       'Duphafral Extravite',
-      'Multivitamin injection',
-      'Vitamin B tablets',
+      'Inyección multivitamínica',
+      'Tabletas de vitamina B',
     ],
-    grupo_farmacologico: 'Vitamina',
+    grupo_farmacologico: 'Vitaminas',
     status_regulatorio: 'POM-VPS, venta general',
   },
   resumen_clinico: {
     puntos_clave: [
-      'Cofactores para enzimas del metabolismo intermedio y la biosíntesis.',
-      'Pueden ocurrir deficiencias múltiples de vitaminas B en pacientes con enfermedad renal o hepática o anorexia significativa.',
-      'Las dosis y vías varían con los productos individuales. Verifique las recomendaciones del fabricante antes de usar.',
+      'Las deficiencias múltiples de vitaminas B pueden ocurrir en pacientes con enfermedad renal o hepática o anorexia significativa.',
+      'Las dosis y vías varían según los productos individuales.',
     ],
     usos_principales: 'Suplementación en deficiencias de vitamina B.',
     inicio_accion: 'Desconocido',
@@ -26,67 +25,69 @@ export const vitaminBComplexDrug: Drug = {
   },
   informacion_cliente: [
     'Todas las vitaminas B son fotosensibles y deben protegerse de la luz.',
-    'Los viales multidosis requieren técnica aséptica para su uso repetido.',
+    'Los viales multidosis requieren una técnica aséptica para su uso repetido.',
   ],
   contraindicaciones_precauciones: {
     contraindicaciones: ['No hay información disponible.'],
-    precauciones: [
-      'La anafilaxia se puede observar cuando se usa por vía i.v. y los productos deben administrarse lentamente y/o diluirse con fluidos i.v.',
-      'El uso de productos para animales grandes que también contienen vitaminas liposolubles (A, D, E, K) puede provocar toxicidad.',
-    ],
+    precauciones: [],
   },
   reacciones_adversas: {
     comunes: [],
-    raras: ['Anafilaxia (cuando se administra por vía i.v.)'],
+    raras: [
+      'Se puede observar anafilaxia cuando se usa por vía intravenosa y los productos deben administrarse lentamente y/o diluirse con líquidos intravenosos.',
+      'El uso de productos para animales grandes que también contienen vitaminas liposolubles (A, D, E, K) puede provocar toxicidad.',
+    ],
   },
   interacciones_farmacos: {
     observadas: [],
     potenciales: [],
   },
   farmacologia_clinica: {
-    mecanismo_accion: 'Cofactores para enzimas del metabolismo intermedio y la biosíntesis.',
+    mecanismo_accion: 'Cofactores para las enzimas del metabolismo intermedio y la biosíntesis.',
     farmacocinetica: 'No hay información disponible.',
   },
   presentaciones_comerciales: [
     {
-      tipo: 'Parenteral',
-      forma_farmaceutica: 'Varias',
-      concentraciones: ['Varía según el producto'],
+      tipo: 'Varias',
+      forma_farmaceutica: 'Varias preparaciones que contienen cantidades variables de vitaminas están disponibles, autorizadas solo para animales de granja. La mayoría son para uso parenteral y todas son POM-VPS.',
     },
   ],
   dosis: {
     mammals: [
       {
         especie: 'Conejos',
-        dosis: '0.02–0.4 ml/conejo s.c., i.m. c/24h o según sea necesario',
+        dosis: '0.02-0.4 ml/conejo s.c., i.m. q24h o según sea necesario',
         indicacion: 'Deficiencia de vitamina B',
       },
       {
         especie: 'Roedores',
-        dosis: '0.02–0.2 ml/kg s.c., i.m. c/24h o según sea necesario',
+        dosis: '0.02-0.2 ml/kg s.c., i.m. q24h o según sea necesario',
         indicacion: 'Deficiencia de vitamina B',
       },
       {
         especie: 'Marsupiales',
-        dosis: '0.01–0.02 ml/kg i.m. c/24h o según sea necesario',
+        dosis: '0.01-0.02 ml/kg i.m. q24h o según sea necesario',
         indicacion: 'Deficiencia de vitamina B',
       },
       {
         especie: 'Petauros del azúcar',
-        dosis: '0.01–0.2 ml/kg s.c, i.m.',
+        dosis: '0.01-0.2 ml/kg s.c., i.m.',
         indicacion: 'Deficiencia de vitamina B',
       },
       {
         especie: 'Erizos',
-        dosis: '1 ml/kg s.c., i.m. c/24h o según sea necesario',
+        dosis: '1 ml/kg s.c., i.m. q24h o según sea necesario',
         indicacion: 'Deficiencia de vitamina B',
       },
     ],
     birds: [
       {
         especie: 'Aves',
-        dosis: '1–3 mg/kg i.m. una vez. Debe intentar alcanzar 10–30 mg/kg de tiamina. Se debe tener cuidado de no exceder los 3 mg/kg de clorhidrato de piridoxina (vitamina B6).',
+        dosis: '1-3 mg/kg i.m. una vez. Debe intentar alcanzar 10-30 mg/kg de tiamina.',
         indicacion: 'Deficiencia de vitamina B',
+        notas: [
+          'Se debe tener cuidado de no exceder los 3 mg/kg de piridoxina HCl (vitamina B6), ya que se ha registrado toxicidad (muerte aguda en 24-48 horas) en rapaces y palomas.',
+        ],
       },
     ],
   },

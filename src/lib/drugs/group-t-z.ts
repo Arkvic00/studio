@@ -24,15 +24,6 @@ import { trimethoprimSulphonamideDrug } from './trimethoprim_sulphonamide';
 import { tropicamideDrug } from './tropicamide';
 import { tylosinDrug } from './tylosin';
 import { ursodeoxycholicAcidDrug } from './ursodeoxycholic_acid';
-import { vecuroniumDrug } from './vecuronium';
-import { verapamilDrug } from './verapamil';
-import { vincristineDrug } from './vincristine';
-import { virkonSDrug } from './virkon_s';
-import { vitaminADrug } from './vitamin_a';
-import { vitaminBComplexDrug } from './vitamin_b_complex';
-import { vitaminB1Drug } from './vitamin_b1';
-import { vitaminB12Drug } from './vitamin_b12';
-import { vitaminK1Drug } from './vitamin_k1';
 
 export const groupTZ = [
     tacrolimusDrug,
@@ -61,13 +52,4 @@ export const groupTZ = [
     tropicamideDrug,
     tylosinDrug,
     ursodeoxycholicAcidDrug,
-    vecuroniumDrug,
-    verapamilDrug,
-    vincristineDrug,
-    virkonSDrug,
-    vitaminADrug,
-    vitaminBComplexDrug,
-    vitaminB1Drug,
-    vitaminB12Drug,
-    vitaminK1Drug,
 ];

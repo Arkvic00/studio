@@ -4,7 +4,7 @@ export const propentofyllineDrug: Drug = {
     id: "propentofylline",
     meta_data: {
       nombre_generico: "Propentofilina",
-      nombres_comerciales: "Canergy, Vitofyllin, Vivitonin",
+      nombres_comerciales: ["Canergy", "Vitofyllin", "Vivitonin"],
       grupo_farmacologico: "Vasodilatador (Derivado de Xantina)",
       status_regulatorio: "POM-V",
     },

@@ -4,7 +4,7 @@ export const proligestoneDrug: Drug = {
     id: "proligestone",
     meta_data: {
       nombre_generico: "Proligestona",
-      nombres_comerciales: "Delvosteron",
+      nombres_comerciales: ["Delvosteron"],
       grupo_farmacologico: "Hormonal (Progestágeno)",
       status_regulatorio: "POM-V",
     },

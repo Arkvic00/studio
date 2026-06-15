@@ -97,7 +97,6 @@ import { prochlorperazineDrug } from './prochlorperazine';
 import { propentofyllineDrug } from './propentofylline';
 import { propofolDrug } from './propofol';
 import { propranololDrug } from './propranolol';
-import { proxymetacaineDrug } from './proxymetacaine';
 import { pyrantelDrug } from './pyrantel';
 import { pyridostigmineDrug } from './pyridostigmine';
 import { pyrimethamineDrug } from './pyrimethamine';
@@ -164,7 +163,7 @@ export const groupMP = [
     penicillinGDrug,
     pentamidineDrug,
     pentobarbitalDrug,
-    pentosanPolysulphateDrug,
+    { ...pentosanPolysulphateDrug, id: 'pentosan-polysulphate' },
     pentoxifyllineDrug,
     permethrinDrug,
     pethidineDrug,
@@ -184,7 +183,7 @@ export const groupMP = [
     piperazineDrug,
     piroxicamDrug,
     polymyxinBDrug,
-    adequanDrug,
+    { ...adequanDrug, id: 'adequan' },
     polyvinylAlcoholDrug,
     potassiumBromideDrug,
     potassiumCitrateDrug,
@@ -204,7 +203,6 @@ export const groupMP = [
     propentofyllineDrug,
     propofolDrug,
     propranololDrug,
-    proxymetacaineDrug,
     pyrantelDrug,
     pyridostigmineDrug,
     pyrimethamineDrug,

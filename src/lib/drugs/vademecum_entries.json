@@ -1,0 +1,403 @@
+[
+  {
+    "id": "vecuronium",
+    "meta_data": {
+      "nombre_generico": "Vecuronio",
+      "nombres_comerciales": ["Norcuron*"],
+      "grupo_farmacologico": "Bloqueante neuromuscular no despolarizante",
+      "status_regulatorio": "POM"
+    },
+    "resumen_clinico": {
+      "puntos_clave": [
+        "Inhibe la acción de la acetilcolina en la unión neuromuscular",
+        "Efecto de duración intermedia (~20 min) dependiente de la dosis",
+        "Sin efectos cardiovasculares ni liberación de histamina",
+        "Requiere monitorización con estimulador de nervios"
+      ],
+      "usos_principales": "Bloqueo neuromuscular durante anestesia, facilitación de ventilación mecánica y cirugía intraocular. Midriático tópico en aves."
+    },
+    "parametros_dosificacion": {
+      "aves": "1 gota de solución 0.8 mg/ml tópicamente en el ojo; repetir a los 2 min",
+      "reptiles": "1 gota de solución al 0.4% tópicamente en el ojo cada 15-20 min"
+    },
+    "seguridad_y_alertas": {
+      "contraindicaciones": "No administrar sistémicamente sin anestesia adecuada y equipo de ventilación positiva.",
+      "interacciones": "Efecto prolongado con anestésicos volátiles, aminoglicósidos, clindamicina y lincomicina.",
+      "advertencias": "La hipotermia, acidosis e hipopotasemia prolongan el bloqueo. Metabolizado por el hígado."
+    }
+  },
+  {
+    "id": "verapamil",
+    "meta_data": {
+      "nombre_generico": "Verapamilo",
+      "nombres_comerciales": ["Cordilox*", "Securon*", "Verapamil*"],
+      "grupo_farmacologico": "Bloqueante de canales de calcio (Clase IV)",
+      "status_regulatorio": "POM"
+    },
+    "resumen_clinico": {
+      "puntos_clave": [
+        "Inotropo negativo",
+        "Depresor de la actividad eléctrica (conducción AV)",
+        "Vasodilatador coronario y periférico"
+      ],
+      "usos_principales": "Minimizar formación de adhesiones quirúrgicas en conejos. Tratamiento de taquicardias supraventriculares."
+    },
+    "parametros_dosificacion": {
+      "conejos": "0.2 mg/kg IV lenta, SC o PO post-cirugía cada 8h (9 dosis)",
+      "hamsters": "0.25-0.5 mg/kg SC cada 12h"
+    },
+    "seguridad_y_alertas": {
+      "contraindicaciones": "Bloqueo AV de 2do o 3er grado, hipotensión, fallo cardíaco, disfunción ventricular izquierda.",
+      "interacciones": "No usar con betabloqueantes (efecto inotropo negativo profundo). Puede aumentar niveles de digoxina y teofilina.",
+      "advertencias": "Reducir dosis un 70% en enfermedad hepática severa. La administración IV rápida puede causar muerte súbita."
+    }
+  },
+  {
+    "id": "vincristine",
+    "meta_data": {
+      "nombre_generico": "Vincristina",
+      "nombres_comerciales": ["Oncovin*", "Vincristine*"],
+      "grupo_farmacologico": "Antineoplásico (Alcaloide de la vinca)",
+      "status_regulatorio": "POM"
+    },
+    "resumen_clinico": {
+      "puntos_clave": [
+        "Causa arresto en metafase celular",
+        "Altamente irritante localmente (vesicante)",
+        "Requiere catéter IV perfectamente colocado"
+      ],
+      "usos_principales": "Linfoma en hurones y reptiles (Iguana verde). Enfermedades neoplásicas."
+    },
+    "parametros_dosificacion": {
+      "hurones": "0.12-0.2 mg/kg IV como parte de protocolo",
+      "aves": "0.1 mg/kg IV cada 7-14 días",
+      "reptiles": "0.008 mg/kg IV (reportado en Iguana verde)"
+    },
+    "seguridad_y_alertas": {
+      "reacciones_adversas": "Neuropatía periférica, íleo paralítico, estreñimiento, mielosupresión.",
+      "advertencias": "Droga citotóxica. Manejar con guantes y protocolos de seguridad química. Almacenar en refrigeración."
+    }
+  },
+  {
+    "id": "voriconazole",
+    "meta_data": {
+      "nombre_generico": "Voriconazol",
+      "nombres_comerciales": ["Vfend*"],
+      "grupo_farmacologico": "Antifúngico triazólico",
+      "status_regulatorio": "POM"
+    },
+    "resumen_clinico": {
+      "puntos_clave": [
+        "Inhibe la síntesis de ergosterol fúngico",
+        "Primera elección en Loros Grises para aspergilosis",
+        "Buena distribución tisular"
+      ],
+      "usos_principales": "Aspergilosis, candidiasis, criptococosis y dermatofitosis. Tratamiento de quitridiomicosis en anfibios."
+    },
+    "parametros_dosificacion": {
+      "aves_rapiña": "12.5 mg/kg PO cada 12h o IM cada 24h",
+      "loros_grises": "12-18 mg/kg PO cada 12h",
+      "dragones_barbudos": "10 mg/kg PO cada 24h",
+      "anfibios": "1.25 mcg/ml cada 24h vía spray tópico por 7 días"
+    },
+    "seguridad_y_alertas": {
+      "contraindicaciones": "Gestación. Evitar en enfermedad hepática. Contraindicado en serpientes Cottonmouth y Boas de Dumeril.",
+      "reacciones_adversas": "Vómitos, anorexia, toxicosis hepática. Los guacamayos son más sensibles."
+    }
+  },
+  {
+    "id": "vitamin_k1",
+    "meta_data": {
+      "nombre_generico": "Vitamina K1 (Fitomenadiona)",
+      "nombres_comerciales": ["Konakion*", "Cobalaplex"],
+      "grupo_farmacologico": "Vitamina / Factor de coagulación",
+      "status_regulatorio": "POM-V"
+    },
+    "resumen_clinico": {
+      "puntos_clave": [
+        "Esencial para factores de coagulación II, VII, IX y X",
+        "Vida media corta, no tiene grandes reservas",
+        "Efecto demora 6-12 horas"
+      ],
+      "usos_principales": "Toxicidad por rodenticidas cumarínicos. Deficiencia por anorexia prolongada. Pre-biopsia hepática."
+    },
+    "parametros_dosificacion": {
+      "hurones": "2.5-5 mg/kg SC inicial, luego 2.5 mg/kg PO cada 12h (duración según generación del tóxico)",
+      "conejos_roedores": "1-10 mg/kg IM según necesidad",
+      "aves": "0.2-2.5 mg/kg IM o PO cada 6-12h",
+      "reptiles": "0.5 mg/kg IM cada 24h"
+    },
+    "seguridad_y_alertas": {
+      "advertencias": "Usar aguja de calibre pequeño en pacientes con tendencia al sangrado. La absorción oral se reduce con aceite mineral.",
+      "reacciones_adversas": "Reacciones anafilácticas si se da IV."
+    }
+  },
+  {
+    "id": "vitamin_a",
+    "meta_data": {
+      "nombre_generico": "Vitamina A (Retinol)",
+      "nombres_comerciales": ["Roaccutane*", "Tretinoína"],
+      "grupo_farmacologico": "Vitamina liposoluble",
+      "status_regulatorio": "POM"
+    },
+    "resumen_clinico": {
+      "puntos_clave": [
+        "Regula la expresión genética y epitelios",
+        "Teratogénica en dosis altas o primer trimestre",
+        "Reptiles carnívoros no convierten carotenoides vegetales"
+      ],
+      "usos_principales": "Hipovitaminosis A. Adenitis sebácea en conejos."
+    },
+    "parametros_dosificacion": {
+      "conejos": "500-1000 IU/kg IM (una dosis)",
+      "aves": "1000-20,000 IU por ave IM o PO cada 12h",
+      "reptiles": "1000-2000 IU/kg PO cada 7-14 días",
+      "anfibios": "1000 IU/kg PO diario por 14 días"
+    },
+    "seguridad_y_alertas": {
+      "contraindicaciones": "Animales gestantes.",
+      "reacciones_adversas": "Anorexia, desprendimiento de piel en reptiles por sobredosis. Hepatotóxica a dosis altas.",
+      "advertencias": "Usar guantes con preparaciones tópicas (teratogénico)."
+    }
+  },
+  {
+    "id": "xylazine",
+    "meta_data": {
+      "nombre_generico": "Xilacina",
+      "nombres_comerciales": ["Rompun", "Chanazine"],
+      "grupo_farmacologico": "Agonista alfa-2 adrenérgico",
+      "status_regulatorio": "POM-V"
+    },
+    "resumen_clinico": {
+      "puntos_clave": [
+        "Sedante, analgésico y relajante muscular",
+        "Menos específico que medetomidina (más efectos alfa-1)",
+        "Sensibiliza el miocardio a catecolaminas"
+      ],
+      "usos_principales": "Sedación y premedicación. Combinado con ketamina para anestesia corta."
+    },
+    "parametros_dosificacion": {
+      "primates": "0.5-6 mg/kg IM para sedación",
+      "erizos": "0.5-1.0 mg/kg IM",
+      "anfibios": "10 mg/kg intracelómico cada 12-24h (analgesia en Xenopus)"
+    },
+    "seguridad_y_alertas": {
+      "contraindicaciones": "Enfermedad cardiovascular, renal o hepática. Diabetes. Gestación (aumenta motilidad uterina).",
+      "advertencias": "Superada en seguridad por medetomidina/dexmedetomidina. Reversible con atipamezol en caso de sobredosis."
+    }
+  },
+  {
+    "id": "virkon_s",
+    "meta_data": {
+      "nombre_generico": "Virkon S",
+      "nombres_comerciales": ["Virkon Aquatic tablets*"],
+      "grupo_farmacologico": "Desinfectante / Sanitizante de agua",
+      "status_regulatorio": "GSL"
+    },
+    "resumen_clinico": {
+      "puntos_clave": [
+        "Mezcla de oxyzones, sales de ácido frutal y monopersulfato de potasio",
+        "Reduce virus, bacterias y algunos parásitos en estanques de carpas Koi",
+        "Versión modificada con menos detergente y sin fragancia para acuáticos"
+      ],
+      "usos_principales": "Reducción de virus, bacterias y algunos parásitos en estanques de carpas Koi."
+    },
+    "parametros_dosificacion": {
+      "peces": "2–8 mg/l por inmersión prolongada inicialmente, luego 2 mg/l semanalmente según sea necesario."
+    },
+    "seguridad_y_alertas": {
+      "advertencias": "No añadir directamente al estanque, disolver primero. Desactivado por luz UV. La dosificación repetida puede causar espuma. El polvo es irritante para la piel y el sistema respiratorio, puede causar daño ocular grave."
+    }
+  },
+  {
+    "id": "vitamin_b_complex",
+    "meta_data": {
+      "nombre_generico": "Vitamina B Complex",
+      "nombres_comerciales": ["Anivit 4BC", "Duphafral", "Duphafral Extravite", "Multivitamin injection", "Vitamin B tablets"],
+      "grupo_farmacologico": "Vitaminas (Cofactores metabólicos)",
+      "status_regulatorio": "POM-VPS, general sale"
+    },
+    "resumen_clinico": {
+      "puntos_clave": [
+        "Cofactores para enzimas del metabolismo intermediario y biosíntesis",
+        "Múltiples deficiencias pueden ocurrir en pacientes con enfermedad renal, hepática o anorexia significativa"
+      ],
+      "usos_principales": "Tratamiento de deficiencias múltiples de vitaminas B."
+    },
+    "parametros_dosificacion": {
+      "conejos": "0.02–0.4 ml/conejo SC, IM cada 24h o según sea necesario",
+      "roedores": "0.02–0.2 ml/kg SC, IM cada 24h o según sea necesario",
+      "marsupiales": "0.01–0.02 ml/kg IM cada 24h o según sea necesario",
+      "sugar_gliders": "0.01–0.2 ml/kg SC, IM",
+      "erizos": "1 ml/kg SC, IM cada 24h o según sea necesario",
+      "aves": "1–3 mg/kg IM una vez (apuntar a 10–30 mg/kg tiamina). Cuidado de no exceder 3 mg/kg piridoxina HCl (vitamina B6) por toxicidad."
+    },
+    "seguridad_y_alertas": {
+      "reacciones_adversas": "Anafilaxia si se usa IV (administrar lentamente y/o diluido). Toxicidad si se usan productos de grandes animales con vitaminas liposolubles.",
+      "advertencias": "Todas las vitaminas B son fotosensibles. Viales multidosis requieren técnica aséptica."
+    }
+  },
+  {
+    "id": "vitamin_b1",
+    "meta_data": {
+      "nombre_generico": "Vitamina B1 (Tiamina)",
+      "nombres_comerciales": ["Vitamin B1"],
+      "grupo_farmacologico": "Vitamina (Cofactor metabólico)",
+      "status_regulatorio": "POM-V, general sale"
+    },
+    "resumen_clinico": {
+      "puntos_clave": [
+        "Cofactor para enzimas en el metabolismo de carbohidratos",
+        "No afecta la glucosa en sangre"
+      ],
+      "usos_principales": "Suplementación en deficiencias (dietas de pescado crudo, productos de soja sin cocinar). Beneficioso en intoxicación por plomo y etilenglicol. Tratamiento de necrosis cortical cerebral en aves, reptiles y anfibios."
+    },
+    "parametros_dosificacion": {
+      "hurones_conejos": "1–2 mg/kg SC, IM cada 12–24h por varios días",
+      "aves": "10–30 mg/kg IM cada 24h",
+      "reptiles": "Deficiencia de tiamina: 25–35 mg/kg PO, IM, SC cada 24h",
+      "anfibios": "Deficiencia de tiamina: 25 mg/kg de pescado de alimento"
+    },
+    "seguridad_y_alertas": {
+      "contraindicaciones": "No usar en animales gestantes a menos que sea absolutamente necesario.",
+      "reacciones_adversas": "Anafilaxia con uso IV (diluir y/o administrar lentamente). Efectos adversos documentados en animales gestantes.",
+      "advertencias": "Proteger del aire y la luz. Viales multidosis requieren técnica aséptica."
+    }
+  },
+  {
+    "id": "vitamin_b12",
+    "meta_data": {
+      "nombre_generico": "Vitamina B12 (Cianocobalamina, Hidroxocobalamina)",
+      "nombres_comerciales": ["Anivit B12 250 and 1000", "Cobalaplex", "Neo-Cytamen (hydroxocobalamin)", "Vitbee 250 and 1000"],
+      "grupo_farmacologico": "Vitamina (Cofactor enzimático)",
+      "status_regulatorio": "POM-VPS"
+    },
+    "resumen_clinico": {
+      "puntos_clave": [
+        "Cofactor esencial para la síntesis de ADN y ARN y metabolismo de carbohidratos",
+        "La hidroxocobalamina ha reemplazado casi por completo a la cianocobalamina en humanos"
+      ],
+      "usos_principales": "Tratamiento de deficiencia de vitamina B12 (enfermedad del íleon distal, sobrecrecimiento bacteriano intestinal, insuficiencia pancreática exocrina)."
+    },
+    "parametros_dosificacion": {
+      "conejos": "20–50 μg/kg mensualmente mientras persista la deficiencia",
+      "aves": "0.25–5 mg/kg IM cada 7 días",
+      "reptiles": "0.05 mg/kg IM, SC"
+    },
+    "seguridad_y_alertas": {
+      "contraindicaciones": "No administrar IV.",
+      "reacciones_adversas": "Hipersensibilidad al conservante fenol (erupción, fiebre, urticaria).",
+      "advertencias": "Proteger de la luz."
+    }
+  },
+  {
+    "id": "vitamin_c",
+    "meta_data": {
+      "nombre_generico": "Vitamina C (Ácido Ascórbico)",
+      "nombres_comerciales": ["Numerous trade names"],
+      "grupo_farmacologico": "Vitamina (Antioxidante)",
+      "status_regulatorio": "POM, general sale"
+    },
+    "resumen_clinico": {
+      "puntos_clave": [
+        "Antioxidante hidrosoluble",
+        "Crítico para la reticulación de precursores de colágeno",
+        "Involucrado en el metabolismo de proteínas, lípidos y carbohidratos",
+        "No producido endógenamente por cobayas, algunos roedores sudamericanos y grandes simios"
+      ],
+      "usos_principales": "Reducir metahemoglobinemia por toxicidad de paracetamol. Suplementación en estrés oxidativo, caquexia, soporte nutricional."
+    },
+    "parametros_dosificacion": {
+      "conejos": "50–100 mg/kg PO, SC cada 12h",
+      "cobayas": "Mantenimiento: 10–30 mg/kg/día PO, SC o 200–400 mg/l en agua de bebida; Hipovitaminosis C: 100–200 mg/kg PO cada 24h",
+      "primates": "25 mg/kg PO cada 12h o 30–100 mg/kg PO, SC cada 24h",
+      "erizos": "50–200 mg/kg PO, SC cada 24h",
+      "reptiles": "10–20 mg/kg IM cada 7 días"
+    },
+    "seguridad_y_alertas": {
+      "contraindicaciones": "Evitar en pacientes con enfermedad hepática.",
+      "reacciones_adversas": "Anafilaxia si se administra IV. Puede aumentar el daño hepático por acumulación de hierro. Uso prolongado de dosis excesivas puede aumentar el riesgo de cristaluria y formación de cálculos.",
+      "interacciones": "Grandes dosis acidifican la orina, aumentando la excreción renal de algunos fármacos (ej. mexiletina) y reduciendo el efecto de algunos antibacterianos (ej. aminoglucósidos)."
+    }
+  },
+  {
+    "id": "vitamin_d",
+    "meta_data": {
+      "nombre_generico": "Vitamina D (Colecalciferol, Calcitriol)",
+      "nombres_comerciales": ["Zolcal D", "Alfacalcidol*", "Calcijex*", "Calcitriol*", "One-alpha*", "Rocaltrol*"],
+      "grupo_farmacologico": "Vitamina / Hormona (Metabolismo de calcio y fósforo)",
+      "status_regulatorio": "POM-VPS, POM, ESPA"
+    },
+    "resumen_clinico": {
+      "puntos_clave": [
+        "Regula la homeostasis del calcio a través de complejos mecanismos",
+        "Requiere dos hidroxilaciones (hígado y riñón) para activarse",
+        "Índice terapéutico muy estrecho, fácil alcanzar dosis tóxicas"
+      ],
+      "usos_principales": "Manejo crónico de hipocalcemia (hipoparatiroidismo). Manejo de hiperparatiroidismo secundario renal. Tratamiento de hiperparatiroidismo secundario nutricional en aves y reptiles (con calcio y luz UV)."
+    },
+    "parametros_dosificacion": {
+      "primates": "110 IU/100 g PO cada 24h (titís) o 2000 IU/kg",
+      "aves": "Hipovitaminosis D: 3300–6600 IU/kg IM una vez (calcitriol)",
+      "reptiles": "200–1000 IU/kg PO, IM cada 7 días (PO puede ser más seguro)",
+      "anfibios": "2–3 IU/ml en baño continuo con gluconato de calcio al 2.3%; 100–400 IU/kg PO cada 24h"
+    },
+    "seguridad_y_alertas": {
+      "contraindicaciones": "No usar en pacientes con hiperfosfatemia o síndromes de malabsorción. No usar en animales gestantes.",
+      "reacciones_adversas": "Hipercalcemia e hiperfosfatemia. Calcificación de tejidos blandos.",
+      "interacciones": "Corticosteroides pueden anular el efecto. Sucralfato disminuye la absorción. Fármacos inductores de enzimas hepáticas aumentan el metabolismo. Antiácidos con magnesio o calcio pueden causar hipermagnesemia/hipercalcemia. Diuréticos tiazídicos pueden causar hipercalcemia. La hipercalcemia puede potenciar los efectos tóxicos de verapamilo o digoxina."
+    }
+  },
+  {
+    "id": "vitamin_e",
+    "meta_data": {
+      "nombre_generico": "Vitamina E (Acetato de Alfa Tocoferilo)",
+      "nombres_comerciales": ["Multivitamin injection", "Vitamin E suspension"],
+      "grupo_farmacologico": "Vitamina liposoluble (Antioxidante)",
+      "status_regulatorio": "POM-VPS"
+    },
+    "resumen_clinico": {
+      "puntos_clave": [
+        "Antioxidante liposoluble",
+        "Regula la expresión génica y el metabolismo celular de compuestos de azufre"
+      ],
+      "usos_principales": "Suplementación en deficiencias (insuficiencia pancreática exocrina, enfermedades malabsortivas severas). Sugerido para lupus discoide, demodicosis, enfermedades hepáticas (anecdótico)."
+    },
+    "parametros_dosificacion": {
+      "primates": "3.75 IU/kg IM cada 3 días con selenio a 1.15 mg/kg IM por 30 días (miopatía)",
+      "marsupiales": "25–100 IU/animal IM cada 24h o 400 IU/animal IM post-captura (macrópodos)",
+      "aves": "0.06 mg/kg IM cada 7 días en psitácidos para hipovitaminosis E; una sola vez en aves de rapiña para prevenir/tratar miopatía por captura",
+      "reptiles": "1 IU/kg IM cada 24h por 7–14 días",
+      "anfibios": "1 mg/kg PO, IM cada 7 días o 200 IU/kg de alimento"
+    },
+    "seguridad_y_alertas": {
+      "contraindicaciones": "No usar en pacientes con alto riesgo de trombosis. No usar en neonatos.",
+      "reacciones_adversas": "Trombosis. Reacciones anafilactoides.",
+      "interacciones": "Puede mejorar la absorción, utilización y almacenamiento de vitamina A. Puede alterar la farmacocinética de ciclosporina (monitorizar niveles)."
+    }
+  },
+  {
+    "id": "zinc_salts",
+    "meta_data": {
+      "nombre_generico": "Sales de Zinc",
+      "nombres_comerciales": ["Numerous trade names"],
+      "grupo_farmacologico": "Mineral (Oligoelemento)",
+      "status_regulatorio": "GSL"
+    },
+    "resumen_clinico": {
+      "puntos_clave": [
+        "Involucrado en la síntesis de ADN y ARN, función de glóbulos blancos y metabolismo intermediario",
+        "Reduce la absorción gastrointestinal y hepática de cobre"
+      ],
+      "usos_principales": "Dermatosis respondedoras a zinc. Beneficios propuestos en enfermedad hepática crónica y encefalopatía hepática."
+    },
+    "parametros_dosificacion": {
+      "primates": "2.5 μg/animal PO cada 24h por 3 días"
+    },
+    "seguridad_y_alertas": {
+      "contraindicaciones": "Pacientes con deficiencia de cobre.",
+      "reacciones_adversas": "Náuseas, vómitos, diarrea ocasional. Hemólisis con dosis grandes o niveles séricos >10 mg/ml (especialmente con deficiencia de cobre).",
+      "interacciones": "Interacciones significativas con otros metales pesados divalentes (hierro, cobre). Penicilamina y ácido ursodesoxicólico pueden inhibir la absorción. Puede quelar tetraciclina oral y reducir su absorción (separar dosis por al menos 2h). Puede reducir la absorción de fluoroquinolonas."
+    }
+  }
+]

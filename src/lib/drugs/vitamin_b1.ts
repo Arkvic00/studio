@@ -3,47 +3,45 @@ import type { Drug } from '../index';
 export const vitaminB1Drug: Drug = {
   id: 'vitamin_b1',
   meta_data: {
-    nombre_generico: 'Vitamina B1 (Tiamina)',
-    nombres_comerciales: ['Vitamina B1'],
+    nombre_generico: 'Vitamina B1',
+    nombres_comerciales: ['Inyección de vitamina B1'],
+    nombres_alternativos: ['Tiamina'],
     grupo_farmacologico: 'Vitamina',
-    status_regulatorio: 'POM-V, venta general',
+    status_regulatorio: 'POM-V',
   },
   resumen_clinico: {
     puntos_clave: [
-      'Cofactor de enzimas en el metabolismo de los carbohidratos.',
-      'La suplementación con tiamina es necesaria en animales deficientes.',
-      'Puede ser beneficioso para aliviar los signos de intoxicación por plomo e intoxicación por etilenglicol.',
-      'Se utiliza en aves, reptiles y anfibios para el tratamiento de la necrosis cortical cerebral.',
+      'Las deficiencias de vitamina B pueden ocurrir en pacientes con enfermedad renal o hepática o anorexia significativa.',
+      'La tiamina se puede administrar de forma segura en dosis más altas que las vitaminas B compuestas, y el riesgo de reacciones a la piridoxina es menor.',
+      'Generalmente seguro de usar, ya que las vitaminas B son solubles en agua y se excretan en la orina si se administran en exceso.',
     ],
-    usos_principales: 'Suplementación en deficiencia de tiamina, intoxicación por plomo, intoxicación por etilenglicol y necrosis cortical cerebral.',
+    usos_principales: 'Prevención y tratamiento de la deficiencia de vitamina B1.',
     inicio_accion: 'Desconocido',
     duracion_efecto: 'Desconocido',
   },
   informacion_cliente: [
-    'Proteger del aire y la luz; los viales multidosis requieren técnica aséptica para su uso repetido.',
+    'Los productos autorizados están destinados a animales grandes y son POM-V. La mayoría de las prácticas utilizan la preparación veterinaria especial más diluida (POM-VPS).',
+    'Varios productos están disponibles.',
   ],
   contraindicaciones_precauciones: {
-    contraindicaciones: ['No usar en animales gestantes a menos que sea absolutamente necesario.'],
+    contraindicaciones: [],
     precauciones: [
-      'La anafilaxia se puede observar con el uso i.v.; diluir con fluidos y/o administrar lentamente si se usa por vía i.v.',
+      'Las preparaciones de vitaminas B deben protegerse de la luz.',
+      'Las preparaciones de vitaminas del complejo B también contienen piridoxina (B6), que es neurotóxica para las aves en dosis altas.',
     ],
   },
   reacciones_adversas: {
     comunes: [],
-    raras: ['Anafilaxia (con uso i.v.)'],
+    raras: [
+      'Se puede observar anafilaxia cuando se usa por vía intravenosa y los productos deben administrarse lentamente y/o diluirse con líquidos intravenosos.',
+    ],
   },
   interacciones_farmacos: {
-    observadas: [
-      {
-        farmaco: 'Agentes bloqueadores neuromusculares',
-        descripcion: 'La tiamina puede potenciar la actividad de los agentes bloqueadores neuromusculares.',
-      },
-    ],
+    observadas: [],
     potenciales: [],
   },
   farmacologia_clinica: {
-    mecanismo_accion:
-      'Cofactor de enzimas en el metabolismo de los carbohidratos, forma un compuesto con el ATP para formar difosfato de tiamina/pirofosfato de tiamina empleado en el metabolismo de los carbohidratos. No afecta la glucosa en sangre.',
+    mecanismo_accion: 'La tiamina es un cofactor de la transcetolasa, una enzima del metabolismo de los carbohidratos.',
     farmacocinetica: 'No hay información disponible.',
   },
   presentaciones_comerciales: [
@@ -51,40 +49,48 @@ export const vitaminB1Drug: Drug = {
       tipo: 'Inyectable',
       forma_farmaceutica: 'Solución',
       concentracion_texto: '100 mg/ml',
-    },
-    {
-      tipo: 'Oral',
-      forma_farmaceutica: 'Varias',
-      concentraciones: ['Varía según el producto'],
+      valor_concentracion: 100,
+      unidad_concentracion: 'mg/ml',
     },
   ],
   dosis: {
     mammals: [
       {
-        especie: 'Hurones, Conejos',
-        dosis: '1–2 mg/kg s.c., i.m. c/12–24h durante varios días hasta que los signos se resuelvan.',
-        indicacion: 'Deficiencia de tiamina',
+        especie: 'Hurones',
+        dosis: '12.5-25 mg/hurón i.m., s.c.',
+        indicacion: 'Deficiencia de vitamina B1',
+      },
+      {
+        especie: 'Conejos',
+        dosis: '25 mg/conejo s.c., i.m.',
+        indicacion: 'Deficiencia de vitamina B1',
+      },
+      {
+        especie: 'Cobayas',
+        dosis: '10-20 mg/kg i.m., s.c.',
+        indicacion: 'Deficiencia de vitamina B1',
+      },
+      {
+        especie: 'Chinchillas',
+        dosis: '50-100 mg/kg i.m., s.c.',
+        indicacion: 'Deficiencia de vitamina B1',
+      },
+      {
+        especie: 'Ratas, ratones',
+        dosis: '10-30 mg/kg i.m., s.c.',
+        indicacion: 'Deficiencia de vitamina B1',
+      },
+      {
+        especie: 'Erizos',
+        dosis: '100 mg/kg i.m., s.c.',
+        indicacion: 'Deficiencia de vitamina B1',
       },
     ],
     birds: [
       {
         especie: 'Aves',
-        dosis: '10–30 mg/kg i.m. c/24h',
-        indicacion: 'Deficiencia de tiamina',
-      },
-    ],
-    reptiles: [
-      {
-        especie: 'Reptiles',
-        dosis: '25–35 mg/kg p.o., i.m., s.c. c/24h',
-        indicacion: 'Deficiencia de tiamina',
-      },
-    ],
-    amphibians: [
-      {
-        especie: 'Anfibios',
-        dosis: '25 mg/kg de pescado de cebo',
-        indicacion: 'Deficiencia de tiamina',
+        dosis: '30 mg/kg i.m.',
+        indicacion: 'Deficiencia de vitamina B1',
       },
     ],
   },

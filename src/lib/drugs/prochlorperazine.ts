@@ -4,7 +4,7 @@ export const prochlorperazineDrug: Drug = {
     id: "prochlorperazine",
     meta_data: {
       nombre_generico: "Proclorperazina",
-      nombres_comerciales: "Buccastem, Prochlorperazine, Stemetil",
+      nombres_comerciales: ["Buccastem", "Prochlorperazine", "Stemetil"],
       grupo_farmacologico: "Antiemético (Fenotiazina)",
       status_regulatorio: "POM",
     },

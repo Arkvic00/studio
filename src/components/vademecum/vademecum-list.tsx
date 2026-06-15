@@ -28,7 +28,7 @@ export function VademecumList() {
         
         if (activeTab === 'farmacos') {
             return DB_MEDICAMENTOS.filter(d => {
-                const matchesSpecies = selectedSpecies === 'Todos' || (d.parametros_dosificacion[normalizedSelected] && d.parametros_dosificacion[normalizedSelected].length > 0);
+                const matchesSpecies = selectedSpecies === 'Todos' || (d.parametros_dosificacion && d.parametros_dosificacion[normalizedSelected] && d.parametros_dosificacion[normalizedSelected].length > 0);
                 if (!matchesSpecies) return false;
                 if (!q) return true;
                 return fuzzySearch(q, d.meta_data.nombre_generico) || 
